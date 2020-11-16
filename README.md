@@ -8,3 +8,7 @@ Some config fields are secret and are expected to be loaded from environment. Cr
 export $(cat .env | xargs);
 hugo server -DEF
 ```
+
+## Third party
+
+* [**findAndReplaceDOMText**](https://github.com/padolsey/findAndReplaceDOMText): unlicense

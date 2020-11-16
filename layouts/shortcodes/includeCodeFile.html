@@ -1,0 +1,10 @@
+{{ $targetRelFile := .Get 0 }}
+{{ $targetResolvedFile := path.Join (path.Dir .Page.File.Path) (.Get 0) }}
+{{ $targetFileContent := readFile $targetResolvedFile }}
+{{ $targetFileFormat := slicestr (path.Ext $targetRelFile) 1}}
+
+<section class="included-file" data-file="{{$targetRelFile}}">
+    {{/*  {{< highlight html >}}  */}}
+    {{ highlight $targetFileContent (printf "%s:%s" $targetFileFormat $targetRelFile) (printf "{file=%s" $targetRelFile) }}
+    {{/*  {{< /highlight >}}  */}}
+</section>
