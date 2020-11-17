@@ -11,4 +11,5 @@ hugo server -DEF
 
 ## Third party
 
+* [**GitHub corners**](https://github.com/tholman/github-corners): MIT
 * [**findAndReplaceDOMText**](https://github.com/padolsey/findAndReplaceDOMText): unlicense
