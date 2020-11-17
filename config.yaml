@@ -13,7 +13,7 @@ timeout: 10000
 enableEmoji: true
 paginate: 13
 rssLimit: 100
-enableGitInfo: false
+enableGitInfo: true
 googleAnalytics: ''
 markup:
   goldmark:
