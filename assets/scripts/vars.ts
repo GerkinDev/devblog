@@ -1,4 +1,4 @@
-const VAR_MATCH_RE = /\{\{\s*(\S+?)\s*\}\}/g;
+const VAR_MATCH_RE = /\{\{\s*(\w+((?:\.\w+|\[\d+\]))*?)\s*\}\}/g;
 
 declare function fadeIn(el: HTMLElement, time: number): void;
 declare function fadeOut(el: HTMLElement, time: number): void;
@@ -15,6 +15,7 @@ if(content){
 	});
 }
 
+const DATA_HREF_ORIGINAL = 'data-href-original';
 const rewrapVarLabel = (label: HTMLElement) => {
 	VAR_MATCH_RE.lastIndex = 0;
 	const innerMatch = VAR_MATCH_RE.exec(label.innerText);
@@ -28,103 +29,123 @@ const rewrapVarLabel = (label: HTMLElement) => {
 	label.setAttribute('data-var', varName);
 	label.setAttribute('title', `Var name: "${varName}"`);
 	label.setAttribute('for', id)
+	const codeBlock = label.querySelector(':scope > code');
 	const name = label.getAttribute('data-var');
+	const parentLink: HTMLAnchorElement = findParentMatching<HTMLAnchorElement>(label, el => el.tagName === 'A');
+	if(parentLink){
+		parentLink.setAttribute(DATA_HREF_ORIGINAL, decodeURI(parentLink.href));
+	}
 	return {
 		name,
+		parentLink,
+		codeBlock,
 		inputName: `var#${name}`,
 		segments: name.split('.'),
 		id: label.getAttribute('for'),
 	}
 }
 
-const varInputChangeFactory = (varData: ReturnType<typeof rewrapVarLabel>, input: HTMLInputElement) => {
-	const varInstances = Array.from(document.querySelectorAll(`.var[data-var="${varData.name}"] > code`));
-	const setVarInstancesText = (text: string) => {
-		text = text || `{{${varData.name}}}`;
-		varInstances.forEach(vi => vi.innerHTML = text);
-	}
-	
-	const storedValue = localStorage.getItem(varData.inputName)?.trim();
-	if(storedValue){
-		input.value = storedValue;
-		setVarInstancesText(storedValue);
-	}
-	return () => {
-		const val = input.value.trim();
-		
-		setVarInstancesText(val);
-		if(val){
-			localStorage.setItem(varData.inputName, val);
-		} else {
-			localStorage.removeItem(varData.inputName);
+const findParentMatching = <T extends Element>(el: Element, assert: ((el: Element) => el is T) | ((el: Element) => boolean)) => {
+	while (el != undefined && el != null && el.tagName.toUpperCase() != 'BODY'){
+		if (assert(el)){
+			return el;
 		}
-	};
+		el = el.parentElement;
+	}
 }
 
-const vars = Array
-	.from(document.querySelectorAll<HTMLElement>('label.var'))
-	.map(rewrapVarLabel)
-	.filter((v): v is Exclude<ReturnType<typeof rewrapVarLabel>, undefined> => !!v)
-	.filter((value, index, self) => self.findIndex(value2 => value2.name === value.name) === index)
-	.sort((a, b) => a.name.localeCompare(b.name));
+// From https://stackoverflow.com/a/38504572/4839162
+const isChild = (obj: Element, parentObj: Element) => !!findParentMatching(obj, el => el === parentObj);
 
-if(vars.length > 0){
-	const tempSidebar = document.querySelector('.wrapper__right').cloneNode(true) as HTMLElement;
-	// Remove TOC
-	const oldToc = tempSidebar.querySelector('#TableOfContents');
-	if(oldToc){
-		oldToc.parentElement.removeChild(oldToc);
-	}
-	document.getElementById('container').appendChild(tempSidebar);
-	// Edit
-	tempSidebar.id = 'vars-container'
-	tempSidebar.outerHTML = tempSidebar.outerHTML.replace(/right/g, 'left');
-
-	const newSidebar = document.getElementById('vars-container')
-
-	// Update
-	const newSidebarTitle = newSidebar.querySelector('.toc__title');
-	if(newSidebarTitle){
-		newSidebarTitle.innerHTML = 'Vars editor';
-	}
-	const hideSwitch = newSidebar.querySelector<HTMLInputElement>('.switch > input');
+const hideSwitch = document.getElementById('visible-help') as HTMLInputElement;
+const helpContainer = document.querySelector<HTMLElement>('.walkthrough-help');
+if(helpContainer) {
 	if(hideSwitch){
-		hideSwitch.id = 'visible-vars-editor';
-		hideSwitch.setAttribute('aria-label', 'Visible var editor');
 		hideSwitch.addEventListener('change', e => {
-			if (varsContainer) {
-				if (hideSwitch.checked) {
-					fadeIn(varsContainer, 200);
-				} else {
-					fadeOut(varsContainer, 200);
-				}
+			if (hideSwitch.checked) {
+				fadeIn(helpContainer, 200);
+			} else {
+				fadeOut(helpContainer, 200);
 			}
 		})
 	}
-	const varsContainer = newSidebar.querySelector<HTMLElement>('.toc');
-	if(varsContainer){
-		vars.forEach(v => {
-			const targetContainer = v.segments.reduce((acc, segment, index) => {
-				const segmentChild = acc.querySelector(`[data-scope="${segment}"]`);
-				if(segmentChild){
-					return segmentChild;
+
+	const varInputChangeFactory = (varName: string, input: HTMLInputElement) => {
+		const varInstances = varsElements.filter(ve => ve.name === varName);
+		const varData = varsElements[0];
+		if(!varData){
+			throw new Error('No sample var data');
+		}
+		const setVarInstancesText = (text: string) => {
+			text = text || `{{${varName}}}`;
+			varInstances.forEach(vi => {
+				vi.codeBlock.innerHTML = text;
+				if(vi.parentLink) {
+					const originalHref = vi.parentLink.getAttribute(DATA_HREF_ORIGINAL);
+					console.log(originalHref);
+					VAR_MATCH_RE.lastIndex = 0;
+					vi.parentLink.href = originalHref.replace(VAR_MATCH_RE, (fullmatch, varName) => {
+						const varDesc = vars.find(v => v.name === varName);
+						return (document.getElementById(varDesc.id) as HTMLInputElement).value;
+					});
 				}
-				const newSegmentChild = document.createElement('div');
-				newSegmentChild.classList.add('vars-category');
-				newSegmentChild.setAttribute('data-scope', segment);
-				newSegmentChild.innerHTML = `<label class="vars-category-label">${segment}</label>`
-				acc.appendChild(newSegmentChild);
-				return newSegmentChild;
-			}, varsContainer);
+			});
+		}
+		
+		const storedValue = localStorage.getItem(varData.inputName)?.trim();
+		if(storedValue){
+			input.value = storedValue;
+			setVarInstancesText(storedValue);
+		}
+		return () => {
+			const val = input.value.trim();
 			
-			targetContainer.innerHTML = targetContainer.innerHTML + `<input class="var-input" type="text" name="${v.inputName}" id="${v.id}"/>`;
-			const label = targetContainer.querySelector('.vars-category-label')!;
-			label.setAttribute('for', v.id);
-			
-			const input = targetContainer.querySelector('input');
-			const onChange = varInputChangeFactory(v, input);
-			input.addEventListener('change', onChange);
-			input.addEventListener('keyup', onChange);
-		})
+			setVarInstancesText(val);
+			if(val){
+				localStorage.setItem(varData.inputName, val);
+			} else {
+				localStorage.removeItem(varData.inputName);
+			}
+		};
+	}
+
+	const varsElements = Array
+		.from(document.querySelectorAll<HTMLElement>('label.var'))
+		.filter(v => !isChild(v, helpContainer))
+		.map(rewrapVarLabel)
+		.filter((v): v is Exclude<ReturnType<typeof rewrapVarLabel>, undefined> => !!v);
+	const vars = varsElements
+		.filter((value, index, self) => self.findIndex(value2 => value2.name === value.name) === index)
+		.sort((a, b) => a.name.localeCompare(b.name));
+		
+	console.log({vars, varsElements})
+
+	if(vars.length > 0){
+		const varsContainer = document.getElementById('vars-container');
+		if(varsContainer){
+			vars.forEach(v => {
+				const targetContainer = v.segments.reduce((acc, segment, index) => {
+					const segmentChild = acc.querySelector(`:scope > [data-scope="${segment}"]`);
+					if(segmentChild){
+						return segmentChild;
+					}
+					const newSegmentChild = document.createElement('div');
+					newSegmentChild.classList.add('vars-category');
+					newSegmentChild.setAttribute('data-scope', segment);
+					newSegmentChild.innerHTML = `<label class="vars-category-label">${segment}</label>`
+					acc.appendChild(newSegmentChild);
+					return newSegmentChild;
+				}, varsContainer);
+				
+				targetContainer.innerHTML = targetContainer.innerHTML + `<input class="var-input" type="text" name="${v.inputName}" id="${v.id}"/>`;
+				const label = targetContainer.querySelector('.vars-category-label')!;
+				label.setAttribute('for', v.id);
+				
+				const input = targetContainer.querySelector('input');
+				const onChange = varInputChangeFactory(v.name, input);
+				input.addEventListener('change', onChange);
+				input.addEventListener('keyup', onChange);
+			})
+		}
 	}
 }

@@ -1,4 +1,5 @@
 @import './pre-header.scss';
+@import './walkthrough.scss';
 
 // #region Fixes
 .list__main {
@@ -21,6 +22,27 @@ h1, h2, h3, h4, h5, h6 {
 		font-size: inherit;
 	}
 }
+
+
+
+.notices {
+	@mixin theme($child) {
+		@at-root #{selector-replace(&, ".notices", ".notices.#{$child}")} {
+			@content;
+		}
+	}
+
+	.highlight {
+		.chroma {
+			@include theme("info") {
+				background: #cce6f7;
+			}
+			@include theme("success") {
+				background: #d3f0cf;
+			}
+		}
+	}
+}
 // #endregion
 
 
@@ -34,33 +56,6 @@ h1, h2, h3, h4, h5, h6 {
 	padding: 0!important;
 	@at-root .chroma & {
 		color: inherit;
-	}
-}
-
-#vars-container {
-	.toc {
-		margin-left: -1rem;
-	}
-
-	.vars-category {
-		margin-left: 1rem;
-	}
-	// .vars-category-label {
-	// 	margin-bottom: 0.2rem;
-	// 	display: block;
-	// }
-
-	.var-input {
-		display: block;
-		width: 100%;
-		padding: 0;
-		background-color: rgba(255,255,255,.1);
-		appearance: none;
-		border: none;
-		padding: .25rem .5rem ;
-		color: inherit;
-		border-radius: 0.3rem;
-		margin-bottom: 0.2rem;
 	}
 }
 // #endregion

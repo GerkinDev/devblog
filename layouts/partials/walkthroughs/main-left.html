@@ -1,0 +1,7 @@
+{{ .Scratch.Set "side" "left" }}
+{{partial "walkthroughs/is-pad" .}}
+{{ if eq ($.Param "languagedir") "rtl" }}
+  {{ partial "walkthroughs/toc" .}}
+{{ else if (eq ($.Param "languagedir") "ltr") }}
+  {{ partial "walkthroughs/help" . }}
+{{ end }}

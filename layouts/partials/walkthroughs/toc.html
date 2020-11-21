@@ -1,0 +1,87 @@
+{{ $side := .Scratch.Get "side"}}
+{{ $isPad := .Scratch.Get "isPad"}}
+{{ $dir := ($.Param "languagedir") }}
+
+<div class="wrapper__{{ $side }} hide" data-pad="{{ $isPad }}" dir="{{ $dir }}">
+    <script>document.querySelector('.wrapper__{{ $side }}').classList.remove('hide')</script>
+    {{ if and (eq ($.Param "tocPosition") "outer") (or .IsPage .IsSection) }}
+      {{ if and (ne .Type "about") (ne .Type "contact") (ne .Type "gallery") }}
+        {{ if or ($.Param "enableToc") ($.Param "toc") }}
+          <div class="toc__flexbox--outer" data-position="fixed" data-dir="{{ $dir }}" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
+            <h6 class="toc__title toc__title--outer" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">{{ i18n "toc-label" }}</h6>
+            {{ if $.Param "enableTocSwitch" }}
+              <label class="switch" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
+                <input id="visible-toc" aria-label="Visible TOC" type="checkbox" {{ if $.Param "hideToc" }}{{ else }}checked{{ end }}>
+                <span class="slider round"></span>
+              </label>
+            {{ end }}
+          </div>
+          <div class="toc toc__outer {{ if $.Param "hideToc" }}hide{{ end }}" data-dir="{{ $dir }}" data-folding="{{ if $.Param "tocFolding" }}true{{ else }}false{{ end }}" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
+            {{ .TableOfContents }}
+          </div>
+      {{ end }}
+    {{ end }}
+  {{ end }}
+</div>
+<script>
+  {{ $enableToc:= $.Param "enableToc" }}
+  {{ $toc:= $.Param "toc" }}
+  {{ $tocPosition:= $.Param "tocPosition" }}
+
+  var enableToc = JSON.parse({{ $enableToc | jsonify }});
+  var toc = JSON.parse({{ $toc | jsonify }});
+  var tocPosition = JSON.parse({{ $tocPosition | jsonify }});
+  
+  var singleMainElem = document.querySelector('.single__main');
+  var singleSideElem = document.querySelector('.single__side');
+
+  enquire.register("screen and (max-width: 769px)", {
+    match: function () {
+      if ((enableToc || toc) && tocPosition !== "outer") {
+        if (singleMainElem && singleSideElem) {
+          singleMainElem.classList.remove('main-main');
+          singleMainElem.classList.add('main');
+          singleSideElem.classList.remove('main-side');
+          singleSideElem.classList.add('hide');
+        }
+      } else if (tocPosition === "outer") {
+        if (singleMainElem && !singleMainElem.classList.contains('main-main')) {
+          singleMainElem.classList.remove('main-main');
+          singleMainElem.classList.add('main');
+        }
+        if (singleSideElem && !singleSideElem.classList.contains('hide')) {
+          singleSideElem.classList.add('hide');
+        }
+      }
+    },
+    unmatch: function () {
+      if ((enableToc || toc) && tocPosition !== "outer") {
+        singleMainElem.classList.remove('main');
+        singleMainElem.classList.add('main-main');
+        singleSideElem.classList.remove('hide');
+        singleSideElem.classList.add('main-side');
+      } else if (tocPosition === "outer") {
+        if (singleMainElem && !singleMainElem.classList.contains('main-main')) {
+          singleMainElem.classList.remove('main-main');
+          singleMainElem.classList.add('main');
+        }
+        if (singleSideElem && !singleSideElem.classList.contains('hide')) {
+          singleSideElem.classList.add('hide');
+        }
+      }
+
+      var navCollapseBtn = document.querySelector('.navbar__burger');
+      var navCollapse = document.getElementsByClassName('navbarm__collapse')[0];
+      if (navCollapse) {
+        navCollapse.setAttribute('data-open', false);
+        navCollapse.style.maxHeight = 0;
+        navCollapseBtn.classList.remove('is-active');
+      }
+      document.getElementsByClassName('navbar__menu')[0].classList.remove('is-active');
+      document.getElementsByClassName('mobile-search')[0].classList.add('hide');
+    },
+    setup: function () { },
+    deferSetup: true,
+    destroy: function () { },
+  });
+</script>

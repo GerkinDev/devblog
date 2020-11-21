@@ -1,0 +1,46 @@
+{{ $side := .Scratch.Get "side"}}
+{{ $isPad := .Scratch.Get "isPad"}}
+{{ $dir := ($.Param "languagedir") }}
+
+<div class="wrapper__{{ $side }} hide" data-pad="{{ $isPad }}" dir="{{ $dir }}">
+  <script>document.querySelector('.wrapper__{{ $side }}').classList.remove('hide')</script>
+  <div class="toc__flexbox--outer" data-position="fixed" data-dir="{{ $dir }}" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
+    <h6 class="toc__title toc__title--outer" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">Walkthrough help</h6>
+    {{ if $.Param "enableTocSwitch" }}
+    <label class="switch" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
+      <input id="visible-help" aria-label="Visible help" type="checkbox" {{ if $.Param "hideToc" }}{{ else }}checked{{ end }}>
+      <span class="slider round"></span>
+    </label>
+    {{ end }}
+  </div>
+  <div class="walkthrough-help toc__outer {{ if $.Param "hideToc" }}hide{{ end }}" data-dir="{{ $dir }}" data-folding="{{ if $.Param "tocFolding" }}true{{ else }}false{{ end }}" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
+    <section>
+      <h4>Vars editor</h4>
+      <p>Variables in articles are noted <code>{{ "{{myVar}}" }}</code></p>
+      <div id="vars-container" data-empty-text="No vars on this page !"></div>
+    </section>
+    <section>
+      <h4>Legend</h4>
+      <table class="legend">
+        <tbody>
+          <tr>
+            <td>:link:</td>
+            <td>An internal link in this guide</td>
+          </tr>
+          <tr>
+            <td>:clipboard:</td>
+            <td>A link to a template of this guide. Templates are files in which you should replace your variables</td>
+          </tr>
+          <tr>
+            <td>:bookmark:</td>
+            <td>A variable</td>
+          </tr>
+          <tr>
+            <td>📖</td>
+            <td>A link to an external tool documentation</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</div>
