@@ -1,0 +1,6 @@
+{{ $id := substr (md5 .Inner) 0 16 }}
+<div id="{{ $id }}" class="codetab__content">
+  {{ .Scratch.Set "targetFile" (.Get 0) }}
+  {{ .Scratch.Set "label" (.Get 1 | default (.Get 0)) }}
+  {{partial "include-code-file" .}}
+</div>
