@@ -1,0 +1,18 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ingress-secure
+  namespace: kibana
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - match: Host(`kibana.{{cluster.baseHostName}}`)
+    kind: Rule
+    services:
+    - name: kibana
+      kind: Service
+      namespace: kibana
+      port: 80
+  tls:
+    certResolver: myresolver

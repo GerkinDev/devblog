@@ -1,0 +1,55 @@
+# See https://mherman.org/blog/logging-in-kubernetes-with-elasticsearch-Kibana-fluentd/#kibana
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kibana
+  namespace: kibana
+  labels:
+    app: kibana
+    component: kibana
+spec:
+  selector:
+    matchLabels:
+      app: kibana
+      component: kibana
+  template:
+    metadata:
+      labels:
+        app: kibana
+        component: kibana
+    spec:
+      containers:
+      - name: kibana
+        image: docker.elastic.co/kibana/kibana:6.5.4
+        env:
+        - name: ELASTICSEARCH_URL
+          value: http://elasticsearch.kibana.svc.cluster.local:9200
+        - name: XPACK_SECURITY_ENABLED
+          value: "true"
+        ports:
+        - containerPort: 5601
+          name: http
+          protocol: TCP
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: kibana
+  namespace: kibana
+  labels:
+    app: kibana
+    component: kibana
+spec:
+  selector:
+    app: kibana
+    component: kibana
+  ports:
+    - port: 80
+      targetPort: 5601
+      protocol: TCP
+      name: http

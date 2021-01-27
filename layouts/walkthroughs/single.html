@@ -18,6 +18,12 @@
       <div class="single__meta">
         {{ partial "body/infos" . }}
         {{ partial "body/tags" . }}
+        {{ with .Parent }}
+          <div class="notices info" data-title="Note" style="margin-top: 2rem;">
+            <p>This walkthrough is part of the <a href="{{ .Permalink }}">{{.Title}}</a> walkthroughs serie. If you did not followed previous steps, you might have many things to adapt.</p>
+            <p>You can also check the other steps to see what was done before.</p>
+          </div>
+        {{ end }}
       </div>
       <article class="single__contents" data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
         {{ partial "body/toc" . }}

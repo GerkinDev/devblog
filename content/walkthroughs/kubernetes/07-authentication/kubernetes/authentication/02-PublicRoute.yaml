@@ -1,0 +1,18 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: public-route
+  namespace: keycloak
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - match: Host(`keycloak.bar.com`)
+    kind: Rule
+    services:
+    - name: keycloak-http
+      kind: Service
+      namespace: keycloak
+      port: 80
+  tls:
+    certResolver: myresolver

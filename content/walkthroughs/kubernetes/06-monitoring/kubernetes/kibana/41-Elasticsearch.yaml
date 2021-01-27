@@ -1,0 +1,81 @@
+# See https://mherman.org/blog/logging-in-kubernetes-with-elasticsearch-Kibana-fluentd/#elastic
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: elasticsearch-data
+  namespace: kibana
+spec:
+  storageClassName: standard
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 3Gi
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: elasticsearch
+  namespace: kibana
+  labels:
+    app: kibana
+    component: elasticsearch
+
+spec:
+  selector:
+    matchLabels:
+      app: kibana
+      component: elasticsearch
+
+  template:
+    metadata:
+      labels:
+        app: kibana
+        component: elasticsearch
+
+    spec:
+      containers:
+      - name: elasticsearch
+        image: docker.elastic.co/elasticsearch/elasticsearch:6.5.4
+        env:
+        - name: discovery.type
+          value: single-node
+        ports:
+        - containerPort: 9200
+          name: http
+          protocol: TCP
+        volumeMounts:
+          - mountPath: "/usr/share/elasticsearch/data"
+            name: elasticsearch-data
+            subPath: kibana-elasticsearch
+      volumes:
+        - name: elasticsearch-data
+          persistentVolumeClaim:
+            claimName: elasticsearch-data
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: elasticsearch
+  namespace: kibana
+  labels:
+    app: kibana
+    component: elasticsearch
+
+spec:
+  selector:
+    app: kibana
+    component: elasticsearch
+
+  ports:
+    - port: 9200
+      targetPort: 9200
+      protocol: TCP
+      name: http

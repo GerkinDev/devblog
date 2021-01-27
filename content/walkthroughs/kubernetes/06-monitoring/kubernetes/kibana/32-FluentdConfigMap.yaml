@@ -1,0 +1,212 @@
+# Those configmaps are taken from https://github.com/fluent/fluentd-kubernetes-daemonset/blob/master/docker-image/v1.10/debian-elasticsearch6/conf/kubernetes.conf
+
+apiVersion: v1
+data:
+  kubernetes.conf: |-
+    <label @FLUENT_LOG>
+      <match fluent.**>
+        @type null
+      </match>
+    </label>
+
+    <filter kubernetes.**>
+      @type kubernetes_metadata
+      @id filter_kube_metadata
+      kubernetes_url "#{ENV['FLUENT_FILTER_KUBERNETES_URL'] || 'https://' + ENV.fetch('KUBERNETES_SERVICE_HOST') + ':' + ENV.fetch('KUBERNETES_SERVICE_PORT') + '/api'}"
+      verify_ssl "#{ENV['KUBERNETES_VERIFY_SSL'] || true}"
+      ca_file "#{ENV['KUBERNETES_CA_FILE']}"
+      skip_labels "#{ENV['FLUENT_KUBERNETES_METADATA_SKIP_LABELS'] || 'false'}"
+      skip_container_metadata "#{ENV['FLUENT_KUBERNETES_METADATA_SKIP_CONTAINER_METADATA'] || 'false'}"
+      skip_master_url "#{ENV['FLUENT_KUBERNETES_METADATA_SKIP_MASTER_URL'] || 'false'}"
+      skip_namespace_metadata "#{ENV['FLUENT_KUBERNETES_METADATA_SKIP_NAMESPACE_METADATA'] || 'false'}"
+    </filter>
+
+kind: ConfigMap
+metadata:
+  name: fluentd-config-kubernetes-conf
+  namespace: kube-system
+
+---
+
+apiVersion: v1
+data:
+  container-logs.conf: |-
+    <source>
+      @type tail
+      @id in_tail_container_logs
+      path /var/log/containers/*.log
+      pos_file /var/log/fluentd-containers.log.pos
+      tag "#{ENV['FLUENT_CONTAINER_TAIL_TAG'] || 'kubernetes.*'}"
+      exclude_path "#{ENV['FLUENT_CONTAINER_TAIL_EXCLUDE_PATH'] || use_default}"
+      read_from_head true
+      <parse>
+        @type "#{ENV['FLUENT_CONTAINER_TAIL_PARSER_TYPE'] || 'json'}"
+        time_format %Y-%m-%dT%H:%M:%S.%NZ
+      </parse>
+    </source>
+  salt.conf: |-
+    <source>
+      @type tail
+      @id in_tail_minion
+      path /var/log/salt/minion
+      pos_file /var/log/fluentd-salt.pos
+      tag salt
+      <parse>
+        @type regexp
+        expression /^(?<time>[^ ]* [^ ,]*)[^\[]*\{{^\}}*\]\[(?<severity>[^ \]]*) *\] (?<message>.*)$/
+        time_format %Y-%m-%d %H:%M:%S
+      </parse>
+    </source>
+  startupscript.conf: |-
+    <source>
+      @type tail
+      @id in_tail_startupscript
+      path /var/log/startupscript.log
+      pos_file /var/log/fluentd-startupscript.log.pos
+      tag startupscript
+      <parse>
+        @type syslog
+      </parse>
+    </source>
+  docker.conf: |-
+    <source>
+      @type tail
+      @id in_tail_docker
+      path /var/log/docker.log
+      pos_file /var/log/fluentd-docker.log.pos
+      tag docker
+      <parse>
+        @type regexp
+        expression /^time="(?<time>[^)]*)" level=(?<severity>[^ ]*) msg="(?<message>[^"]*)"( err="(?<error>[^"]*)")?( statusCode=($<status_code>\d+))?/
+      </parse>
+    </source>
+  etcd.conf: |-
+    <source>
+      @type tail
+      @id in_tail_etcd
+      path /var/log/etcd.log
+      pos_file /var/log/fluentd-etcd.log.pos
+      tag etcd
+      <parse>
+        @type none
+      </parse>
+    </source>
+  kubelet.conf: |-
+    <source>
+      @type tail
+      @id in_tail_kubelet
+      multiline_flush_interval 5s
+      path /var/log/kubelet.log
+      pos_file /var/log/fluentd-kubelet.log.pos
+      tag kubelet
+      <parse>
+        @type kubernetes
+      </parse>
+    </source>
+  kube-proxy.conf: |-
+    <source>
+      @type tail
+      @id in_tail_kube_proxy
+      multiline_flush_interval 5s
+      path /var/log/kube-proxy.log
+      pos_file /var/log/fluentd-kube-proxy.log.pos
+      tag kube-proxy
+      <parse>
+        @type kubernetes
+      </parse>
+    </source>
+  kube-apiserver.conf: |-
+    <source>
+      @type tail
+      @id in_tail_kube_apiserver
+      multiline_flush_interval 5s
+      path /var/log/kube-apiserver.log
+      pos_file /var/log/fluentd-kube-apiserver.log.pos
+      tag kube-apiserver
+      <parse>
+        @type kubernetes
+      </parse>
+    </source>
+  kube-controller-manager.conf: |-
+    <source>
+      @type tail
+      @id in_tail_kube_controller_manager
+      multiline_flush_interval 5s
+      path /var/log/kube-controller-manager.log
+      pos_file /var/log/fluentd-kube-controller-manager.log.pos
+      tag kube-controller-manager
+      <parse>
+        @type kubernetes
+      </parse>
+    </source>
+  kube-scheduler.conf: |-
+    <source>
+      @type tail
+      @id in_tail_kube_scheduler
+      multiline_flush_interval 5s
+      path /var/log/kube-scheduler.log
+      pos_file /var/log/fluentd-kube-scheduler.log.pos
+      tag kube-scheduler
+      <parse>
+        @type kubernetes
+      </parse>
+    </source>
+  rescheduler.conf: |-
+    <source>
+      @type tail
+      @id in_tail_rescheduler
+      multiline_flush_interval 5s
+      path /var/log/rescheduler.log
+      pos_file /var/log/fluentd-rescheduler.log.pos
+      tag rescheduler
+      <parse>
+        @type kubernetes
+      </parse>
+    </source>
+  glbc.conf: |-
+    <source>
+      @type tail
+      @id in_tail_glbc
+      multiline_flush_interval 5s
+      path /var/log/glbc.log
+      pos_file /var/log/fluentd-glbc.log.pos
+      tag glbc
+      <parse>
+        @type kubernetes
+      </parse>
+    </source>
+  autoscaler.conf: |-
+    <source>
+      @type tail
+      @id in_tail_cluster_autoscaler
+      multiline_flush_interval 5s
+      path /var/log/cluster-autoscaler.log
+      pos_file /var/log/fluentd-cluster-autoscaler.log.pos
+      tag cluster-autoscaler
+      <parse>
+        @type kubernetes
+      </parse>
+    </source>
+  audit-log.conf: |-
+    # Example:
+    # {"kind":"Event","apiVersion":"audit.k8s.io/v1","level":"Metadata","auditID":"xxxx","stage":"ResponseComplete","requestURI":"/apis/...?timeout=10s","verb":"update","user":{"username":"system:kube-scheduler","groups":["system:authenticated"]},"sourceIPs":["xxx.xxx.xxx.xxx"],"userAgent":"kube-scheduler/v1.19.3 (linux/amd64) kubernetes/1e11e4a/leader-election","objectRef":{"resource":"leases","namespace":"kube-system","name":"kube-scheduler","uid":"xxxx","apiGroup":"coordination.k8s.io","apiVersion":"v1","resourceVersion":"52124"},"responseStatus":{"metadata":{},"code":200},"requestReceivedTimestamp":"2020-10-29T16:26:44.967339Z","stageTimestamp":"2020-10-29T16:26:44.968796Z","annotations":{"authorization.k8s.io/decision":"allow","authorization.k8s.io/reason":"RBAC: allowed by ClusterRoleBinding \"system:kube-scheduler\" of ClusterRole \"system:kube-scheduler\" to User \"system:kube-scheduler\""}}
+    # {"kind":"Event","apiVersion":"audit.k8s.io/v1","level":"Request","auditID":"xxxx","stage":"ResponseComplete","requestURI":"/api/....?resourceVersion=0\u0026timeout=10s","verb":"get","user":{"username":"system:node:kube-slave-1","groups":["system:nodes","system:authenticated"]},"sourceIPs":["xxx.xxx.xxx.xxx"],"userAgent":"kubelet/v1.19.3 (linux/amd64) kubernetes/1e11e4a","objectRef":{"resource":"nodes","name":"kube-slave-1","apiVersion":"v1"},"responseStatus":{"metadata":{},"code":200},"requestReceivedTimestamp":"2020-10-29T16:26:45.099703Z","stageTimestamp":"2020-10-29T16:26:45.100167Z","annotations":{"authorization.k8s.io/decision":"allow","authorization.k8s.io/reason":""}}
+    <source>
+      @type tail
+      @id in_tail_kube_apiserver_audit
+      multiline_flush_interval 5s
+      path /var/log/kubernetes/kube-apiserver-audit.log
+      pos_file /var/log/kube-apiserver-audit.log.pos
+      tag audit
+      <parse>
+        @type json
+        time_key requestReceivedTimestamp
+        time_type string
+        time_format %Y-%m-%dT%T.%L%Z
+      </parse>
+    </source>
+
+kind: ConfigMap
+metadata:
+  name: fluentd-config-conf-additional
+  namespace: kube-system

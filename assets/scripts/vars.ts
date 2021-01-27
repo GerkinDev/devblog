@@ -72,7 +72,7 @@ if(helpContainer) {
 
 	const varInputChangeFactory = (varName: string, input: HTMLInputElement) => {
 		const varInstances = varsElements.filter(ve => ve.name === varName);
-		const varData = varsElements[0];
+		const varData = varInstances[0];
 		if(!varData){
 			throw new Error('No sample var data');
 		}
@@ -82,7 +82,6 @@ if(helpContainer) {
 				vi.codeBlock.innerHTML = text;
 				if(vi.parentLink) {
 					const originalHref = vi.parentLink.getAttribute(DATA_HREF_ORIGINAL);
-					console.log(originalHref);
 					VAR_MATCH_RE.lastIndex = 0;
 					vi.parentLink.href = originalHref.replace(VAR_MATCH_RE, (fullmatch, varName) => {
 						const varDesc = vars.find(v => v.name === varName);
@@ -117,8 +116,6 @@ if(helpContainer) {
 	const vars = varsElements
 		.filter((value, index, self) => self.findIndex(value2 => value2.name === value.name) === index)
 		.sort((a, b) => a.name.localeCompare(b.name));
-		
-	console.log({vars, varsElements})
 
 	if(vars.length > 0){
 		const varsContainer = document.getElementById('vars-container');
@@ -141,7 +138,7 @@ if(helpContainer) {
 				const label = targetContainer.querySelector('.vars-category-label')!;
 				label.setAttribute('for', v.id);
 				
-				const input = targetContainer.querySelector('input');
+				const input = targetContainer.querySelector<HTMLInputElement>(`input#${v.id}`);
 				const onChange = varInputChangeFactory(v.name, input);
 				input.addEventListener('change', onChange);
 				input.addEventListener('keyup', onChange);

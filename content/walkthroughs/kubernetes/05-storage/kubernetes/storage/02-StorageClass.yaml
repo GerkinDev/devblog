@@ -1,0 +1,11 @@
+# From https://medium.com/@myte/kubernetes-nfs-and-dynamic-nfs-provisioning-97e2afb8b4a9#file-nfs_class-yaml
+# From https://gist.github.com/Ccaplat/1578c81282339fdccc749458f95e7c9c#file-nfs_class-yaml
+
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: nfs-storageclass # IMPORTANT pvc needs to mention this name
+provisioner: standard # name can be anything
+parameters:
+  archiveOnDelete: "false"
+volumeBindingMode: WaitForFirstConsumer

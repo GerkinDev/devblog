@@ -1,0 +1,7 @@
+<hr>
+
+<div class="notices success" data-title="All set !">
+    <p>Hey, we’ve done important things here ! Maybe it’s time to commit…</p>
+    {{ $code := printf "git add .\ngit commit -m \"%v\\n\\nFollowing guide @ %v\"" ($.Page.Params.Title) ($.Page.Permalink | absURL) }}
+    {{ highlight $code "sh" "" }}
+</div>

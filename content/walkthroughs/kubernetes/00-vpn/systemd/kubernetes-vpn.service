@@ -1,0 +1,23 @@
+[Unit]
+Description=OpenVPN server through Docker
+After=syslog.target network-online.target docker.service
+Wants=network-online.target
+Requires=docker.service
+Documentation=man:openvpn(8)
+Documentation=https://community.openvpn.net/openvpn/wiki/Openvpn24ManPage
+Documentation=https://community.openvpn.net/openvpn/wiki/HOWTO
+Documentation=https://github.com/kylemanna/docker-openvpn
+
+[Service]
+ExecStop=-/usr/bin/docker stop %n
+ExecStopPost=-/usr/bin/docker rm %n
+ExecStartPre=/usr/bin/docker pull kylemanna/openvpn:2.3
+ExecStart=/usr/bin/docker run --name %n -v {{vpn.volumeName}}:/etc/openvpn ovpn-data --rm -p 1194:1194/udp --cap-add=NET_ADMIN kylemanna/openvpn:2.3
+TimeoutStartSec=30
+TimeoutStopSec=15
+Restart=always
+RestartSec=10s
+Type=simple
+
+[Install]
+WantedBy=multi-user.target

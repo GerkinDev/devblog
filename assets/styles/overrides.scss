@@ -43,9 +43,42 @@ h1, h2, h3, h4, h5, h6 {
 		}
 	}
 }
+
+.alert > :last-child {
+	margin-bottom: 0;
+}
+
+.expand__content > .language-code:only-child {
+	margin: 0 -1.125rem;
+}
+
+.tab__content {
+	padding: .5rem;
+
+	& > .highlight > .chroma {
+		@at-root #{selector-replace(&, ".highlight", ":first-child")} {
+			margin-top: .5em;
+		}
+		@at-root #{selector-replace(&, ".highlight", ":last-child")} {
+			margin-bottom: .5em;
+		}
+	}
+}
 // #endregion
 
+.pagination-single {
+	flex-direction: column;
+}
 
+.prev-next {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-end;
+	flex-wrap: wrap;
+	width: 100%;
+	margin: 1rem 0;
+}
 
 // #region Vars related
 .var > code {

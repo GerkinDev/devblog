@@ -1,0 +1,20 @@
+[Unit]
+Description=NFS server through Docker
+After=syslog.target network-online.target docker.service
+Wants=network-online.target
+Requires=docker.service
+Documentation=https://github.com/erichough/nfs-server
+
+[Service]
+ExecStop=-/usr/bin/docker stop %n
+ExecStopPost=-/usr/bin/docker rm %n
+ExecStartPre=/usr/bin/docker pull erichough/nfs-server:2.2.1
+ExecStart=/usr/bin/docker run --name %n -v {{vpn.nfsVolumeName}}:/data/{{vpn.nfsVolumeName}} -e NFS_EXPORT_0="/data/{{vpn.nfsVolumeName}} *(rw,sync,no_subtree_check,no_root_squash,fsid=0)" -e NFS_DISABLE_VERSION_3=1 --cap-add SYS_ADMIN -p {{server.vpnAddress}}:2049:2049 erichough/nfs-server:2.2.1
+TimeoutStartSec=30
+TimeoutStopSec=15
+Restart=always
+RestartSec=10s
+Type=simple
+
+[Install]
+WantedBy=multi-user.target

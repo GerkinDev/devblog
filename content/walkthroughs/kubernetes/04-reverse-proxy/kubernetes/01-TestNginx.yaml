@@ -1,0 +1,62 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: nginx-test
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: nginx
+  namespace: nginx-test
+  labels:
+    app: nginx-test
+    component: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-test
+      component: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx-test
+        component: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+  namespace: nginx-test
+spec:
+  ports:
+    - protocol: TCP
+      name: web
+      port: 80
+  selector:
+    app: nginx-test
+    component: nginx
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ingress
+  namespace: nginx-test
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - match: Host(`test.{{cluster.baseHostName}}`)
+    kind: Rule
+    services:
+    - name: nginx
+      kind: Service
+      namespace: nginx-test
+      port: 80
+  tls:
+    certResolver: myresolver

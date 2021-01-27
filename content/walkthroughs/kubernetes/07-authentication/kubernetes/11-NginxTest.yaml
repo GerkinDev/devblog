@@ -1,0 +1,165 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: nginx-test
+
+# Nginx itself
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: nginx
+  namespace: nginx-test
+  labels:
+    app: nginx-test
+    component: nginx
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-test
+      component: nginx
+
+  template:
+    metadata:
+      labels:
+        app: nginx-test
+        component: nginx
+
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+  namespace: nginx-test
+  labels:
+    app: nginx-test
+    component: nginx
+
+spec:
+  ports:
+    - protocol: TCP
+      name: web
+      port: 80
+  selector:
+    app: nginx-test
+    component: nginx
+
+
+
+
+# Authentication proxy
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gatekeeper
+  namespace: nginx-test
+  labels: 
+    app: nginx-test
+    component: gatekeeper
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels: 
+      app: nginx-test
+      component: gatekeeper
+
+  template:
+    metadata:
+      labels: 
+        app: nginx-test
+        component: gatekeeper
+
+    spec:
+      hostAliases:
+        - ip: "10.1.2.3"
+          hostnames:
+          - "foo.remote"
+          - "bar.remote"
+      containers:
+        - name: keycloak-gatekeeper
+          image: "quay.io/keycloak/keycloak-gatekeeper:10.0.0"
+          imagePullPolicy: IfNotPresent
+          args:
+            - --listen=0.0.0.0:3000
+            - --discovery-url=https://keycloak.{{cluster.baseHostName}}/auth/realms/master
+            - --client-id=nginx-test
+            - --client-secret={{}}
+            - --upstream-url=http://nginx.nginx-test.svc.cluster.local:80 # See https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/#namespaces-and-dns
+            - --redirection-url=https://test.{{cluster.baseHostName}}/
+            - --skip-openid-provider-tls-verify=true
+            - --enable-default-deny=true
+            - --enable-logging=true
+            - --enable-refresh-tokens=true
+            - --enable-session-cookies=true
+            - --encryption-key={{random32charsString}}
+            - --secure-cookie=false
+            - --resources=uri=/*|groups=/watchdogs
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gatekeeper
+  namespace: nginx-test
+  labels:
+      app: nginx-test
+      component: gatekeeper
+
+spec:
+  ports:
+    - port: 80
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app: nginx-test
+    component: gatekeeper
+
+
+
+
+# ---
+# apiVersion: traefik.containo.us/v1alpha1
+# kind: Middleware
+# metadata:
+#   name: gatekeeper
+#   namespace: nginx-test
+# spec:
+#   forwardAuth:
+#     address: http://gatekeeper.nginx-test.svc.cluster.local:80
+#     authResponseHeaders: 
+#         - "X-Forwarded-User"
+#     trustForwardHeader: true
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ingress
+  namespace: nginx-test
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - match: Host(`test.{{cluster.baseHostName}}`)
+    kind: Rule
+    services:
+    - name: gatekeeper
+      namespace: nginx-test
+      kind: Service
+      port: 80
+    # middlewares:
+    #   - name: gatekeeper
+    #     namespace: nginx-test
+  tls:
+    certResolver: myresolver

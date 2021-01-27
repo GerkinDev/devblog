@@ -1,0 +1,47 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: dashboard
+  namespace: traefik
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - match: Host(`traefik.{{cluster.baseHostName}}`) && PathPrefix(`/dashboard`)
+    kind: Rule
+    services:
+    - name: dashboard@internal
+      kind: TraefikService
+    middlewares:
+    - name: dashboard-stripprefix
+      namespace: traefik
+  tls:
+    certResolver: myresolver
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: api
+  namespace: traefik
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - match: Host(`traefik.{{cluster.baseHostName}}`) && PathPrefix(`/api`)
+    kind: Rule
+    services:
+    - name: api@internal
+      kind: TraefikService
+  tls:
+    certResolver: myresolver
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: dashboard-stripprefix
+  namespace: traefik
+spec:
+  stripPrefix:
+    prefixes:
+      - /dashboard
+      - /dashboard/

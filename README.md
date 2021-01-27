@@ -13,3 +13,7 @@ hugo server -DEF
 
 * [**GitHub corners**](https://github.com/tholman/github-corners): MIT
 * [**findAndReplaceDOMText**](https://github.com/padolsey/findAndReplaceDOMText): unlicense
+
+## Continuous Deployment
+
+The CD scripts are taken from https://medium.com/swlh/hosting-a-hugo-blog-on-github-pages-with-travis-ci-e74a1d686f10

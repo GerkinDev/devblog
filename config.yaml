@@ -17,6 +17,18 @@ enableGitInfo: true
 googleAnalytics: ''
 markup:
   goldmark:
+    extensions:
+      definitionList: true
+      footnote: true
+      linkify: true
+      strikethrough: true
+      table: true
+      taskList: true
+      typographer: true
+    parser:
+      attribute: true
+      autoHeadingID: true
+      autoHeadingIDType: github
     renderer:
       hardWraps: true
       unsafe: true
@@ -71,9 +83,9 @@ sitemap:
 
 
 params:
-  logoText: Zzo
+  logoText: GerkinDev DevBlog
   logoType: short
-  logo: true
+  logo: false
   description: GerkinDev DevBlog, with some dev & sysadmin tips, tricks and guides
   custom_css:
     - "styles/overrides.scss"
@@ -88,7 +100,7 @@ params:
     - kimbie
   notAllowedTypesInHome:
     - contact
-    - talks
+    # - talks
     - about
     - showcase
   notAllowedTypesInHomeSidebar:
@@ -135,16 +147,17 @@ params:
   talksPaginate: 8
   talksGroupByDate: '2006'
   myname: GerkinDev
-  email: zzossig@gmail.com
-  whoami: Fullstack developer, wanting to become a DevOps.
-  bioImageUrl: 'https://lh3.googleusercontent.com/1cHCaMp2PxGFvJVPYwShMv9baTH253j0caCpEsVf-Nsm7UueLGxKweGTbI1W6fjGiDqD6bwP0nRjWCa2uymmKtjwJrRsK6gUUOZ7FhwBRETacil83NXLTrbVKwwFqgExY199BUqMoC1E74Besl_eoL7vFpVKK16IljCRZmqi54lQRfEJ65pfYvtl88rEVrPYhrBMceqzgA_kyBTQlAnqfQFbWK0D4GzTjlQIUWY9gbGgEcoavKUIDpxayZwckSDl2WzNlIMZqlBfD_qtny2rP3unYAU1X3LCobs1NdFOoBgEYtrOjsc4ENHVadvFgaPvG826WIqAmRdnFMSdDEEA7VTVv1rEJBmO0VioukyB-cweFFoxsv_XSEjUkIvxYDN5K0azgQCS20T1KUtYiN_J8jmsCauVfpCEwDSj0hRW5uUOtHE2Ui6ZwsmQUxH5eDjohyC49nVp3FxtUa5k1d5SPt-9bnhrUY1VHHB6A8giO40gBNWt_zuRA4NUMnrVRueGUdviWFU6EIJcw0hXhmno1J2-symGkEyVEbCewLDe_W2XAhDF_v3fskzPo1yWXZuODdCXT2Nfzbc_rFQdSFjEXuqn7Z53RN5kXqXvD0JuOqT0M9AVQUOvhetnyq31eVYVYR-ZBkYETFmkBaOKp1fTivn2i-Gw8SN6soxS-U3uowu1U6XdpvBP8LGiTP8mwA=w899-h967-no?authuser=0'
+  # email: zzossig@gmail.com
+  whoami: Fullstack developer, on its journey to DevOps.
+  # bioImageUrl: 'https://lh3.googleusercontent.com/1cHCaMp2PxGFvJVPYwShMv9baTH253j0caCpEsVf-Nsm7UueLGxKweGTbI1W6fjGiDqD6bwP0nRjWCa2uymmKtjwJrRsK6gUUOZ7FhwBRETacil83NXLTrbVKwwFqgExY199BUqMoC1E74Besl_eoL7vFpVKK16IljCRZmqi54lQRfEJ65pfYvtl88rEVrPYhrBMceqzgA_kyBTQlAnqfQFbWK0D4GzTjlQIUWY9gbGgEcoavKUIDpxayZwckSDl2WzNlIMZqlBfD_qtny2rP3unYAU1X3LCobs1NdFOoBgEYtrOjsc4ENHVadvFgaPvG826WIqAmRdnFMSdDEEA7VTVv1rEJBmO0VioukyB-cweFFoxsv_XSEjUkIvxYDN5K0azgQCS20T1KUtYiN_J8jmsCauVfpCEwDSj0hRW5uUOtHE2Ui6ZwsmQUxH5eDjohyC49nVp3FxtUa5k1d5SPt-9bnhrUY1VHHB6A8giO40gBNWt_zuRA4NUMnrVRueGUdviWFU6EIJcw0hXhmno1J2-symGkEyVEbCewLDe_W2XAhDF_v3fskzPo1yWXZuODdCXT2Nfzbc_rFQdSFjEXuqn7Z53RN5kXqXvD0JuOqT0M9AVQUOvhetnyq31eVYVYR-ZBkYETFmkBaOKp1fTivn2i-Gw8SN6soxS-U3uowu1U6XdpvBP8LGiTP8mwA=w899-h967-no?authuser=0'
   useGravatar: false
   location: 'In the cambrousse, France'
   # organization: Scitizen
   link: 'https://github.com/GerkinDev/devblog'
   enableBio: true
   enableBioImage: true
-  enableSidebar: false
+  enableSidebar: true
+  enableSidebarMenu: false
   enableSidebarTags: true
   enableSidebarSeries: true
   enableSidebarCategories: true
@@ -161,6 +174,7 @@ params:
     - h2
     - h3
     - h4
+    - h5
   enableSidebarPostsByOrder: false
   showPoweredBy: true
   showFeedLinks: true

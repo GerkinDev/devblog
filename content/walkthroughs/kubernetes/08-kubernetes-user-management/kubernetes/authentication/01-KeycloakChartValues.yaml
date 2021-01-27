@@ -1,0 +1,47 @@
+extraEnv: |
+  - name: PROXY_ADDRESS_FORWARDING
+    value: "true"
+  - name: KEYCLOAK_USER
+    value: {{keycloak.adminUser}}
+  - name: KEYCLOAK_PASSWORD
+    value: {{keycloak.adminPassword}}
+podLabels:
+  app: keycloak
+  component: keycloak
+
+service:
+  labels:
+    app: keycloak
+    component: keycloak
+
+  httpsPort: 443 # 8443 by default, but it should be reachable via the same URL from outside than inside, eg `https://keycloak.{{cluster.baseHostName}}`
+ingress:
+  labels:
+    app: keycloak
+    component: keycloak
+
+  tls:
+  - hosts:
+    - keycloak.{{cluster.baseHostName}}
+    - kube-keycloak.{{cluster.baseHostName}}
+postgresql:
+  postgresqlPassword: keycloak
+  postgresqlDatabase: keycloak
+  enabled: true
+  persistence:
+    existingClaim: postgresql-data
+extraVolumes: |
+  - name: certs
+    secret:
+      secretName: certs
+      items:
+      # Map keycloak.crt => tls.crt
+      - key: keycloak.crt
+        path: tls.crt
+      # Map keycloak.key => tls.key
+      - key: keycloak.key
+        path: tls.key
+extraVolumeMounts: |
+  - name: certs
+    mountPath: "/etc/x509/https"
+    readOnly: true

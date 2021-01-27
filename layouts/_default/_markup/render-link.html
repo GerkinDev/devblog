@@ -1,0 +1,34 @@
+{{ $href := .Destination | safeURL }}
+{{ $isExternal := strings.HasPrefix .Destination "http" }}
+
+<a
+    href="{{ $href }}"
+    {{ with .Title}} title="{{ . }}"{{ end }}
+    {{ if $isExternal }} target="_blank" rel="noopener noreferrer"{{ end }}>
+    {{if ne $href ""}}
+        {{ $parsedUrl := urls.Parse $href }}
+        {{printf "<!-- %s -->" $parsedUrl.Host | safeHTML}}
+        {{ if in $parsedUrl.Host "wikipedia.org" }}
+            <i class="fab fa-wikipedia-w" title="See on wikipedia"></i>
+        {{ else if or (in $parsedUrl.Path "/docs/") (in $parsedUrl.Path "/doc/") }}
+            <i class="fas fa-book"></i>
+        {{ else if in $parsedUrl.Host "github.com" }}
+            {{ if in $parsedUrl.Path "/issue/" }}
+                <i class="fas fa-bug" title="See the issue on GitHub"></i>
+            {{ else }}
+                <i class="fab fa-github" title="See on GitHub"></i>
+            {{ end }}
+        {{ else if in $parsedUrl.Host "stackoverflow.com" }}
+            <i class="fab fa-stack-overflow"></i>
+        {{ else if or (in $parsedUrl.Host "serverfault.com") (in $parsedUrl.Host "stackexchange.com") }}
+            <i class="fab fa-stack-exchange"></i>
+        {{ else if ne $parsedUrl.Host "" }}
+            <i class="fas fa-external-link-alt" title="See on {{ $parsedUrl.Host }}"></i>
+        {{ else }}
+            <i class="fas fa-link" title="See on this site"></i>
+        {{ end }}
+    {{ else }}
+        <i class="fas fa-link" title="See on this site"></i>
+    {{ end }}
+    {{ .Text | safeHTML }}
+</a>
