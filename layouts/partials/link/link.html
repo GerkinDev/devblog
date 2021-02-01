@@ -1,0 +1,49 @@
+{{ $href := .Destination | safeURL }}
+{{ $isExternal := and (strings.HasPrefix $href "http") (not (strings.HasPrefix $href site.BaseURL)) }}
+{{ $scratch := newScratch }}
+
+{{ if eq $href "!-- TODO --"}}
+    {{ $scratch.Set "type" "todo" }}
+{{ else if ne $href "" }}
+    {{ $parsedUrl := urls.Parse $href }}
+    {{printf "<!-- %s -->" $parsedUrl.Host | safeHTML}}
+    {{ $path := lower $parsedUrl.Path }}
+    {{ if in $parsedUrl.Host "wikipedia.org" }}
+        {{ $scratch.Set "type" "wikipedia" }}
+    {{ else if or (in $path "/docs/") (in $path "/doc/")  (in $path "documentation") }}
+        {{ $scratch.Set "type" "docs" }}
+    {{ else if in $parsedUrl.Host "github.com" }}
+        {{ if or (in $path "/issue/") (in $path "/issues/") }}
+            {{ $scratch.Set "type" "github-issue" }}
+        {{ else }}
+            {{ $scratch.Set "type" "github" }}
+        {{ end }}
+    {{ else if in $parsedUrl.Host "stackoverflow.com" }}
+        {{ $scratch.Set "type" "stackoverflow" }}
+    {{ else if or (in $parsedUrl.Host "serverfault.com") (in $parsedUrl.Host "stackexchange.com") }}
+        {{ $scratch.Set "type" "stackexchange" }}
+        {{ $scratch.Set "label" (printf "See on %s" $parsedUrl.Host) }}
+    {{ else if $isExternal }}
+        {{ $scratch.Set "type" "external" }}
+        {{ $scratch.Set "label" (printf "See on %s" $parsedUrl.Host) }}
+    {{ end }}
+{{ end }}
+{{ if eq ($scratch.Get "type") nil }}
+    {{ if gt (len $href ) 2 }}
+        {{ if eq (slicestr $href 0 2) "./" }}
+            {{ $scratch.Set "type" "internal-resource" }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+{{ if eq ($scratch.Get "type") nil }}
+    {{ $scratch.Set "type" "internal" }}
+{{ end }}
+
+<a
+    {{ if ne ($scratch.Get "type") "todo"}}href="{{ $href }}"{{end}}
+    {{ if .Title }} title="{{ .Title }}"{{ end }}
+    {{ if (or (.Blank) (eq ($scratch.Get "type") "internal-resource")) | default $isExternal }} target="_blank" rel="noopener noreferrer"{{ end }}>
+
+    {{ partial "link/prefix-icon" (dict "Type" (.Type | default ($scratch.Get "type")) "Label" ($scratch.Get "label"))}}
+    {{ .Text | safeHTML }}
+</a>

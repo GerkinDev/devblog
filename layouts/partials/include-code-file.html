@@ -1,10 +1,16 @@
 {{ $targetRelFile := .Scratch.Get "targetFile" }}
 {{ $targetResolvedFile := path.Join (path.Dir .Page.File.Path) $targetRelFile }}
 {{ $targetFileContent := readFile $targetResolvedFile }}
-{{ $targetFileFormat := slicestr (path.Ext $targetRelFile) 1}}
+<!-- {{ $language := .Scratch.Get "format" | default (slicestr (path.Ext $targetRelFile) 1) }} -->
+{{ $language := .Scratch.Get "format" | default (slicestr (path.Ext $targetRelFile) 1) }}
+{{ $label := .Scratch.Get "label" }}
 
+{{ printf "<!-- Include code file `%s` with lang `%s` & label `%s` -->" $targetRelFile $language $label | safeHTML }}
 <section class="included-file" data-file="{{$targetRelFile}}">
-    {{/*  {{< highlight html >}}  */}}
-    {{ highlight $targetFileContent (printf "%s:%s" $targetFileFormat (.Scratch.Get "label")) "" }}
-    {{/*  {{< /highlight >}}  */}}
+{{ highlight (printf "%s" $targetFileContent) (printf "%s:%s" $language ($label)) "" }}
+
+    {{/*  {{< highlight $language >}}
+    {{ $targetFileContent }}
+    {{< /highlight >}}  */}}
 </section>
+{{ printf "<!-- End include code file `%s` with lang `%s` & label `%s` -->" $targetRelFile $language $label | safeHTML }}

@@ -1,4 +1,5 @@
 {{ .Scratch.Set "targetFile" (.Get 0) }}
-{{ .Scratch.Set "label" (.Get 1 | default (.Get 0)) }}
+{{ .Scratch.Set "label" (.Get 2 | default (.Get 0)) }}
+{{ .Scratch.Set "format" (.Get 1 | default (slicestr (path.Ext (.Scratch.Get "targetFile")) 1)) }}
 
 {{partial "include-code-file" .}}

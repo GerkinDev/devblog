@@ -1,0 +1,27 @@
+{{ if .IsNamedParams }}
+    {{ .Scratch.Set "dest" (.Get "path") }}
+    {{ .Scratch.Set "text" (.Get "text") }}
+    {{ .Scratch.Set "blank" (.Get "blank") }}
+{{ else }}
+    {{ .Scratch.Set "dest" (.Get 0) }}
+    {{ .Scratch.Set "text" (.Get 1) }}
+{{ end }}
+{{ $target := .Scratch.Get "dest" }}
+{{ $nonAnchoredTarget := replaceRE "(#.*$)?" "" $target }}
+{{ $resolvedTarget := cond (eq (substr $nonAnchoredTarget 0 1) "/") $nonAnchoredTarget (path.Join (path.Dir .Page.File.Path) $nonAnchoredTarget) }}
+{{ $page := .Site.GetPage (replaceRE "#.*$" "" $resolvedTarget) }}
+{{ $text := .Scratch.Get "text" | default $page.LinkTitle }}
+{{ $blank := .Scratch.Get "blank" }}
+
+
+{{ $parsedUrl := urls.Parse $target }}
+{{ if $parsedUrl.Fragment }}
+    {{ .Scratch.Set "href" (printf "%s#%s" $page.Permalink $parsedUrl.Fragment) }}
+{{ else }}
+    {{ .Scratch.Set "href" $page.Permalink }}
+{{ end }}
+{{ $href:= .Scratch.Get "href" }}
+
+<em>
+{{ partial "link/link" (dict "Destination" $href "Text" $text "Title" $page.LinkTitle "Blank" $blank ) }}
+</em>

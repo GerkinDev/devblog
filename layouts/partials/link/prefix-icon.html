@@ -1,1 +1,23 @@
-TODO
+{{if eq .Type "wikipedia"}}
+    <i class="fab fa-wikipedia-w" title="{{.Label | default "See on Wikipedia" }}"></i>
+{{ else if eq .Type "docs" }}
+    <i class="fas fa-book" title="{{.Label | default "See the docs" }}"></i>
+{{ else if eq .Type "github-issue" }}
+    <i class="fas fa-bug" title="{{.Label | default "See the issue on GitHub" }}"></i>
+{{ else if eq .Type "github" }}
+    <i class="fab fa-github" title="{{.Label | default "See on GitHub" }}"></i>
+{{ else if eq .Type "stackoverflow" }}
+    <i class="fab fa-stack-overflow" title="{{.Label | default "See on StackOverflow" }}"></i>
+{{ else if eq .Type "stackexchange" }}
+    <i class="fab fa-stack-exchange" title="{{.Label | default "See on StackExchange" }}"></i>
+{{ else if eq .Type "external" }}
+    <i class="fas fa-external-link-alt" title="{{ .Label }}"></i>
+{{ else if eq .Type "todo" }}
+    <i class="fas fa-tools" title="TODO"></i>
+{{ else if eq .Type "internal" }}
+    <i class="fas fa-link" title="{{ .Label | default "See on this site" }}"></i>
+{{ else if eq .Type "internal-resource" }}
+    <i class="far fa-file-alt" title="{{ .Label | default "See the resource on this site" }}"></i>
+{{ else }}
+    {{ errorf "Incorrect type %q" .Type }}
+{{ end }}
