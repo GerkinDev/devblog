@@ -2,8 +2,7 @@
 jobs: 
   deploy: 
     docker: 
-      - 
-        image: alpine/git
+      - image: alpine/git
     steps: 
       - attach_workspace: 
           at: devblog
@@ -28,7 +27,9 @@ jobs:
             cd devblog/deploy
             mv ../public/* .
             git add .
-            git commit -m "Rebuild site"
+            git commit -m "Rebuild site
+            
+            [skip ci]"
             git push origin docs
 orbs: 
   hugo: circleci/hugo@0.2
@@ -36,7 +37,10 @@ version: 2.1
 workflows: 
   main: 
     jobs: 
-      - hugo/build: 
+      - hugo/build:
+          filters:
+            branches:
+              ignore: docs
           html-proofer: true
       - deploy: 
           filters: 

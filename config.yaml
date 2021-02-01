@@ -189,16 +189,10 @@ params:
   enableComment: true
   # disqus_shortname: ''
   # commento: false
-  gitment:
+  utterances:
     owner: 'GerkinDev'
     repo: 'devblog'
-    # clientId: '3319e7f339bc877b8b50' # From .env file, see README.md
-    # clientSecret: '' # From .env file, see README.md
-  # utterances:
-  #   owner: ''
-  #   repo: ''
-  #   message: ''
-  #   link: ''
+    # link: ''
   # gitalk:
   #   owner: ''
   #   repo: ''

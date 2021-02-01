@@ -16,4 +16,4 @@ hugo server -DEF
 
 ## Continuous Deployment
 
-The CD scripts are taken from https://medium.com/swlh/hosting-a-hugo-blog-on-github-pages-with-travis-ci-e74a1d686f10
+CI is here: https://app.circleci.com/pipelines/github/GerkinDev/devblog
