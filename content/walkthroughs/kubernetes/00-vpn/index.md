@@ -54,7 +54,7 @@ Once the last command is executed, your *OpenVPN* server should start. If it sta
 If you're not using systemd, see [how to use init.d](https://www.digitalocean.com/community/tutorials/how-to-run-openvpn-in-a-docker-container-on-ubuntu-14-04#step-3-%E2%80%94-launch-the-openvpn-server), and skip this section.
 {{</ alert >}}
 
-Install the [:clipboard: systemd/kubernetes-vpn.service](./systemd/kubernetes-vpn.service) template into `/usr/lib/systemd/system`, then enable this service. It will run our *OpenVPN* server container.
+Install the [systemd/kubernetes-vpn.service](./systemd/kubernetes-vpn.service) template into `/usr/lib/systemd/system`, then enable this service. It will run our *OpenVPN* server container.
 
 {{< includeCodeFile "./systemd/kubernetes-vpn.service" >}}
 

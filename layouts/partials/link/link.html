@@ -30,7 +30,7 @@
 {{ end }}
 {{ if eq ($scratch.Get "type") nil }}
     {{ if gt (len $href ) 2 }}
-        {{ if eq (slicestr $href 0 2) "./" }}
+        {{ if and (eq (slicestr $href 0 2) "./") (not (strings.HasSuffix $href "/")) }}
             {{ $scratch.Set "type" "internal-resource" }}
         {{ end }}
     {{ end }}
@@ -39,10 +39,11 @@
     {{ $scratch.Set "type" "internal" }}
 {{ end }}
 
+{{ $targetBlank := cond (ne .Blank nil) (.Blank) (cond (eq ($scratch.Get "type") "internal-resource") true $isExternal) }}
 <a
     {{ if ne ($scratch.Get "type") "todo"}}href="{{ $href }}"{{end}}
     {{ if .Title }} title="{{ .Title }}"{{ end }}
-    {{ if (or (.Blank) (eq ($scratch.Get "type") "internal-resource")) | default $isExternal }} target="_blank" rel="noopener noreferrer"{{ end }}>
+    {{ if $targetBlank }} target="_blank" rel="noopener noreferrer"{{ end }}>
 
     {{ partial "link/prefix-icon" (dict "Type" (.Type | default ($scratch.Get "type")) "Label" ($scratch.Get "label"))}}
     {{ .Text | safeHTML }}

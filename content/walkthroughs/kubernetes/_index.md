@@ -2,6 +2,7 @@
 title: "Set up a bare-metal kubernetes cluster from scratch"
 date: 2020-11-16T02:35:47+01:00
 draft: false
+weight: 1
 categories:
 - Kubernetes
 tags:
@@ -31,15 +32,17 @@ I'll try to use as few 3rd party tools outside of *kubernetes*, except *helm* (t
 {{< alert theme="info" >}}
 Other similar guides you might prefer:
 
-* https://blog.alexellis.io/bare-metal-kubernetes-with-k3s/
-* https://blog.alexellis.io/kubernetes-in-10-minutes/
+* [Bare-metal Kubernetes with K3s (without SPOF)](https://blog.alexellis.io/bare-metal-kubernetes-with-k3s/)
+* [Kubernetes on bare-metal in 10 minutes](https://blog.alexellis.io/kubernetes-in-10-minutes/)
+
+Those tutorials are for bare-metal cluster initialization, but without the extra security of running *kubernetes* only through a *VPN*. You're welcome to get the best of both worlds tho. Plus, [the author, Alex Ellis](https://www.alexellis.io/) is a professional of Cloud Native solutions, so you should better trust a pro than me doing this as experiments.
 {{</ alert >}}
 
 ## How to follow this guide
 
-I'll provide you explanations on each steps we are doing together, & give you **:clipboard: templates** that you can use with the bare minimum working configuration.
+I'll provide you explanations on each steps we are doing together, & give you **templates** that you can use with the bare minimum working configuration.
 
-**:clipboard: templates** contains placeholders for **:bookmark: variables** that you will need to replace. If I didn't broke anything in the meantime, you should be able to fill those vars using the sidebar. **Keep in mind** that those settings are probably **unsafe**, or not totally OK for your particular settings. Thus, I **highly** recommend you to **:books: RTFM** for each of the containers & tools we set up to tweak things.
+**Templates** contains placeholders for **variables** that you will need to replace. If I didn't broke anything in the meantime, you should be able to fill those vars using the sidebar. **Keep in mind** that those settings are probably **unsafe**, or not totally OK for your particular settings. Thus, I **highly** recommend you to **:books: RTFM** for each of the containers & tools we set up to tweak things.
 
 *Kubernetes* configurations are [meant to be versionned](<!-- TODO -->). So, I recommend you to **init a repository** and **commit** after each steps. For sensible data such as *private keys*, *tokens* or *OpenID client secrets*, <!-- TODO: Uniformize -->.
 
@@ -55,7 +58,7 @@ I'll provide you explanations on each steps we are doing together, & give you **
 
 ### To the attention of **beginners**
 
-Kubernetes is huge. Really. And if you have no specialization in system administration, you will have pretty often bad times. Knowing my background as a software engineer, this guide took me more than 6 weeks of searches, experimentations, trial and errors, and frustration. I learned a **huge** lot of things that you will require to learn and understand too if you encounter the same problems than me during your setup.
+*Kubernetes* is huge. Really. And if you have no specialization in system administration, you will have pretty often bad times. Knowing my background as a software engineer, this guide took me more than 6 weeks of searches, experimentations, trial and errors, and frustration. I learned a **huge** lot of things that you will require to learn and understand too if you encounter the same problems than me during your setup.
 
 I don't have special knowing in neither system security nor load management, so I **must** have done critical errors in some places; thus, don't take my words as granted. Take this document series as a global guide to kickstart a setup **you must** adapt and figure out yourself.
 
@@ -63,7 +66,9 @@ Again, if you're not super determined in learning a **lot**, you are putting you
 
 ### To the attention of **everybody**
 
-Please, *please* do comments, post issues, and make pull requests in order to improve this document serie. I will open source as much prod-ready settings as possible (without compromising my own security), and contributing might improve the performance and safety of all futur readers. So, in advance, thank you.
+Please, *please* do **comments**, post **issues**, and make **pull requests** in order to improve this document serie. I will open source as much prod-ready settings as possible (without compromising my own security), and contributing might improve the performance and safety of all futur readers. So, in advance, thank you.
+
+[This site repository is here.](https://github.com/GerkinDev/devblog/)
 
 ## Prerequisites
 
@@ -73,9 +78,17 @@ I'll assume that:
   On other versions/distros/OS, some things may or will differ from what I did. And you gonna help yourself with that.
   ```sh
   cat /etc/centos-release
-  # > CentOS Linux release 8.2.2004 (Core)
+  # » CentOS Linux release 8.2.2004 (Core)
   ```
-* [x] you have the *kubernetes* CLI installed (`kubectl`, `kubeadm`) v1.20.2
+* [x] you have *SELinux* **disabled**.
+  ```sh
+  getenforce
+  # » Permissive
+  ```
+  {{< alert theme="warning" >}}
+  Yeah, I know this isn't recommended. Though, there's [an issue on kubernetes repository](https://github.com/kubernetes/website/issues/14457), but without any instructions to keep it on. I'm working on it, and I'll post my work here [*Soon™*](https://wowwiki.fandom.com/wiki/Soon).
+  {{</ alert >}}
+* [x] you have the *kubernetes* CLI installed (`kubectl`, `kubeadm`) v1.20.2 or above.
   Other versions may have changes. Again, RTFM.
   ```sh
   kubeadm version --output short

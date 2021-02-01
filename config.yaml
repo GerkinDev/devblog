@@ -192,7 +192,7 @@ params:
   gitment:
     owner: 'GerkinDev'
     repo: 'devblog'
-    clientId: '3319e7f339bc877b8b50'
+    # clientId: '3319e7f339bc877b8b50' # From .env file, see README.md
     # clientSecret: '' # From .env file, see README.md
   # utterances:
   #   owner: ''

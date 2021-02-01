@@ -16,7 +16,7 @@ tags:
 
 Here is a graph of the RBAC setup we are going to implement:
 
-![RBAC](./schema.svg)
+![RBAC](./_assets/schema.svg)
 
 ## 1. Setup keycloak
 

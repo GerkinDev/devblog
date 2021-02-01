@@ -92,14 +92,16 @@ source {{profileFile}}
 ```
 
 {{< alert theme="warning">}}
-I noticed some little things does not work well with `kubecolor`. That's why the script above let you use the original `kubectl` command through `kubectll`. For instance, I noticed that some commands prompting user input (so using *stdin*), such as [`kubectl login` we'll see after](<!-- TODO -->) don't work.
+I noticed some little things does not work well with `kubecolor`. That's why the script above let you use the original `kubectl` command through `kubectll`. For instance, I noticed that some commands prompting user input (so using *stdin*), such as `kubectl login`, don't work.
 
 So, if you try a command that seems to not work as expected, or stay stuck, fall back to `kubectll`.
 {{</ alert >}}
 
 ## `helm`: a kubernetes stack template repository
 
-We are also going to use some [Helm charts](https://helm.sh/). To install helm, run the following command:
+[*Helm*](https://helm.sh/) is a convinient way to use or share configurable kubernetes stacks. For example, it may allow to install easily a front-end, with its API and a database, in a single template, in which you can inject your specific configuration (PVC, ports, environment, etc...).
+
+To install *helm*, run the following command:
 
 ```sh
 # See https://helm.sh/docs/intro/install/

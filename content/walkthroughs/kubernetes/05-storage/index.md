@@ -2,7 +2,7 @@
 title: "Make things persistent"
 date: 2020-11-16T02:35:47+01:00
 draft: false
-weight: 50
+weight: 60
 categories:
 - Kubernetes
 tags:

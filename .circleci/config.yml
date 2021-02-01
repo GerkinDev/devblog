@@ -1,23 +1,46 @@
-# From https://circleci.com/developer/orbs/orb/circleci/hugo
-jobs:
-  deploy:
-    docker:
-      - image: cimg/base
-    steps:
-      - attach_workspace:
+--- 
+jobs: 
+  deploy: 
+    docker: 
+      - 
+        image: alpine/git
+    steps: 
+      - attach_workspace: 
           at: devblog
-      - run: ls -lah devblog
-orbs:
+      - run: 
+          name: Config git
+          command: |
+            git config --global user.email "GerkinDev-blog-bot@users.noreply.github.com"
+            git config --global user.name "GerkinDev-blog-bot"
+      - run: 
+          name: Prepare repo clone
+          command: |
+            mkdir devblog/deploy
+            cd devblog/deploy
+            git init .
+            git remote add origin https://$CIRCLE_PROJECT_USERNAME:$GITHUB_AUTH_SECRET@github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME
+            git fetch origin docs
+            git checkout -t origin/docs
+            rm -r *
+      - run: 
+          name: Update repo clone
+          command: |
+            cd devblog/deploy
+            mv ../public/* .
+            git add .
+            git commit -m "Rebuild site"
+            git push origin docs
+orbs: 
   hugo: circleci/hugo@0.2
 version: 2.1
-workflows:
-  main:
-    jobs:
-      - hugo/build:
+workflows: 
+  main: 
+    jobs: 
+      - hugo/build: 
           html-proofer: true
-      - deploy:
-          filters:
-            branches:
-              only: docs
-          requires:
+      - deploy: 
+          filters: 
+            branches: 
+              only: master
+          requires: 
             - hugo/build

@@ -17,7 +17,7 @@ tags:
 * https://github.com/traefik/traefik-helm-chart/pull/157/files
 {{</ expand >}}
 
-Start by creating traefik required resources. You can directly use resources from the [:clipboard: kubernetes/traefik](./kubernetes/traefik) templates: it does not contain variables. Those are taken from [:books: traefik docs](https://docs.traefik.io/getting-started/install-traefik/) mixed up with [this PR](https://github.com/traefik/traefik-helm-chart/pull/157/files) for kubernetes 1.19 support and schemas.
+Start by creating traefik required resources. You can directly use resources from the [kubernetes/traefik](https://github.com/GerkinDev/devblog/tree/master/content/walkthroughs/kubernetes/03-router/kubernetes/traefik) templates: it does not contain variables. Those are taken from [:books: traefik docs](https://docs.traefik.io/getting-started/install-traefik/) mixed up with [this PR](https://github.com/traefik/traefik-helm-chart/pull/157/files) for kubernetes 1.19 support and schemas.
 
 > Please look forward for [this issue in traefik](https://github.com/traefik/traefik/issues/5473) about official v1.19 support.
 
@@ -39,7 +39,7 @@ kubectl apply -f ./kubernetes/traefik/0-5-Services.yaml
 
 You can now use the [:books: custom resource kind `IngressRoute`](https://docs.traefik.io/routing/providers/kubernetes-crd/) to map routes using traefik.
 
-To check if everything works so far, you can use a test nginx instance from [:clipboard: kubernetes/01-TestNginx.yaml](./kubernetes/31-TestNginx.yaml). Once deployed, you should be able to display the nginx default page by reaching `https://test.{{cluster.baseHostName}}` from your host.
+To check if everything works so far, you can use a test nginx instance from [:clipboard: kubernetes/0-x-TestNginx.yaml](./kubernetes/0-x-TestNginx.yaml). Once deployed, you should be able to display the nginx default page by reaching `https://test.{{cluster.baseHostName}}` from your host.
 
 {{< includeCodeFile "./kubernetes/0-x-TestNginx.yaml" >}}
 

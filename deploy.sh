@@ -26,6 +26,12 @@ git checkout docs
 rm -rf *
 
 cd ..
+if [ -n "$gitment_clientId" ] && [ -n "$gitment_clientSecret" ]; then
+    export $(cat .env.prod | xargs);
+else
+    export HUGO_PARAMS_gitment_clientId="$gitment_clientId"
+    export HUGO_PARAMS_gitment_clientSecret="$gitment_clientSecret"
+fi
 hugo
 cd public
 

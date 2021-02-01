@@ -2,7 +2,7 @@
 title: "Make services reachable from the world"
 date: 2020-11-16T02:35:47+01:00
 draft: false
-weight: 60
+weight: 50
 categories:
 - Kubernetes
 tags:
@@ -17,7 +17,7 @@ Now that you have a router installed, you have to pass requests on your server t
 
 ## 1. Make a static and previsible configuration
 
-As you may have noticed in the step [02. Init the cluster](../02-cluster/index.md), the *metallb* configuration use only dynamic adresses. But for the reverse proxy to work, we'll need to be sure that our *traefik* router has a constant IP in your VPN. For this, modify your *metallb* configuration using the new [:clipboard: kubernetes/metallb-configmap.yaml](./kubernetes/kubernetes/metallb-configmap.yaml) template. This new configuration declares a new address pool named `frontend` with a single IP in it.
+As you may have noticed in the step {{< linkToPage "../02-cluster" >}}, the *metallb* configuration use only dynamic adresses. But for the reverse proxy to work, we'll need to be sure that our *traefik* router has a constant IP in your VPN. For this, modify your *metallb* configuration using the new [kubernetes/1-0-metallb-configmap.yaml](./kubernetes/1-0-metallb-configmap.yaml) template. This new configuration declares a new address pool named `frontend` with a single IP in it.
 
 {{< includeCodeFile "./kubernetes/1-0-metallb-configmap.yaml" >}}
 
@@ -32,7 +32,7 @@ kubectl apply -f ./kubernetes/1-0-metallb-configmap.yaml
 * [Requesting specific IPs from metallb](https://metallb.universe.tf/usage/#requesting-specific-ips)
 {{</ expand >}}
 
-Once the configmap has been changed, force our *traefik* service to use this new address "*pool*". This is done using the *annotation* `metallb.universe.tf/address-pool`. Use the new [:clipboard: kubernetes/traefik/22-Services.yaml](./kubernetes/traefik/22-Services.yaml) template, and check that its IP is correct.
+Once the configmap has been changed, force our *traefik* service to use this new address "*pool*". This is done using the *annotation* `metallb.universe.tf/address-pool`. Use the new [:clipboard: kubernetes/traefik/2-1-Services.yaml](./kubernetes/traefik/2-1-Services.yaml) template, and check that its IP is correct.
 
 {{< includeCodeFile "./kubernetes/traefik/2-1-Services.yaml" >}}
 
@@ -45,7 +45,7 @@ kubectl get svc -n traefik
 
 ## 3. Setup the bare metal proxy
 
-We'll use nginx as our bare reverse proxy. It will simply redirect every requests on the specified ports to traefik, that was [previously installed in kubernetes](./03-router/index.md). In the case of an SSL connection, it won't be unwrapped.
+We'll use nginx as our bare reverse proxy. It will simply redirect every requests on the specified ports to traefik, that was {{< linkToPage "./03-router" "previously installed in kubernetes" >}}. In the case of an SSL connection, it won't be unwrapped.
 
 ```sh
 # Install nginx
