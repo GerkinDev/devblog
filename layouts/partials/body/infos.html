@@ -7,8 +7,9 @@
   {{ end }}
 
   {{ $repoBaseUrl := .Param "link"}}
+  {{ $parsedUrl := urls.Parse $repoBaseUrl }}
   {{ with .GitInfo }}
-    via commit&nbsp;<a href="{{ path.Join $repoBaseUrl "commit" .Hash }}" target="_blank"><code>{{ .AbbreviatedHash }}</code> (<em>{{ .Subject }}</em>) by {{ .AuthorName }}</a>
+    via commit&nbsp;<a href="{{$parsedUrl.Scheme}}://{{$parsedUrl.Host}}{{ path.Join $parsedUrl.Path "commit" .Hash }}" target="_blank"><code>{{ .AbbreviatedHash }}</code> (<em>{{ .Subject }}</em>) by {{ .AuthorName }}</a>
   {{ end }}
 
   &nbsp;&middot;&nbsp; <span class="single__info" title="{{ i18n "tooltip-reading-time" }}"> {{ ($.Site.Params.readingTimeIcon | safeHTML) | default "☕" }}&nbsp;{{ .ReadingTime }}&nbsp;{{ i18n "reading-time" }} </span>
