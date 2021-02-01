@@ -1,7 +1,7 @@
 ---
 title: "Protect monitoring with authentication"
 date: 2020-11-16T02:35:47+01:00
-draft: true
+draft: false
 weight: 100
 categories:
 - Kubernetes

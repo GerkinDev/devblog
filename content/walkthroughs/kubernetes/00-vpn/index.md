@@ -1,7 +1,7 @@
 ---
 title: "Setup the cluster's VPN"
 date: 2020-11-16T02:35:47+01:00
-draft: true
+draft: false
 weight: 10
 categories:
 - Kubernetes

@@ -1,7 +1,7 @@
 ---
 title: "Setup the cluster's Audit Log"
 date: 2020-11-16T02:35:47+01:00
-draft: true
+draft: false
 weight: 20
 categories:
 - Kubernetes

@@ -1,7 +1,7 @@
 ---
 title: "Set up a bare-metal kubernetes cluster from scratch"
 date: 2020-11-16T02:35:47+01:00
-draft: true
+draft: false
 categories:
 - Kubernetes
 tags:

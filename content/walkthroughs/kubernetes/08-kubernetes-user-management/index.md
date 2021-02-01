@@ -1,7 +1,7 @@
 ---
 title: "Administrate the cluster with authentication"
 date: 2020-11-16T02:35:47+01:00
-draft: true
+draft: false
 weight: 90
 categories:
 - Kubernetes

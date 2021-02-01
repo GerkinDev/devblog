@@ -1,7 +1,7 @@
 ---
 title: Scaling up
 date: 2020-11-22T04:03:47+01:00
-draft: true
+draft: false
 weight: 110
 categories:
 - Kubernetes

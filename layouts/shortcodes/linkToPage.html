@@ -8,7 +8,7 @@
 {{ end }}
 {{ $target := .Scratch.Get "dest" }}
 {{ $nonAnchoredTarget := replaceRE "(#.*$)?" "" $target }}
-{{ $resolvedTarget := cond (eq (substr $nonAnchoredTarget 0 1) "/") $nonAnchoredTarget (path.Join (path.Dir .Page.File.Path) $nonAnchoredTarget) }}
+{{ $resolvedTarget := cond (eq (substr $nonAnchoredTarget 0 1) ".") (path.Join (path.Dir .Page.File.Path) $nonAnchoredTarget) $nonAnchoredTarget }}
 {{ $page := .Site.GetPage (replaceRE "#.*$" "" $resolvedTarget) }}
 {{ $text := .Scratch.Get "text" | default $page.LinkTitle }}
 {{ $blank := .Scratch.Get "blank" }}
