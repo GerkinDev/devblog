@@ -15,7 +15,7 @@ tags:
 
 {{< expand "References" >}}
 * https://github.com/traefik/traefik-helm-chart/pull/157/files
-{{< /expand >}}
+{{</ expand >}}
 
 Start by creating traefik required resources. You can directly use resources from the [:clipboard: kubernetes/traefik](./kubernetes/traefik) templates: it does not contain variables. Those are taken from [:books: traefik docs](https://docs.traefik.io/getting-started/install-traefik/) mixed up with [this PR](https://github.com/traefik/traefik-helm-chart/pull/157/files) for kubernetes 1.19 support and schemas.
 
@@ -27,7 +27,7 @@ Start by creating traefik required resources. You can directly use resources fro
     {{< includeCodeFileTab "./kubernetes/traefik/0-3-Rbac.yaml" />}}
     {{< includeCodeFileTab "./kubernetes/traefik/0-4-IngressController.yaml" />}}
     {{< includeCodeFileTab "./kubernetes/traefik/0-5-Services.yaml" />}}
-{{< /codes >}}
+{{</ codes >}}
 
 ```sh
 kubectl apply -f ./kubernetes/traefik/0-1-Namespace.yaml

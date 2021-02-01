@@ -12,7 +12,7 @@ Documentation=https://github.com/kylemanna/docker-openvpn
 ExecStop=-/usr/bin/docker stop %n
 ExecStopPost=-/usr/bin/docker rm %n
 ExecStartPre=/usr/bin/docker pull kylemanna/openvpn:2.3
-ExecStart=/usr/bin/docker run --name %n -v {{vpn.volumeName}}:/etc/openvpn ovpn-data --rm -p 1194:1194/udp --cap-add=NET_ADMIN kylemanna/openvpn:2.3
+ExecStart=/usr/bin/docker run --name %n -v {{vpn.volumeName}}:/etc/openvpn --rm -p 1194:{{vpn.port}}/udp --cap-add=NET_ADMIN kylemanna/openvpn:2.3
 TimeoutStartSec=30
 TimeoutStopSec=15
 Restart=always

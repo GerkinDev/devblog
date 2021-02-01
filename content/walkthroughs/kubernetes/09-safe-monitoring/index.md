@@ -26,7 +26,7 @@ Now that we have our authentication service up and running, we can protect our d
 
 {{< expand "References" >}}
 * https://itnext.io/protect-kubernetes-dashboard-with-openid-connect-104b9e75e39c
-{{< /expand >}}
+{{</ expand >}}
 
 Again, we are going to set up a new instance of [*louketo-proxy*](https://github.com/louketo/louketo-proxy).
 

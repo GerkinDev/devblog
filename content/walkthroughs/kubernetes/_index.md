@@ -33,7 +33,7 @@ Other similar guides you might prefer:
 
 * https://blog.alexellis.io/bare-metal-kubernetes-with-k3s/
 * https://blog.alexellis.io/kubernetes-in-10-minutes/
-{{< /alert >}}
+{{</ alert >}}
 
 ## How to follow this guide
 
@@ -69,31 +69,31 @@ Please, *please* do comments, post issues, and make pull requests in order to im
 
 I'll assume that:
 
-* [x] you're on CentOS 8.
+* [x] you're on *CentOS 8*.
   On other versions/distros/OS, some things may or will differ from what I did. And you gonna help yourself with that.
   ```sh
   cat /etc/centos-release
   # > CentOS Linux release 8.2.2004 (Core)
   ```
-* [x] you are somewhat familiar with *kubernetes CLI*.
-  In fact, it is very likely that some parts of this guide won't work directly in your case, and you'll have to tweak things out to make them work properly.
-* [x] you have the kubernetes CLI installed (`kubectl`, `kubeadm`) v1.19.3.
+* [x] you have the *kubernetes* CLI installed (`kubectl`, `kubeadm`) v1.20.2
   Other versions may have changes. Again, RTFM.
-  <!-- TODO: Short -->
   ```sh
-  kubectl version
-  # > Client Version: version.Info{Major:"1", Minor:"19", GitVersion:"v1.19.3", GitCommit:"1e11e4a2108024935ecfcb2912226cedeafd99df", GitTreeState:"clean", BuildDate:"2020-10-14T12:50:19Z", GoVersion:"go1.15.2", Compiler:"gc", Platform:"linux/amd64"}
-  # > Server Version: version.Info{Major:"1", Minor:"19", GitVersion:"v1.19.3", GitCommit:"1e11e4a2108024935ecfcb2912226cedeafd99df", GitTreeState:"clean", BuildDate:"2020-10-14T12:41:49Z", GoVersion:"go1.15.2", Compiler:"gc", Platform:"linux/amd64"}
-  kubeadm version
-  # > kubeadm version: &version.Info{Major:"1", Minor:"19", GitVersion:"v1.19.3", GitCommit:"1e11e4a2108024935ecfcb2912226cedeafd99df", GitTreeState:"clean", BuildDate:"2020-10-14T12:47:53Z", GoVersion:"go1.15.2", Compiler:"gc", Platform:"linux/amd64"}
+  kubeadm version --output short
+  # » v1.20.2
+  kubectl version --short --client
+  # » Client Version: v1.20.2
   ```
+* [x] you are somewhat familiar with *kubernetes* CLI.
+  {{< alert theme="info" >}}
+  In fact, it is very likely that some parts of this guide won't work directly in your case, and you'll have to tweak things out to make them work properly.
+  {{</ alert >}}
 * [x] You have [*Helm* charts](https://helm.sh/) installed. 
-  You can find more infos it [here](../../blog/kubernetes-qol/#helm-a-kubernetes-stack-template-repository).
+  See {{< linkToPage path="blog/kubernetes-qol#helm-a-kubernetes-stack-template-repository" blank=true >}} for more infos.
 * [x] You have [*krew*](https://krew.sigs.k8s.io/) installed.
-  You can find more infos it [here](../../blog/kubernetes-qol/#krew-a-kubectl-plugins-manager).
+  See {{< linkToPage path="blog/kubernetes-qol#krew-a-kubectl-plugins-manager" blank=true >}} for more infos.
 
 ---
 
 **Ready ?**
 
-[Start here](./00-vpn/)
+[![Start here](https://media.giphy.com/media/JykvbWfXtAHSM/giphy.gif)](./00-vpn/)

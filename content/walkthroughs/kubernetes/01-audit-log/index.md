@@ -17,11 +17,15 @@ tags:
 * <https://docs.kublr.com/articles/kubernetes-log-audit/>
 * <https://mherman.org/blog/logging-in-kubernetes-with-elasticsearch-Kibana-fluentd/>
 * <https://kubernetes.io/docs/tasks/debug-application-cluster/audit/#log-collector-examples>
-{{< /expand >}}
+{{</ expand >}}
 
 > **Note :** Even if this part is not **required**, you **should** not ignore it on dev environment and **should** really *really* **REALLY** not skip it for production. In fact, it can contain useful debug informations and security traces to see what is going on in your kubernetes cluster, and even on your whole server(s).
 
 This tutorial will guide you to setup audit log policy, catch logs with Fluentd, cast them to elasticsearch & show them using Kibana.
+
+First, choose an audit log dir name on the host {{< var "audit.sourceLogDir" >}}. This is the directory where kubernetes will write its audit logs, and **should** be in `/var/log`. Then, choose an audit log file {{< var "audit.sourceLogFile" >}} in {{< var "audit.sourceLogDir" >}}. The final audit logs path is then `{{audit.sourceLogDir}}/{{audit.sourceLogFile}}`
+
+*FluentD* will parse those audit logs, and split them by tags for easier sorting of logs. It will then write those zones in {{< var "audit.destLogDir" >}}
 
 In order to pipe audit log messages to Elasticsearch, we need to install fluentd on the kubernetes master host.
 
@@ -46,13 +50,20 @@ You should be good to go.
 
 ### Configure other settings
 
-Check the file descriptors limit
+{{< expand "References" >}}
+* https://superuser.com/questions/740000/modify-and-apply-limits-conf-without-reboot
+{{</ expand >}}
+
+Check the file descriptors limit:
 
 ```sh
 ulimit -n
+# » 1024
+ulimit -Hn
+# » 262144
 ```
 
-If it is low (like 1024), you need to increase it
+If it is low (like 1024), you need to increase it, by opening your system's limits. So, open your `limits.conf` file:
 
 ```sh
 vim /etc/security/limits.conf
@@ -67,10 +78,11 @@ root hard nofile 65536
 * hard nofile 65536
 ```
 
-Then reboot & recheck.
+Then **reboot** & recheck.
 
 ```sh
 ulimit -n # should be 65536
+ulimit -Hn # should be at least 65536
 ```
 
 If the environment is expected to have a high load, follow [this section of the guide](https://docs.fluentd.org/installation/before-install#optimize-network-kernel-parameters)
@@ -106,9 +118,7 @@ If having errors here, see the Troubleshoot section at the end.
 
 {{< expand "References" >}}
 * <https://kubernetes.io/docs/tasks/debug-application-cluster/audit/#log-collector-examples>
-{{< /expand >}}
-
-Choose an audit log dir name on the host :bookmark: `{{audit.logDir}}`. It **should** be in `/var/log`. Then, choose an audit log file :bookmark: `{{audit.logFile}}` in :bookmark: `{{audit.logDir}}`
+{{</ expand >}}
 
 <https://kubernetes.io/docs/tasks/debug-application-cluster/audit/#log-collector-examples>
 
@@ -131,8 +141,10 @@ systemctl restart td-agent.service
 
 ## Setup the audit log
 
-<https://kubernetes.io/docs/tasks/debug-application-cluster/audit/#audit-policy>
-<https://medium.com/@noqcks/kubernetes-audit-logging-introduction-464a34a53f6c>
+{{< expand "References" >}}
+* <https://kubernetes.io/docs/tasks/debug-application-cluster/audit/#audit-policy>
+* <https://medium.com/@noqcks/kubernetes-audit-logging-introduction-464a34a53f6c>
+{{</ expand >}}
 
 See the [example audit log policy](https://raw.githubusercontent.com/kubernetes/website/master/content/en/examples/audit/audit-policy.yaml) & the [template audit log file](./kubernetes/audit-log-policy.yaml).
 
@@ -142,9 +154,8 @@ Move it in the `/etc/kubernetes` folder (because this is a kubernete's configura
 
 ```sh
 mv ./kubernetes/audit-log-policy.yaml /etc/kubernetes/audit-log-policy.yaml
+chown root:root /etc/kubernetes/audit-log-policy.yaml
 ```
-
-The path of the audit log policy file will later be referenced as the **variable** `{{audit.policyFile}}`.
 
 ## Troubleshoot
 

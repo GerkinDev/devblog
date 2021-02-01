@@ -27,7 +27,7 @@ While the 2 points above are super great for security and privacy, they come als
 
 {{< alert theme="info" >}}
 See this article like a personal guide I publish in case it can help someone. It is not meant to be precise or exhaustive.
-{{< /alert >}}
+{{</ alert >}}
 
 ## File formats
 
@@ -41,7 +41,7 @@ The private key is one of the 2 keys mentioned above, that is meant to be used b
 As its name suggests, this file is **super** critical: anyone having this can decode messages that are sent to you, encrypted with your [public key](#pub-the-public-key).
 
 You should **never __ever__** send it to untrusted party. Other people should have the [public key](#pub-the-public-key).
-{{< /alert >}}
+{{</ alert >}}
 
 #### What does it contains ?
 
@@ -109,7 +109,7 @@ coefficient:
     f9:3e:07:e3:99:59:03:13:5f:49:97:79:86:96:9e:
     a8:c3
 ```
-{{< /expand >}}
+{{</ expand >}}
 
 There is a lot of maths involved here, so I won't go any further. But if you're curious, go ahead and find out what those are !
 

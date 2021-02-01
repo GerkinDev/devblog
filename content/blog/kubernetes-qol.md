@@ -23,7 +23,7 @@ image:
 
 {{< expand "References" >}}
 * [:books: kubectl installation manual](https://kubernetes.io/docs/tasks/tools/install-kubectl/#enable-kubectl-autocompletion)
-{{< /expand >}}
+{{</ expand >}}
 
 Autocomplete is nice, and a real time saver. It avoids typos, and it's quite satisfying to type a complete command in 4 keystrokes and a couple of `tab`s correctly placed. (even if I'm always unsure when relying on my browser's autocomplete for https://**anal**ytics.google.com :expressionless:).
 
@@ -39,8 +39,9 @@ So, short stories short, and depending on your shell, type in:
 echo 'autoload -Uz compinit
 compinit
 source <(kubectl completion zsh)' >> ~/.zshrc
+source ~/.zshrc
 ```
-{{< /tab >}}
+{{</ tab >}}
 {{< tab >}}
 
 > All the (bad) flavours come from the natural world.
@@ -55,17 +56,18 @@ if ! type _init_completion; then
     echo 'source /usr/share/bash-completion/bash_completion' >> ~/.bashrc
 fi
 # Source the completion script
-echo 'source <(kubectl completion bash)' >>~/.bashrc
+echo 'source <(kubectl completion bash)' >> ~/.bashrc
+source ~/.bashrc
 ```
-{{< /tab>}}
-{{< /tabs >}}
+{{</ tab >}}
+{{</ tabs >}}
 
 ## `kubecolor`: prettier `kubectl` commands outputs with colors
 
 {{< expand "References" >}}
 * [Add ANSI colors to kubectl describe and other outputs](https://github.com/kubernetes/kubectl/issues/524)
 * [kubecolor](https://github.com/dty1er/kubecolor)
-{{< /expand >}}
+{{</ expand >}}
 
 ```sh
 go get -u github.com/dty1er/kubecolor/cmd/kubecolor
@@ -93,7 +95,7 @@ source {{profileFile}}
 I noticed some little things does not work well with `kubecolor`. That's why the script above let you use the original `kubectl` command through `kubectll`. For instance, I noticed that some commands prompting user input (so using *stdin*), such as [`kubectl login` we'll see after](<!-- TODO -->) don't work.
 
 So, if you try a command that seems to not work as expected, or stay stuck, fall back to `kubectll`.
-{{< /alert >}}
+{{</ alert >}}
 
 ## `helm`: a kubernetes stack template repository
 

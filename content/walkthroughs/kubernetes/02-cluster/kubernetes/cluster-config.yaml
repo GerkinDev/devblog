@@ -1,7 +1,7 @@
 apiVersion: kubeadm.k8s.io/v1beta2
 kind: InitConfiguration
 localAPIEndpoint:
-  advertiseAddress: {{vpn.entryPointIp}}
+  advertiseAddress: {{cluster.advertiseAddress}}
 ---
 apiVersion: kubeadm.k8s.io/v1beta2
 kind: ClusterConfiguration
@@ -10,12 +10,12 @@ networking:
   podSubnet: "10.244.0.0/16"
 apiServer:
   extraArgs:
-    audit-policy-file: /etc/kubernetes/audit-policy.yaml
+    audit-policy-file: /etc/kubernetes/audit-log-policy.yaml
     audit-log-path: {{audit.sourceLogDir}}/{{audit.sourceLogFile}}
   extraVolumes:
     - name: audit-policy
-      hostPath: {{audit.policyFile}}
-      mountPath: /etc/kubernetes/audit-policy.yaml # See apiServer.extraArgs.audit-policy-file
+      hostPath: /etc/kubernetes/audit-log-policy.yaml
+      mountPath: /etc/kubernetes/audit-log-policy.yaml # See apiServer.extraArgs.audit-policy-file
       readOnly: true
     - name: audit-log
       hostPath: {{audit.sourceLogDir}}

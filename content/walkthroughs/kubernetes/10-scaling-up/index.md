@@ -50,7 +50,7 @@ Add the *OpenVPN* server to your `/etc/hosts` file (if not a real *DNS* name).
 ```sh
 echo '{{vpn.publicServerIp}}	vpn.{{cluster.baseHostName}}' >> /etc/hosts
 ```
-{{< /alert >}}
+{{</ alert >}}
 
 Install the *OpenVPN* configuration you just copied
 
@@ -88,7 +88,7 @@ kubeadm token create --print-join-command
 ```
 kubeadm join 192.168.255.10:6443 --token gmedpt.veqzvuhcazac26gf --discovery-token-ca-cert-hash sha256:cb316693e48403ff18f840d47930f6737744d2ead362838695df3a1e1400cec1
 ```
-{{< /expand >}}
+{{</ expand >}}
 
 Copy the `kubeadm join ...` command outputted by the command above.
 
@@ -118,4 +118,4 @@ This node has joined the cluster:
 
 Run 'kubectl get nodes' on the control-plane to see this node join the cluster.
 ```
-{{< /expand >}}
+{{</ expand >}}

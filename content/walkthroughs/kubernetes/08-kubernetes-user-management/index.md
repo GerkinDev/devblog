@@ -49,7 +49,7 @@ https://medium.com/@zufardhiyaulhaq/kubernetes-authentication-with-keycloak-open
 {{< expand "References" >}}
 * https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes
 * [Provide subjectAltName to openssl directly on the command line](https://security.stackexchange.com/a/159537)
-{{< /expand >}}
+{{</ expand >}}
 
 ```sh
 mkdir certs
@@ -118,7 +118,7 @@ Certificate:
 The important part is that your certificate contains the correct `X509v3 Subject Alternative Name` field. If it is missing, Go will complain to you that the certificate use obsolete Common Name.
 
 Go deprecated use of Common Name by default since v1.15 via [this commit](https://github.com/golang/go/commit/d65e1b2e41deb810565c94555d791e7384618da0).
-{{< /alert >}}
+{{</ alert >}}
 <!-- # Finally, generate the public key for keycloak
 openssl pkcs12 -export -in keycloak.crt -inkey keycloak.key -out keycloak.p12 -name myserverkeystore -CAfile ca.crt
 -->
@@ -266,7 +266,7 @@ If it does not, (or you want to restart it anyway because you changed the certif
 ```sh
 kubectl -n kube-system delete pod kube-apiserver-{{cluster.masterNode.1}}
 ```
-{{< /alert >}}
+{{</ alert >}}
 
 Then, create the `ClusterRoleBinding`s for the test groups:
 
@@ -317,7 +317,7 @@ kubectl config get-contexts
 # Switch to other context
 kubectl config use-context {{contextName}}
 ```
-{{< /notice >}}
+{{</ notice >}}
 
 
 <!-- Create a test user, so that you can try your new contexts

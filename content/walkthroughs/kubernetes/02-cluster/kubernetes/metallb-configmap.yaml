@@ -9,4 +9,4 @@ data:
     - name: default
       protocol: layer2
       addresses:
-      - {{vpn.netBase}}.100-{{vpn.netBase}}.250
+      - {{cluster.networkAddress}}.100-{{cluster.networkAddress}}.250

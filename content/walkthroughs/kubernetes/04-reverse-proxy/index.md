@@ -30,7 +30,7 @@ kubectl apply -f ./kubernetes/1-0-metallb-configmap.yaml
 
 {{< expand "References" >}}
 * [Requesting specific IPs from metallb](https://metallb.universe.tf/usage/#requesting-specific-ips)
-{{< /expand >}}
+{{</ expand >}}
 
 Once the configmap has been changed, force our *traefik* service to use this new address "*pool*". This is done using the *annotation* `metallb.universe.tf/address-pool`. Use the new [:clipboard: kubernetes/traefik/22-Services.yaml](./kubernetes/traefik/22-Services.yaml) template, and check that its IP is correct.
 

@@ -28,20 +28,34 @@ fi
 
 {{< expand "References" >}}
 * How to set bind address by config file: <https://stackoverflow.com/a/60391611>
-{{< /expand >}}
+{{</ expand >}}
 
-Following [flannel requirements](https://github.com/coreos/flannel/blob/master/Documentation/kubernetes.md#kubeadm), you need to use `--pod-network-cidr` with address `10.244.0.0./16`. This CLI option is equivalent to `networking.podSubnet` in our :bookmark: `cluster.configFile` file. (See [this issue](https://github.com/kubernetes/kubeadm/issues/1899).)
+We are now going to configure the cluster. For the sake of traceability, this configuration won't be done via CLI flags, but via [a configuration file](<!-- TODO -->). The path of the cluster config file will later be referenced as the {{< var "cluster.configFile" >}}, and **should** be inside `/etc/kubernetes`.
 
-See the [template cluster config file](../../kubernetes-templates/cluster-config.yaml).
+Following [flannel requirements](https://github.com/coreos/flannel/blob/master/Documentation/kubernetes.md#kubeadm), you need to use `--pod-network-cidr` with address `10.244.0.0./16`. This CLI option is equivalent to `networking.podSubnet` in our {{< var "cluster.configFile" >}} file (see [this issue](https://github.com/kubernetes/kubeadm/issues/1899)).
 
-The path of the cluster config file will later be referenced as the **variable** `cluster.configFile`. It **should** be inside `/etc/kubernetes`
+The variable {{< var "cluster.advertiseAddress" >}} must be set to the network address of your master node **through the *VPN***. You can get it like so:
+
+```sh
+ip -4 addr show tun0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}'
+```
+
+The variables {{< var "audit.sourceLogDir" >}} & {{< var "audit.sourceLogFile" >}} were set in {{< linkToPage "../01-audit-log" >}}
+
+{{< includeCodeFile "./kubernetes/cluster-config.yaml" >}}
+
+```sh
+sudo mv ./kubernetes/cluster-config.yaml {{cluster.configFile}}
+sudo chown root:root {{cluster.configFile}}
+sudo chmod 600 {{cluster.configFile}}
+```
 
 ## Finally, init the cluster
 
 {{< expand "References" >}}
 * [kubeadm API resources](https://godoc.org/k8s.io/kubernetes/cmd/kubeadm/app/apis/kubeadm/v1beta2)
 * [Flannel kubernetes RTFM](https://github.com/coreos/flannel/blob/master/Documentation/kubernetes.md)
-{{< /expand >}}
+{{</ expand >}}
 
 Pay attention to the feedbacks of the `kubeadm` command. It will show warnings about misconfigurations.
 
@@ -86,14 +100,16 @@ You may repeat this part of the process during the life of your cluster to add n
 
 <https://metallb.universe.tf/installation/>
 
-Create a metallb configmap, from the [:clipboard: kubernetes/metallb-configmap.yaml](./kubernetes/metallb-configmap.yaml) template. [See the docs](https://metallb.universe.tf/configuration/) for full reference on this config file & how to adapt it to your network configuration..
+Create a metallb configmap, from the [kubernetes/metallb-configmap.yaml](./kubernetes/metallb-configmap.yaml) template. [See the docs](https://metallb.universe.tf/configuration/$docs) for full reference on this config file & how to adapt it to your network configuration..
+
+The {{< var "cluster.networkAddress" >}} corresponds to the network part of your {{< var "cluster.advertiseAddress" >}}.
 
 {{< includeCodeFile "./kubernetes/metallb-configmap.yaml" >}}
 
 ```sh
 # Deploy metallb
-kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manifests/namespace.yaml
-kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manifests/metallb.yaml
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/namespace.yaml
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.5/manifests/metallb.yaml
 # On first install only
 kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
 # Create the configmap
@@ -106,13 +122,15 @@ To check if everything works so far, start a test nginx instance:
 
 ```sh
 kubectl create namespace nginx-test
-kubectl run nginx --image nginx --namespace nginx-test
+kubectl --namespace nginx-test run nginx --image nginx
 # This may take some time to fetch the container
-kubectl expose pod nginx --port 80 --type LoadBalancer -n nginx-test
-nginx_ip="$(kubectl get svc nginx -n nginx-test -o json | jq --raw-output '.status.loadBalancer.ingress[].ip')"
-if {{! -z "$nginx_ip"}}; then
-    echo "Has public IP $nginx_ip"
-    curl http://$nginx_ip
+kubectl --namespace nginx-test expose pod nginx --port 80 --type LoadBalancer
+nginx_ip="$(kubectl --namespace nginx-test get svc nginx --output json | jq --raw-output '.status.loadBalancer.ingress[].ip')"
+if [[ ! -z "$nginx_ip" ]]; then
+    echo -e "$(tput setaf 2)Has public IP $nginx_ip. Testing connection. If nothing appears bellow, you might have a firewall configuration issue.$(tput sgr0)"
+    if ! timeout 5 curl http://$nginx_ip ; then
+        echo -e "$(tput setaf 1)NGinx unreachable. You might have a firewall configuration issue.$(tput sgr0)"
+    fi
 else
     echo "No public IP"
 fi
@@ -135,7 +153,7 @@ Hey, we've done important things here ! Maybe it's time to commit...
 git add .
 git commit -m "Kickstart the cluster"
 ```
-{{< /notice >}}
+{{</ notice >}}
 
 ## Troubleshoot
 
@@ -176,7 +194,7 @@ Check firewall, getenforce & swap status.
 {{< expand "References" >}}
 * https://blog.heptio.com/properly-resetting-your-kubeadm-bootstrapped-cluster-nodes-heptioprotip-473bd0b824aa
 * https://stackoverflow.com/a/46438072
-{{< /expand >}}
+{{</ expand >}}
 
 ```sh
 iptables -F && iptables -t nat -F && iptables -t mangle -F && iptables -X

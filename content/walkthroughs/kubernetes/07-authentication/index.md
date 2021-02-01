@@ -29,7 +29,7 @@ We'll use keycloak to proxy our authentication for all monitors, using a single 
 * <https://itnext.io/protect-kubernetes-dashboard-with-openid-connect-104b9e75e39c>
 * <https://geek-cookbook.funkypenguin.co.nz/ha-docker-swarm/traefik-forward-auth/keycloak/>
 * <https://medium.com/docker-hacks/how-to-apply-authentication-to-any-web-service-in-15-minutes-using-keycloak-and-keycloak-proxy-e4dd88bc1cd5>
-{{< /expand >}}
+{{</ expand >}}
 
 
 <https://www.openshift.com/blog/adding-authentication-to-your-kubernetes-web-applications-with-keycloak>
@@ -62,7 +62,7 @@ This install should end by displaying either the default keycloak user's passwor
 
 {{< expand "References" >}}
 * https://stackoverflow.com/a/54692872
-{{< /expand >}}
+{{</ expand >}}
 
 > **Note :** This part is not required if you use a real host name registered with a A record. But if you use a fake hostname (which I still recommend at that point), DNS resolution of services trying to reach keycloak will fail, because your pods don't know where is `https://keycloak.{{cluster.baseHostName}}`.
 
@@ -164,7 +164,7 @@ Other clients protected by keycloak-gatekeeper will be very similar.
 
 {{< expand "References" >}}
 * https://www.openshift.com/blog/adding-authentication-to-your-kubernetes-web-applications-with-keycloak
-{{< /expand >}}
+{{</ expand >}}
 
 We'll start with the simplest of our cases: the `nginx-test` app. This will allow us to get used to keycloak for our authorization mechanism. We'll proxy a simple nginx default instance behind our authentication proxy.
 
@@ -196,7 +196,7 @@ kubectl delete -f 11-NginxTest.yaml
 
 {{< expand "References" >}}
 * [chown: changing ownership of ‘/var/lib/postgresql/data’: Operation not permitted, when running in kubernetes with mounted "/var/lib/postgres/data" volume #361](https://github.com/docker-library/postgres/issues/361)
-{{< /expand >}}
+{{</ expand >}}
 
 You can use a persistent datastore by uncommenting a section in the provided template. But for this, you'll need a persistent volume.
 

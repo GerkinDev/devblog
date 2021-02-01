@@ -15,7 +15,7 @@ tags:
 {{< expand "References" >}}
 * [:book: persistent volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
 * https://www.youtube.com/watch?v=0swOh5C3OVM
-{{< /expand >}}
+{{</ expand >}}
 
 
 
@@ -75,6 +75,6 @@ See https://github.com/rook/rook/issues/4553
 * [:book: Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
 * [:book: Dynamic Volume Provisioning](https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/)
 * [:book: Storage Classes](https://kubernetes.io/docs/concepts/storage/storage-classes/)
-{{< /expand >}}
+{{</ expand >}}
 
 {{< commitAdvice >}}

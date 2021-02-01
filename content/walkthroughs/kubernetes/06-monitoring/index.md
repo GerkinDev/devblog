@@ -39,7 +39,7 @@ Now, you should be able to reach the dashboard via [https://traefik.{{cluster.ba
 * <https://mherman.org/blog/logging-in-kubernetes-with-elasticsearch-Kibana-fluentd/#fluentd>
 * <https://www.elastic.co/kibana>
 * <https://www.elastic.co/elasticsearch/>
-{{< /expand >}}
+{{</ expand >}}
 
 [*Kibana*](https://www.elastic.co/kibana) is a super versatile tool to visualize data stored in *Elasticsearch*.
 
@@ -51,7 +51,7 @@ Together, they compose the perfect combo to ingest all our cluster's logs, and d
 Elasticsearch may be quite resources-consuming, and your machines may not be optimized to make it run smoothly with the consequent flow of data its about to ingest. I **strongly** advise you to read some [installation documentations](https://www.elastic.co/guide/en/elasticsearch/reference/master/docker.html#docker-prod-prerequisites) to make things correctly.
 
 Reading a guide don't dispense you from RTFMing.
-{{< /notice >}}
+{{</ notice >}}
 
 ### 2.1. Pods logs
 
@@ -115,7 +115,7 @@ Now that you have set up everything, you might have seen that everytime the Elas
 
 {{< expand "References" >}}
 * <https://kubernetes.io/fr/docs/tasks/access-application-cluster/web-ui-dashboard/>
-{{< /expand >}}
+{{</ expand >}}
 
 {{< includeCodeFile "./kubernetes/kube-dashboard/01-Dashboard.yaml" >}}
 {{< includeCodeFile "./kubernetes/kube-dashboard/02-IngressRoutes.yaml" >}}
