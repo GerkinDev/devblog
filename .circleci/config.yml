@@ -1,0 +1,23 @@
+# From https://circleci.com/developer/orbs/orb/circleci/hugo
+jobs:
+  deploy:
+    docker:
+      - image: cimg/base
+    steps:
+      - attach_workspace:
+          at: devblog
+      - run: ls -lah devblog
+orbs:
+  hugo: circleci/hugo@0.2
+version: 2.1
+workflows:
+  main:
+    jobs:
+      - hugo/build:
+          html-proofer: true
+      - deploy:
+          filters:
+            branches:
+              only: docs
+          requires:
+            - hugo/build
