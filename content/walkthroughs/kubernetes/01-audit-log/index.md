@@ -54,7 +54,7 @@ You should be good to go.
 * https://superuser.com/questions/740000/modify-and-apply-limits-conf-without-reboot
 {{</ expand >}}
 
-Check the file descriptors limit:
+Check the file descriptors limit **for the root user** (use sudo):
 
 ```sh
 ulimit -n
@@ -78,12 +78,16 @@ root hard nofile 65536
 * hard nofile 65536
 ```
 
-Then **reboot** & recheck.
+Then **reboot** & recheck **for the root user** (use sudo).
 
 ```sh
 ulimit -n # should be 65536
 ulimit -Hn # should be at least 65536
 ```
+
+{{< alert theme="warning" >}}
+If you run this as your normal user, `ulimit -n` changes might not be changed.
+{{</ alert >}}
 
 If the environment is expected to have a high load, follow [this section of the guide](https://docs.fluentd.org/installation/before-install#optimize-network-kernel-parameters)
 
@@ -112,7 +116,7 @@ Install required plugins with the following command:
 td-agent-gem install fluent-plugin-forest fluent-plugin-rewrite-tag-filter
 ```
 
-If having errors here, see the Troubleshoot section at the end.
+If having errors here, see the [Troubleshoot section at the end](#troubleshoot).
 
 ### Configure Fluentd
 
@@ -122,7 +126,7 @@ If having errors here, see the Troubleshoot section at the end.
 
 <https://kubernetes.io/docs/tasks/debug-application-cluster/audit/#log-collector-examples>
 
-Install the [:clipboard: td-agent/kube.conf](./td-agent/kube.conf) template template into `/etc/td-agent/`, include it in your master configuration, and create the log dirs.
+Install the [td-agent/kube.conf](./td-agent/kube.conf) template template into `/etc/td-agent/`, include it in your master configuration, and create the log dirs.
 
 {{< includeCodeFile "./td-agent/kube.conf" >}}
 

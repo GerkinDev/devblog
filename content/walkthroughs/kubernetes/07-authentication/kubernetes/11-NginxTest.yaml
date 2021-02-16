@@ -78,20 +78,15 @@ spec:
         component: gatekeeper
 
     spec:
-      hostAliases:
-        - ip: "10.1.2.3"
-          hostnames:
-          - "foo.remote"
-          - "bar.remote"
       containers:
         - name: keycloak-gatekeeper
-          image: "quay.io/keycloak/keycloak-gatekeeper:10.0.0"
+          image: "quay.io/gogatekeeper/gatekeeper:1.2.0"
           imagePullPolicy: IfNotPresent
           args:
             - --listen=0.0.0.0:3000
             - --discovery-url=https://keycloak.{{cluster.baseHostName}}/auth/realms/master
-            - --client-id=nginx-test
-            - --client-secret={{}}
+            - --client-id={{nginxTest.clientId}}
+            - --client-secret={{nginxTest.clientSecret}}
             - --upstream-url=http://nginx.nginx-test.svc.cluster.local:80 # See https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/#namespaces-and-dns
             - --redirection-url=https://test.{{cluster.baseHostName}}/
             - --skip-openid-provider-tls-verify=true

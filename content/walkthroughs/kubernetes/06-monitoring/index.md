@@ -20,17 +20,17 @@ The traefik dashboard will help us in the diagnostics of our ingress routes and 
 * update our ingress controller previously deployed to enable the dashboard
 * and create routes to the dashboard.
 
-Use the [:clipboard: kubernetes/traefik/21-IngressController.yaml](./kubernetes/traefik/21-IngressController.yaml) and [:clipboard: kubernetes/traefik/23-IngressRoutes.yaml](./kubernetes/traefik/23-IngressRoutes.yaml) templates.
+Use the [kubernetes/traefik/04-IngressController.yaml](./kubernetes/traefik/04-IngressController.yaml) and [kubernetes/traefik/06-IngressRoutes.yaml](./kubernetes/traefik/06-IngressRoutes.yaml) templates.
 
-{{< includeCodeFile "./kubernetes/traefik/21-IngressController.yaml" >}}
-{{< includeCodeFile "./kubernetes/traefik/23-IngressRoutes.yaml" >}}
+{{< includeCodeFile "./kubernetes/traefik/04-IngressController.yaml" >}}
+{{< includeCodeFile "./kubernetes/traefik/06-IngressRoutes.yaml" >}}
 
 ```sh
-kubectl apply -f ./kubernetes/traefik/21-IngressController.yaml
-kubectl apply -f ./kubernetes/traefik/23-IngressRoutes.yaml
+kubectl apply -f ./kubernetes/traefik/04-IngressController.yaml
+kubectl apply -f ./kubernetes/traefik/06-IngressRoutes.yaml
 ```
 
-Now, you should be able to reach the dashboard via [https://traefik.{{cluster.baseHostName}}/dashboard/]().
+Now, you should be able to reach the dashboard via <https://traefik.{{cluster.baseHostName}}/dashboard/>.
 
 ## 2. Kibana: harvest data from your cluster
 
@@ -74,7 +74,9 @@ kubectl apply -f ./kubernetes/kibana/21-Ingress.yaml
 
 Once applied, you should be able to reach your kibana dashboard via <https://kibana.{{cluster.baseHostName}}/>. Be patient, it may take a bit of time to initialize ElasticSearch and Kibana itself. Once they started up, let's configure those !
 
-Go to the *Discover* page. Kibana should ask to create indices. Index logs with pattern `logstash*`.
+Go to the [*Kibana > Discover > Index patterns*](https://kibana.{{cluster.baseHostName}}/app/management/kibana/indexPatterns/create) page. Kibana should ask to create indices. Index logs with pattern `logstash*`.
+
+<!-- TODO: Update screenshots -->
 
 ![Index pattern 1st screen](./_assets/kibana-1.png)
 
@@ -90,11 +92,12 @@ I strongly recommend you to inspect logs carefully, to clean up as many errors a
 
 ### 2.2. Audit logs
 
-For a reason I can't explain, the default settings for audit log parsing from fluentd are incorrect. Moreover, I find the "all settings in a single file" pattern awful. So we are going to reconfigure fluentd to parse correctly our logs. Use the [:clipboard: kubernetes/kibana/31-Fluentd.yaml](./kubernetes/kibana/31-Fluentd.yaml) & [:clipboard: kubernetes/kibana/32-FluentdConfigMap.yaml](./kubernetes/kibana/32-FluentdConfigMap.yaml) templates. The 1st one revrite some of the configuration of fluentd to use our custom configs.
+For a reason I can't explain, the default settings for audit log parsing from fluentd are incorrect. Moreover, I find the "all settings in a single file" pattern awful. So we are going to reconfigure fluentd to parse correctly our logs. Use the [kubernetes/kibana/31-Fluentd.yaml](./kubernetes/kibana/31-Fluentd.yaml) & [kubernetes/kibana/32-FluentdConfigMap.yaml](./kubernetes/kibana/32-FluentdConfigMap.yaml) templates. The 1st one revrite some of the configuration of fluentd to use our custom configs.
 
 {{< includeCodeFile "./kubernetes/kibana/31-Fluentd.yaml" >}}
 {{< includeCodeFile "./kubernetes/kibana/32-FluentdConfigMap.yaml" >}}
 
+<!-- To update. See https://github.com/fluent/fluentd-kubernetes-daemonset/issues/519 . Expected log format is `legacy` -->
 ```sh
 kubectl apply -f ./kubernetes/kibana/31-Fluentd.yaml
 kubectl apply -f ./kubernetes/kibana/32-FluentdConfigMap.yaml

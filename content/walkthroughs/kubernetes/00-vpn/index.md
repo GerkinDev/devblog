@@ -37,11 +37,11 @@ On the **OpenVPN server**, create a volume for OpenVPN so that it can store file
 # Create the volume
 docker volume create --name {{vpn.volumeName}}
 # Init OpenVPN configuration & certificates
-docker run -v {{vpn.volumeName}}:/etc/openvpn --rm kylemanna/openvpn:2.3 ovpn_genconfig -Nd -u udp://vpn.{{cluster.baseHostName}}:1194
+docker run -v {{vpn.volumeName}}:/etc/openvpn --rm kylemanna/openvpn:2.4 ovpn_genconfig -Nd -u udp://vpn.{{cluster.baseHostName}}:1194
 # Generate the EasyRSA PKI certificate authority. This will prompt a password, that you should keep safe. It will be used to generate new client certificates & configs
-docker run -v {{vpn.volumeName}}:/etc/openvpn --rm -it kylemanna/openvpn:2.3 ovpn_initpki
+docker run -v {{vpn.volumeName}}:/etc/openvpn --rm -it kylemanna/openvpn:2.4 ovpn_initpki
 # Start the server
-docker run -v {{vpn.volumeName}}:/etc/openvpn -d -p 1194:1194/udp --cap-add=NET_ADMIN kylemanna/openvpn:2.3
+docker run -v {{vpn.volumeName}}:/etc/openvpn -it -p 1194:1194/udp --cap-add=NET_ADMIN kylemanna/openvpn:2.4
 ```
 
 > Note on the `-Nd` flags of the line 4: see [this RTFM page](https://github.com/kylemanna/docker-openvpn/blob/master/docs/faqs.md#how-do-i-set-up-a-split-tunnel) for split tunnel (partial traffic tunnel)
@@ -66,17 +66,57 @@ systemctl daemon-reload
 systemctl enable --now kubernetes-vpn.service
 ```
 
+<!-- TODO
+{{< expand "Have Fail2Ban installed ?" >}}
+{{< expand "References" >}}
+ * https://www.fail2ban.org/wiki/index.php/HOWTO_fail2ban_with_OpenVPN
+{{</ expand >}}
+
+```sh
+cat <<EOF | tee /etc/fail2ban/filter.d/openvpn.local
+# Fail2Ban filter for selected OpenVPN rejections
+#
+#
+
+[Definition]
+
+# Example messages (other matched messages not seen in the testing server's logs):
+# Fri Sep 23 11:55:36 2016 TLS Error: incoming packet authentication failed from [AF_INET]59.90.146.160:51223
+# Thu Aug 25 09:36:02 2016 117.207.115.143:58922 TLS Error: TLS handshake failed
+
+failregex = ^ TLS Error: incoming packet authentication failed from \[AF_INET\]<HOST>:\d+$
+            ^ <HOST>:\d+ Connection reset, restarting
+            ^ <HOST>:\d+ TLS Auth Error
+            ^ <HOST>:\d+ TLS Error: TLS handshake failed$
+            ^ <HOST>:\d+ VERIFY ERROR
+
+ignoreregex = 
+EOF
+cat <<EOF | tee /etc/fail2ban/jail.d/openvpn.local
+# Fail2Ban configuration fragment for OpenVPN
+
+[openvpn]
+enabled  = true
+port     = 1194
+protocol = udp
+filter   = openvpn
+logpath  = /var/log/openvpn.log
+maxretry = 3
+EOF
+systemctl reload fail2ban
+```
+{{</ expand >}} -->
+
 You can check our docker container with `docker container inspect kubernetes-vpn.service` & get our *OpenVPN* logs with `journalctl -u kubernetes-vpn.service`.
 
 Now, get the value of the variable {{< var "vpn.serverIp" >}} with this command:
 
 ```sh
 # Show interface informations
-docker exec -it kubernetes-vpn.service ifconfig tun0
+docker exec -it kubernetes-vpn.service ip -4 addr show tun0
 # Or, fancy buggy variant to show only interface IP
-docker exec -it kubernetes-vpn.service ifconfig tun0 `# Get the "tun0" interface infos` \
-  | grep 'inet addr' `# Get only IPv4 related line` \
-  | cut -d: -f2 | awk '{print $1}' `# Get only the IP`
+docker exec -it kubernetes-vpn.service ip -4 addr show tun0 `# Get the "tun0" interface infos` \
+  | grep -Po 'inet \K[0-9.]*'
 ```
 
 > See [**Static IP Addresses** documentation for *docker-openvpn*](https://github.com/kylemanna/docker-openvpn/blob/master/docs/static-ips.md)
@@ -86,7 +126,7 @@ docker exec -it kubernetes-vpn.service ifconfig tun0 `# Get the "tun0" interface
 This section is meant to be repeated for each of your cluster's nodes. For every node, replace the {{< var "node.ip" >}} & {{< var "node.name" >}} variables.
 
 {{< alert theme="warning" >}}
-**Important**: `node.ip` ({{node.ip}}) **must** be on the same network than `vpn.serverIp` ({{vpn.serverIp}}) (usually, `192.168.255.XXX`)
+**Important**: {{< var "node.ip" >}} is the desired IP of your machine in your VPN. It **must** be on the same network than {{< var "vpn.serverIp" >}} (usually, `192.168.255.XXX`)
 {{</ alert >}}
 
 ### Generate credentials
@@ -97,11 +137,11 @@ On your *OpenVPN*'server host:
 
 ```sh
 # Generate a client
-docker run -v {{vpn.volumeName}}:/etc/openvpn --rm -it kylemanna/openvpn:2.3 easyrsa build-client-full {{node.name}} nopass
+docker run -v {{vpn.volumeName}}:/etc/openvpn --rm -it kylemanna/openvpn:2.4 easyrsa build-client-full {{node.name}} nopass
 # Set its static IP
-echo "ifconfig-push {{node.ip}} {{vpn.serverIp}}" | docker run -v {{vpn.volumeName}}:/etc/openvpn -i --rm kylemanna/openvpn:2.3 tee /etc/openvpn/ccd/{{node.name}}
+echo "ifconfig-push {{node.ip}} {{vpn.serverIp}}" | docker run -v {{vpn.volumeName}}:/etc/openvpn -i --rm kylemanna/openvpn:2.4 tee /etc/openvpn/ccd/{{node.name}}
 # Get its config to your host
-docker run -v {{vpn.volumeName}}:/etc/openvpn --rm kylemanna/openvpn:2.3 ovpn_getclient {{node.name}} > {{node.name}}.ovpn
+docker run -v {{vpn.volumeName}}:/etc/openvpn --rm kylemanna/openvpn:2.4 ovpn_getclient {{node.name}} > {{node.name}}.ovpn
 ```
 
 Move this `{{node.name}}.ovpn` file to the {{node.name}} node **by a safe mean**. Those files are super critical, so be very careful to not put it anywhere usafe.
@@ -200,12 +240,12 @@ docker exec -it kubernetes-vpn.service rm /etc/openvpn/pki/reqs/kube-master.req
 ```sh
 OVPN_DATA=ovpn-data-cluster
 clients=kube-master-1 kube-worker-1
-docker run -v {{vpn.volumeName}}:/etc/openvpn --rm kylemanna/openvpn:2.3 ovpn_genconfig -u udp://vpn.bar.com:1194
-docker run -v {{vpn.volumeName}}:/etc/openvpn --rm -it kylemanna/openvpn:2.3 ovpn_initpki
+docker run -v {{vpn.volumeName}}:/etc/openvpn --rm kylemanna/openvpn:2.4 ovpn_genconfig -u udp://vpn.bar.com:1194
+docker run -v {{vpn.volumeName}}:/etc/openvpn --rm -it kylemanna/openvpn:2.4 ovpn_initpki
 sudo systemctl restart kubernetes-vpn
 for client in $clients; do
-    docker run -v {{vpn.volumeName}}:/etc/openvpn --rm -it kylemanna/openvpn:2.3 easyrsa build-client-full $client nopass
-    docker run -v {{vpn.volumeName}}:/etc/openvpn --rm kylemanna/openvpn:2.3 ovpn_getclient $client > $client.ovpn
+    docker run -v {{vpn.volumeName}}:/etc/openvpn --rm -it kylemanna/openvpn:2.4 easyrsa build-client-full $client nopass
+    docker run -v {{vpn.volumeName}}:/etc/openvpn --rm kylemanna/openvpn:2.4 ovpn_getclient $client > $client.ovpn
 done
 sudo install -o root -m 400 $(hostname).ovpn /etc/openvpn/client/$(hostname).conf
 sudo systemctl restart openvpn-client@$(hostname)

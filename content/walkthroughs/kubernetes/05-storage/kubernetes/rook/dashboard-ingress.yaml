@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: rook-ceph-mgr-dashboard
+  namespace: rook-ceph # namespace:cluster
+  labels:
+    app: rook-ceph-mgr
+    rook_cluster: rook-ceph # namespace:cluster
+spec:
+  ports:
+  - name: dashboard
+    port: 8443
+    protocol: TCP
+    targetPort: 8443
+  selector:
+    app: rook-ceph-mgr
+    rook_cluster: rook-ceph
+
+---
+
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ingress-dashboard-tls
+  namespace: rook-ceph # Must be the same as the service
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - match: Host(`ceph.{{cluster.baseHostName}}`)
+    kind: Rule
+    services:
+    # Beware: the service MUST be in the same namespace than the IngressRoute.
+    - name: rook-ceph-mgr-dashboard
+      kind: Service
+      port: 8443
+  tls:
+    certResolver: myresolver

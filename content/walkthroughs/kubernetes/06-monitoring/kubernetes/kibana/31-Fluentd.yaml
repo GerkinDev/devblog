@@ -30,7 +30,7 @@ spec:
         effect: NoSchedule
       containers:
       - name: fluentd
-        image: fluent/fluentd-kubernetes-daemonset:v1.10.4-debian-elasticsearch6-1.0
+        image: fluent/fluentd-kubernetes-daemonset:v1.12-debian-elasticsearch7-1
         env:
           - name:  FLUENT_ELASTICSEARCH_HOST
             value: elasticsearch.kibana.svc.cluster.local

@@ -9,8 +9,8 @@ data:
     - name: default
       protocol: layer2
       addresses:
-      - {{vpn.netBase}}.100-{{vpn.netBase}}.250
+      - {{cluster.networkAddress}}.100-{{cluster.networkAddress}}.250
     - name: frontend
       protocol: layer2
       addresses:
-      - {{vpn.netBase}}.99-{{vpn.netBase}}.99
+      - {{cluster.networkAddress}}.99-{{cluster.networkAddress}}.99

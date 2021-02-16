@@ -1,3 +1,4 @@
+# File: ./kubernetes/traefik/01-Namespace.yaml
 apiVersion: v1
 kind: Namespace
 metadata:

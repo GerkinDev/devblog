@@ -15,13 +15,6 @@ service:
     component: keycloak
 
   httpsPort: 443 # 8443 by default, but it should be reachable via the same URL from outside than inside, eg `https://keycloak.{{cluster.baseHostName}}`
-ingress:
-  labels:
-    app: keycloak
-    component: keycloak
-
-  tls:
-  - hosts:
-    - keycloak.{{cluster.baseHostName}}
 postgresql:
   enabled: false
+  #storageClass: some-storage

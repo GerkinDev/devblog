@@ -23,12 +23,14 @@ spec:
     spec:
       containers:
       - name: kibana
-        image: docker.elastic.co/kibana/kibana:6.5.4
+        image: docker.elastic.co/kibana/kibana:7.10.2
         env:
         - name: ELASTICSEARCH_URL
           value: http://elasticsearch.kibana.svc.cluster.local:9200
         - name: XPACK_SECURITY_ENABLED
           value: "true"
+        # - name: SERVER_NAME
+        #   value: kibana.{{cluster.baseHostName}}
         ports:
         - containerPort: 5601
           name: http

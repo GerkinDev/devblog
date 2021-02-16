@@ -35,21 +35,19 @@ We'll use keycloak to proxy our authentication for all monitors, using a single 
 <https://www.openshift.com/blog/adding-authentication-to-your-kubernetes-web-applications-with-keycloak>
 
 Start by installing *Keycloak* via the [:books: *Helm* chart](https://hub.helm.sh/charts/codecentric/keycloak) & expose it, using following templates: 
-* [:clipboard: authentication/01-KeycloakChartValues.yaml](./kubernetes/authentication/01-KeycloakChartValues.yaml)
-* [:clipboard: authentication/02-PublicRoute.yaml](./kubernetes/authentication/02-PublicRoute.yaml)
+* [kubernetes/authentication/01-KeycloakChartValues.yaml](./kubernetes/authentication/01-KeycloakChartValues.yaml)
+* [kubernetes/authentication/02-PublicRoute.yaml](./kubernetes/authentication/02-PublicRoute.yaml)
 
 {{< includeCodeFile "./kubernetes/authentication/01-KeycloakChartValues.yaml" >}}
 {{< includeCodeFile "./kubernetes/authentication/02-PublicRoute.yaml" >}}
 
-Note that the template [`authentication/01-KeycloakChartValues.yaml`](./kubernetes/authentication/01-KeycloakChartValues.yaml) contains the bare minimum settings for the keycloak chart with your route. You **should** tweak them to match your setup & security requirements. [:books: RTFM the chart](https://hub.helm.sh/charts/codecentric/keycloak)
+Note that the template [`kubernetes/authentication/01-KeycloakChartValues.yaml`](./kubernetes/authentication/01-KeycloakChartValues.yaml) contains the bare minimum settings for the keycloak chart with your route. You **should** tweak them to match your setup & security requirements. [RTFM the chart](https://hub.helm.sh/charts/codecentric/keycloak$docs)
 
 ```sh
 # Add the keycloak chart repository
 helm repo add codecentric https://codecentric.github.io/helm-charts
-# Create the keycloak's dedicated namespace
-kubectl create namespace keycloak
 # Install keycloak in its dedicated namespace
-helm install keycloak -f ./kubernetes/authentication/01-KeycloakChartValues.yaml codecentric/keycloak --version 9.5.0 --namespace keycloak
+helm install keycloak -f ./kubernetes/authentication/01-KeycloakChartValues.yaml codecentric/keycloak --version 9.9.2 --namespace keycloak --create-namespace
 # Initialize traefik routing to it.
 kubectl apply -f ./kubernetes/authentication/02-PublicRoute.yaml
 ```
@@ -95,8 +93,12 @@ So, now, we can use `keycloak.{{cluster.baseHostName}}` as a domain name everywh
 
 Log in to your keycloak admin dashboard by reaching `https://keycloak.{{cluster.baseHostName}}/auth/admin/`.
 
-* Username: `keycloak`
-* Password: The one displayed at the end of the keycloak install, or get it with `kubectl get secret --namespace default keycloak-http -o jsonpath="{.data.password}" | base64 --decode; echo`
+* Username: {{< var "keycloak.adminUser" >}}
+* Password: {{< var "keycloak.adminPassword" >}}
+
+{{< alert theme="danger" >}}
+At your first login, **change your password** !
+{{</ alert >}}
 
 ### 1.4. Configure keycloak
 
@@ -130,35 +132,35 @@ Go on and create all the users you need, and assign relevant groups to them.
 
 > :information_source: Info: If you're not familiar with oauth2, *clients* are *roughly* applications that are allowed to authenticate users in your authentication system (keycloak). *Clients* can ask for grants of *scopes*, that are user informations they want to access to.
 
-Back in the dashboards setup, we'll protect our apps `Test app`, `kibana`, `kube dashboard` & `traefik` using [`quay.io/keycloak/keycloak-gatekeeper`](https://quay.io/repository/keycloak/keycloak-gatekeeper).
+Back in the dashboards setup, we'll protect our apps `Test app`, `kibana`, `kube dashboard` & `traefik` using [`gogatekeeper/gatekeeper`](https://github.com/gogatekeeper/gatekeeper).
 
 ##### 1.4.3.1. Create scopes
 
-Since our apps `Test app`, `kibana`, `kube dashboard` & `traefik` will all rely on the same information (`group`), we can get our setup easier by adding a shared `Client scope`. Go to *`Master` realm* > *`Configure`* > *`Client Scopes` section*. Here, check if there is a client scope named `group` (I didn't, but just in case).
+Since our apps `Test app`, `kibana`, `kube dashboard` & `traefik` will all rely on the same information (`group`), we can get our setup easier by adding a shared `Client scope`. Go to *`Master` realm* > *`Configure`* > *`Client Scopes` section*. Here, check if there is a client scope named `groups` (I didn't, but just in case).
 
-If not, create one named `group`, then save it. If there is one, check if the following config matches or create a new one.
+If not, create one named `groups`, then save it. If there is one, check if the following config matches or create a new one.
 
 After, go to the new *`Mappers` tab* & create a new mapper. This mapper will put the groups we set up earlier in our user's token. Set its `Mapper Type` to `Group Membership`, & the `Token Claim Name` to `groups`. This is the name of the token's field we'll use later in our authentication proxy.
 
 ![Groups mapper](./_assets/screen-client-scopes-mappers-group.png)
 
-Once done, you **may** add it to the default *client scopes*.  Go to *`Master` realm* > *`Configure`* > *`Client Scopes` section* > *`Default Client Scopes` tab*, & add our `group` to the assigned column. You should probably not set it as `Optional`.
+Once done, you **may** add it to the default *client scopes*.  Go to *`Master` realm* > *`Configure`* > *`Client Scopes` section* > *`Default Client Scopes` tab*, & add our `groups` to the assigned column. You should probably not set it as `Optional`.
 
 ##### 1.4.3.2. Create client
 
-We are going to create our authentication for the app `nginx-test` (with url `https://test.{{cluster.baseHostName}}`). Fill the `Client ID` with :bookmark: `{{nginxTest.clientId}}` (for instance, `nginx-test`).
+We are going to create our authentication for the app {{< var "nginxTest.clientId" >}} (for instance, `nginx-test`), with url `https://test.{{cluster.baseHostName}}`). Fill the `Client ID` with `{{nginxTest.clientId}}`.
 
 Since this application will be logged in through a proxy (we'll get back to that part next in the dashboard setups), set its `Access Type` to `confidential`.
 
 Set the valid redirect URIs to `https://test.{{cluster.baseHostName}}/oauth/callback` (the `/oauth/callback` part is required by the gatekeeper).
 
-Then, we need to add an audience. This field is required by gatekeeper to check our key. Go to the *`Mappers` tab*, & create a new mapper. Name it, for instance, `audience`, of `Mapper Type` `Audience`, & set the `Included Client Audience` to our :bookmark: `{{nginxTest.clientId}}`. Save it.
+Then, we need to add an audience. This field is required by gatekeeper to check our key. Go to the *`Mappers` tab*, & create a new mapper. Name it, for instance, `audience`, of `Mapper Type` `Audience`, & set the `Included Client Audience` to our {{< var "nginxTest.clientId" >}}. Save it.
 
 After this, check our *client scopes* by going to the *`Client Scopes` tab*. In the *`Setup` sub-tab*, make sure that our `groups` *client scope* is **assigned**. Then, you can test our setup ! Go to the *`Evaluate` sub-tab*, pick the `User` you want to check, click `Evaluate` then go to *`Generated Access Token` sub-sub-tab*. It should contain a key `groups` with all our user's groups, prefixed with a `/`, and a key `aud` with at least our :bookmark: `{{nginxTest.clientId}}`. If its okay, we are good to go !
 
 And, finally, go to the *`Credentials` tab* & get the secret. It will be used as :bookmark: `{{nginxTest.clientSecret}}`.
 
-Other clients protected by keycloak-gatekeeper will be very similar.
+Other clients protected by our gatekeeper will be very similar.
 
 ## 2. Setup our test application protected by authentication
 
@@ -168,9 +170,9 @@ Other clients protected by keycloak-gatekeeper will be very similar.
 
 We'll start with the simplest of our cases: the `nginx-test` app. This will allow us to get used to keycloak for our authorization mechanism. We'll proxy a simple nginx default instance behind our authentication proxy.
 
-> :information_source: Info: At the time of writing this, [`quay.io/louketo/louketo-proxy`](https://quay.io/repository/louketo/louketo-proxy?tag=latest&tab=tags) is in an [End Of Life state](https://github.com/louketo/louketo-proxy/issues/683), but someone [seems up to take it back](https://github.com/louketo/louketo-proxy/issues/683#issuecomment-709682039). Let's cross fingers he does a great job !
+Look at the [11-TestNginx.yaml](./kubernetes/11-NginxTest.yaml) template.
 
-Look at the [:clipboard: 11-TestNginx.yaml](./kubernetes/11-NginxTest.yaml) template.
+{{< includeCodeFile "./kubernetes/11-NginxTest.yaml" >}}
 
 As you may notice in this template, the option `--discovery-url=https://keycloak.{{cluster.baseHostName}}/auth/realms/master` tells our authentication proxy where is our OAuth2 provider. If you are using an aliased hostname, this won't resolve, as your server can't resolve an IP for this hostname. That's why we edited *CoreDNS* configuration earlier.
 
@@ -198,11 +200,10 @@ kubectl delete -f 11-NginxTest.yaml
 * [chown: changing ownership of ‘/var/lib/postgresql/data’: Operation not permitted, when running in kubernetes with mounted "/var/lib/postgres/data" volume #361](https://github.com/docker-library/postgres/issues/361)
 {{</ expand >}}
 
-You can use a persistent datastore by uncommenting a section in the provided template. But for this, you'll need a persistent volume.
+You can use a persistent datastore by setting `postgresql.enabled` to `true`. Think about setting `postgresql.storageClass`.
 
 ```sh
-kubectl apply -f authentication/21-PersistentVolumeClaim.yaml
-helm update keycloak -f authentication/22-KeycloakChartValues.yaml codecentric/keycloak --version  9.5.0 --namespace keycloak
+helm update keycloak -f ./kubernetes/authentication/01-KeycloakChartValues.yaml codecentric/keycloak --version 9.9.2 --namespace keycloak
 ```
 
 Initialization of PostgreSQL may take some time. Don't hesitate to look at the logs of both of PostgreSQL and Keycloak.

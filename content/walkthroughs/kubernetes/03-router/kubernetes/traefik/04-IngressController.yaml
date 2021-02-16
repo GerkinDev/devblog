@@ -1,3 +1,5 @@
+# File: ./kubernetes/traefik/04-IngressController.yaml
+# https://doc.traefik.io/traefik/v2.4/user-guides/crd-acme/#deployments
 kind: Deployment
 apiVersion: apps/v1
 metadata:
@@ -22,13 +24,13 @@ spec:
       serviceAccountName: traefik
       containers:
         - name: traefik
-          image: traefik:v2.1
+          image: traefik:v2.4
           args:
             - --api=false
             - --api.dashboard=false
             - --accesslog
-            - --entrypoints.web.Address=:80
-            - --entrypoints.websecure.Address=:443
+            - --entrypoints.web.Address=:8000
+            - --entrypoints.websecure.Address=:4443
             - --providers.kubernetescrd
             - --certificatesresolvers.myresolver.acme.tlschallenge
             - --certificatesresolvers.myresolver.acme.email=FILL@ME.COM
@@ -38,6 +40,8 @@ spec:
             - --certificatesresolvers.myresolver.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory
           ports:
             - name: web
-              containerPort: 80
+              containerPort: 8000
             - name: websecure
-              containerPort: 443
+              containerPort: 4443
+            - name: admin
+              containerPort: 8080

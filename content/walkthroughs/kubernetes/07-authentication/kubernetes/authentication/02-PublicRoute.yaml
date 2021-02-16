@@ -7,7 +7,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-  - match: Host(`keycloak.bar.com`)
+  - match: Host(`keycloak.{{cluster.baseHostName}}`)
     kind: Rule
     services:
     - name: keycloak-http

@@ -1,19 +1,22 @@
+# File: ./kubernetes/traefik/05-Services.yaml
+# https://doc.traefik.io/traefik/v2.4/user-guides/crd-acme/#services
 apiVersion: v1
 kind: Service
 metadata:
   name: traefik
   namespace: traefik
-  labels:
-    app: traefik
-    component: ingress-controller
+
 spec:
   ports:
     - protocol: TCP
       name: web
-      port: 80
+      port: 8000
+    - protocol: TCP
+      name: admin
+      port: 8080
     - protocol: TCP
       name: websecure
-      port: 443
+      port: 4443
   selector:
     app: traefik
     component: ingress-controller
