@@ -8,12 +8,14 @@
 {{ end }}
 {{ $target := .Scratch.Get "dest" }}
 {{ $nonAnchoredTarget := replaceRE "(#.*$)?" "" $target }}
-{{ $resolvedTarget := cond (eq (substr $nonAnchoredTarget 0 1) ".") (path.Join (path.Dir .Page.File.Path) $nonAnchoredTarget) $nonAnchoredTarget }}
-{{ $page := .Site.GetPage (replaceRE "#.*$" "" $resolvedTarget) }}
+{{ $page := .Page.GetPage $nonAnchoredTarget }}
 {{ $text := .Scratch.Get "text" | default $page.LinkTitle }}
 {{ $blank := .Scratch.Get "blank" }}
 
 
+{{ if not $page }}
+    {{ errorf "Page %s not found (from %s)" $nonAnchoredTarget .Page.File.Path }}
+{{ end }}
 {{ $parsedUrl := urls.Parse $target }}
 {{ if $parsedUrl.Fragment }}
     {{ .Scratch.Set "href" (printf "%s#%s" $page.Permalink $parsedUrl.Fragment) }}
@@ -23,5 +25,5 @@
 {{ $href:= .Scratch.Get "href" }}
 
 <em>
-{{ partial "link/link" (dict "Destination" $href "Text" $text "Title" $page.LinkTitle "Blank" $blank ) }}
+{{- partial "link/link" (dict "Destination" $href "Text" $text "Title" $page.LinkTitle "Blank" $blank ) -}}
 </em>

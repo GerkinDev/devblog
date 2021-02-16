@@ -1,7 +1,7 @@
 {{ .Scratch.Set "side" "right" }}
-{{partial "walkthroughs/is-pad" .}}
+{{partial "body/is-pad" .}}
 {{ if ne ($.Param "languagedir") "rtl" }}
-  {{ partial "walkthroughs/toc" . }}
+  {{ partial "body/toc" . }}
 {{ else if (eq ($.Param "languagedir") "rtl") }}
-  {{ partial "walkthroughs/help" . }}
+  {{ partial "body/help" . }}
 {{ end }}

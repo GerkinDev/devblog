@@ -121,8 +121,8 @@ if(helpContainer) {
 		const varsContainer = document.getElementById('vars-container');
 		if(varsContainer){
 			vars.forEach(v => {
-				const targetContainer = v.segments.reduce((acc, segment, index) => {
-					const segmentChild = acc.querySelector(`:scope > [data-scope="${segment}"]`);
+				const targetContainer = v.segments.reduce((acc, segment) => {
+					const segmentChild = acc.querySelector<HTMLElement>(`:scope > [data-scope="${segment}"]`);
 					if(segmentChild){
 						return segmentChild;
 					}

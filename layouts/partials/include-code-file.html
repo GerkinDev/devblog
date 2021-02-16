@@ -7,10 +7,6 @@
 
 {{ printf "<!-- Include code file `%s` with lang `%s` & label `%s` -->" $targetRelFile $language $label | safeHTML }}
 <section class="included-file" data-file="{{$targetRelFile}}">
-{{ highlight (printf "%s" $targetFileContent) (printf "%s:%s" $language ($label)) "" }}
-
-    {{/*  {{< highlight $language >}}
-    {{ $targetFileContent }}
-    {{</ highlight >}}  */}}
+    {{- highlight (printf "%s" $targetFileContent) (printf "%s:%s" $language $label) "" -}}
 </section>
 {{ printf "<!-- End include code file `%s` with lang `%s` & label `%s` -->" $targetRelFile $language $label | safeHTML }}
