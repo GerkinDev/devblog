@@ -153,7 +153,7 @@ fi
 unset nginx_ip
 ```
 
-This should return `Has public IP` with an IP that should be reachable from the host & the HTML of the default nginx page. If not, then you might have additional configuration to do. See {{< linkToPage path="/blog/setup-firewall-for-kubernetes-flannel-metallb-through-vpn" blank=true >}} 
+This should return `Has public IP` with an IP that should be reachable from the host & the HTML of the default nginx page. If not, then you might have additional configuration to do.
 
 Cleanup the namespace afterwards
 
