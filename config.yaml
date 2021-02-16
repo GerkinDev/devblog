@@ -38,6 +38,7 @@ markup:
     lineNos: true
     lineNumbersInTable: true
     noClasses: false
+    guessSyntax: true
   tableOfContents:
     endLevel: 3
     ordered: false

@@ -9,11 +9,11 @@ draft: false
 # tocPosition: inner
 # tocLevels: ["h2", "h3", "h4"]
 tags:
-- kubernetes
+- Kubernetes
 series:
 -
 categories:
--
+- Kubernetes
 image:
 ---
 
@@ -36,9 +36,11 @@ So, short stories short, and depending on your shell, type in:
 {{< tabs "zsh" "bash" >}}
 {{< tab >}}
 ```sh
-echo 'autoload -Uz compinit
+cat <<EOF | tee -a ~/.zshrc
+autoload -Uz compinit
 compinit
-source <(kubectl completion zsh)' >> ~/.zshrc
+source <(kubectl completion zsh)
+EOF
 source ~/.zshrc
 ```
 {{</ tab >}}
@@ -75,19 +77,30 @@ go get -u github.com/dty1er/kubecolor/cmd/kubecolor
 which kubecolor
 ```
 
+{{< alert theme="warning" >}}
 If the command above did not worked, then you may have a problem with your `$GOPATH` or `$GOHOME` environment variables. If none are set, then the package was installed in `~/go/bin`. Either fix your vars or add `~/go/bin` to your `$PATH`.
+
+```sh
+cat <<EOF | tee -a {{profileFile}}
+PATH="\$PATH:\$HOME/go/bin"
+EOF
+source ~/.zshrc
+```
+{{</ alert >}}
 
 Finally, you could either use `kubecolor` instead of `kubectl`, or alias `kubectl` as `kubecolor` with the following code sample:
 
 ```sh
-# Backup original `kubectl` command path. Supports subsequent imports of the file.
-echo 'export KUBECTL_ORIG_PATH="${KUBECTL_ORIG_PATH:-"$(which kubectl)"}"' >> {{profileFile}}
-# Alias the real `kubectl` as `kubectll`
-echo 'alias kubectll="${KUBECTL_ORIG_PATH}"' >> {{profileFile}}
+cat <<EOF | tee -a {{profileFile}}
+# Backup original "kubectl" command path. Supports subsequent imports of the file.
+export KUBECTL_ORIG_PATH="\${KUBECTL_ORIG_PATH:-"\$(which kubectl)"}"
+# Alias the real "kubectl" as "kubectll"
+alias kubectll="\${KUBECTL_ORIG_PATH}"
 # Alias kubectl to use colors by default
-echo 'alias kubectl="kubecolor"' >> {{profileFile}}
+alias kubectl="kubecolor"
 # Enable the autocompletion for the alias too (see auto-complete install above)
-echo "complete -o default -F __start_kubectl kubecolor" >> {{profileFile}}
+complete -o default -F __start_kubectl kubecolor
+EOF
 source {{profileFile}}
 ```
 
@@ -126,7 +139,9 @@ To install *krew*, run the following: (taken from [the docs](https://krew.sigs.k
   "$KREW" install krew
 )
 # Add it to your $PATH and reload config
-echo 'export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"' >> {{profileFile}}
+cat <<EOF | tee -a {{profileFile}}
+export PATH="\${KREW_ROOT:-\$HOME/.krew}/bin:\$PATH"
+EOF
 source {{profileFile}}
 # Check krew works
 kubectl krew
