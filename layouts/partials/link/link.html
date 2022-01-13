@@ -22,6 +22,9 @@
 		{{- if in $parsedUrl.Host "wikipedia.org" }}
 			{{- $type = "wikipedia" }}
 			{{- $label = "See on wikipedia" }}
+		{{- else if in $parsedUrl.Host "microsoft.com" }}
+			{{- $type = "microsoft" }}
+			{{- $label = cond (hasPrefix $parsedUrl.Host "docs.") "See on Microsoft docs" "See on Microsoft" }}
 		{{- else if or (in $path "/docs/") (in $path "/doc/")  (in $path "documentation") }}
 			{{- $label = (printf "See in the docs of %s" $parsedUrl.Host) }}
 			{{- $type = "docs" }}
