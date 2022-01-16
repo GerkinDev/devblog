@@ -66,47 +66,6 @@ systemctl daemon-reload
 systemctl enable --now kubernetes-vpn.service
 ```
 
-<!-- TODO
-{{< expand "Have Fail2Ban installed ?" >}}
-{{< expand "References" >}}
- * https://www.fail2ban.org/wiki/index.php/HOWTO_fail2ban_with_OpenVPN
-{{</ expand >}}
-
-```sh
-cat <<EOF | tee /etc/fail2ban/filter.d/openvpn.local
-# Fail2Ban filter for selected OpenVPN rejections
-#
-#
-
-[Definition]
-
-# Example messages (other matched messages not seen in the testing server's logs):
-# Fri Sep 23 11:55:36 2016 TLS Error: incoming packet authentication failed from [AF_INET]59.90.146.160:51223
-# Thu Aug 25 09:36:02 2016 117.207.115.143:58922 TLS Error: TLS handshake failed
-
-failregex = ^ TLS Error: incoming packet authentication failed from \[AF_INET\]<HOST>:\d+$
-            ^ <HOST>:\d+ Connection reset, restarting
-            ^ <HOST>:\d+ TLS Auth Error
-            ^ <HOST>:\d+ TLS Error: TLS handshake failed$
-            ^ <HOST>:\d+ VERIFY ERROR
-
-ignoreregex = 
-EOF
-cat <<EOF | tee /etc/fail2ban/jail.d/openvpn.local
-# Fail2Ban configuration fragment for OpenVPN
-
-[openvpn]
-enabled  = true
-port     = 1194
-protocol = udp
-filter   = openvpn
-logpath  = /var/log/openvpn.log
-maxretry = 3
-EOF
-systemctl reload fail2ban
-```
-{{</ expand >}} -->
-
 You can check our docker container with `docker container inspect kubernetes-vpn.service` & get our *OpenVPN* logs with `journalctl -u kubernetes-vpn.service`.
 
 Now, get the value of the variable {{< var "vpn.serverIp" >}} with this command:
