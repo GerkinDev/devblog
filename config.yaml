@@ -74,7 +74,6 @@ taxonomies:
 
 
 sectionPagesMenu: main
-# googleAnalytics: ''
 enableRobotsTXT: true
 sitemap:
   changefreq: monthly
@@ -221,7 +220,7 @@ params:
     # email: 'mailto:your@email.com'
     # phone: ''
     # facebook: 'https://www.facebook.com/alexandre.trujilogermain/'
-    # twitter: 'https://twitter.com/nihilivin'
+    twitter: 'https://twitter.com/gerkindev'
     github: 'https://github.com/GerkinDev'
     stack-overflow: 'https://stackoverflow.com/users/4839162/alexandre-germain'
     # instagram: ''
@@ -231,7 +230,7 @@ params:
     # tumblr: ''
     linkedin: 'https://www.linkedin.com/in/alexandrejpgermain/'
     # pinterest: ''
-    # stack-exchange: ''
+    stack-exchange: 'https://meta.stackexchange.com/users/1130036/alexandre-germain'
     # telegram: ''
     # steam: ''
     # weibo: ''
@@ -264,7 +263,8 @@ params:
   share:
     - name: facebook
     - name: twitter
-      username: 'nihilivin'
+      username: 'GerkinDev'
+    - name: linkedin
   footerLinks:
     # - name: ''
     #   link: ''
