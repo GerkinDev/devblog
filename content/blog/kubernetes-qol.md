@@ -116,12 +116,20 @@ So, if you try a command that seems to not work as expected, or stay stuck, fall
 
 To install *helm*, run the following command:
 
+{{< alert theme="info">}}
+Make sure that OpenSSL is installed before proceeding.
+{{</ alert >}}
+
 ```sh
 # See https://helm.sh/docs/intro/install/
 curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 ```
 
 ## `krew`: a `kubectl` plugins manager
+
+{{< expand "References" >}}
+* [Installing krew](https://krew.sigs.k8s.io/docs/user-guide/setup/install/)
+{{</ expand >}}
 
 [*krew*](https://krew.sigs.k8s.io/) is a nice small plugin manager for your `kubectl` command. At the time of writing, it has [129 plugins available](https://krew.sigs.k8s.io/plugins/), including some pretty convinient to restart pods, login using OpenId, check the state of your cluster, and more.
 
@@ -133,10 +141,12 @@ To install *krew*, run the following: (taken from [the docs](https://krew.sigs.k
 # Install krew
 (
   set -x; cd "$(mktemp -d)" &&
-  curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/latest/download/krew.tar.gz" &&
-  tar zxvf krew.tar.gz &&
-  KREW=./krew-"$(uname | tr '[:upper:]' '[:lower:]')_$(uname -m | sed -e 's/x86_64/amd64/' -e 's/arm.*$/arm/')" &&
-  "$KREW" install krew
+  OS="$(uname | tr '[:upper:]' '[:lower:]')" &&
+  ARCH="$(uname -m | sed -e 's/x86_64/amd64/' -e 's/\(arm\)\(64\)\?.*/\1\2/' -e 's/aarch64$/arm64/')" &&
+  KREW="krew-${OS}_${ARCH}" &&
+  curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/latest/download/${KREW}.tar.gz" &&
+  tar zxvf "${KREW}.tar.gz" &&
+  ./"${KREW}" install krew
 )
 # Add it to your $PATH and reload config
 cat <<EOF | tee -a {{profileFile}}
