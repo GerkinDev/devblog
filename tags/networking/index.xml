@@ -27,7 +27,7 @@
         
         <atom:modified>Tue, 16 Feb 2021 12:06:38 +0100</atom:modified>
         <guid>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/00-vpn/</guid>
-        <description>References   How To Run OpenVPN in a Docker Container on Ubuntu 14.04 Running Docker Containers with Systemd    Because we are installing our cluster bare metal on servers exposed on the Internet, we&amp;rsquo;ll need a way to secure all of our network traffic around the critical parts of kubernetes. To do so, we&amp;rsquo;ll use OpenVPN to create a virtual secured network where all of our nodes will work.</description>
+        <description>References    &amp;nbsp;How To Run OpenVPN in a Docker Container on Ubuntu 14.04  &amp;nbsp;Running Docker Containers with Systemd    Because we are installing our cluster bare metal on servers exposed on the Internet, we&amp;rsquo;ll need a way to secure all of our network traffic around the critical parts of kubernetes. To do so, we&amp;rsquo;ll use OpenVPN to create a virtual secured network where all of our nodes will work.</description>
         
         <dc:creator>GerkinDev</dc:creator>
         
@@ -69,7 +69,7 @@
         
         <atom:modified>Tue, 16 Feb 2021 12:06:38 +0100</atom:modified>
         <guid>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/03-router/</guid>
-        <description>References   https://github.com/traefik/traefik-helm-chart/pull/157/files    Start by creating traefik required resources. You can directly use resources from the &amp;nbsp;kubernetes/traefik templates: it does not contain variables. Those are taken from &amp;nbsp;traefik docs mixed up with &amp;nbsp;this PR for kubernetes 1.19 support and schemas.
+        <description>References    &amp;nbsp;https://github.com/traefik/traefik-helm-chart/pull/157/files    Start by creating traefik required resources. You can directly use resources from the &amp;nbsp;kubernetes/traefik templates: it does not contain variables. Those are taken from &amp;nbsp;traefik docs mixed up with &amp;nbsp;this PR for kubernetes 1.19 support and schemas.
  Please look forward for &amp;nbsp;this issue in traefik about official v1.19 support.
  Namespace Definitions Rbac IngressController Services  1 2 3 4 5  # File: .</description>
         

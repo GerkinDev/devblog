@@ -15,9 +15,9 @@
 
 <script defer src="https://gerkindev.github.io/devblog/js/lazysizes.min.fb649fcae62177dfe63e67081ddceb830b5ce1f05a4184e9bbb7d87ac4b8f4e5.js"></script>
 
-<script defer src="https://gerkindev.github.io/devblog/js/helper/getParents.min.1618c696be7c98933f9a92677f518b512a74e55bdbb976b09936b4182e93181b.js"></script>
+<script defer src="https://gerkindev.github.io/devblog/js/helper/getParents.min.cd44056d552c69703dced61ae60f99166a0ddf44be93d6aa5d5127d98bf98984.js"></script>
 
-<script defer src="https://gerkindev.github.io/devblog/js/helper/fadeinout.min.efa35f4c090622130b3f4cfae6971448b5ffb61c5f0a8f21cdfd157fa712abc4.js"></script>
+<script defer src="https://gerkindev.github.io/devblog/js/helper/fadeinout.min.1551b6dbdacc77e412a26a29d3b84d2dcdc8f05c3b617433a475dc53c8872bdb.js"></script>
 
 <script defer src="https://gerkindev.github.io/devblog/js/helper/closest.min.js"></script>
   
@@ -1346,7 +1346,7 @@
 <meta property="og:type" content="website">
 <meta property="og:description" content="GerkinDev DevBlog, with some dev &amp; sysadmin tips, tricks and guides">
 
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.96.0" />
 <meta name="msapplication-TileColor" content="#fff">
 
 <meta name="theme-color" content="#fff">
@@ -1648,7 +1648,7 @@
       <div>
         <div class="summary-classic__text p2">
           
-            References   How To Run OpenVPN in a Docker Container on Ubuntu 14.04 Running Docker Containers with Systemd    Because we are installing our cluster bare metal on servers exposed on the Internet, we&rsquo;ll need a way to secure all of our network traffic around the critical parts of kubernetes. To do so, we&rsquo;ll use OpenVPN to create a virtual secured network where all of our nodes will work.
+            References    &nbsp;How To Run OpenVPN in a Docker Container on Ubuntu 14.04  &nbsp;Running Docker Containers with Systemd    Because we are installing our cluster bare metal on servers exposed on the Internet, we&rsquo;ll need a way to secure all of our network traffic around the critical parts of kubernetes. To do so, we&rsquo;ll use OpenVPN to create a virtual secured network where all of our nodes will work.
           
         </div>
       </div>
@@ -1683,7 +1683,7 @@
       <div>
         <div class="summary-classic__text p2">
           
-            References   https://docs.kublr.com/articles/kubernetes-log-audit/ https://mherman.org/blog/logging-in-kubernetes-with-elasticsearch-Kibana-fluentd/ https://kubernetes.io/docs/tasks/debug-application-cluster/audit/#log-collector-examples     Note : Even if this part is not required, you should not ignore it on dev environment and should really really REALLY not skip it for production. In fact, it can contain useful debug informations and security traces to see what is going on in your kubernetes cluster, and even on your whole server(s).
+            References    &nbsp;https://docs.kublr.com/articles/kubernetes-log-audit/  &nbsp;https://mherman.org/blog/logging-in-kubernetes-with-elasticsearch-Kibana-fluentd/  &nbsp;https://kubernetes.io/docs/tasks/debug-application-cluster/audit/#log-collector-examples     Note : Even if this part is not required, you should not ignore it on dev environment and should really really REALLY not skip it for production. In fact, it can contain useful debug informations and security traces to see what is going on in your kubernetes cluster, and even on your whole server(s).
  This tutorial will guide you to setup audit log policy, catch logs with Fluentd, cast them to elasticsearch &amp; show them using Kibana.
           
         </div>
@@ -1719,7 +1719,7 @@
       <div>
         <div class="summary-classic__text p2">
           
-            Create the cluster config file   References   How to set bind address by config file: https://stackoverflow.com/a/60391611    We are now going to configure the cluster. For the sake of traceability, this configuration won&rsquo;t be done via CLI flags, but via &nbsp;a configuration file. The path of the cluster config file will later be referenced as the 🔖 cluster.configFile ({{cluster.configFile}}), and should be inside /etc/kubernetes.
+            Create the cluster config file   References   How to set bind address by config file: &nbsp;https://stackoverflow.com/a/60391611    We are now going to configure the cluster. For the sake of traceability, this configuration won&rsquo;t be done via CLI flags, but via &nbsp;a configuration file. The path of the cluster config file will later be referenced as the 🔖 cluster.configFile ({{cluster.configFile}}), and should be inside /etc/kubernetes.
 Following &nbsp;flannel requirements, you need to use --pod-network-cidr with address 10.
           
         </div>
@@ -1755,7 +1755,7 @@ Following &nbsp;flannel requirements, you need to use --pod-network-cidr with ad
       <div>
         <div class="summary-classic__text p2">
           
-            References   https://github.com/traefik/traefik-helm-chart/pull/157/files    Start by creating traefik required resources. You can directly use resources from the &nbsp;kubernetes/traefik templates: it does not contain variables. Those are taken from &nbsp;traefik docs mixed up with &nbsp;this PR for kubernetes 1.19 support and schemas.
+            References    &nbsp;https://github.com/traefik/traefik-helm-chart/pull/157/files    Start by creating traefik required resources. You can directly use resources from the &nbsp;kubernetes/traefik templates: it does not contain variables. Those are taken from &nbsp;traefik docs mixed up with &nbsp;this PR for kubernetes 1.19 support and schemas.
  Please look forward for &nbsp;this issue in traefik about official v1.19 support.
  Namespace Definitions Rbac IngressController Services  1 2 3 4 5  # File: .
           
@@ -1828,7 +1828,7 @@ Following &nbsp;flannel requirements, you need to use --pod-network-cidr with ad
       <div>
         <div class="summary-classic__text p2">
           
-            References   Persistent Volume Dynamic Volume Provisioning Storage Classes https://www.youtube.com/watch?v=0swOh5C3OVM    As you may know, docker (and thus, kubernetes) does not persist anything by default. That means that everytime you restart a pod (container), it is in the exact same state as it was at its first execution, except for the mount points. Those mount points are real hard drive directories injected into your pod. Some apps we&rsquo;ll setup later will require to persist data, and, more generally, when you&rsquo;ll run real applications on your own, they will probably use a database or something.
+            References    &nbsp;Persistent Volume  &nbsp;Dynamic Volume Provisioning  &nbsp;Storage Classes  &nbsp;https://www.youtube.com/watch?v=0swOh5C3OVM    As you may know, docker (and thus, kubernetes) does not persist anything by default. That means that everytime you restart a pod (container), it is in the exact same state as it was at its first execution, except for the mount points. Those mount points are real hard drive directories injected into your pod.
           
         </div>
       </div>
@@ -1935,8 +1935,8 @@ Following &nbsp;flannel requirements, you need to use --pod-network-cidr with ad
       <div>
         <div class="summary-classic__text p2">
           
-            Create the realm and the client https://github.com/zufardhiyaulhaq/engineering-notes/blob/master/notes/kubernetes-keycloak-integration.md
-https://github.com/zufardhiyaulhaq/engineering-notes/blob/master/notes/kubernetes-keycloak-integration.md#integrating
+            Create the realm and the client  &nbsp;https://github.com/zufardhiyaulhaq/engineering-notes/blob/master/notes/kubernetes-keycloak-integration.md
+ &nbsp;https://github.com/zufardhiyaulhaq/engineering-notes/blob/master/notes/kubernetes-keycloak-integration.md#integrating
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  REALM_URL=&#34;https://keycloak.{{cluster.baseHostName}}/auth/realms/{{apiServer.realmName}}&#34; # Log in TOKEN_RESPONSE=&#34;$(curl \  -d &#34;grant_type=password&#34; \  -d &#34;client_id={{apiServer.clientId}}&#34; \  -d &#34;client_secret={{apiServer.clientSecret}}&#34; \  -d &#34;username=admin-user&#34; \  -d &#34;password=admin-user&#34; \  $REALM_URL/protocol/openid-connect/token)&#34; # Extract the access token ACCESS_TOKEN=&#34;$(echo &#34;$TOKEN_RESPONSE&#34; | jq &#39;.access_token&#39; -r)&#34; # Check token curl \  --user &#34;{{apiServer.
           
         </div>
@@ -1973,8 +1973,7 @@ https://github.com/zufardhiyaulhaq/engineering-notes/blob/master/notes/kubernete
         <div class="summary-classic__text p2">
           
             Now that we have our authentication service up and running, we can protect our dashboards installed in the step &nbsp;06 - Monitoring: See what is going on using our Keycloak OpenID Connect provider. Here is a diagram on how authorization will be managed:
-Traefik dashboard Kibana Kube dashboard   References   https://itnext.io/protect-kubernetes-dashboard-with-openid-connect-104b9e75e39c    Again, we are going to set up a new instance of &nbsp;louketo-proxy.
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74  apiVersion:apps/v1kind:Deploymentmetadata:name:gatekeepernamespace:kubernetes-dashboardlabels:app:kubernetes-dashboardcomponent:gatekeeperspec:replicas:1selector:matchLabels:app:kubernetes-dashboardcomponent:gatekeepertemplate:metadata:labels:app:kubernetes-dashboardcomponent:gatekeeperspec:containers:- name:keycloak-gatekeeperimage:&#34;quay.
+Traefik dashboard Kibana Kube dashboard   References    &nbsp;https://itnext.io/protect-kubernetes-dashboard-with-openid-connect-104b9e75e39c    Again, we are going to set up a new instance of &nbsp;louketo-proxy.
           
         </div>
       </div>
@@ -2072,7 +2071,7 @@ Hopefully, here comes the real huge advantage of kubernetes: it is meant to scal
         <h6 class="subtitle caption">
           <time title="Written At" dir="ltr">📅&nbsp;Nov 18, 2020 </time>
           
-          <time title="Modified At" dir="ltr"> &middot; 📝&nbsp;Feb 16, 2021 </time>
+          <time title="Modified At" dir="ltr"> &middot; 📝&nbsp;Mar 28, 2022 </time>
           
           <span title="Reading Time" dir="ltr"> &middot; ☕&nbsp;5&nbsp;min read </span>
           
@@ -2616,7 +2615,7 @@ Hopefully, here comes the real huge advantage of kubernetes: it is meant to scal
                 
             <p class="caption">
                 
-                    ©2021, All Rights Reserved
+                    ©2022, All Rights Reserved
                 
             </p>
         

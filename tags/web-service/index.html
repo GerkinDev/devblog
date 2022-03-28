@@ -15,9 +15,9 @@
 
 <script defer src="https://gerkindev.github.io/devblog/js/lazysizes.min.fb649fcae62177dfe63e67081ddceb830b5ce1f05a4184e9bbb7d87ac4b8f4e5.js"></script>
 
-<script defer src="https://gerkindev.github.io/devblog/js/helper/getParents.min.1618c696be7c98933f9a92677f518b512a74e55bdbb976b09936b4182e93181b.js"></script>
+<script defer src="https://gerkindev.github.io/devblog/js/helper/getParents.min.cd44056d552c69703dced61ae60f99166a0ddf44be93d6aa5d5127d98bf98984.js"></script>
 
-<script defer src="https://gerkindev.github.io/devblog/js/helper/fadeinout.min.efa35f4c090622130b3f4cfae6971448b5ffb61c5f0a8f21cdfd157fa712abc4.js"></script>
+<script defer src="https://gerkindev.github.io/devblog/js/helper/fadeinout.min.1551b6dbdacc77e412a26a29d3b84d2dcdc8f05c3b617433a475dc53c8872bdb.js"></script>
 
 <script defer src="https://gerkindev.github.io/devblog/js/helper/closest.min.js"></script>
   
@@ -1346,7 +1346,7 @@
 <meta property="og:type" content="website">
 <meta property="og:description" content="GerkinDev DevBlog, with some dev &amp; sysadmin tips, tricks and guides">
 
-<meta name="generator" content="Hugo 0.80.0" />
+<meta name="generator" content="Hugo 0.96.0" />
 <meta name="msapplication-TileColor" content="#fff">
 
 <meta name="theme-color" content="#fff">
@@ -1668,7 +1668,7 @@
       <div>
         <div class="summary-classic__text p2">
           
-            References   https://github.com/traefik/traefik-helm-chart/pull/157/files    Start by creating traefik required resources. You can directly use resources from the &nbsp;kubernetes/traefik templates: it does not contain variables. Those are taken from &nbsp;traefik docs mixed up with &nbsp;this PR for kubernetes 1.19 support and schemas.
+            References    &nbsp;https://github.com/traefik/traefik-helm-chart/pull/157/files    Start by creating traefik required resources. You can directly use resources from the &nbsp;kubernetes/traefik templates: it does not contain variables. Those are taken from &nbsp;traefik docs mixed up with &nbsp;this PR for kubernetes 1.19 support and schemas.
  Please look forward for &nbsp;this issue in traefik about official v1.19 support.
  Namespace Definitions Rbac IngressController Services  1 2 3 4 5  # File: .
           
@@ -1778,8 +1778,7 @@
         <div class="summary-classic__text p2">
           
             Now that we have our authentication service up and running, we can protect our dashboards installed in the step &nbsp;06 - Monitoring: See what is going on using our Keycloak OpenID Connect provider. Here is a diagram on how authorization will be managed:
-Traefik dashboard Kibana Kube dashboard   References   https://itnext.io/protect-kubernetes-dashboard-with-openid-connect-104b9e75e39c    Again, we are going to set up a new instance of &nbsp;louketo-proxy.
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74  apiVersion:apps/v1kind:Deploymentmetadata:name:gatekeepernamespace:kubernetes-dashboardlabels:app:kubernetes-dashboardcomponent:gatekeeperspec:replicas:1selector:matchLabels:app:kubernetes-dashboardcomponent:gatekeepertemplate:metadata:labels:app:kubernetes-dashboardcomponent:gatekeeperspec:containers:- name:keycloak-gatekeeperimage:&#34;quay.
+Traefik dashboard Kibana Kube dashboard   References    &nbsp;https://itnext.io/protect-kubernetes-dashboard-with-openid-connect-104b9e75e39c    Again, we are going to set up a new instance of &nbsp;louketo-proxy.
           
         </div>
       </div>
@@ -2188,7 +2187,7 @@ Traefik dashboard Kibana Kube dashboard   References   https://itnext.io/protect
                 
             <p class="caption">
                 
-                    ©2021, All Rights Reserved
+                    ©2022, All Rights Reserved
                 
             </p>
         

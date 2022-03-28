@@ -27,7 +27,7 @@
         
         <atom:modified>Tue, 16 Feb 2021 12:06:38 +0100</atom:modified>
         <guid>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/03-router/</guid>
-        <description>References   https://github.com/traefik/traefik-helm-chart/pull/157/files    Start by creating traefik required resources. You can directly use resources from the &amp;nbsp;kubernetes/traefik templates: it does not contain variables. Those are taken from &amp;nbsp;traefik docs mixed up with &amp;nbsp;this PR for kubernetes 1.19 support and schemas.
+        <description>References    &amp;nbsp;https://github.com/traefik/traefik-helm-chart/pull/157/files    Start by creating traefik required resources. You can directly use resources from the &amp;nbsp;kubernetes/traefik templates: it does not contain variables. Those are taken from &amp;nbsp;traefik docs mixed up with &amp;nbsp;this PR for kubernetes 1.19 support and schemas.
  Please look forward for &amp;nbsp;this issue in traefik about official v1.19 support.
  Namespace Definitions Rbac IngressController Services  1 2 3 4 5  # File: .</description>
         
@@ -174,8 +174,7 @@
         <atom:modified>Mon, 01 Feb 2021 16:42:59 +0100</atom:modified>
         <guid>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/09-safe-monitoring/</guid>
         <description>Now that we have our authentication service up and running, we can protect our dashboards installed in the step &amp;nbsp;06 - Monitoring: See what is going on using our Keycloak OpenID Connect provider. Here is a diagram on how authorization will be managed:
-Traefik dashboard Kibana Kube dashboard   References   https://itnext.io/protect-kubernetes-dashboard-with-openid-connect-104b9e75e39c    Again, we are going to set up a new instance of &amp;nbsp;louketo-proxy.
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74  apiVersion:apps/v1kind:Deploymentmetadata:name:gatekeepernamespace:kubernetes-dashboardlabels:app:kubernetes-dashboardcomponent:gatekeeperspec:replicas:1selector:matchLabels:app:kubernetes-dashboardcomponent:gatekeepertemplate:metadata:labels:app:kubernetes-dashboardcomponent:gatekeeperspec:containers:- name:keycloak-gatekeeperimage:&amp;#34;quay.</description>
+Traefik dashboard Kibana Kube dashboard   References    &amp;nbsp;https://itnext.io/protect-kubernetes-dashboard-with-openid-connect-104b9e75e39c    Again, we are going to set up a new instance of &amp;nbsp;louketo-proxy.</description>
         
         <dc:creator>GerkinDev</dc:creator>
         
