@@ -10,7 +10,6 @@
         {{ $scratch.Set "label" "See on parametric domain" }}
     {{- else -}}
         {{ $parsedUrl := urls.Parse $href }}
-        {{- printf "<!-- %s -->" $parsedUrl.Host | safeHTML -}}
         {{ $path := lower $parsedUrl.Path }}
         {{ if in $parsedUrl.Host "wikipedia.org" }}
             {{ $scratch.Set "type" "wikipedia" }}
