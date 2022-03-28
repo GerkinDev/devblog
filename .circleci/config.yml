@@ -22,7 +22,7 @@ jobs:
             git checkout -t origin/docs
             rm -r *
       - run: 
-          name: Update repo clone
+          name: Publish new site
           command: |
             cd devblog/deploy
             mv ../public/* .
