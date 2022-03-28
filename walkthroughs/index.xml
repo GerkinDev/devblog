@@ -11,12 +11,10 @@
     <description>Recent content in Walkthroughs on GerkinDev Devblog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>©{year}, All Rights Reserved</copyright>
+    <copyright>©2022, All Rights Reserved</copyright>
     <lastBuildDate>Tue, 17 Nov 2020 20:36:00 +0100</lastBuildDate>
     
         <atom:link href="https://gerkindev.github.io/devblog/walkthroughs/index.xml" rel="self" type="application/rss+xml" />
-    
-    
     
 
       
@@ -27,7 +25,7 @@
         
         <atom:modified>Mon, 01 Feb 2021 19:47:58 +0100</atom:modified>
         <guid>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/</guid>
-        <description>Keep in mind that some things may not work out of the box, and you&amp;rsquo;ll probably require a lot of try &amp;amp; errors. Kubernetes is complex. Also, I&amp;rsquo;m not a power user of kubernetes, so there may be things that can be done in a better way. Hey, I did all of this by try &amp;amp; error too. What are the goals This guide will walk you through the process of creating a self-hosted kubernetes cluster with the following features:</description>
+        <description>Keep in mind that some things may not work out of the box, and you&amp;rsquo;ll probably require a lot of try &amp;amp; errors. Kubernetes is complex. Also, I&amp;rsquo;m not a power user of kubernetes, so there may be things that can be done in a better way. Hey, I did all of this by try &amp;amp; error too.  What are the goals This guide will walk you through the process of creating a self-hosted kubernetes cluster with the following features:</description>
         
         <dc:creator>GerkinDev</dc:creator>
         
