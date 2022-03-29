@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" 
+  xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+  xmlns:dc="http://purl.org/dc/elements/1.1/" 
+  xmlns:atom="http://www.w3.org/2005/Atom" 
+  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
+  xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>Front-end on GerkinDev Devblog</title>
+    <link>https://gerkindev.github.io/devblog/categories/front-end/</link>
+    <description>Recent content in Front-end on GerkinDev Devblog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>©2022, All Rights Reserved</copyright>
+    <lastBuildDate>Sat, 15 Jan 2022 10:00:00 +0100</lastBuildDate>
+    
+        <atom:link href="https://gerkindev.github.io/devblog/categories/front-end/index.xml" rel="self" type="application/rss+xml" />
+    
+
+      
+      <item>
+        <title>A quick glance at Blazor WebAssembly</title>
+        <link>https://gerkindev.github.io/devblog/blog/blazor/</link>
+        <pubDate>Sat, 15 Jan 2022 10:00:00 +0100</pubDate>
+        
+        <atom:modified>Thu, 13 Jan 2022 18:10:55 +0100</atom:modified>
+        <guid>https://gerkindev.github.io/devblog/blog/blazor/</guid>
+        <description>&lt;p&gt;In 2018, &lt;em&gt;👿 Microsoft&lt;/em&gt; released its new framework, &lt;em&gt;Blazor&lt;/em&gt;, which tease MVVM capabilities through component-oriented &lt;em&gt;AJAX&lt;/em&gt; or &lt;em&gt;WebAssembly&lt;/em&gt; application builds. Near 4 years later (and with many improvements &amp;amp; versions), what is the current state of &lt;em&gt;Blazor&lt;/em&gt;?&lt;/p&gt;
+&lt;p&gt;In this article, I&amp;rsquo;ll share with you my experiences with &lt;em&gt;Blazor WebAssembly&lt;/em&gt;, the pros, the cons, the whatnot.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;TL;DR;&lt;/strong&gt; If you&amp;rsquo;re not already a fluent &lt;em&gt;ASP.NET&lt;/em&gt; developer, I&amp;rsquo;m not sure that you want to use it. If you are, then maybe &lt;em&gt;Blazor&lt;/em&gt; might be an interesting choice.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+        
+        <dc:creator>GerkinDev</dc:creator>
+        
+        
+        
+        
+          
+            
+              <category>WASM</category>
+            
+          
+            
+              <category>Blazor</category>
+            
+          
+            
+              <category>CSharp</category>
+            
+          
+            
+              <category>AspNetCore</category>
+            
+          
+        
+        
+          
+            
+              <category>Front-end</category>
+            
+          
+        
+        
+      </item>
+      
+
+    
+  </channel>
+</rss>

@@ -12,11 +12,29 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>©2022, All Rights Reserved</copyright>
-    <lastBuildDate>Sun, 22 Nov 2020 04:03:47 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 15 Jan 2022 10:00:00 +0100</lastBuildDate>
     
         <atom:link href="https://gerkindev.github.io/devblog/categories/index.xml" rel="self" type="application/rss+xml" />
     
 
+      
+      <item>
+        <title>Front-end</title>
+        <link>https://gerkindev.github.io/devblog/categories/front-end/</link>
+        <pubDate>Sat, 15 Jan 2022 10:00:00 +0100</pubDate>
+        
+        
+        <guid>https://gerkindev.github.io/devblog/categories/front-end/</guid>
+        <description></description>
+        
+        <dc:creator>GerkinDev</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
       
       <item>
         <title>Kubernetes</title>

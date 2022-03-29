@@ -12,11 +12,83 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>©2022, All Rights Reserved</copyright>
-    <lastBuildDate>Tue, 02 Feb 2021 00:16:48 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 15 Jan 2022 10:00:00 +0100</lastBuildDate>
     
         <atom:link href="https://gerkindev.github.io/devblog/tags/index.xml" rel="self" type="application/rss+xml" />
     
 
+      
+      <item>
+        <title>AspNetCore</title>
+        <link>https://gerkindev.github.io/devblog/tags/aspnetcore/</link>
+        <pubDate>Sat, 15 Jan 2022 10:00:00 +0100</pubDate>
+        
+        
+        <guid>https://gerkindev.github.io/devblog/tags/aspnetcore/</guid>
+        <description></description>
+        
+        <dc:creator>GerkinDev</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>Blazor</title>
+        <link>https://gerkindev.github.io/devblog/tags/blazor/</link>
+        <pubDate>Sat, 15 Jan 2022 10:00:00 +0100</pubDate>
+        
+        
+        <guid>https://gerkindev.github.io/devblog/tags/blazor/</guid>
+        <description></description>
+        
+        <dc:creator>GerkinDev</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>CSharp</title>
+        <link>https://gerkindev.github.io/devblog/tags/csharp/</link>
+        <pubDate>Sat, 15 Jan 2022 10:00:00 +0100</pubDate>
+        
+        
+        <guid>https://gerkindev.github.io/devblog/tags/csharp/</guid>
+        <description></description>
+        
+        <dc:creator>GerkinDev</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+      <item>
+        <title>WASM</title>
+        <link>https://gerkindev.github.io/devblog/tags/wasm/</link>
+        <pubDate>Sat, 15 Jan 2022 10:00:00 +0100</pubDate>
+        
+        
+        <guid>https://gerkindev.github.io/devblog/tags/wasm/</guid>
+        <description></description>
+        
+        <dc:creator>GerkinDev</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
       
       <item>
         <title>Firewall</title>
