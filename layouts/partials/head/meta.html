@@ -20,48 +20,20 @@
 {{ with $.Param "contact" }}<meta name="contact" content="{{ . }}">{{ end }}
 <meta property="og:site_name" content="{{ .Site.Title }}">
 <meta property="og:title" content="{{ .Title }}">
+<meta property="twitter:title" content="{{ .Title }}">
 <meta property="og:url" content="{{ .Permalink | absLangURL }}">
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
-<meta property="og:description" content="{{ $.Param "description" }}">
-{{ if .Params.meta_image }}
-  {{ with .Params.meta_image }}
-    {{ $image := partial "utils/convert-image" (dict
-      "imageUrl" .
-      "targetSize" "1200x628"
-    )}}
-    <meta property="og:image" content="{{ $image | absURL }}">
-    <meta property="og:image:url" content="{{ $image | absURL }}">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:app:name:iphone" content="{{ $.Site.Title }}">
-    <meta property="twitter:title" content="{{ $.Param "title" }}">
-    <meta property="twitter:description" content="{{ $.Param "description" }}">
-  {{ end }}
-{{ else if .Params.image }}
-  {{ with .Params.image }}
-    {{ $image := partial "utils/convert-image" (dict
-      "imageUrl" .
-      "targetSize" "1200x628"
-    )}}
-    <meta property="og:image" content="{{ $image | absURL }}">
-    <meta property="og:image:url" content="{{ $image | absURL }}">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:app:name:iphone" content="{{ $.Site.Title }}">
-    <meta property="twitter:title" content="{{ $.Param "title" }}">
-    <meta property="twitter:description" content="{{ $.Param "description" }}">
-  {{ end }}
-{{ else if $.Param "meta_image" }}
-  {{ with $.Param "meta_image" }}
-    {{ $image := partial "utils/convert-image" (dict
-      "imageUrl" .
-      "targetSize" "1200x628"
-    )}}
-    <meta property="og:image" content="{{ $image | absURL }}">
-    <meta property="og:image:url" content="{{ $image | absURL }}">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:app:name:iphone" content="{{ $.Site.Title }}">
-    <meta property="twitter:title" content="{{ $.Param "title" }}">
-    <meta property="twitter:description" content="{{ $.Param "description" }}">
-  {{ end }}
+<meta name="twitter:app:name:iphone" content="{{ $.Site.Title }}">
+<meta property="og:description" content="{{ $.Param "description" | default $.Description | default $.Summary }}">
+<meta property="twitter:description" content="{{ $.Param "description" | default $.Description | default $.Summary }}">
+{{ with .Params.meta_image | default .Params.image | default ($.Param "meta_image") }}
+  {{ $image := partial "utils/convert-image" (dict
+    "imageUrl" .
+    "targetSize" "1200x628"
+  )}}
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="{{ $image | absURL }}">
+  <meta property="og:image:url" content="{{ $image | absURL }}">
 {{ end }}
 {{ hugo.Generator }}
 <meta name="msapplication-TileColor" content="{{ $.Scratch.Get "themeTitleColor" | default "#fff" }}">
