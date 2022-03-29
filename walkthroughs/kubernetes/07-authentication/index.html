@@ -1342,7 +1342,7 @@
 <meta name="keywords" content="Kubernetes,Sysadmin,DevOps,Web service,Security,Authentication">
 
 <meta name="created" content="2020-11-16T02:35:47&#43;0100">
-<meta name="modified" content="2021-02-16T12:06:38&#43;0100">
+<meta name="modified" content="2022-03-29T12:42:24&#43;0200">
 <meta property="article:published_time" content="2020-11-16T02:35:47&#43;0100">
 
 <meta name="author" content="GerkinDev">
@@ -1391,7 +1391,7 @@
     "@type": "WebPage",
     "headline": "Setup cluster's authentication",
     "datePublished": "2020-11-16T02:35:47+01:00",
-    "dateModified": "2021-02-16T12:06:38+01:00",
+    "dateModified": "2022-03-29T12:42:24+02:00",
     "url" : "https://gerkindev.github.io/devblog/walkthroughs/kubernetes/07-authentication/",
     "description": "Here is a graph of the RBAC setup we are going to implement: 1. Setup keycloak We\u0026rsquo;ll use keycloak to proxy our authentication for all monitors, using a single …",
     "keywords": ["Kubernetes","Sysadmin","DevOps","Web service","Security","Authentication"],
@@ -1424,7 +1424,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/07-authentication/" /><meta property="article:section" content="walkthroughs" />
 <meta property="article:published_time" content="2020-11-16T02:35:47+01:00" />
-<meta property="article:modified_time" content="2021-02-16T12:06:38+01:00" />
+<meta property="article:modified_time" content="2022-03-29T12:42:24+02:00" />
 
 
     <meta name="twitter:card" content="summary"/>
@@ -1480,19 +1480,23 @@
       <table class="legend">
         <tbody>
           <tr>
-            <td>:link:</td>
-            <td>An internal link in this guide</td>
+            <td><i class="fas fa-link"></i></td>
+            <td>A link to a page of this blog</td>
           </tr>
           <tr>
-            <td>:clipboard:</td>
+            <td><i class="fas fa-anchor"></i></td>
+            <td>A link to a section of this page</td>
+          </tr>
+          <tr>
+            <td><i class="fas fa-clipboard-list"></i></td>
             <td>A link to a template of this guide. Templates are files in which you should replace your variables</td>
           </tr>
           <tr>
-            <td>:bookmark:</td>
+            <td><i class="fas fa-bookmark"></i></td>
             <td>A variable</td>
           </tr>
           <tr>
-            <td>📖</td>
+            <td><i class="fas fa-book-open"></i></td>
             <td>A link to an external tool documentation</td>
           </tr>
         </tbody>
@@ -1736,13 +1740,13 @@
   <time class="single__info" title="Written At">📅&nbsp;Nov 16, 2020 </time>
 
   
-    &nbsp;&middot;&nbsp; <time class="single__info" title="Modified At"> 📝&nbsp;Feb 16, 2021 </time> 
+    &nbsp;&middot;&nbsp; <time class="single__info" title="Modified At"> 📝&nbsp;Mar 29, 2022 </time> 
   
 
   
   
   
-    via commit&nbsp;<a href="https://github.com/GerkinDev/devblog/commit/0a6b2c92a587ecc704887f33e271483634185ee3" target="_blank"><code>0a6b2c9</code> (<em>feat: update the bare-metal kubernetes walkthrough</em>) by GerkinDev</a>
+    via commit&nbsp;<a href="https://github.com/GerkinDev/devblog/commit/49ebe76e19bddd4267f8b7b1b1ff525b3ed1dc45" target="_blank"><code>49ebe76</code> (<em>feat: improve links icons, better cross references</em>) by Gerkin</a>
   
 
   &nbsp;&middot;&nbsp; <span class="single__info" title="Reading Time"> ☕&nbsp;9&nbsp;min read </span>
@@ -1897,195 +1901,85 @@
 
 
 
-
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://kubernetes.github.io/ingress-nginx/examples/auth/oauth-external-auth/"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on kubernetes.github.io"></i>&nbsp;https://kubernetes.github.io/ingress-nginx/examples/auth/oauth-external-auth/</a></li>
+	
+	
+	
+	
+	<a
+		href="https://kubernetes.github.io/ingress-nginx/examples/auth/oauth-external-auth/" title="See on kubernetes.github.io" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;<i>
+External OAUTH Authentication - NGINX Ingress Controller</i></a></li>
 <li>
 
 
 
 
 
-
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://itnext.io/protect-kubernetes-dashboard-with-openid-connect-104b9e75e39c"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on itnext.io"></i>&nbsp;https://itnext.io/protect-kubernetes-dashboard-with-openid-connect-104b9e75e39c</a></li>
+	
+	
+	
+	
+	<a
+		href="https://itnext.io/protect-kubernetes-dashboard-with-openid-connect-104b9e75e39c" title="See on itnext.io" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;<i>
+Protect Kubernetes Dashboard with OpenID Connect | by Hidetake Iwata | ITNEXT</i></a></li>
 <li>
 
 
 
 
 
-
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://geek-cookbook.funkypenguin.co.nz/ha-docker-swarm/traefik-forward-auth/keycloak/"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on geek-cookbook.funkypenguin.co.nz"></i>&nbsp;https://geek-cookbook.funkypenguin.co.nz/ha-docker-swarm/traefik-forward-auth/keycloak/</a></li>
+	
+	
+	
+	
+	<a
+		href="https://geek-cookbook.funkypenguin.co.nz/ha-docker-swarm/traefik-forward-auth/keycloak/" title="See on geek-cookbook.funkypenguin.co.nz" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;<i>
+KeyCloak - Funky Penguin's Geek Cookbook</i></a></li>
 <li>
 
 
 
 
 
+	
+	
+	
+	
+	<a
+		href="https://medium.com/docker-hacks/how-to-apply-authentication-to-any-web-service-in-15-minutes-using-keycloak-and-keycloak-proxy-e4dd88bc1cd5" title="See on medium.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;<i>
+How to apply Authentication to any Web Service in 15 Minutes using Keycloak and Keycloak Proxy | by Ivan Bütler | Docker Hacks | Medium</i></a></li>
+<li>
 
 
 
 
-        
-        
-            
-            
-        
-    
 
-
-
-<a
-    href="https://medium.com/docker-hacks/how-to-apply-authentication-to-any-web-service-in-15-minutes-using-keycloak-and-keycloak-proxy-e4dd88bc1cd5"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on medium.com"></i>&nbsp;https://medium.com/docker-hacks/how-to-apply-authentication-to-any-web-service-in-15-minutes-using-keycloak-and-keycloak-proxy-e4dd88bc1cd5</a></li>
+	
+	
+	
+	
+	<a
+		href="https://www.openshift.com/blog/adding-authentication-to-your-kubernetes-web-applications-with-keycloak" title="See on www.openshift.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;<i>
+Adding authentication to your Kubernetes Web applications with Keycloak</i></a></li>
 </ul>
 
   </div>
 </div>
-<p>
-
-
-
-
-
-
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://www.openshift.com/blog/adding-authentication-to-your-kubernetes-web-applications-with-keycloak"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on www.openshift.com"></i>&nbsp;https://www.openshift.com/blog/adding-authentication-to-your-kubernetes-web-applications-with-keycloak</a></p>
 <p>Start by installing <em>Keycloak</em> via the 
 
 
 
 
 
-
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://hub.helm.sh/charts/codecentric/keycloak"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on hub.helm.sh"></i>&nbsp;📚 <em>Helm</em> chart</a> &amp; expose it, using following templates:</p>
+	
+	
+	
+	<a
+		href="https://hub.helm.sh/charts/codecentric/keycloak" title="See on hub.helm.sh" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;<em>Helm</em> chart</a> &amp; expose it, using following templates:</p>
 <ul>
-<li>
-
-
-
-
-
-
-
-
-
-        
-        
-    
-    
-        
-            
-        
-    
-
-
-
-
-<a
-    href="./kubernetes/authentication/01-KeycloakChartValues.yaml"
-    
-     target="_blank" rel="noopener noreferrer"><i class="far fa-file-alt" title="See the resource on this site"></i>&nbsp;kubernetes/authentication/01-KeycloakChartValues.yaml</a></li>
-<li>
-
-
-
-
-
-
-
-
-
-        
-        
-    
-    
-        
-            
-        
-    
-
-
-
-
-<a
-    href="./kubernetes/authentication/02-PublicRoute.yaml"
-    
-     target="_blank" rel="noopener noreferrer"><i class="far fa-file-alt" title="See the resource on this site"></i>&nbsp;kubernetes/authentication/02-PublicRoute.yaml</a></li>
+<li><a
+		href="#included-file-./kubernetes/authentication/01-keycloakchartvalues.yaml" title="Go to section"><i class="fas fa-anchor"></i>&nbsp;kubernetes/authentication/01-KeycloakChartValues.yaml</a></li>
+<li><a
+		href="#included-file-./kubernetes/authentication/02-publicroute.yaml" title="Go to section"><i class="fas fa-anchor"></i>&nbsp;kubernetes/authentication/02-PublicRoute.yaml</a></li>
 </ul>
 <p>
 
@@ -2099,7 +1993,7 @@
 
 
 <!-- Include code file `./kubernetes/authentication/01-KeycloakChartValues.yaml` with lang `yaml` & label `./kubernetes/authentication/01-KeycloakChartValues.yaml` -->
-<section class="included-file" data-file="./kubernetes/authentication/01-KeycloakChartValues.yaml"><div class="highlight"><div class="chroma">
+<section class="included-file" data-file="./kubernetes/authentication/01-KeycloakChartValues.yaml" data-label="./kubernetes/authentication/01-KeycloakChartValues.yaml" id="included-file-./kubernetes/authentication/01-keycloakchartvalues.yaml"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -2123,7 +2017,7 @@
 </span><span class="lnt">20
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml:./kubernetes/authentication/01-KeycloakChartValues.yaml" data-lang="yaml:./kubernetes/authentication/01-KeycloakChartValues.yaml"><span class="line"><span class="cl"><span class="nt">extraEnv</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">extraEnv</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
 </span></span></span><span class="line"><span class="cl"><span class="sd">  - name: PROXY_ADDRESS_FORWARDING
 </span></span></span><span class="line"><span class="cl"><span class="sd">    value: &#34;true&#34;
 </span></span></span><span class="line"><span class="cl"><span class="sd">  - name: KEYCLOAK_USER
@@ -2158,7 +2052,7 @@
 
 
 <!-- Include code file `./kubernetes/authentication/02-PublicRoute.yaml` with lang `yaml` & label `./kubernetes/authentication/02-PublicRoute.yaml` -->
-<section class="included-file" data-file="./kubernetes/authentication/02-PublicRoute.yaml"><div class="highlight"><div class="chroma">
+<section class="included-file" data-file="./kubernetes/authentication/02-PublicRoute.yaml" data-label="./kubernetes/authentication/02-PublicRoute.yaml" id="included-file-./kubernetes/authentication/02-publicroute.yaml"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -2180,7 +2074,7 @@
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml:./kubernetes/authentication/02-PublicRoute.yaml" data-lang="yaml:./kubernetes/authentication/02-PublicRoute.yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">traefik.containo.us/v1alpha1</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">traefik.containo.us/v1alpha1</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">IngressRoute</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">public-route</span><span class="w">
@@ -2202,32 +2096,8 @@
 </div>
 </div></section>
 <!-- End include code file `./kubernetes/authentication/02-PublicRoute.yaml` with lang `yaml` & label `./kubernetes/authentication/02-PublicRoute.yaml` --></p>
-<p>Note that the template 
-
-
-
-
-
-
-
-
-
-        
-        
-    
-    
-        
-            
-        
-    
-
-
-
-
-<a
-    href="./kubernetes/authentication/01-KeycloakChartValues.yaml"
-    
-     target="_blank" rel="noopener noreferrer"><i class="far fa-file-alt" title="See the resource on this site"></i>&nbsp;<code>kubernetes/authentication/01-KeycloakChartValues.yaml</code></a> contains the bare minimum settings for the keycloak chart with your route. You <strong>should</strong> tweak them to match your setup &amp; security requirements. 
+<p>Note that the template <a
+		href="#included-file-./kubernetes/authentication/01-keycloakchartvalues.yaml" title="Go to section"><i class="fas fa-anchor"></i>&nbsp;kubernetes/authentication/01-KeycloakChartValues.yaml</a> contains the bare minimum settings for the keycloak chart with your route. You <strong>should</strong> tweak them to match your setup &amp; security requirements. 
 
 
     
@@ -2235,23 +2105,11 @@
 
 
 
-
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://hub.helm.sh/charts/codecentric/keycloak"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-book" title="See on hub.helm.sh"></i>&nbsp;RTFM the chart</a></p>
+	
+	
+	
+	<a
+		href="https://hub.helm.sh/charts/codecentric/keycloak" title="See on hub.helm.sh" target="_blank" rel="noopener noreferrer"><i class="fas fa-book-open"></i>&nbsp;RTFM the chart</a></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -2290,22 +2148,13 @@
 
 
 
-
-
-
-
-        
-        
-            
-        
-    
-
-
-
-<a
-    href="https://stackoverflow.com/a/54692872"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fab fa-stack-overflow" title="See on StackOverflow"></i>&nbsp;https://stackoverflow.com/a/54692872</a></li>
+	
+	
+	
+	
+	<a
+		href="https://stackoverflow.com/a/54692872" title="See on stackoverflow.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-stack-overflow"></i>&nbsp;<i>
+Kubernetes service in HostAliases - Stack Overflow</i></a></li>
 </ul>
 
   </div>
@@ -2350,8 +2199,8 @@
 <h3 id="13-open-keycloak-admin-panel">1.3. Open keycloak admin panel</h3>
 <p>Log in to your keycloak admin dashboard by reaching <code>https://keycloak.{{cluster.baseHostName}}/auth/admin/</code>.</p>
 <ul>
-<li>Username: 🔖 <code>keycloak.adminUser</code> (<code>{{keycloak.adminUser}}</code>)</li>
-<li>Password: 🔖 <code>keycloak.adminPassword</code> (<code>{{keycloak.adminPassword}}</code>)</li>
+<li>Username: <i class="fas fa-bookmark"></i> <code>{{keycloak.adminUser}}</code></li>
+<li>Password: <i class="fas fa-bookmark"></i> <code>{{keycloak.adminPassword}}</code></li>
 </ul>
 <div class="alert alert-danger" role="alert" data-dir="ltr">At your first login, <strong>change your password</strong> !</div>
 <h3 id="14-configure-keycloak">1.4. Configure keycloak</h3>
@@ -2378,24 +2227,11 @@
 
 
 
-
-
-
-
-        
-        
-            
-                
-            
-        
-    
-
-
-
-<a
-    href="https://github.com/gogatekeeper/gatekeeper"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fab fa-github" title="See on GitHub"></i>&nbsp;<code>gogatekeeper/gatekeeper</code></a>.</p>
+	
+	
+	
+	<a
+		href="https://github.com/gogatekeeper/gatekeeper" title="See on GitHub" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>&nbsp;gogatekeeper/gatekeeper</a>.</p>
 <h5 id="1431-create-scopes">1.4.3.1. Create scopes</h5>
 <p>Since our apps <code>Test app</code>, <code>kibana</code>, <code>kube dashboard</code> &amp; <code>traefik</code> will all rely on the same information (<code>group</code>), we can get our setup easier by adding a shared <code>Client scope</code>. Go to <em><code>Master</code> realm</em> &gt; <em><code>Configure</code></em> &gt; <em><code>Client Scopes</code> section</em>. Here, check if there is a client scope named <code>groups</code> (I didn&rsquo;t, but just in case).</p>
 <p>If not, create one named <code>groups</code>, then save it. If there is one, check if the following config matches or create a new one.</p>
@@ -2403,12 +2239,12 @@
 <p><img src="./_assets/screen-client-scopes-mappers-group.png" alt="Groups mapper" /></p>
 <p>Once done, you <strong>may</strong> add it to the default <em>client scopes</em>.  Go to <em><code>Master</code> realm</em> &gt; <em><code>Configure</code></em> &gt; <em><code>Client Scopes</code> section</em> &gt; <em><code>Default Client Scopes</code> tab</em>, &amp; add our <code>groups</code> to the assigned column. You should probably not set it as <code>Optional</code>.</p>
 <h5 id="1432-create-client">1.4.3.2. Create client</h5>
-<p>We are going to create our authentication for the app 🔖 <code>nginxTest.clientId</code> (<code>{{nginxTest.clientId}}</code>) (for instance, <code>nginx-test</code>), with url <code>https://test.{{cluster.baseHostName}}</code>). Fill the <code>Client ID</code> with <code>{{nginxTest.clientId}}</code>.</p>
+<p>We are going to create our authentication for the app <i class="fas fa-bookmark"></i> <code>{{nginxTest.clientId}}</code> (for instance, <code>nginx-test</code>), with url <code>https://test.{{cluster.baseHostName}}</code>). Fill the <code>Client ID</code> with <code>{{nginxTest.clientId}}</code>.</p>
 <p>Since this application will be logged in through a proxy (we&rsquo;ll get back to that part next in the dashboard setups), set its <code>Access Type</code> to <code>confidential</code>.</p>
 <p>Set the valid redirect URIs to <code>https://test.{{cluster.baseHostName}}/oauth/callback</code> (the <code>/oauth/callback</code> part is required by the gatekeeper).</p>
-<p>Then, we need to add an audience. This field is required by gatekeeper to check our key. Go to the <em><code>Mappers</code> tab</em>, &amp; create a new mapper. Name it, for instance, <code>audience</code>, of <code>Mapper Type</code> <code>Audience</code>, &amp; set the <code>Included Client Audience</code> to our 🔖 <code>nginxTest.clientId</code> (<code>{{nginxTest.clientId}}</code>). Save it.</p>
-<p>After this, check our <em>client scopes</em> by going to the <em><code>Client Scopes</code> tab</em>. In the <em><code>Setup</code> sub-tab</em>, make sure that our <code>groups</code> <em>client scope</em> is <strong>assigned</strong>. Then, you can test our setup ! Go to the <em><code>Evaluate</code> sub-tab</em>, pick the <code>User</code> you want to check, click <code>Evaluate</code> then go to <em><code>Generated Access Token</code> sub-sub-tab</em>. It should contain a key <code>groups</code> with all our user&rsquo;s groups, prefixed with a <code>/</code>, and a key <code>aud</code> with at least our 🔖 <code>{{nginxTest.clientId}}</code>. If its okay, we are good to go !</p>
-<p>And, finally, go to the <em><code>Credentials</code> tab</em> &amp; get the secret. It will be used as 🔖 <code>{{nginxTest.clientSecret}}</code>.</p>
+<p>Then, we need to add an audience. This field is required by gatekeeper to check our key. Go to the <em><code>Mappers</code> tab</em>, &amp; create a new mapper. Name it, for instance, <code>audience</code>, of <code>Mapper Type</code> <code>Audience</code>, &amp; set the <code>Included Client Audience</code> to our <i class="fas fa-bookmark"></i> <code>{{nginxTest.clientId}}</code>. Save it.</p>
+<p>After this, check our <em>client scopes</em> by going to the <em><code>Client Scopes</code> tab</em>. In the <em><code>Setup</code> sub-tab</em>, make sure that our <code>groups</code> <em>client scope</em> is <strong>assigned</strong>. Then, you can test our setup ! Go to the <em><code>Evaluate</code> sub-tab</em>, pick the <code>User</code> you want to check, click <code>Evaluate</code> then go to <em><code>Generated Access Token</code> sub-sub-tab</em>. It should contain a key <code>groups</code> with all our user&rsquo;s groups, prefixed with a <code>/</code>, and a key <code>aud</code> with at least our <i class="fas fa-bookmark"></i> <code>{{nginxTest.clientId}}</code>. If its okay, we are good to go !</p>
+<p>And, finally, go to the <em><code>Credentials</code> tab</em> &amp; get the secret. It will be used as <i class="fas fa-bookmark"></i> <code>{{nginxTest.clientSecret}}</code>.</p>
 <p>Other clients protected by our gatekeeper will be very similar.</p>
 <h2 id="2-setup-our-test-application-protected-by-authentication">2. Setup our test application protected by authentication</h2>
 <div class="expand">
@@ -2426,54 +2262,20 @@
 
 
 
-
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://www.openshift.com/blog/adding-authentication-to-your-kubernetes-web-applications-with-keycloak"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on www.openshift.com"></i>&nbsp;https://www.openshift.com/blog/adding-authentication-to-your-kubernetes-web-applications-with-keycloak</a></li>
+	
+	
+	
+	
+	<a
+		href="https://www.openshift.com/blog/adding-authentication-to-your-kubernetes-web-applications-with-keycloak" title="See on www.openshift.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;<i>
+Adding authentication to your Kubernetes Web applications with Keycloak</i></a></li>
 </ul>
 
   </div>
 </div>
 <p>We&rsquo;ll start with the simplest of our cases: the <code>nginx-test</code> app. This will allow us to get used to keycloak for our authorization mechanism. We&rsquo;ll proxy a simple nginx default instance behind our authentication proxy.</p>
-<p>Look at the 
-
-
-
-
-
-
-
-
-
-        
-        
-    
-    
-        
-            
-        
-    
-
-
-
-
-<a
-    href="./kubernetes/11-NginxTest.yaml"
-    
-     target="_blank" rel="noopener noreferrer"><i class="far fa-file-alt" title="See the resource on this site"></i>&nbsp;11-TestNginx.yaml</a> template.</p>
+<p>Look at the <a
+		href="#included-file-./kubernetes/11-nginxtest.yaml" title="Go to section"><i class="fas fa-anchor"></i>&nbsp;kubernetes/11-NginxTest.yaml</a> template.</p>
 
 
 
@@ -2486,7 +2288,7 @@
 
 
 <!-- Include code file `./kubernetes/11-NginxTest.yaml` with lang `yaml` & label `./kubernetes/11-NginxTest.yaml` -->
-<section class="included-file" data-file="./kubernetes/11-NginxTest.yaml"><div class="highlight"><div class="chroma">
+<section class="included-file" data-file="./kubernetes/11-NginxTest.yaml" data-label="./kubernetes/11-NginxTest.yaml" id="included-file-./kubernetes/11-nginxtest.yaml"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">  1
 </span><span class="lnt">  2
@@ -2650,7 +2452,7 @@
 </span><span class="lnt">160
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml:./kubernetes/11-NginxTest.yaml" data-lang="yaml:./kubernetes/11-NginxTest.yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Namespace</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">nginx-test</span><span class="w">
@@ -2853,24 +2655,13 @@
 
 
 
-
-
-
-
-        
-        
-            
-                
-            
-        
-    
-
-
-
-<a
-    href="https://github.com/docker-library/postgres/issues/361"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-bug" title="See the issue on GitHub"></i>&nbsp;chown: changing ownership of ‘/var/lib/postgresql/data’: Operation not permitted, when running in kubernetes with mounted &ldquo;/var/lib/postgres/data&rdquo; volume #361</a></li>
+	
+	
+	
+	
+	<a
+		href="https://github.com/docker-library/postgres/issues/361" title="See the GitHub issue/PR" target="_blank" rel="noopener noreferrer"><i class="fas fa-bug"></i>&nbsp;<i>
+chown: changing ownership of ‘/var/lib/postgresql/data’: Operation not permitted, when running in kubernetes with mounted &quot;/var/lib/postgres/data&quot; volume · Issue #361 · docker-library/postgres · GitHub</i></a></li>
 </ul>
 
   </div>
@@ -3219,15 +3010,15 @@
         </li>
         
         <li>
-          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/04-reverse-proxy/" class="related__link">Make services reachable from the world</a>
-        </li>
-        
-        <li>
           <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/03-router/" class="related__link">Setup the cluster&#39;s internal router</a>
         </li>
         
         <li>
           <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/01-audit-log/" class="related__link">Setup the cluster&#39;s Audit Log</a>
+        </li>
+        
+        <li>
+          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/04-reverse-proxy/" class="related__link">Make services reachable from the world</a>
         </li>
         
     </ul>
@@ -4434,5 +4225,6 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
     
     
+    <script src="https://gerkindev.github.io/devblog/scripts/custom-code-wrappers.min.42af9b6dcc4acb2dbdb9b3614ff17e55df334242784c1bf2f02cd093880e3e74.js" defer></script>
 </body>
 </html>

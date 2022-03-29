@@ -1342,7 +1342,7 @@
 <meta name="keywords" content="Kubernetes,Sysadmin,DevOps,Networking">
 
 <meta name="created" content="2020-11-16T02:35:47&#43;0100">
-<meta name="modified" content="2021-02-16T12:06:38&#43;0100">
+<meta name="modified" content="2022-03-29T12:42:24&#43;0200">
 <meta property="article:published_time" content="2020-11-16T02:35:47&#43;0100">
 
 <meta name="author" content="GerkinDev">
@@ -1391,9 +1391,9 @@
     "@type": "WebPage",
     "headline": "Setup the cluster's VPN",
     "datePublished": "2020-11-16T02:35:47+01:00",
-    "dateModified": "2021-02-16T12:06:38+01:00",
+    "dateModified": "2022-03-29T12:42:24+02:00",
     "url" : "https://gerkindev.github.io/devblog/walkthroughs/kubernetes/00-vpn/",
-    "description": "References    \u0026nbsp;How To Run OpenVPN in a Docker Container on Ubuntu 14.04  \u0026nbsp;Running Docker Containers with Systemd    Because we are installing our cluster bare …",
+    "description": "References    \u0026nbsp; How To Run OpenVPN in a Docker Container on Ubuntu 14.04 | DigitalOcean  \u0026nbsp; Running Docker Containers with Systemd    Because we are installing …",
     "keywords": ["Kubernetes","Sysadmin","DevOps","Networking"],
     "mainEntityOfPage": {
       "@type": "WebPage",
@@ -1419,16 +1419,16 @@
 
     
     <meta property="og:title" content="Setup the cluster&#39;s VPN" />
-<meta property="og:description" content="References    &nbsp;How To Run OpenVPN in a Docker Container on Ubuntu 14.04  &nbsp;Running Docker Containers with Systemd    Because we are installing our cluster bare metal on servers exposed on the Internet, we&rsquo;ll need a way to secure all of our network traffic around the critical parts of kubernetes. To do so, we&rsquo;ll use OpenVPN to create a virtual secured network where all of our nodes will work." />
+<meta property="og:description" content="References    &nbsp; How To Run OpenVPN in a Docker Container on Ubuntu 14.04 | DigitalOcean  &nbsp; Running Docker Containers with Systemd    Because we are installing our cluster bare metal on servers exposed on the Internet, we&rsquo;ll need a way to secure all of our network traffic around the critical parts of kubernetes. To do so, we&rsquo;ll use OpenVPN to create a virtual secured network where all of our nodes will work." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/00-vpn/" /><meta property="article:section" content="walkthroughs" />
 <meta property="article:published_time" content="2020-11-16T02:35:47+01:00" />
-<meta property="article:modified_time" content="2021-02-16T12:06:38+01:00" />
+<meta property="article:modified_time" content="2022-03-29T12:42:24+02:00" />
 
 
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Setup the cluster&#39;s VPN"/>
-<meta name="twitter:description" content="References    &nbsp;How To Run OpenVPN in a Docker Container on Ubuntu 14.04  &nbsp;Running Docker Containers with Systemd    Because we are installing our cluster bare metal on servers exposed on the Internet, we&rsquo;ll need a way to secure all of our network traffic around the critical parts of kubernetes. To do so, we&rsquo;ll use OpenVPN to create a virtual secured network where all of our nodes will work."/>
+<meta name="twitter:description" content="References    &nbsp; How To Run OpenVPN in a Docker Container on Ubuntu 14.04 | DigitalOcean  &nbsp; Running Docker Containers with Systemd    Because we are installing our cluster bare metal on servers exposed on the Internet, we&rsquo;ll need a way to secure all of our network traffic around the critical parts of kubernetes. To do so, we&rsquo;ll use OpenVPN to create a virtual secured network where all of our nodes will work."/>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css" integrity="sha256-rx5u3IdaOCszi7Jb18XD9HSn8bNiEgAqWJbdBvIYYyU=" crossorigin="anonymous"/>
 </head>
@@ -1478,19 +1478,23 @@
       <table class="legend">
         <tbody>
           <tr>
-            <td>:link:</td>
-            <td>An internal link in this guide</td>
+            <td><i class="fas fa-link"></i></td>
+            <td>A link to a page of this blog</td>
           </tr>
           <tr>
-            <td>:clipboard:</td>
+            <td><i class="fas fa-anchor"></i></td>
+            <td>A link to a section of this page</td>
+          </tr>
+          <tr>
+            <td><i class="fas fa-clipboard-list"></i></td>
             <td>A link to a template of this guide. Templates are files in which you should replace your variables</td>
           </tr>
           <tr>
-            <td>:bookmark:</td>
+            <td><i class="fas fa-bookmark"></i></td>
             <td>A variable</td>
           </tr>
           <tr>
-            <td>📖</td>
+            <td><i class="fas fa-book-open"></i></td>
             <td>A link to an external tool documentation</td>
           </tr>
         </tbody>
@@ -1734,13 +1738,13 @@
   <time class="single__info" title="Written At">📅&nbsp;Nov 16, 2020 </time>
 
   
-    &nbsp;&middot;&nbsp; <time class="single__info" title="Modified At"> 📝&nbsp;Feb 16, 2021 </time> 
+    &nbsp;&middot;&nbsp; <time class="single__info" title="Modified At"> 📝&nbsp;Mar 29, 2022 </time> 
   
 
   
   
   
-    via commit&nbsp;<a href="https://github.com/GerkinDev/devblog/commit/0a6b2c92a587ecc704887f33e271483634185ee3" target="_blank"><code>0a6b2c9</code> (<em>feat: update the bare-metal kubernetes walkthrough</em>) by GerkinDev</a>
+    via commit&nbsp;<a href="https://github.com/GerkinDev/devblog/commit/49ebe76e19bddd4267f8b7b1b1ff525b3ed1dc45" target="_blank"><code>49ebe76</code> (<em>feat: improve links icons, better cross references</em>) by Gerkin</a>
   
 
   &nbsp;&middot;&nbsp; <span class="single__info" title="Reading Time"> ☕&nbsp;6&nbsp;min read </span>
@@ -1897,46 +1901,26 @@
 
 
 
-
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://www.digitalocean.com/community/tutorials/how-to-run-openvpn-in-a-docker-container-on-ubuntu-14-04"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on www.digitalocean.com"></i>&nbsp;How To Run OpenVPN in a Docker Container on Ubuntu 14.04</a></li>
+	
+	
+	
+	
+	<a
+		href="https://www.digitalocean.com/community/tutorials/how-to-run-openvpn-in-a-docker-container-on-ubuntu-14-04" title="See on www.digitalocean.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;<i>
+How To Run OpenVPN in a Docker Container on Ubuntu 14.04  | DigitalOcean</i></a></li>
 <li>
 
 
 
 
 
-
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://blog.container-solutions.com/running-docker-containers-with-systemd"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on blog.container-solutions.com"></i>&nbsp;Running Docker Containers with Systemd</a></li>
+	
+	
+	
+	
+	<a
+		href="https://blog.container-solutions.com/running-docker-containers-with-systemd" title="See on blog.container-solutions.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;<i>
+Running Docker Containers with Systemd</i></a></li>
 </ul>
 
   </div>
@@ -1958,28 +1942,11 @@
     
 
 
-
-<em>
-
-
-
-
-        
-        
-    
-    
-        
-    
-
-
-    
-
-
-
-<a
-    href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/02-cluster/#initialize-metallb"
-     title="Kickstart the cluster"
-    ><i class="fas fa-link" title="See on this site"></i>&nbsp;configuring our bare metal load balancer</a></em>.</p>
+	
+	
+	
+	<a
+		href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/02-cluster/#initialize-metallb" title="See `Kickstart the cluster` on this blog"><i class="fas fa-link"></i>&nbsp;configuring our bare metal load balancer</a>.</p>
 <div class="alert alert-info" role="alert" data-dir="ltr"><p>You <strong>may</strong> need to edit your <code>/etc/hosts</code> files to associate <code>vpn.{{cluster.baseHostName}}</code> to your future <em>OpenVPN</em> server on <strong>each of the devices that will join the cluster</strong> (if <code>vpn.{{cluster.baseHostName}}</code> is not a real <em>DNS</em> name).</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -1998,24 +1965,11 @@
 
 
 
-
-
-
-
-        
-        
-            
-                
-            
-        
-    
-
-
-
-<a
-    href="https://github.com/kylemanna/docker-openvpn"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-book" title="See the docs"></i>&nbsp;docs of kylemanna/openvpn</a> (our <em>OpenVPN</em> server).</p>
+	
+	
+	
+	<a
+		href="https://github.com/kylemanna/docker-openvpn" title="See on GitHub" target="_blank" rel="noopener noreferrer"><i class="fas fa-book-open"></i>&nbsp;docs of kylemanna/openvpn</a> (our <em>OpenVPN</em> server).</p>
 <h2 id="openvpn-server-initial-setup"><em>OpenVPN</em> server initial setup</h2>
 <p>On the <strong>OpenVPN server</strong>, create a volume for OpenVPN so that it can store files, and generate configuration.</p>
 <div class="highlight"><div class="chroma">
@@ -2047,22 +2001,11 @@
 
 
 
-
-
-
-
-        
-        
-            
-        
-    
-
-
-
-<a
-    href="https://github.com/kylemanna/docker-openvpn/blob/master/docs/faqs.md#how-do-i-set-up-a-split-tunnel"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-book" title="See the docs"></i>&nbsp;this RTFM page</a> for split tunnel (partial traffic tunnel)</p>
+	
+	
+	
+	<a
+		href="https://github.com/kylemanna/docker-openvpn/blob/master/docs/faqs.md#how-do-i-set-up-a-split-tunnel" title="See in the docs of github.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-book-open"></i>&nbsp;this RTFM page</a> for split tunnel (partial traffic tunnel)</p>
 </blockquote>
 <p>Once the last command is executed, your <em>OpenVPN</em> server should start. If it started properly, just kill it. We will set it up as a systemd service for our host.</p>
 <h2 id="make-a-systemd-service-for-openvpn-through-docker">Make a <em>systemd</em> service for <em>OpenVPN</em> through <em>docker</em></h2>
@@ -2072,49 +2015,13 @@
 
 
 
-
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://www.digitalocean.com/community/tutorials/how-to-run-openvpn-in-a-docker-container-on-ubuntu-14-04#step-3-%E2%80%94-launch-the-openvpn-server"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on www.digitalocean.com"></i>&nbsp;how to use init.d</a>, and skip this section.</div>
-<p>Install the 
-
-
-
-
-
-
-
-
-
-        
-        
-    
-    
-        
-            
-        
-    
-
-
-
-
-<a
-    href="./systemd/kubernetes-vpn.service"
-    
-     target="_blank" rel="noopener noreferrer"><i class="far fa-file-alt" title="See the resource on this site"></i>&nbsp;systemd/kubernetes-vpn.service</a> template into <code>/usr/lib/systemd/system</code>, then enable this service. It will run our <em>OpenVPN</em> server container.</p>
+	
+	
+	
+	<a
+		href="https://www.digitalocean.com/community/tutorials/how-to-run-openvpn-in-a-docker-container-on-ubuntu-14-04#step-3-%E2%80%94-launch-the-openvpn-server" title="See on www.digitalocean.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;how to use init.d</a>, and skip this section.</div>
+<p>Install the <a
+		href="#included-file-./systemd/kubernetes-vpn.service" title="Go to section"><i class="fas fa-anchor"></i>&nbsp;systemd/kubernetes-vpn.service</a> template into <code>/usr/lib/systemd/system</code>, then enable this service. It will run our <em>OpenVPN</em> server container.</p>
 
 
 
@@ -2127,7 +2034,7 @@
 
 
 <!-- Include code file `./systemd/kubernetes-vpn.service` with lang `service` & label `./systemd/kubernetes-vpn.service` -->
-<section class="included-file" data-file="./systemd/kubernetes-vpn.service"><div class="highlight"><div class="chroma">
+<section class="included-file" data-file="./systemd/kubernetes-vpn.service" data-label="./systemd/kubernetes-vpn.service" id="included-file-./systemd/kubernetes-vpn.service"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -2154,7 +2061,7 @@
 </span><span class="lnt">23
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-service:./systemd/kubernetes-vpn.service" data-lang="service:./systemd/kubernetes-vpn.service"><span class="line"><span class="cl"><span class="k">[Unit]</span>
+<pre tabindex="0" class="chroma"><code class="language-service" data-lang="service"><span class="line"><span class="cl"><span class="k">[Unit]</span>
 </span></span><span class="line"><span class="cl"><span class="na">Description</span><span class="o">=</span><span class="s">OpenVPN server through Docker</span>
 </span></span><span class="line"><span class="cl"><span class="na">After</span><span class="o">=</span><span class="s">syslog.target network-online.target docker.service</span>
 </span></span><span class="line"><span class="cl"><span class="na">Wants</span><span class="o">=</span><span class="s">network-online.target</span>
@@ -2196,127 +2103,8 @@
 </span></span><span class="line"><span class="cl">systemctl <span class="nb">enable</span> --now kubernetes-vpn.service
 </span></span></code></pre></td></tr></table>
 </div>
-</div><!-- TODO
-<div class="expand">
-  <button type="button" class="expand__button" aria-label="Expand Button">
-    <span class="expand-icon expand-icon__right">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
-    </span>
-    Have Fail2Ban installed ?
-  </button>
-  <div class="expand__content">
-    <div class="expand">
-  <button type="button" class="expand__button" aria-label="Expand Button">
-    <span class="expand-icon expand-icon__right">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
-    </span>
-    References
-  </button>
-  <div class="expand__content">
-    <ul>
-<li>
-<p>&lt;a<br />
-href=&ldquo;
-
-
-
-
-
-
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://www.fail2ban.org/wiki/index.php/HOWTO_fail2ban_with_OpenVPN%22"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on www.fail2ban.org"></i>&nbsp;https://www.fail2ban.org/wiki/index.php/HOWTO_fail2ban_with_OpenVPN"</a></p>
-<pre><code> target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot; title=&quot;See on www.fail2ban.org&quot;&gt;&lt;/i&gt;&amp;nbsp;https://www.fail2ban.org/wiki/index.php/HOWTO_fail2ban_with_OpenVPN&lt;/a&gt;&lt;/li&gt;
-</code></pre>
-</ul>
-  </div>
-</div>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">cat <span class="s">&lt;&lt;EOF | tee /etc/fail2ban/filter.d/openvpn.local
-</span></span></span><span class="line"><span class="cl"><span class="s"># Fail2Ban filter for selected OpenVPN rejections
-</span></span></span><span class="line"><span class="cl"><span class="s">#
-</span></span></span><span class="line"><span class="cl"><span class="s">#
-</span></span></span><span class="line"><span class="cl"><span class="s">
-</span></span></span><span class="line"><span class="cl"><span class="s">[Definition]
-</span></span></span><span class="line"><span class="cl"><span class="s">
-</span></span></span><span class="line"><span class="cl"><span class="s"># Example messages (other matched messages not seen in the testing server&#39;s logs):
-</span></span></span><span class="line"><span class="cl"><span class="s"># Fri Sep 23 11:55:36 2016 TLS Error: incoming packet authentication failed from [AF_INET]59.90.146.160:51223
-</span></span></span><span class="line"><span class="cl"><span class="s"># Thu Aug 25 09:36:02 2016 117.207.115.143:58922 TLS Error: TLS handshake failed
-</span></span></span><span class="line"><span class="cl"><span class="s">
-</span></span></span><span class="line"><span class="cl"><span class="s">failregex = ^ TLS Error: incoming packet authentication failed from \[AF_INET\]&lt;HOST&gt;:\d+$
-</span></span></span><span class="line"><span class="cl"><span class="s">            ^ &lt;HOST&gt;:\d+ Connection reset, restarting
-</span></span></span><span class="line"><span class="cl"><span class="s">            ^ &lt;HOST&gt;:\d+ TLS Auth Error
-</span></span></span><span class="line"><span class="cl"><span class="s">            ^ &lt;HOST&gt;:\d+ TLS Error: TLS handshake failed$
-</span></span></span><span class="line"><span class="cl"><span class="s">            ^ &lt;HOST&gt;:\d+ VERIFY ERROR
-</span></span></span><span class="line"><span class="cl"><span class="s">
-</span></span></span><span class="line"><span class="cl"><span class="s">ignoreregex = 
-</span></span></span><span class="line"><span class="cl"><span class="s">EOF</span>
-</span></span><span class="line"><span class="cl">cat <span class="s">&lt;&lt;EOF | tee /etc/fail2ban/jail.d/openvpn.local
-</span></span></span><span class="line"><span class="cl"><span class="s"># Fail2Ban configuration fragment for OpenVPN
-</span></span></span><span class="line"><span class="cl"><span class="s">
-</span></span></span><span class="line"><span class="cl"><span class="s">[openvpn]
-</span></span></span><span class="line"><span class="cl"><span class="s">enabled  = true
-</span></span></span><span class="line"><span class="cl"><span class="s">port     = 1194
-</span></span></span><span class="line"><span class="cl"><span class="s">protocol = udp
-</span></span></span><span class="line"><span class="cl"><span class="s">filter   = openvpn
-</span></span></span><span class="line"><span class="cl"><span class="s">logpath  = /var/log/openvpn.log
-</span></span></span><span class="line"><span class="cl"><span class="s">maxretry = 3
-</span></span></span><span class="line"><span class="cl"><span class="s">EOF</span>
-</span></span><span class="line"><span class="cl">systemctl reload fail2ban
-</span></span></code></pre></td></tr></table>
-</div>
-</div>
-  </div>
-</div> -->
-<p>You can check our docker container with <code>docker container inspect kubernetes-vpn.service</code> &amp; get our <em>OpenVPN</em> logs with <code>journalctl -u kubernetes-vpn.service</code>.</p>
-<p>Now, get the value of the variable 🔖 <code>vpn.serverIp</code> (<code>{{vpn.serverIp}}</code>) with this command:</p>
+</div><p>You can check our docker container with <code>docker container inspect kubernetes-vpn.service</code> &amp; get our <em>OpenVPN</em> logs with <code>journalctl -u kubernetes-vpn.service</code>.</p>
+<p>Now, get the value of the variable <i class="fas fa-bookmark"></i> <code>{{vpn.serverIp}}</code> with this command:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -2340,26 +2128,15 @@ href=&ldquo;
 
 
 
-
-
-
-
-        
-        
-            
-        
-    
-
-
-
-<a
-    href="https://github.com/kylemanna/docker-openvpn/blob/master/docs/static-ips.md"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-book" title="See the docs"></i>&nbsp;<strong>Static IP Addresses</strong> documentation for <em>docker-openvpn</em></a></p>
+	
+	
+	
+	<a
+		href="https://github.com/kylemanna/docker-openvpn/blob/master/docs/static-ips.md" title="See in the docs of github.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-book-open"></i>&nbsp;<strong>Static IP Addresses</strong> documentation for <em>docker-openvpn</em></a></p>
 </blockquote>
 <h2 id="setup-clients">Setup clients</h2>
-<p>This section is meant to be repeated for each of your cluster&rsquo;s nodes. For every node, replace the 🔖 <code>node.ip</code> (<code>{{node.ip}}</code>) &amp; 🔖 <code>node.name</code> (<code>{{node.name}}</code>) variables.</p>
-<div class="alert alert-warning" role="alert" data-dir="ltr"><strong>Important</strong>: 🔖 <code>node.ip</code> (<code>{{node.ip}}</code>) is the desired IP of your machine in your VPN. It <strong>must</strong> be on the same network than 🔖 <code>vpn.serverIp</code> (<code>{{vpn.serverIp}}</code>) (usually, <code>192.168.255.XXX</code>)</div>
+<p>This section is meant to be repeated for each of your cluster&rsquo;s nodes. For every node, replace the <i class="fas fa-bookmark"></i> <code>{{node.ip}}</code> &amp; <i class="fas fa-bookmark"></i> <code>{{node.name}}</code> variables.</p>
+<div class="alert alert-warning" role="alert" data-dir="ltr"><strong>Important</strong>: <i class="fas fa-bookmark"></i> <code>{{node.ip}}</code> is the desired IP of your machine in your VPN. It <strong>must</strong> be on the same network than <i class="fas fa-bookmark"></i> <code>{{vpn.serverIp}}</code> (usually, <code>192.168.255.XXX</code>)</div>
 <h3 id="generate-credentials">Generate credentials</h3>
 <p>For each of our clients, we&rsquo;ll need to generate credentials so that they can connect to the vpn server. Those clients may use static IPs. The master(s) <strong>must</strong> have a static IP since it must be reachable via a constant address for <code>kubectl</code>.</p>
 <p>On your <em>OpenVPN</em>&lsquo;server host:</p>
@@ -2381,7 +2158,7 @@ href=&ldquo;
 </span></span><span class="line"><span class="cl">docker run -v <span class="o">{{</span>vpn.volumeName<span class="o">}}</span>:/etc/openvpn --rm kylemanna/openvpn:2.4 ovpn_getclient <span class="o">{{</span>node.name<span class="o">}}</span> &gt; <span class="o">{{</span>node.name<span class="o">}}</span>.ovpn
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>Move this <code>{{node.name}}.ovpn</code> file to the {{node.name}} node <strong>by a safe mean</strong>. Those files are super critical, so be very careful to not put it anywhere usafe.</p>
+</div><p>Move this <code>{{node.name}}.ovpn</code> file to the <i class="fas fa-bookmark"></i> <code>{{node.name}}</code> node <strong>by a safe mean</strong>. Those files are super critical, so be very careful to not put it anywhere usafe.</p>
 <p>Next operations have to be run on clients.</p>
 <h3 id="install-openvpn-client">Install <em>OpenVPN</em> client</h3>
 <div class="expand">
@@ -2399,27 +2176,18 @@ href=&ldquo;
 
 
 
-
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://www.vpsserver.com/community/tutorials/4035/install-openvpn-on-centos-8/"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on www.vpsserver.com"></i>&nbsp;https://www.vpsserver.com/community/tutorials/4035/install-openvpn-on-centos-8/</a></li>
+	
+	
+	
+	
+	<a
+		href="https://www.vpsserver.com/community/tutorials/4035/install-openvpn-on-centos-8/" title="See on www.vpsserver.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;<i>
+Install OpenVPN on CentOS 8 - VPSServer.com</i></a></li>
 </ul>
 
   </div>
 </div>
+<p>Install required dependencies.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -2471,28 +2239,13 @@ href=&ldquo;
 
 
 
-
-
-
-
-        
-        
-    
-    
-        
-    
-
-
-    
-
-
-
-<a
-    href="#no-internet-connection-on-nodes-or-no-connection-between-nodes"
-    
-    ><i class="fas fa-link" title="See on this site"></i>&nbsp;this troubleshooting section</a></p>
+	
+	
+	
+	<a
+		href="#no-internet-connection-on-nodes-or-no-connection-between-nodes" title="Go to section"><i class="fas fa-anchor"></i>&nbsp;this troubleshooting section</a></p>
 <hr />
-<p>You should be good to go 🔥</p>
+<p>You should be good to go ! 🔥</p>
 <h2 id="troubleshoot">Troubleshoot</h2>
 <div class="expand">
   <button type="button" class="expand__button" aria-label="Expand Button">
@@ -2509,22 +2262,13 @@ href=&ldquo;
 
 
 
-
-
-
-
-        
-        
-            
-        
-    
-
-
-
-<a
-    href="https://stackoverflow.com/a/63624477/4839162"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fab fa-stack-overflow" title="See on StackOverflow"></i>&nbsp;https://stackoverflow.com/a/63624477/4839162</a></li>
+	
+	
+	
+	
+	<a
+		href="https://stackoverflow.com/a/63624477/4839162" title="See on stackoverflow.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-stack-overflow"></i>&nbsp;<i>
+ubuntu - Make docker use IPv4 for port binding - Stack Overflow</i></a></li>
 </ul>
 
   </div>
@@ -2545,72 +2289,39 @@ href=&ldquo;
 
 
 
-
-
-
-
-        
-        
-            
-                
-            
-        
-    
-
-
-
-<a
-    href="https://github.com/kylemanna/docker-openvpn#openvpn-details"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fab fa-github" title="See on GitHub"></i>&nbsp;https://github.com/kylemanna/docker-openvpn#openvpn-details</a></li>
+	
+	
+	
+	
+	<a
+		href="https://github.com/kylemanna/docker-openvpn#openvpn-details" title="See on GitHub" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>&nbsp;<i>
+GitHub - kylemanna/docker-openvpn: 🔒 OpenVPN server in a Docker container complete with an EasyRSA PKI CA</i></a></li>
 <li>
 
 
 
 
 
-
-
-
-
-        
-        
-            
-                
-            
-        
-    
-
-
-
-<a
-    href="https://github.com/kylemanna/docker-openvpn/issues/381#issuecomment-386269991"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-bug" title="See the issue on GitHub"></i>&nbsp;https://github.com/kylemanna/docker-openvpn/issues/381#issuecomment-386269991</a></li>
+	
+	
+	
+	
+	<a
+		href="https://github.com/kylemanna/docker-openvpn/issues/381#issuecomment-386269991" title="See the GitHub issue/PR" target="_blank" rel="noopener noreferrer"><i class="fas fa-bug"></i>&nbsp;<i>
+Client connected but no internet · Issue #381 · kylemanna/docker-openvpn · GitHub</i></a></li>
 <li>
 
 
 
 
 
-
-
-
-
-        
-        
-            
-                
-            
-        
-    
-
-
-
-<a
-    href="https://github.com/kylemanna/docker-openvpn/issues/381#issuecomment-616009737"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-bug" title="See the issue on GitHub"></i>&nbsp;https://github.com/kylemanna/docker-openvpn/issues/381#issuecomment-616009737</a></li>
+	
+	
+	
+	
+	<a
+		href="https://github.com/kylemanna/docker-openvpn/issues/381#issuecomment-616009737" title="See the GitHub issue/PR" target="_blank" rel="noopener noreferrer"><i class="fas fa-bug"></i>&nbsp;<i>
+Client connected but no internet · Issue #381 · kylemanna/docker-openvpn · GitHub</i></a></li>
 </ul>
 
   </div>
@@ -2622,23 +2333,13 @@ href=&ldquo;
 
 
 
-
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://openvpn.net/community-resources/how-to/#expanding-the-scope-of-the-vpn-to-include-additional-machines-on-either-the-client-or-server-subnet"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on openvpn.net"></i>&nbsp;https://openvpn.net/community-resources/how-to/#expanding-the-scope-of-the-vpn-to-include-additional-machines-on-either-the-client-or-server-subnet</a></p>
+	
+	
+	
+	
+	<a
+		href="https://openvpn.net/community-resources/how-to/#expanding-the-scope-of-the-vpn-to-include-additional-machines-on-either-the-client-or-server-subnet" title="See on openvpn.net" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;<i>
+How To Guide: Set Up &amp; Configure OpenVPN Client/server VPN | OpenVPN</i></a></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -2655,24 +2356,11 @@ href=&ldquo;
 
 
 
-
-
-
-
-        
-        
-            
-                
-            
-        
-    
-
-
-
-<a
-    href="https://github.com/kylemanna/docker-openvpn/issues/381#issuecomment-616009737"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-bug" title="See the issue on GitHub"></i>&nbsp;this comment</a>).</p>
+	
+	
+	
+	<a
+		href="https://github.com/kylemanna/docker-openvpn/issues/381#issuecomment-616009737" title="See the GitHub issue/PR" target="_blank" rel="noopener noreferrer"><i class="fas fa-bug"></i>&nbsp;this comment</a>).</p>
 <h2 id="usefull-commands-demo">Usefull commands demo</h2>
 <h3 id="flush-all-routes">Flush all routes</h3>
 <div class="highlight"><div class="chroma">
@@ -3039,11 +2727,15 @@ href=&ldquo;
     <ul class="related-ul">
         
         <li>
+          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/03-router/" class="related__link">Setup the cluster&#39;s internal router</a>
+        </li>
+        
+        <li>
           <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/04-reverse-proxy/" class="related__link">Make services reachable from the world</a>
         </li>
         
         <li>
-          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/03-router/" class="related__link">Setup the cluster&#39;s internal router</a>
+          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/05-storage/" class="related__link">Make things persistent</a>
         </li>
         
         <li>
@@ -3052,10 +2744,6 @@ href=&ldquo;
         
         <li>
           <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/08-kubernetes-user-management/" class="related__link">Administrate the cluster with authentication</a>
-        </li>
-        
-        <li>
-          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/05-storage/" class="related__link">Make things persistent</a>
         </li>
         
     </ul>
@@ -4266,5 +3954,6 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
     
     
+    <script src="https://gerkindev.github.io/devblog/scripts/custom-code-wrappers.min.42af9b6dcc4acb2dbdb9b3614ff17e55df334242784c1bf2f02cd093880e3e74.js" defer></script>
 </body>
 </html>

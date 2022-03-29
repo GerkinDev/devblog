@@ -1342,7 +1342,7 @@
 <meta name="keywords" content="Kubernetes,Sysadmin,DevOps,Monitoring">
 
 <meta name="created" content="2020-11-16T02:35:47&#43;0100">
-<meta name="modified" content="2021-02-16T12:06:38&#43;0100">
+<meta name="modified" content="2022-03-29T12:42:24&#43;0200">
 <meta property="article:published_time" content="2020-11-16T02:35:47&#43;0100">
 
 <meta name="author" content="GerkinDev">
@@ -1391,7 +1391,7 @@
     "@type": "WebPage",
     "headline": "Monitoring: See what is going on",
     "datePublished": "2020-11-16T02:35:47+01:00",
-    "dateModified": "2021-02-16T12:06:38+01:00",
+    "dateModified": "2022-03-29T12:42:24+02:00",
     "url" : "https://gerkindev.github.io/devblog/walkthroughs/kubernetes/06-monitoring/",
     "description": "Well, things are getting real and are on the point to become quite complex. So we\u0026rsquo;ll setup (super unsafe) dashboards to see what is going on easily. After all, we …",
     "keywords": ["Kubernetes","Sysadmin","DevOps","Monitoring"],
@@ -1424,7 +1424,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/06-monitoring/" /><meta property="article:section" content="walkthroughs" />
 <meta property="article:published_time" content="2020-11-16T02:35:47+01:00" />
-<meta property="article:modified_time" content="2021-02-16T12:06:38+01:00" />
+<meta property="article:modified_time" content="2022-03-29T12:42:24+02:00" />
 
 
     <meta name="twitter:card" content="summary"/>
@@ -1480,19 +1480,23 @@
       <table class="legend">
         <tbody>
           <tr>
-            <td>:link:</td>
-            <td>An internal link in this guide</td>
+            <td><i class="fas fa-link"></i></td>
+            <td>A link to a page of this blog</td>
           </tr>
           <tr>
-            <td>:clipboard:</td>
+            <td><i class="fas fa-anchor"></i></td>
+            <td>A link to a section of this page</td>
+          </tr>
+          <tr>
+            <td><i class="fas fa-clipboard-list"></i></td>
             <td>A link to a template of this guide. Templates are files in which you should replace your variables</td>
           </tr>
           <tr>
-            <td>:bookmark:</td>
+            <td><i class="fas fa-bookmark"></i></td>
             <td>A variable</td>
           </tr>
           <tr>
-            <td>📖</td>
+            <td><i class="fas fa-book-open"></i></td>
             <td>A link to an external tool documentation</td>
           </tr>
         </tbody>
@@ -1736,16 +1740,16 @@
   <time class="single__info" title="Written At">📅&nbsp;Nov 16, 2020 </time>
 
   
-    &nbsp;&middot;&nbsp; <time class="single__info" title="Modified At"> 📝&nbsp;Feb 16, 2021 </time> 
+    &nbsp;&middot;&nbsp; <time class="single__info" title="Modified At"> 📝&nbsp;Mar 29, 2022 </time> 
   
 
   
   
   
-    via commit&nbsp;<a href="https://github.com/GerkinDev/devblog/commit/0a6b2c92a587ecc704887f33e271483634185ee3" target="_blank"><code>0a6b2c9</code> (<em>feat: update the bare-metal kubernetes walkthrough</em>) by GerkinDev</a>
+    via commit&nbsp;<a href="https://github.com/GerkinDev/devblog/commit/49ebe76e19bddd4267f8b7b1b1ff525b3ed1dc45" target="_blank"><code>49ebe76</code> (<em>feat: improve links icons, better cross references</em>) by Gerkin</a>
   
 
-  &nbsp;&middot;&nbsp; <span class="single__info" title="Reading Time"> ☕&nbsp;12&nbsp;min read </span>
+  &nbsp;&middot;&nbsp; <span class="single__info" title="Reading Time"> ☕&nbsp;13&nbsp;min read </span>
 
   
   
@@ -1879,57 +1883,9 @@
 <li>update our ingress controller previously deployed to enable the dashboard</li>
 <li>and create routes to the dashboard.</li>
 </ul>
-<p>Use the 
-
-
-
-
-
-
-
-
-
-        
-        
-    
-    
-        
-            
-        
-    
-
-
-
-
-<a
-    href="./kubernetes/traefik/04-IngressController.yaml"
-    
-     target="_blank" rel="noopener noreferrer"><i class="far fa-file-alt" title="See the resource on this site"></i>&nbsp;kubernetes/traefik/04-IngressController.yaml</a> and 
-
-
-
-
-
-
-
-
-
-        
-        
-    
-    
-        
-            
-        
-    
-
-
-
-
-<a
-    href="./kubernetes/traefik/06-IngressRoutes.yaml"
-    
-     target="_blank" rel="noopener noreferrer"><i class="far fa-file-alt" title="See the resource on this site"></i>&nbsp;kubernetes/traefik/06-IngressRoutes.yaml</a> templates.</p>
+<p>Use the <a
+		href="#included-file-./kubernetes/traefik/04-ingresscontroller.yaml" title="Go to section"><i class="fas fa-anchor"></i>&nbsp;kubernetes/traefik/04-IngressController.yaml</a> and <a
+		href="#included-file-./kubernetes/traefik/06-ingressroutes.yaml" title="Go to section"><i class="fas fa-anchor"></i>&nbsp;kubernetes/traefik/06-IngressRoutes.yaml</a> templates.</p>
 <p>
 
 
@@ -1942,7 +1898,7 @@
 
 
 <!-- Include code file `./kubernetes/traefik/04-IngressController.yaml` with lang `yaml` & label `./kubernetes/traefik/04-IngressController.yaml` -->
-<section class="included-file" data-file="./kubernetes/traefik/04-IngressController.yaml"><div class="highlight"><div class="chroma">
+<section class="included-file" data-file="./kubernetes/traefik/04-IngressController.yaml" data-label="./kubernetes/traefik/04-IngressController.yaml" id="included-file-./kubernetes/traefik/04-ingresscontroller.yaml"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -1991,7 +1947,7 @@
 </span><span class="lnt">45
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml:./kubernetes/traefik/04-IngressController.yaml" data-lang="yaml:./kubernetes/traefik/04-IngressController.yaml"><span class="line"><span class="cl"><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Deployment</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Deployment</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">apps/v1</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">traefik</span><span class="w">
@@ -2051,7 +2007,7 @@
 
 
 <!-- Include code file `./kubernetes/traefik/06-IngressRoutes.yaml` with lang `yaml` & label `./kubernetes/traefik/06-IngressRoutes.yaml` -->
-<section class="included-file" data-file="./kubernetes/traefik/06-IngressRoutes.yaml"><div class="highlight"><div class="chroma">
+<section class="included-file" data-file="./kubernetes/traefik/06-IngressRoutes.yaml" data-label="./kubernetes/traefik/06-IngressRoutes.yaml" id="included-file-./kubernetes/traefik/06-ingressroutes.yaml"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -2102,7 +2058,7 @@
 </span><span class="lnt">47
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml:./kubernetes/traefik/06-IngressRoutes.yaml" data-lang="yaml:./kubernetes/traefik/06-IngressRoutes.yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">traefik.containo.us/v1alpha1</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">traefik.containo.us/v1alpha1</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">IngressRoute</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">dashboard</span><span class="w">
@@ -2169,18 +2125,11 @@
 
 
 
-
-
-
-
-        
-
-
-
-<a
-    href="https://traefik.%7b%7bcluster.baseHostName%7d%7d/dashboard/"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on parametric domain"></i>&nbsp;https://traefik.{{cluster.baseHostName}}/dashboard/</a>.</p>
+	
+	
+	
+	<a
+		href="https://traefik.%7b%7bcluster.baseHostName%7d%7d/dashboard/" title="See on parametric domain" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;https://traefik.{{cluster.baseHostName}}/dashboard/</a>.</p>
 <h2 id="2-kibana-harvest-data-from-your-cluster">2. Kibana: harvest data from your cluster</h2>
 <div class="expand">
   <button type="button" class="expand__button" aria-label="Expand Button">
@@ -2197,91 +2146,52 @@
 
 
 
-
-
-
-
-        
-        
-            
-        
-    
-
-
-
-<a
-    href="https://kubernetes.io/docs/tasks/debug-application-cluster/logging-elasticsearch-kibana/"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-book" title="See the docs"></i>&nbsp;https://kubernetes.io/docs/tasks/debug-application-cluster/logging-elasticsearch-kibana/</a></li>
+	
+	
+	
+	
+	<a
+		href="https://v1-19.docs.kubernetes.io/docs/tasks/debug-application-cluster/logging-elasticsearch-kibana/" title="See in the docs of v1-19.docs.kubernetes.io" target="_blank" rel="noopener noreferrer"><i class="fas fa-book-open"></i>&nbsp;<i>
+Logging Using Elasticsearch and Kibana | Kubernetes</i></a></li>
 <li>
 
 
 
 
 
-
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://mherman.org/blog/logging-in-kubernetes-with-elasticsearch-Kibana-fluentd/#fluentd"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on mherman.org"></i>&nbsp;https://mherman.org/blog/logging-in-kubernetes-with-elasticsearch-Kibana-fluentd/#fluentd</a></li>
+	
+	
+	
+	
+	<a
+		href="https://mherman.org/blog/logging-in-kubernetes-with-elasticsearch-Kibana-fluentd/#fluentd" title="See on mherman.org" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;<i>
+Logging in Kubernetes with Elasticsearch, Kibana, and Fluentd</i></a></li>
 <li>
 
 
 
 
 
-
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://www.elastic.co/kibana"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on www.elastic.co"></i>&nbsp;https://www.elastic.co/kibana</a></li>
+	
+	
+	
+	
+	<a
+		href="https://www.elastic.co/kibana" title="See on www.elastic.co" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;<i>
+Kibana: Explore, Visualize, Discover Data | Elastic</i></a></li>
 <li>
 
 
 
 
 
-
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://www.elastic.co/elasticsearch/"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on www.elastic.co"></i>&nbsp;https://www.elastic.co/elasticsearch/</a></li>
+	
+	
+	
+	
+	<a
+		href="https://www.elastic.co/elasticsearch/" title="See on www.elastic.co" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;<i>
+Elasticsearch: The Official Distributed Search &amp; Analytics Engine | Elastic</i></a></li>
 </ul>
 
   </div>
@@ -2292,80 +2202,32 @@
 
 
 
-
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://www.elastic.co/kibana"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on www.elastic.co"></i>&nbsp;<em>Kibana</em></a> is a super versatile tool to visualize data stored in <em>Elasticsearch</em>.</p>
+	
+	
+	
+	<a
+		href="https://www.elastic.co/kibana" title="See on www.elastic.co" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;<em>Kibana</em></a> is a super versatile tool to visualize data stored in <em>Elasticsearch</em>.</p>
 <p>
 
 
 
 
 
+	
+	
+	
+	<a
+		href="https://www.elastic.co/elasticsearch/" title="See on www.elastic.co" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;<em>Elasticsearch</em></a> is a database particularly adapted for search engines, with 
 
 
 
 
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://www.elastic.co/elasticsearch/"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on www.elastic.co"></i>&nbsp;<em>Elasticsearch</em></a> is a database particularly adapted for search engines, with 
+<a title="TODO"><i class="fas fa-tools"></i>&nbsp;fulltext search</a> and 
 
 
 
 
-
-
-
-
-
-    
-
-
-
-<a
-    
-    
-    ><i class="fas fa-tools" title="TODO"></i>&nbsp;fulltext search</a> and 
-
-
-
-
-
-
-
-
-
-    
-
-
-
-<a
-    
-    
-    ><i class="fas fa-tools" title="TODO"></i>&nbsp;scoring</a> capabilities.</p>
+<a title="TODO"><i class="fas fa-tools"></i>&nbsp;scoring</a> capabilities.</p>
 <p>Together, they compose the perfect combo to ingest all our cluster&rsquo;s logs, and do searches, visualizations, tracking, and everything you&rsquo;ll need to understand what is going on in your cluster&rsquo;s apps.</p>
 <div class="notices warning" data-title="Beware !">
   <p>Elasticsearch may be quite resources-consuming, and your machines may not be optimized to make it run smoothly with the consequent flow of data its about to ingest. I <strong>strongly</strong> advise you to read some 
@@ -2374,23 +2236,11 @@
 
 
 
-
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://www.elastic.co/guide/en/elasticsearch/reference/master/docker.html#docker-prod-prerequisites"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on www.elastic.co"></i>&nbsp;installation documentations</a> to make things correctly.</p>
+	
+	
+	
+	<a
+		href="https://www.elastic.co/guide/en/elasticsearch/reference/master/docker.html#docker-prod-prerequisites" title="See on www.elastic.co" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;installation documentations</a> to make things correctly.</p>
 <p>Reading a guide don&rsquo;t dispense you from RTFMing.</p>
 
 </div>
@@ -2408,7 +2258,7 @@
 
 
 <!-- Include code file `./kubernetes/kibana/01-Namespace.yaml` with lang `yaml` & label `./kubernetes/kibana/01-Namespace.yaml` -->
-<section class="included-file" data-file="./kubernetes/kibana/01-Namespace.yaml"><div class="highlight"><div class="chroma">
+<section class="included-file" data-file="./kubernetes/kibana/01-Namespace.yaml" data-label="./kubernetes/kibana/01-Namespace.yaml" id="included-file-./kubernetes/kibana/01-namespace.yaml"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
@@ -2416,7 +2266,7 @@
 </span><span class="lnt">4
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml:./kubernetes/kibana/01-Namespace.yaml" data-lang="yaml:./kubernetes/kibana/01-Namespace.yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Namespace</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">kibana</span></span></span></code></pre></td></tr></table>
@@ -2435,7 +2285,7 @@
 
 
 <!-- Include code file `./kubernetes/kibana/11-Elasticsearch.yaml` with lang `yaml` & label `./kubernetes/kibana/11-Elasticsearch.yaml` -->
-<section class="included-file" data-file="./kubernetes/kibana/11-Elasticsearch.yaml"><div class="highlight"><div class="chroma">
+<section class="included-file" data-file="./kubernetes/kibana/11-Elasticsearch.yaml" data-label="./kubernetes/kibana/11-Elasticsearch.yaml" id="included-file-./kubernetes/kibana/11-elasticsearch.yaml"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -2492,7 +2342,7 @@
 </span><span class="lnt">53
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml:./kubernetes/kibana/11-Elasticsearch.yaml" data-lang="yaml:./kubernetes/kibana/11-Elasticsearch.yaml"><span class="line"><span class="cl"><span class="c"># See https://mherman.org/blog/logging-in-kubernetes-with-elasticsearch-Kibana-fluentd/#elastic</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># See https://mherman.org/blog/logging-in-kubernetes-with-elasticsearch-Kibana-fluentd/#elastic</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
@@ -2561,7 +2411,7 @@
 
 
 <!-- Include code file `./kubernetes/kibana/12-Kibana.yaml` with lang `yaml` & label `./kubernetes/kibana/12-Kibana.yaml` -->
-<section class="included-file" data-file="./kubernetes/kibana/12-Kibana.yaml"><div class="highlight"><div class="chroma">
+<section class="included-file" data-file="./kubernetes/kibana/12-Kibana.yaml" data-label="./kubernetes/kibana/12-Kibana.yaml" id="included-file-./kubernetes/kibana/12-kibana.yaml"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -2622,7 +2472,7 @@
 </span><span class="lnt">57
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml:./kubernetes/kibana/12-Kibana.yaml" data-lang="yaml:./kubernetes/kibana/12-Kibana.yaml"><span class="line"><span class="cl"><span class="c"># See https://mherman.org/blog/logging-in-kubernetes-with-elasticsearch-Kibana-fluentd/#kibana</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># See https://mherman.org/blog/logging-in-kubernetes-with-elasticsearch-Kibana-fluentd/#kibana</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
@@ -2694,7 +2544,7 @@
 
 
 <!-- Include code file `./kubernetes/kibana/13-Fluentd.yaml` with lang `yaml` & label `./kubernetes/kibana/13-Fluentd.yaml` -->
-<section class="included-file" data-file="./kubernetes/kibana/13-Fluentd.yaml"><div class="highlight"><div class="chroma">
+<section class="included-file" data-file="./kubernetes/kibana/13-Fluentd.yaml" data-label="./kubernetes/kibana/13-Fluentd.yaml" id="included-file-./kubernetes/kibana/13-fluentd.yaml"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">  1
 </span><span class="lnt">  2
@@ -2801,7 +2651,7 @@
 </span><span class="lnt">103
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml:./kubernetes/kibana/13-Fluentd.yaml" data-lang="yaml:./kubernetes/kibana/13-Fluentd.yaml"><span class="line"><span class="cl"><span class="c"># See https://mherman.org/blog/logging-in-kubernetes-with-elasticsearch-Kibana-fluentd/#fluentd</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># See https://mherman.org/blog/logging-in-kubernetes-with-elasticsearch-Kibana-fluentd/#fluentd</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
@@ -2920,7 +2770,7 @@
 
 
 <!-- Include code file `./kubernetes/kibana/21-Ingress.yaml` with lang `yaml` & label `./kubernetes/kibana/21-Ingress.yaml` -->
-<section class="included-file" data-file="./kubernetes/kibana/21-Ingress.yaml"><div class="highlight"><div class="chroma">
+<section class="included-file" data-file="./kubernetes/kibana/21-Ingress.yaml" data-label="./kubernetes/kibana/21-Ingress.yaml" id="included-file-./kubernetes/kibana/21-ingress.yaml"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -2942,7 +2792,7 @@
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml:./kubernetes/kibana/21-Ingress.yaml" data-lang="yaml:./kubernetes/kibana/21-Ingress.yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">traefik.containo.us/v1alpha1</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">traefik.containo.us/v1alpha1</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">IngressRoute</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">ingress-secure</span><span class="w">
@@ -2985,36 +2835,22 @@
 
 
 
-
-
-
-
-        
-
-
-
-<a
-    href="https://kibana.%7b%7bcluster.baseHostName%7d%7d/"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on parametric domain"></i>&nbsp;https://kibana.{{cluster.baseHostName}}/</a>. Be patient, it may take a bit of time to initialize ElasticSearch and Kibana itself. Once they started up, let&rsquo;s configure those !</p>
+	
+	
+	
+	<a
+		href="https://kibana.%7b%7bcluster.baseHostName%7d%7d/" title="See on parametric domain" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;https://kibana.{{cluster.baseHostName}}/</a>. Be patient, it may take a bit of time to initialize ElasticSearch and Kibana itself. Once they started up, let&rsquo;s configure those !</p>
 <p>Go to the 
 
 
 
 
 
-
-
-
-
-        
-
-
-
-<a
-    href="https://kibana.%7b%7bcluster.baseHostName%7d%7d/app/management/kibana/indexPatterns/create"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on parametric domain"></i>&nbsp;<em>Kibana &gt; Discover &gt; Index patterns</em></a> page. Kibana should ask to create indices. Index logs with pattern <code>logstash*</code>.</p>
+	
+	
+	
+	<a
+		href="https://kibana.%7b%7bcluster.baseHostName%7d%7d/app/management/kibana/indexPatterns/create" title="See on parametric domain" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;<em>Kibana &gt; Discover &gt; Index patterns</em></a> page. Kibana should ask to create indices. Index logs with pattern <code>logstash*</code>.</p>
 <!-- TODO: Update screenshots -->
 <p><img src="./_assets/kibana-1.png" alt="Index pattern 1st screen" /></p>
 <p>Then, set up the time field as <code>@timestamp</code>.</p>
@@ -3023,57 +2859,9 @@
 <p><img src="./_assets/kibana-3.png" alt="Logs" /></p>
 <p>I strongly recommend you to inspect logs carefully, to clean up as many errors as possible. Yeah, you should have done that all the way long, but looking everywhere is painful, I know. So <strong>do that now</strong> while you don&rsquo;t have a bunch of things to pollute your streams.</p>
 <h3 id="22-audit-logs">2.2. Audit logs</h3>
-<p>For a reason I can&rsquo;t explain, the default settings for audit log parsing from fluentd are incorrect. Moreover, I find the &ldquo;all settings in a single file&rdquo; pattern awful. So we are going to reconfigure fluentd to parse correctly our logs. Use the 
-
-
-
-
-
-
-
-
-
-        
-        
-    
-    
-        
-            
-        
-    
-
-
-
-
-<a
-    href="./kubernetes/kibana/31-Fluentd.yaml"
-    
-     target="_blank" rel="noopener noreferrer"><i class="far fa-file-alt" title="See the resource on this site"></i>&nbsp;kubernetes/kibana/31-Fluentd.yaml</a> &amp; 
-
-
-
-
-
-
-
-
-
-        
-        
-    
-    
-        
-            
-        
-    
-
-
-
-
-<a
-    href="./kubernetes/kibana/32-FluentdConfigMap.yaml"
-    
-     target="_blank" rel="noopener noreferrer"><i class="far fa-file-alt" title="See the resource on this site"></i>&nbsp;kubernetes/kibana/32-FluentdConfigMap.yaml</a> templates. The 1st one revrite some of the configuration of fluentd to use our custom configs.</p>
+<p>For a reason I can&rsquo;t explain, the default settings for audit log parsing from fluentd are incorrect. Moreover, I find the &ldquo;all settings in a single file&rdquo; pattern awful. So we are going to reconfigure fluentd to parse correctly our logs. Use the <a
+		href="#included-file-./kubernetes/kibana/31-fluentd.yaml" title="Go to section"><i class="fas fa-anchor"></i>&nbsp;kubernetes/kibana/31-Fluentd.yaml</a> &amp; <a
+		href="#included-file-./kubernetes/kibana/32-fluentdconfigmap.yaml" title="Go to section"><i class="fas fa-anchor"></i>&nbsp;kubernetes/kibana/32-FluentdConfigMap.yaml</a> templates. The 1st one rewrites some of the configuration of fluentd to use our custom configs.</p>
 <p>
 
 
@@ -3086,7 +2874,7 @@
 
 
 <!-- Include code file `./kubernetes/kibana/31-Fluentd.yaml` with lang `yaml` & label `./kubernetes/kibana/31-Fluentd.yaml` -->
-<section class="included-file" data-file="./kubernetes/kibana/31-Fluentd.yaml"><div class="highlight"><div class="chroma">
+<section class="included-file" data-file="./kubernetes/kibana/31-Fluentd.yaml" data-label="./kubernetes/kibana/31-Fluentd.yaml" id="included-file-./kubernetes/kibana/31-fluentd.yaml"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -3165,7 +2953,7 @@
 </span><span class="lnt">75
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml:./kubernetes/kibana/31-Fluentd.yaml" data-lang="yaml:./kubernetes/kibana/31-Fluentd.yaml"><span class="line"><span class="cl"><span class="c"># See https://mherman.org/blog/logging-in-kubernetes-with-elasticsearch-Kibana-fluentd/#fluentd</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># See https://mherman.org/blog/logging-in-kubernetes-with-elasticsearch-Kibana-fluentd/#fluentd</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
@@ -3256,7 +3044,7 @@
 
 
 <!-- Include code file `./kubernetes/kibana/32-FluentdConfigMap.yaml` with lang `yaml` & label `./kubernetes/kibana/32-FluentdConfigMap.yaml` -->
-<section class="included-file" data-file="./kubernetes/kibana/32-FluentdConfigMap.yaml"><div class="highlight"><div class="chroma">
+<section class="included-file" data-file="./kubernetes/kibana/32-FluentdConfigMap.yaml" data-label="./kubernetes/kibana/32-FluentdConfigMap.yaml" id="included-file-./kubernetes/kibana/32-fluentdconfigmap.yaml"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">  1
 </span><span class="lnt">  2
@@ -3472,7 +3260,7 @@
 </span><span class="lnt">212
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml:./kubernetes/kibana/32-FluentdConfigMap.yaml" data-lang="yaml:./kubernetes/kibana/32-FluentdConfigMap.yaml"><span class="line"><span class="cl"><span class="c"># Those configmaps are taken from https://github.com/fluent/fluentd-kubernetes-daemonset/blob/master/docker-image/v1.10/debian-elasticsearch6/conf/kubernetes.conf</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># Those configmaps are taken from https://github.com/fluent/fluentd-kubernetes-daemonset/blob/master/docker-image/v1.10/debian-elasticsearch6/conf/kubernetes.conf</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">data</span><span class="p">:</span><span class="w">
@@ -3721,22 +3509,13 @@
 
 
 
-
-
-
-
-        
-        
-            
-        
-    
-
-
-
-<a
-    href="https://kubernetes.io/fr/docs/tasks/access-application-cluster/web-ui-dashboard/"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-book" title="See the docs"></i>&nbsp;https://kubernetes.io/fr/docs/tasks/access-application-cluster/web-ui-dashboard/</a></li>
+	
+	
+	
+	
+	<a
+		href="https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/" title="See in the docs of kubernetes.io" target="_blank" rel="noopener noreferrer"><i class="fas fa-book-open"></i>&nbsp;<i>
+Deploy and Access the Kubernetes Dashboard | Kubernetes</i></a></li>
 </ul>
 
   </div>
@@ -3753,7 +3532,7 @@
 
 
 <!-- Include code file `./kubernetes/kube-dashboard/01-Dashboard.yaml` with lang `yaml` & label `./kubernetes/kube-dashboard/01-Dashboard.yaml` -->
-<section class="included-file" data-file="./kubernetes/kube-dashboard/01-Dashboard.yaml"><div class="highlight"><div class="chroma">
+<section class="included-file" data-file="./kubernetes/kube-dashboard/01-Dashboard.yaml" data-label="./kubernetes/kube-dashboard/01-Dashboard.yaml" id="included-file-./kubernetes/kube-dashboard/01-dashboard.yaml"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">  1
 </span><span class="lnt">  2
@@ -4075,7 +3854,7 @@
 </span><span class="lnt">318
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml:./kubernetes/kube-dashboard/01-Dashboard.yaml" data-lang="yaml:./kubernetes/kube-dashboard/01-Dashboard.yaml"><span class="line"><span class="cl"><span class="c"># Copyright 2017 The Kubernetes Authors.</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># Copyright 2017 The Kubernetes Authors.</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># Licensed under the Apache License, Version 2.0 (the &#34;License&#34;);</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># you may not use this file except in compliance with the License.</span><span class="w">
@@ -4409,7 +4188,7 @@
 
 
 <!-- Include code file `./kubernetes/kube-dashboard/02-IngressRoutes.yaml` with lang `yaml` & label `./kubernetes/kube-dashboard/02-IngressRoutes.yaml` -->
-<section class="included-file" data-file="./kubernetes/kube-dashboard/02-IngressRoutes.yaml"><div class="highlight"><div class="chroma">
+<section class="included-file" data-file="./kubernetes/kube-dashboard/02-IngressRoutes.yaml" data-label="./kubernetes/kube-dashboard/02-IngressRoutes.yaml" id="included-file-./kubernetes/kube-dashboard/02-ingressroutes.yaml"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -4431,7 +4210,7 @@
 </span><span class="lnt">18
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml:./kubernetes/kube-dashboard/02-IngressRoutes.yaml" data-lang="yaml:./kubernetes/kube-dashboard/02-IngressRoutes.yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">traefik.containo.us/v1alpha1</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">traefik.containo.us/v1alpha1</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">IngressRoute</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">ingressroute-dashboard</span><span class="w">
@@ -4475,7 +4254,7 @@
 
 
 <!-- Include code file `./kubernetes/kube-dashboard/03-ServiceAccount.yaml` with lang `yaml` & label `./kubernetes/kube-dashboard/03-ServiceAccount.yaml` -->
-<section class="included-file" data-file="./kubernetes/kube-dashboard/03-ServiceAccount.yaml"><div class="highlight"><div class="chroma">
+<section class="included-file" data-file="./kubernetes/kube-dashboard/03-ServiceAccount.yaml" data-label="./kubernetes/kube-dashboard/03-ServiceAccount.yaml" id="included-file-./kubernetes/kube-dashboard/03-serviceaccount.yaml"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -4549,7 +4328,7 @@
 </span><span class="lnt">70
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml:./kubernetes/kube-dashboard/03-ServiceAccount.yaml" data-lang="yaml:./kubernetes/kube-dashboard/03-ServiceAccount.yaml"><span class="line"><span class="cl"><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">ServiceAccount</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
@@ -4641,7 +4420,17 @@
 </span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="k">$(</span>kubectl get secret <span class="nv">$secret_name</span> -n kubernetes-dashboard -o json <span class="p">|</span> jq <span class="s1">&#39;.data.token&#39;</span> -r  <span class="p">|</span> base64 --decode<span class="k">)</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>Now, navigate to <code>https://kube-dashboard.{{cluster.baseHostName}}</code> and log in using the token you got above.</p>
+</div><p>Now, navigate to 
+
+
+
+
+
+	
+	
+	
+	<a
+		href="https://kube-dashboard.%7b%7bcluster.baseHostName%7d%7d" title="See on parametric domain" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;https://kube-dashboard.{{cluster.baseHostName}}</a> and log in using the token you got above.</p>
 <p><img src="./_assets/kube-dashboard-1.png" alt="Authentication screen" /></p>
 <p>You should be able to see all resources in your cluster.</p>
 <p><img src="./_assets/kube-dashboard-2.png" alt="Resources listing" /></p>
@@ -4975,11 +4764,11 @@
         </li>
         
         <li>
-          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/05-storage/" class="related__link">Make things persistent</a>
+          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/09-safe-monitoring/" class="related__link">Protect monitoring with authentication</a>
         </li>
         
         <li>
-          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/02-cluster/" class="related__link">Kickstart the cluster</a>
+          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/04-reverse-proxy/" class="related__link">Make services reachable from the world</a>
         </li>
         
         <li>
@@ -4987,7 +4776,7 @@
         </li>
         
         <li>
-          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/00-vpn/" class="related__link">Setup the cluster&#39;s VPN</a>
+          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/02-cluster/" class="related__link">Kickstart the cluster</a>
         </li>
         
     </ul>
@@ -6193,5 +5982,6 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
     
     
+    <script src="https://gerkindev.github.io/devblog/scripts/custom-code-wrappers.min.42af9b6dcc4acb2dbdb9b3614ff17e55df334242784c1bf2f02cd093880e3e74.js" defer></script>
 </body>
 </html>

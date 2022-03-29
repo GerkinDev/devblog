@@ -1,0 +1,1 @@
+(()=>{var e=e=>{const n=e.parentElement,s=n.getAttribute("data-label"),t=e.querySelector(".chroma td:nth-child(2) code");if(!t)return console.warn("Can't get code container",e);t.setAttribute("data-lang",s)},t=t=>{t.parentElement?.classList.contains("included-file")&&e(t)};Array.from(document.querySelectorAll(".highlight")).forEach(t)})()

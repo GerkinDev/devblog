@@ -1342,7 +1342,7 @@
 <meta name="keywords" content="Kubernetes,Sysadmin,DevOps,Monitoring,Security">
 
 <meta name="created" content="2020-11-16T02:35:47&#43;0100">
-<meta name="modified" content="2021-02-16T12:06:38&#43;0100">
+<meta name="modified" content="2022-03-29T12:42:24&#43;0200">
 <meta property="article:published_time" content="2020-11-16T02:35:47&#43;0100">
 
 <meta name="author" content="GerkinDev">
@@ -1391,9 +1391,9 @@
     "@type": "WebPage",
     "headline": "Setup the cluster's Audit Log",
     "datePublished": "2020-11-16T02:35:47+01:00",
-    "dateModified": "2021-02-16T12:06:38+01:00",
+    "dateModified": "2022-03-29T12:42:24+02:00",
     "url" : "https://gerkindev.github.io/devblog/walkthroughs/kubernetes/01-audit-log/",
-    "description": "References    \u0026nbsp;https://docs.kublr.com/articles/kubernetes-log-audit/  \u0026nbsp;https://mherman.org/blog/logging-in-kubernetes-with-elasticsearch-Kibana-fluentd/ …",
+    "description": "References    \u0026nbsp; Kubernetes Audit with Elasticsearch and Kibana :: Kublr Documentation  \u0026nbsp; Logging in Kubernetes with Elasticsearch, Kibana, and Fluentd  \u0026nbsp; …",
     "keywords": ["Kubernetes","Sysadmin","DevOps","Monitoring","Security"],
     "mainEntityOfPage": {
       "@type": "WebPage",
@@ -1419,18 +1419,16 @@
 
     
     <meta property="og:title" content="Setup the cluster&#39;s Audit Log" />
-<meta property="og:description" content="References    &nbsp;https://docs.kublr.com/articles/kubernetes-log-audit/  &nbsp;https://mherman.org/blog/logging-in-kubernetes-with-elasticsearch-Kibana-fluentd/  &nbsp;https://kubernetes.io/docs/tasks/debug-application-cluster/audit/#log-collector-examples     Note : Even if this part is not required, you should not ignore it on dev environment and should really really REALLY not skip it for production. In fact, it can contain useful debug informations and security traces to see what is going on in your kubernetes cluster, and even on your whole server(s).
- This tutorial will guide you to setup audit log policy, catch logs with Fluentd, cast them to elasticsearch &amp; show them using Kibana." />
+<meta property="og:description" content="References    &nbsp; Kubernetes Audit with Elasticsearch and Kibana :: Kublr Documentation  &nbsp; Logging in Kubernetes with Elasticsearch, Kibana, and Fluentd  &nbsp; Auditing | Kubernetes     Note : Even if this part is not required, you should not ignore it on dev environment and should really really REALLY not skip it for production. In fact, it can contain useful debug informations and security traces to see what is going on in your kubernetes cluster, and even on your whole server(s)." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/01-audit-log/" /><meta property="article:section" content="walkthroughs" />
 <meta property="article:published_time" content="2020-11-16T02:35:47+01:00" />
-<meta property="article:modified_time" content="2021-02-16T12:06:38+01:00" />
+<meta property="article:modified_time" content="2022-03-29T12:42:24+02:00" />
 
 
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Setup the cluster&#39;s Audit Log"/>
-<meta name="twitter:description" content="References    &nbsp;https://docs.kublr.com/articles/kubernetes-log-audit/  &nbsp;https://mherman.org/blog/logging-in-kubernetes-with-elasticsearch-Kibana-fluentd/  &nbsp;https://kubernetes.io/docs/tasks/debug-application-cluster/audit/#log-collector-examples     Note : Even if this part is not required, you should not ignore it on dev environment and should really really REALLY not skip it for production. In fact, it can contain useful debug informations and security traces to see what is going on in your kubernetes cluster, and even on your whole server(s).
- This tutorial will guide you to setup audit log policy, catch logs with Fluentd, cast them to elasticsearch &amp; show them using Kibana."/>
+<meta name="twitter:description" content="References    &nbsp; Kubernetes Audit with Elasticsearch and Kibana :: Kublr Documentation  &nbsp; Logging in Kubernetes with Elasticsearch, Kibana, and Fluentd  &nbsp; Auditing | Kubernetes     Note : Even if this part is not required, you should not ignore it on dev environment and should really really REALLY not skip it for production. In fact, it can contain useful debug informations and security traces to see what is going on in your kubernetes cluster, and even on your whole server(s)."/>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css" integrity="sha256-rx5u3IdaOCszi7Jb18XD9HSn8bNiEgAqWJbdBvIYYyU=" crossorigin="anonymous"/>
 </head>
@@ -1480,19 +1478,23 @@
       <table class="legend">
         <tbody>
           <tr>
-            <td>:link:</td>
-            <td>An internal link in this guide</td>
+            <td><i class="fas fa-link"></i></td>
+            <td>A link to a page of this blog</td>
           </tr>
           <tr>
-            <td>:clipboard:</td>
+            <td><i class="fas fa-anchor"></i></td>
+            <td>A link to a section of this page</td>
+          </tr>
+          <tr>
+            <td><i class="fas fa-clipboard-list"></i></td>
             <td>A link to a template of this guide. Templates are files in which you should replace your variables</td>
           </tr>
           <tr>
-            <td>:bookmark:</td>
+            <td><i class="fas fa-bookmark"></i></td>
             <td>A variable</td>
           </tr>
           <tr>
-            <td>📖</td>
+            <td><i class="fas fa-book-open"></i></td>
             <td>A link to an external tool documentation</td>
           </tr>
         </tbody>
@@ -1736,16 +1738,16 @@
   <time class="single__info" title="Written At">📅&nbsp;Nov 16, 2020 </time>
 
   
-    &nbsp;&middot;&nbsp; <time class="single__info" title="Modified At"> 📝&nbsp;Feb 16, 2021 </time> 
+    &nbsp;&middot;&nbsp; <time class="single__info" title="Modified At"> 📝&nbsp;Mar 29, 2022 </time> 
   
 
   
   
   
-    via commit&nbsp;<a href="https://github.com/GerkinDev/devblog/commit/0a6b2c92a587ecc704887f33e271483634185ee3" target="_blank"><code>0a6b2c9</code> (<em>feat: update the bare-metal kubernetes walkthrough</em>) by GerkinDev</a>
+    via commit&nbsp;<a href="https://github.com/GerkinDev/devblog/commit/49ebe76e19bddd4267f8b7b1b1ff525b3ed1dc45" target="_blank"><code>49ebe76</code> (<em>feat: improve links icons, better cross references</em>) by Gerkin</a>
   
 
-  &nbsp;&middot;&nbsp; <span class="single__info" title="Reading Time"> ☕&nbsp;5&nbsp;min read </span>
+  &nbsp;&middot;&nbsp; <span class="single__info" title="Reading Time"> ☕&nbsp;6&nbsp;min read </span>
 
   
   
@@ -1894,68 +1896,39 @@
 
 
 
-
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://docs.kublr.com/articles/kubernetes-log-audit/"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on docs.kublr.com"></i>&nbsp;https://docs.kublr.com/articles/kubernetes-log-audit/</a></li>
+	
+	
+	
+	
+	<a
+		href="https://docs.kublr.com/articles/kubernetes-log-audit/" title="See on docs.kublr.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;<i>
+Kubernetes Audit with Elasticsearch and Kibana :: Kublr Documentation</i></a></li>
 <li>
 
 
 
 
 
-
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://mherman.org/blog/logging-in-kubernetes-with-elasticsearch-Kibana-fluentd/"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on mherman.org"></i>&nbsp;https://mherman.org/blog/logging-in-kubernetes-with-elasticsearch-Kibana-fluentd/</a></li>
+	
+	
+	
+	
+	<a
+		href="https://mherman.org/blog/logging-in-kubernetes-with-elasticsearch-Kibana-fluentd/" title="See on mherman.org" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;<i>
+Logging in Kubernetes with Elasticsearch, Kibana, and Fluentd</i></a></li>
 <li>
 
 
 
 
 
-
-
-
-
-        
-        
-            
-        
-    
-
-
-
-<a
-    href="https://kubernetes.io/docs/tasks/debug-application-cluster/audit/#log-collector-examples"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-book" title="See the docs"></i>&nbsp;https://kubernetes.io/docs/tasks/debug-application-cluster/audit/#log-collector-examples</a></li>
+	
+	
+	
+	
+	<a
+		href="https://kubernetes.io/docs/tasks/debug-application-cluster/audit/#log-collector-examples" title="See in the docs of kubernetes.io" target="_blank" rel="noopener noreferrer"><i class="fas fa-book-open"></i>&nbsp;<i>
+Auditing | Kubernetes</i></a></li>
 </ul>
 
   </div>
@@ -1964,58 +1937,64 @@
 <p><strong>Note :</strong> Even if this part is not <strong>required</strong>, you <strong>should</strong> not ignore it on dev environment and <strong>should</strong> really <em>really</em> <strong>REALLY</strong> not skip it for production. In fact, it can contain useful debug informations and security traces to see what is going on in your kubernetes cluster, and even on your whole server(s).</p>
 </blockquote>
 <p>This tutorial will guide you to setup audit log policy, catch logs with Fluentd, cast them to elasticsearch &amp; show them using Kibana.</p>
-<p>First, choose an audit log dir name on the host 🔖 <code>audit.sourceLogDir</code> (<code>{{audit.sourceLogDir}}</code>). This is the directory where kubernetes will write its audit logs, and <strong>should</strong> be in <code>/var/log</code>. Then, choose an audit log file 🔖 <code>audit.sourceLogFile</code> (<code>{{audit.sourceLogFile}}</code>) in 🔖 <code>audit.sourceLogDir</code> (<code>{{audit.sourceLogDir}}</code>). The final audit logs path is then <code>{{audit.sourceLogDir}}/{{audit.sourceLogFile}}</code></p>
-<p><em>FluentD</em> will parse those audit logs, and split them by tags for easier sorting of logs. It will then write those zones in 🔖 <code>audit.destLogDir</code> (<code>{{audit.destLogDir}}</code>)</p>
+<p>First, choose an audit log dir name on the host <i class="fas fa-bookmark"></i> <code>{{audit.sourceLogDir}}</code>. This is the directory where kubernetes will write its audit logs, and <strong>should</strong> be in <code>/var/log</code>. Then, choose an audit log file <i class="fas fa-bookmark"></i> <code>{{audit.sourceLogFile}}</code> in <i class="fas fa-bookmark"></i> <code>{{audit.sourceLogDir}}</code>. The final audit logs path is then <code>{{audit.sourceLogDir}}/{{audit.sourceLogFile}}</code></p>
+<p><em>FluentD</em> will parse those audit logs, and split them by tags for easier sorting of logs. It will then write those zones in <i class="fas fa-bookmark"></i> <code>{{audit.destLogDir}}</code></p>
 <p>In order to pipe audit log messages to Elasticsearch, we need to install fluentd on the kubernetes master host.</p>
 <p><img src="./_assets/fluentd.png" alt="FluentD job" /></p>
 <h2 id="install-fluentd-on-the-kubernetes-master-host">Install fluentd (on the kubernetes master host)</h2>
-<p>
+<div class="expand">
+  <button type="button" class="expand__button" aria-label="Expand Button">
+    <span class="expand-icon expand-icon__right">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+    </span>
+    References
+  </button>
+  <div class="expand__content">
+    <ul>
+<li>
 
 
 
 
 
+	
+	
+	
+	
+	<a
+		href="https://docs.fluentd.org/installation/before-install" title="See on docs.fluentd.org" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;<i>
+Before Installation - Fluentd</i></a></li>
+</ul>
 
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://docs.fluentd.org/installation/before-install"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on docs.fluentd.org"></i>&nbsp;https://docs.fluentd.org/installation/before-install</a></p>
+  </div>
+</div>
 <h3 id="install-chrony">Install Chrony</h3>
-<p>
+<div class="expand">
+  <button type="button" class="expand__button" aria-label="Expand Button">
+    <span class="expand-icon expand-icon__right">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+    </span>
+    References
+  </button>
+  <div class="expand__content">
+    <ul>
+<li>
 
 
 
 
 
+	
+	
+	
+	
+	<a
+		href="https://www.tecmint.com/install-ntp-in-rhel-8/" title="See on www.tecmint.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;<i>
+How to Install NTP in RHEL 8</i></a></li>
+</ul>
 
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://www.tecmint.com/install-ntp-in-rhel-8/"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on www.tecmint.com"></i>&nbsp;https://www.tecmint.com/install-ntp-in-rhel-8/</a></p>
+  </div>
+</div>
 <p>Start by installing Chrony for accurate timestamps</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -2044,23 +2023,13 @@
 
 
 
-
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://superuser.com/questions/740000/modify-and-apply-limits-conf-without-reboot"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on superuser.com"></i>&nbsp;https://superuser.com/questions/740000/modify-and-apply-limits-conf-without-reboot</a></li>
+	
+	
+	
+	
+	<a
+		href="https://superuser.com/questions/740000/modify-and-apply-limits-conf-without-reboot" title="See on superuser.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;<i>
+linux - modify and apply limits.conf without reboot - Super User</i></a></li>
 </ul>
 
   </div>
@@ -2122,47 +2091,38 @@
 
 
 
-
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://docs.fluentd.org/installation/before-install#optimize-network-kernel-parameters"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on docs.fluentd.org"></i>&nbsp;this section of the guide</a></p>
+	
+	
+	
+	<a
+		href="https://docs.fluentd.org/installation/before-install#optimize-network-kernel-parameters" title="See on docs.fluentd.org" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;this section of the guide</a></p>
 <h3 id="install-fluentd--plugins">Install FluentD &amp; plugins</h3>
-<p>
+<div class="expand">
+  <button type="button" class="expand__button" aria-label="Expand Button">
+    <span class="expand-icon expand-icon__right">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+    </span>
+    References
+  </button>
+  <div class="expand__content">
+    <ul>
+<li>
 
 
 
 
 
+	
+	
+	
+	
+	<a
+		href="https://docs.fluentd.org/installation/install-by-rpm" title="See on docs.fluentd.org" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;<i>
+Install by RPM Package (Red Hat Linux) - Fluentd</i></a></li>
+</ul>
 
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://docs.fluentd.org/installation/install-by-rpm"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on docs.fluentd.org"></i>&nbsp;https://docs.fluentd.org/installation/install-by-rpm</a></p>
+  </div>
+</div>
 <p>Add the <code>td-agent</code> repository &amp; install it</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -2200,26 +2160,11 @@
 
 
 
-
-
-
-
-        
-        
-    
-    
-        
-    
-
-
-    
-
-
-
-<a
-    href="#troubleshoot"
-    
-    ><i class="fas fa-link" title="See on this site"></i>&nbsp;Troubleshoot section at the end</a>.</p>
+	
+	
+	
+	<a
+		href="#troubleshoot" title="Go to section"><i class="fas fa-anchor"></i>&nbsp;Troubleshoot section at the end</a>.</p>
 <h3 id="configure-fluentd">Configure Fluentd</h3>
 <div class="expand">
   <button type="button" class="expand__button" aria-label="Expand Button">
@@ -2236,74 +2181,19 @@
 
 
 
-
-
-
-
-        
-        
-            
-        
-    
-
-
-
-<a
-    href="https://kubernetes.io/docs/tasks/debug-application-cluster/audit/#log-collector-examples"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-book" title="See the docs"></i>&nbsp;https://kubernetes.io/docs/tasks/debug-application-cluster/audit/#log-collector-examples</a></li>
+	
+	
+	
+	
+	<a
+		href="https://kubernetes.io/docs/tasks/debug-application-cluster/audit/#log-collector-examples" title="See in the docs of kubernetes.io" target="_blank" rel="noopener noreferrer"><i class="fas fa-book-open"></i>&nbsp;<i>
+Auditing | Kubernetes</i></a></li>
 </ul>
 
   </div>
 </div>
-<p>
-
-
-
-
-
-
-
-
-
-        
-        
-            
-        
-    
-
-
-
-<a
-    href="https://kubernetes.io/docs/tasks/debug-application-cluster/audit/#log-collector-examples"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-book" title="See the docs"></i>&nbsp;https://kubernetes.io/docs/tasks/debug-application-cluster/audit/#log-collector-examples</a></p>
-<p>Install the 
-
-
-
-
-
-
-
-
-
-        
-        
-    
-    
-        
-            
-        
-    
-
-
-
-
-<a
-    href="./td-agent/kube.conf"
-    
-     target="_blank" rel="noopener noreferrer"><i class="far fa-file-alt" title="See the resource on this site"></i>&nbsp;td-agent/kube.conf</a> template template into <code>/etc/td-agent/</code>, include it in your master configuration, and create the log dirs.</p>
+<p>Install the <a
+		href="#included-file-./td-agent/kube.conf" title="Go to section"><i class="fas fa-anchor"></i>&nbsp;td-agent/kube.conf</a> template template into <code>/etc/td-agent/</code>, include it in your master configuration, and create the log dirs.</p>
 
 
 
@@ -2315,8 +2205,8 @@
 
 
 
-<!-- Include code file `./td-agent/kube.conf` with lang `conf` & label `./td-agent/kube.conf` -->
-<section class="included-file" data-file="./td-agent/kube.conf"><div class="highlight"><div class="chroma">
+<!-- Include code file `./td-agent/kube.conf` with lang `genshi` & label `./td-agent/kube.conf` -->
+<section class="included-file" data-file="./td-agent/kube.conf" data-label="./td-agent/kube.conf" id="included-file-./td-agent/kube.conf"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -2369,58 +2259,58 @@
 </span><span class="lnt">49
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># From https://kubernetes.io/docs/tasks/debug-application-cluster/audit/#log-collector-examples
-</span></span><span class="line"><span class="cl"># fluentd conf runs in the same host with kube-apiserver
-</span></span><span class="line"><span class="cl">&lt;source&gt;
-</span></span><span class="line"><span class="cl">    @type tail
-</span></span><span class="line"><span class="cl">    # audit log path of kube-apiserver
-</span></span><span class="line"><span class="cl">    path {{audit.sourceLogDir}}/{{audit.sourceLogFile}}
-</span></span><span class="line"><span class="cl">    pos_file {{audit.sourceLogDir}}/{{audit.sourceLogFile}}.pos
-</span></span><span class="line"><span class="cl">    format json
-</span></span><span class="line"><span class="cl">    time_key time
-</span></span><span class="line"><span class="cl">    time_format %Y-%m-%dT%H:%M:%S.%N%z
-</span></span><span class="line"><span class="cl">    tag audit
-</span></span><span class="line"><span class="cl">&lt;/source&gt;
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">&lt;filter audit&gt;
-</span></span><span class="line"><span class="cl">    #https://github.com/fluent/fluent-plugin-rewrite-tag-filter/issues/13
-</span></span><span class="line"><span class="cl">    @type record_transformer
-</span></span><span class="line"><span class="cl">    enable_ruby
-</span></span><span class="line"><span class="cl">    &lt;record&gt;
-</span></span><span class="line"><span class="cl">     namespace ${record[&#34;objectRef&#34;].nil? ? &#34;none&#34;:(record[&#34;objectRef&#34;][&#34;namespace&#34;].nil? ? &#34;none&#34;:record[&#34;objectRef&#34;][&#34;namespace&#34;])}
-</span></span><span class="line"><span class="cl">    &lt;/record&gt;
-</span></span><span class="line"><span class="cl">&lt;/filter&gt;
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">&lt;match audit&gt;
-</span></span><span class="line"><span class="cl">    # route audit according to namespace element in context
-</span></span><span class="line"><span class="cl">    @type rewrite_tag_filter
-</span></span><span class="line"><span class="cl">    &lt;rule&gt;
-</span></span><span class="line"><span class="cl">        key namespace
-</span></span><span class="line"><span class="cl">        pattern /^(.+)/
-</span></span><span class="line"><span class="cl">        tag ${tag}.$1
-</span></span><span class="line"><span class="cl">    &lt;/rule&gt;
-</span></span><span class="line"><span class="cl">&lt;/match&gt;
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">&lt;filter audit.**&gt;
-</span></span><span class="line"><span class="cl">   @type record_transformer
-</span></span><span class="line"><span class="cl">   remove_keys namespace
-</span></span><span class="line"><span class="cl">&lt;/filter&gt;
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">&lt;match audit.**&gt;
-</span></span><span class="line"><span class="cl">    @type forest
-</span></span><span class="line"><span class="cl">    subtype file
-</span></span><span class="line"><span class="cl">    remove_prefix audit
-</span></span><span class="line"><span class="cl">    &lt;template&gt;
-</span></span><span class="line"><span class="cl">        time_slice_format %Y%m%d%H
-</span></span><span class="line"><span class="cl">        compress gz
-</span></span><span class="line"><span class="cl">        path {{audit.destLogDir}}/audit-${tag}.*.log
-</span></span><span class="line"><span class="cl">        format json
-</span></span><span class="line"><span class="cl">        include_time_key true
-</span></span><span class="line"><span class="cl">    &lt;/template&gt;
-</span></span><span class="line"><span class="cl">&lt;/match&gt;</span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-genshi" data-lang="genshi"><span class="line"><span class="cl"><span class="x"># From https://kubernetes.io/docs/tasks/debug-application-cluster/audit/#log-collector-examples
+</span></span></span><span class="line"><span class="cl"><span class="x"># fluentd conf runs in the same host with kube-apiserver
+</span></span></span><span class="line"><span class="cl"><span class="x"></span><span class="nt">&lt;source&gt;</span><span class="x">
+</span></span></span><span class="line"><span class="cl"><span class="x">    @type tail
+</span></span></span><span class="line"><span class="cl"><span class="x">    # audit log path of kube-apiserver
+</span></span></span><span class="line"><span class="cl"><span class="x">    path {{audit.sourceLogDir}}/{{audit.sourceLogFile}}
+</span></span></span><span class="line"><span class="cl"><span class="x">    pos_file {{audit.sourceLogDir}}/{{audit.sourceLogFile}}.pos
+</span></span></span><span class="line"><span class="cl"><span class="x">    format json
+</span></span></span><span class="line"><span class="cl"><span class="x">    time_key time
+</span></span></span><span class="line"><span class="cl"><span class="x">    time_format %Y-%m-%dT%H:%M:%S.%N%z
+</span></span></span><span class="line"><span class="cl"><span class="x">    tag audit
+</span></span></span><span class="line"><span class="cl"><span class="x">&lt;/source&gt;
+</span></span></span><span class="line"><span class="cl"><span class="x">
+</span></span></span><span class="line"><span class="cl"><span class="x"></span><span class="nt">&lt;filter</span> <span class="err">audit</span><span class="nt">&gt;</span><span class="x">
+</span></span></span><span class="line"><span class="cl"><span class="x">    #https://github.com/fluent/fluent-plugin-rewrite-tag-filter/issues/13
+</span></span></span><span class="line"><span class="cl"><span class="x">    @type record_transformer
+</span></span></span><span class="line"><span class="cl"><span class="x">    enable_ruby
+</span></span></span><span class="line"><span class="cl"><span class="x">    </span><span class="nt">&lt;record&gt;</span><span class="x">
+</span></span></span><span class="line"><span class="cl"><span class="x">     namespace </span><span class="cp">${</span><span class="n">record</span><span class="p">[</span><span class="s2">&#34;objectRef&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">nil</span><span class="err">?</span> <span class="err">?</span> <span class="s2">&#34;none&#34;</span><span class="p">:(</span><span class="n">record</span><span class="p">[</span><span class="s2">&#34;objectRef&#34;</span><span class="p">][</span><span class="s2">&#34;namespace&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">nil</span><span class="err">?</span> <span class="err">?</span> <span class="s2">&#34;none&#34;</span><span class="p">:</span><span class="n">record</span><span class="p">[</span><span class="s2">&#34;objectRef&#34;</span><span class="p">][</span><span class="s2">&#34;namespace&#34;</span><span class="p">])</span><span class="cp">}</span><span class="x">
+</span></span></span><span class="line"><span class="cl"><span class="x">    &lt;/record&gt;
+</span></span></span><span class="line"><span class="cl"><span class="x">&lt;/filter&gt;
+</span></span></span><span class="line"><span class="cl"><span class="x">
+</span></span></span><span class="line"><span class="cl"><span class="x"></span><span class="nt">&lt;match</span> <span class="err">audit</span><span class="nt">&gt;</span><span class="x">
+</span></span></span><span class="line"><span class="cl"><span class="x">    # route audit according to namespace element in context
+</span></span></span><span class="line"><span class="cl"><span class="x">    @type rewrite_tag_filter
+</span></span></span><span class="line"><span class="cl"><span class="x">    </span><span class="nt">&lt;rule&gt;</span><span class="x">
+</span></span></span><span class="line"><span class="cl"><span class="x">        key namespace
+</span></span></span><span class="line"><span class="cl"><span class="x">        pattern /^(.+)/
+</span></span></span><span class="line"><span class="cl"><span class="x">        tag </span><span class="cp">${</span><span class="n">tag</span><span class="cp">}</span><span class="x">.$1
+</span></span></span><span class="line"><span class="cl"><span class="x">    &lt;/rule&gt;
+</span></span></span><span class="line"><span class="cl"><span class="x">&lt;/match&gt;
+</span></span></span><span class="line"><span class="cl"><span class="x">
+</span></span></span><span class="line"><span class="cl"><span class="x"></span><span class="nt">&lt;filter</span> <span class="err">audit.**</span><span class="nt">&gt;</span><span class="x">
+</span></span></span><span class="line"><span class="cl"><span class="x">   @type record_transformer
+</span></span></span><span class="line"><span class="cl"><span class="x">   remove_keys namespace
+</span></span></span><span class="line"><span class="cl"><span class="x">&lt;/filter&gt;
+</span></span></span><span class="line"><span class="cl"><span class="x">
+</span></span></span><span class="line"><span class="cl"><span class="x"></span><span class="nt">&lt;match</span> <span class="err">audit.**</span><span class="nt">&gt;</span><span class="x">
+</span></span></span><span class="line"><span class="cl"><span class="x">    @type forest
+</span></span></span><span class="line"><span class="cl"><span class="x">    subtype file
+</span></span></span><span class="line"><span class="cl"><span class="x">    remove_prefix audit
+</span></span></span><span class="line"><span class="cl"><span class="x">    </span><span class="nt">&lt;template&gt;</span><span class="x">
+</span></span></span><span class="line"><span class="cl"><span class="x">        time_slice_format %Y%m%d%H
+</span></span></span><span class="line"><span class="cl"><span class="x">        compress gz
+</span></span></span><span class="line"><span class="cl"><span class="x">        path {{audit.destLogDir}}/audit-</span><span class="cp">${</span><span class="n">tag</span><span class="cp">}</span><span class="x">.*.log
+</span></span></span><span class="line"><span class="cl"><span class="x">        format json
+</span></span></span><span class="line"><span class="cl"><span class="x">        include_time_key true
+</span></span></span><span class="line"><span class="cl"><span class="x">    &lt;/template&gt;
+</span></span></span><span class="line"><span class="cl"><span class="x">&lt;/match&gt;</span></span></span></code></pre></td></tr></table>
 </div>
 </div></section>
-<!-- End include code file `./td-agent/kube.conf` with lang `conf` & label `./td-agent/kube.conf` -->
+<!-- End include code file `./td-agent/kube.conf` with lang `genshi` & label `./td-agent/kube.conf` -->
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -2463,45 +2353,26 @@
 
 
 
-
-
-
-
-        
-        
-            
-        
-    
-
-
-
-<a
-    href="https://kubernetes.io/docs/tasks/debug-application-cluster/audit/#audit-policy"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-book" title="See the docs"></i>&nbsp;https://kubernetes.io/docs/tasks/debug-application-cluster/audit/#audit-policy</a></li>
+	
+	
+	
+	
+	<a
+		href="https://kubernetes.io/docs/tasks/debug-application-cluster/audit/#audit-policy" title="See in the docs of kubernetes.io" target="_blank" rel="noopener noreferrer"><i class="fas fa-book-open"></i>&nbsp;<i>
+Auditing | Kubernetes</i></a></li>
 <li>
 
 
 
 
 
-
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://medium.com/@noqcks/kubernetes-audit-logging-introduction-464a34a53f6c"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on medium.com"></i>&nbsp;https://medium.com/@noqcks/kubernetes-audit-logging-introduction-464a34a53f6c</a></li>
+	
+	
+	
+	
+	<a
+		href="https://medium.com/@noqcks/kubernetes-audit-logging-introduction-464a34a53f6c" title="See on medium.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;<i>
+Kubernetes Audit Logging Introduction | by Benji Visser | Medium</i></a></li>
 </ul>
 
   </div>
@@ -2512,48 +2383,12 @@
 
 
 
-
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://raw.githubusercontent.com/kubernetes/website/master/content/en/examples/audit/audit-policy.yaml"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on raw.githubusercontent.com"></i>&nbsp;example audit log policy</a> &amp; the 
-
-
-
-
-
-
-
-
-
-        
-        
-    
-    
-        
-            
-        
-    
-
-
-
-
-<a
-    href="./kubernetes/audit-log-policy.yaml"
-    
-     target="_blank" rel="noopener noreferrer"><i class="far fa-file-alt" title="See the resource on this site"></i>&nbsp;template audit log file</a>.</p>
+	
+	
+	
+	<a
+		href="https://raw.githubusercontent.com/kubernetes/website/master/content/en/examples/audit/audit-policy.yaml" title="See on raw.githubusercontent.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;example audit log policy</a> &amp; the <a
+		href="#included-file-./kubernetes/audit-log-policy.yaml" title="Go to section"><i class="fas fa-anchor"></i>&nbsp;template audit log file</a>.</p>
 
 
 
@@ -2566,7 +2401,7 @@
 
 
 <!-- Include code file `./kubernetes/audit-log-policy.yaml` with lang `yaml` & label `./kubernetes/audit-log-policy.yaml` -->
-<section class="included-file" data-file="./kubernetes/audit-log-policy.yaml"><div class="highlight"><div class="chroma">
+<section class="included-file" data-file="./kubernetes/audit-log-policy.yaml" data-label="./kubernetes/audit-log-policy.yaml" id="included-file-./kubernetes/audit-log-policy.yaml"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -2641,7 +2476,7 @@
 </span><span class="lnt">71
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml:./kubernetes/audit-log-policy.yaml" data-lang="yaml:./kubernetes/audit-log-policy.yaml"><span class="line"><span class="cl"><span class="c"># From https://raw.githubusercontent.com/kubernetes/website/master/content/en/examples/audit/audit-policy.yaml</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># From https://raw.githubusercontent.com/kubernetes/website/master/content/en/examples/audit/audit-policy.yaml</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># See https://kubernetes.io/docs/tasks/debug-application-cluster/audit/#audit-policy for more info</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">audit.k8s.io/v1</span><span class="w"> </span><span class="c"># This is required.</span><span class="w">
@@ -3067,15 +2902,15 @@
     <ul class="related-ul">
         
         <li>
-          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/07-authentication/" class="related__link">Setup cluster&#39;s authentication</a>
-        </li>
-        
-        <li>
           <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/09-safe-monitoring/" class="related__link">Protect monitoring with authentication</a>
         </li>
         
         <li>
           <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/08-kubernetes-user-management/" class="related__link">Administrate the cluster with authentication</a>
+        </li>
+        
+        <li>
+          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/07-authentication/" class="related__link">Setup cluster&#39;s authentication</a>
         </li>
         
         <li>
@@ -4294,5 +4129,6 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
     
     
+    <script src="https://gerkindev.github.io/devblog/scripts/custom-code-wrappers.min.42af9b6dcc4acb2dbdb9b3614ff17e55df334242784c1bf2f02cd093880e3e74.js" defer></script>
 </body>
 </html>

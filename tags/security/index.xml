@@ -23,10 +23,9 @@
         <link>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/01-audit-log/</link>
         <pubDate>Mon, 16 Nov 2020 02:35:47 +0100</pubDate>
         
-        <atom:modified>Tue, 16 Feb 2021 12:06:38 +0100</atom:modified>
+        <atom:modified>Tue, 29 Mar 2022 12:42:24 +0200</atom:modified>
         <guid>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/01-audit-log/</guid>
-        <description>References    &amp;nbsp;https://docs.kublr.com/articles/kubernetes-log-audit/  &amp;nbsp;https://mherman.org/blog/logging-in-kubernetes-with-elasticsearch-Kibana-fluentd/  &amp;nbsp;https://kubernetes.io/docs/tasks/debug-application-cluster/audit/#log-collector-examples     Note : Even if this part is not required, you should not ignore it on dev environment and should really really REALLY not skip it for production. In fact, it can contain useful debug informations and security traces to see what is going on in your kubernetes cluster, and even on your whole server(s).
- This tutorial will guide you to setup audit log policy, catch logs with Fluentd, cast them to elasticsearch &amp;amp; show them using Kibana.</description>
+        <description>References    &amp;nbsp; Kubernetes Audit with Elasticsearch and Kibana :: Kublr Documentation  &amp;nbsp; Logging in Kubernetes with Elasticsearch, Kibana, and Fluentd  &amp;nbsp; Auditing | Kubernetes     Note : Even if this part is not required, you should not ignore it on dev environment and should really really REALLY not skip it for production. In fact, it can contain useful debug informations and security traces to see what is going on in your kubernetes cluster, and even on your whole server(s).</description>
         
         <dc:creator>GerkinDev</dc:creator>
         
@@ -70,7 +69,7 @@
         <link>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/07-authentication/</link>
         <pubDate>Mon, 16 Nov 2020 02:35:47 +0100</pubDate>
         
-        <atom:modified>Tue, 16 Feb 2021 12:06:38 +0100</atom:modified>
+        <atom:modified>Tue, 29 Mar 2022 12:42:24 +0200</atom:modified>
         <guid>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/07-authentication/</guid>
         <description>Here is a graph of the RBAC setup we are going to implement:
 1. Setup keycloak We&amp;rsquo;ll use keycloak to proxy our authentication for all monitors, using a single realm. You may use several realms in real-life situations. This is probably the tough part, and you may tweak heavily the following guide. Moreover, I may forgot to write some instructions, or somes are heavily linked to your very own setup.</description>
@@ -121,11 +120,9 @@
         <link>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/08-kubernetes-user-management/</link>
         <pubDate>Mon, 16 Nov 2020 02:35:47 +0100</pubDate>
         
-        <atom:modified>Mon, 01 Feb 2021 16:42:59 +0100</atom:modified>
+        <atom:modified>Tue, 29 Mar 2022 12:42:24 +0200</atom:modified>
         <guid>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/08-kubernetes-user-management/</guid>
-        <description>Create the realm and the client  &amp;nbsp;https://github.com/zufardhiyaulhaq/engineering-notes/blob/master/notes/kubernetes-keycloak-integration.md
- &amp;nbsp;https://github.com/zufardhiyaulhaq/engineering-notes/blob/master/notes/kubernetes-keycloak-integration.md#integrating
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  REALM_URL=&amp;#34;https://keycloak.{{cluster.baseHostName}}/auth/realms/{{apiServer.realmName}}&amp;#34; # Log in TOKEN_RESPONSE=&amp;#34;$(curl \  -d &amp;#34;grant_type=password&amp;#34; \  -d &amp;#34;client_id={{apiServer.clientId}}&amp;#34; \  -d &amp;#34;client_secret={{apiServer.clientSecret}}&amp;#34; \  -d &amp;#34;username=admin-user&amp;#34; \  -d &amp;#34;password=admin-user&amp;#34; \  $REALM_URL/protocol/openid-connect/token)&amp;#34; # Extract the access token ACCESS_TOKEN=&amp;#34;$(echo &amp;#34;$TOKEN_RESPONSE&amp;#34; | jq &amp;#39;.access_token&amp;#39; -r)&amp;#34; # Check token curl \  --user &amp;#34;{{apiServer.</description>
+        <description>Create the realm and the client   References    &amp;nbsp; engineering-notes/kubernetes-keycloak-integration.md at master · zufardhiyaulhaq/engineering-notes · GitHub    1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  REALM_URL=&amp;#34;https://keycloak.{{cluster.baseHostName}}/auth/realms/{{apiServer.realmName}}&amp;#34; # Log in TOKEN_RESPONSE=&amp;#34;$(curl \  -d &amp;#34;grant_type=password&amp;#34; \  -d &amp;#34;client_id={{apiServer.clientId}}&amp;#34; \  -d &amp;#34;client_secret={{apiServer.clientSecret}}&amp;#34; \  -d &amp;#34;username=admin-user&amp;#34; \  -d &amp;#34;password=admin-user&amp;#34; \  $REALM_URL/protocol/openid-connect/token)&amp;#34; # Extract the access token ACCESS_TOKEN=&amp;#34;$(echo &amp;#34;$TOKEN_RESPONSE&amp;#34; | jq &amp;#39;.</description>
         
         <dc:creator>GerkinDev</dc:creator>
         
@@ -169,10 +166,12 @@
         <link>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/09-safe-monitoring/</link>
         <pubDate>Mon, 16 Nov 2020 02:35:47 +0100</pubDate>
         
-        <atom:modified>Mon, 01 Feb 2021 16:42:59 +0100</atom:modified>
+        <atom:modified>Tue, 29 Mar 2022 12:42:24 +0200</atom:modified>
         <guid>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/09-safe-monitoring/</guid>
         <description>Now that we have our authentication service up and running, we can protect our dashboards installed in the step &amp;nbsp;06 - Monitoring: See what is going on using our Keycloak OpenID Connect provider. Here is a diagram on how authorization will be managed:
-Traefik dashboard Kibana Kube dashboard   References    &amp;nbsp;https://itnext.io/protect-kubernetes-dashboard-with-openid-connect-104b9e75e39c    Again, we are going to set up a new instance of &amp;nbsp;louketo-proxy.</description>
+Traefik dashboard TODO
+Kibana TODO
+Kube dashboard   References    &amp;nbsp; Protect Kubernetes Dashboard with OpenID Connect | by Hidetake Iwata | ITNEXT    Again, we are going to set up a new instance of &amp;nbsp;louketo-proxy.</description>
         
         <dc:creator>GerkinDev</dc:creator>
         

@@ -1342,7 +1342,7 @@
 <meta name="keywords" content="Kubernetes,Sysadmin,DevOps,Security,Authentication">
 
 <meta name="created" content="2020-11-16T02:35:47&#43;0100">
-<meta name="modified" content="2021-02-01T16:42:59&#43;0100">
+<meta name="modified" content="2022-03-29T12:42:24&#43;0200">
 <meta property="article:published_time" content="2020-11-16T02:35:47&#43;0100">
 
 <meta name="author" content="GerkinDev">
@@ -1391,9 +1391,9 @@
     "@type": "WebPage",
     "headline": "Administrate the cluster with authentication",
     "datePublished": "2020-11-16T02:35:47+01:00",
-    "dateModified": "2021-02-01T16:42:59+01:00",
+    "dateModified": "2022-03-29T12:42:24+02:00",
     "url" : "https://gerkindev.github.io/devblog/walkthroughs/kubernetes/08-kubernetes-user-management/",
-    "description": "Create the realm and the client  \u0026nbsp;https://github.com/zufardhiyaulhaq/engineering-notes/blob/master/notes/kubernetes-keycloak-integration.md …",
+    "description": "Create the realm and the client   References    \u0026nbsp; engineering-notes/kubernetes-keycloak-integration.md at master · zufardhiyaulhaq/engineering-notes · GitHub    1 2 …",
     "keywords": ["Kubernetes","Sysadmin","DevOps","Security","Authentication"],
     "mainEntityOfPage": {
       "@type": "WebPage",
@@ -1419,20 +1419,16 @@
 
     
     <meta property="og:title" content="Administrate the cluster with authentication" />
-<meta property="og:description" content="Create the realm and the client  &nbsp;https://github.com/zufardhiyaulhaq/engineering-notes/blob/master/notes/kubernetes-keycloak-integration.md
- &nbsp;https://github.com/zufardhiyaulhaq/engineering-notes/blob/master/notes/kubernetes-keycloak-integration.md#integrating
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  REALM_URL=&#34;https://keycloak.{{cluster.baseHostName}}/auth/realms/{{apiServer.realmName}}&#34; # Log in TOKEN_RESPONSE=&#34;$(curl \  -d &#34;grant_type=password&#34; \  -d &#34;client_id={{apiServer.clientId}}&#34; \  -d &#34;client_secret={{apiServer.clientSecret}}&#34; \  -d &#34;username=admin-user&#34; \  -d &#34;password=admin-user&#34; \  $REALM_URL/protocol/openid-connect/token)&#34; # Extract the access token ACCESS_TOKEN=&#34;$(echo &#34;$TOKEN_RESPONSE&#34; | jq &#39;.access_token&#39; -r)&#34; # Check token curl \  --user &#34;{{apiServer." />
+<meta property="og:description" content="Create the realm and the client   References    &nbsp; engineering-notes/kubernetes-keycloak-integration.md at master · zufardhiyaulhaq/engineering-notes · GitHub    1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  REALM_URL=&#34;https://keycloak.{{cluster.baseHostName}}/auth/realms/{{apiServer.realmName}}&#34; # Log in TOKEN_RESPONSE=&#34;$(curl \  -d &#34;grant_type=password&#34; \  -d &#34;client_id={{apiServer.clientId}}&#34; \  -d &#34;client_secret={{apiServer.clientSecret}}&#34; \  -d &#34;username=admin-user&#34; \  -d &#34;password=admin-user&#34; \  $REALM_URL/protocol/openid-connect/token)&#34; # Extract the access token ACCESS_TOKEN=&#34;$(echo &#34;$TOKEN_RESPONSE&#34; | jq &#39;." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/08-kubernetes-user-management/" /><meta property="article:section" content="walkthroughs" />
 <meta property="article:published_time" content="2020-11-16T02:35:47+01:00" />
-<meta property="article:modified_time" content="2021-02-01T16:42:59+01:00" />
+<meta property="article:modified_time" content="2022-03-29T12:42:24+02:00" />
 
 
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Administrate the cluster with authentication"/>
-<meta name="twitter:description" content="Create the realm and the client  &nbsp;https://github.com/zufardhiyaulhaq/engineering-notes/blob/master/notes/kubernetes-keycloak-integration.md
- &nbsp;https://github.com/zufardhiyaulhaq/engineering-notes/blob/master/notes/kubernetes-keycloak-integration.md#integrating
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  REALM_URL=&#34;https://keycloak.{{cluster.baseHostName}}/auth/realms/{{apiServer.realmName}}&#34; # Log in TOKEN_RESPONSE=&#34;$(curl \  -d &#34;grant_type=password&#34; \  -d &#34;client_id={{apiServer.clientId}}&#34; \  -d &#34;client_secret={{apiServer.clientSecret}}&#34; \  -d &#34;username=admin-user&#34; \  -d &#34;password=admin-user&#34; \  $REALM_URL/protocol/openid-connect/token)&#34; # Extract the access token ACCESS_TOKEN=&#34;$(echo &#34;$TOKEN_RESPONSE&#34; | jq &#39;.access_token&#39; -r)&#34; # Check token curl \  --user &#34;{{apiServer."/>
+<meta name="twitter:description" content="Create the realm and the client   References    &nbsp; engineering-notes/kubernetes-keycloak-integration.md at master · zufardhiyaulhaq/engineering-notes · GitHub    1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  REALM_URL=&#34;https://keycloak.{{cluster.baseHostName}}/auth/realms/{{apiServer.realmName}}&#34; # Log in TOKEN_RESPONSE=&#34;$(curl \  -d &#34;grant_type=password&#34; \  -d &#34;client_id={{apiServer.clientId}}&#34; \  -d &#34;client_secret={{apiServer.clientSecret}}&#34; \  -d &#34;username=admin-user&#34; \  -d &#34;password=admin-user&#34; \  $REALM_URL/protocol/openid-connect/token)&#34; # Extract the access token ACCESS_TOKEN=&#34;$(echo &#34;$TOKEN_RESPONSE&#34; | jq &#39;."/>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css" integrity="sha256-rx5u3IdaOCszi7Jb18XD9HSn8bNiEgAqWJbdBvIYYyU=" crossorigin="anonymous"/>
 </head>
@@ -1482,19 +1478,23 @@
       <table class="legend">
         <tbody>
           <tr>
-            <td>:link:</td>
-            <td>An internal link in this guide</td>
+            <td><i class="fas fa-link"></i></td>
+            <td>A link to a page of this blog</td>
           </tr>
           <tr>
-            <td>:clipboard:</td>
+            <td><i class="fas fa-anchor"></i></td>
+            <td>A link to a section of this page</td>
+          </tr>
+          <tr>
+            <td><i class="fas fa-clipboard-list"></i></td>
             <td>A link to a template of this guide. Templates are files in which you should replace your variables</td>
           </tr>
           <tr>
-            <td>:bookmark:</td>
+            <td><i class="fas fa-bookmark"></i></td>
             <td>A variable</td>
           </tr>
           <tr>
-            <td>📖</td>
+            <td><i class="fas fa-book-open"></i></td>
             <td>A link to an external tool documentation</td>
           </tr>
         </tbody>
@@ -1738,13 +1738,13 @@
   <time class="single__info" title="Written At">📅&nbsp;Nov 16, 2020 </time>
 
   
-    &nbsp;&middot;&nbsp; <time class="single__info" title="Modified At"> 📝&nbsp;Feb 1, 2021 </time> 
+    &nbsp;&middot;&nbsp; <time class="single__info" title="Modified At"> 📝&nbsp;Mar 29, 2022 </time> 
   
 
   
   
   
-    via commit&nbsp;<a href="https://github.com/GerkinDev/devblog/commit/7bfc033ea6400fd67869ce2c582fc4fcbba7073e" target="_blank"><code>7bfc033</code> (<em>Publish bare-metal kubernetes cluster walkthrough</em>) by GerkinDev</a>
+    via commit&nbsp;<a href="https://github.com/GerkinDev/devblog/commit/49ebe76e19bddd4267f8b7b1b1ff525b3ed1dc45" target="_blank"><code>49ebe76</code> (<em>feat: improve links icons, better cross references</em>) by Gerkin</a>
   
 
   &nbsp;&middot;&nbsp; <span class="single__info" title="Reading Time"> ☕&nbsp;7&nbsp;min read </span>
@@ -1878,54 +1878,32 @@
   });
 </script>
       <h2 id="create-the-realm-and-the-client">Create the realm and the client</h2>
-<p>
+<div class="expand">
+  <button type="button" class="expand__button" aria-label="Expand Button">
+    <span class="expand-icon expand-icon__right">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+    </span>
+    References
+  </button>
+  <div class="expand__content">
+    <ul>
+<li>
 
 
 
 
 
+	
+	
+	
+	
+	<a
+		href="https://github.com/zufardhiyaulhaq/engineering-notes/blob/master/notes/kubernetes-keycloak-integration.md" title="See on GitHub" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>&nbsp;<i>
+engineering-notes/kubernetes-keycloak-integration.md at master · zufardhiyaulhaq/engineering-notes · GitHub</i></a></li>
+</ul>
 
-
-
-
-        
-        
-            
-                
-            
-        
-    
-
-
-
-<a
-    href="https://github.com/zufardhiyaulhaq/engineering-notes/blob/master/notes/kubernetes-keycloak-integration.md"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fab fa-github" title="See on GitHub"></i>&nbsp;https://github.com/zufardhiyaulhaq/engineering-notes/blob/master/notes/kubernetes-keycloak-integration.md</a></p>
-<p>
-
-
-
-
-
-
-
-
-
-        
-        
-            
-                
-            
-        
-    
-
-
-
-<a
-    href="https://github.com/zufardhiyaulhaq/engineering-notes/blob/master/notes/kubernetes-keycloak-integration.md#integrating"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fab fa-github" title="See on GitHub"></i>&nbsp;https://github.com/zufardhiyaulhaq/engineering-notes/blob/master/notes/kubernetes-keycloak-integration.md#integrating</a></p>
+  </div>
+</div>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -1965,29 +1943,32 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="set-up-certificates">Set up certificates</h2>
-<p>
+<div class="expand">
+  <button type="button" class="expand__button" aria-label="Expand Button">
+    <span class="expand-icon expand-icon__right">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+    </span>
+    References
+  </button>
+  <div class="expand__content">
+    <ul>
+<li>
 
 
 
 
 
+	
+	
+	
+	
+	<a
+		href="https://medium.com/@zufardhiyaulhaq/kubernetes-authentication-with-keycloak-openid-connect-part-1-14f4e778b5e9#5252" title="See on medium.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;<i>
+Kubernetes Authentication with Keycloak OpenID Connect Part 1 | by Zufar Dhiyaulhaq | Medium</i></a></li>
+</ul>
 
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://medium.com/@zufardhiyaulhaq/kubernetes-authentication-with-keycloak-openid-connect-part-1-14f4e778b5e9#5252"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on medium.com"></i>&nbsp;https://medium.com/@zufardhiyaulhaq/kubernetes-authentication-with-keycloak-openid-connect-part-1-14f4e778b5e9#5252</a></p>
+  </div>
+</div>
 <h3 id="generate-the-certificates">Generate the certificates</h3>
 <div class="expand">
   <button type="button" class="expand__button" aria-label="Expand Button">
@@ -2004,45 +1985,26 @@
 
 
 
-
-
-
-
-        
-        
-            
-        
-    
-
-
-
-<a
-    href="https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fab fa-wikipedia-w" title="See on Wikipedia"></i>&nbsp;https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes</a></li>
+	
+	
+	
+	
+	<a
+		href="https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes" title="See on wikipedia" target="_blank" rel="noopener noreferrer"><i class="fab fa-wikipedia-w"></i>&nbsp;<i>
+List of ISO 3166 country codes - Wikipedia</i></a></li>
 <li>
 
 
 
 
 
-
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://security.stackexchange.com/a/159537"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fab fa-stack-exchange" title="See on security.stackexchange.com"></i>&nbsp;Provide subjectAltName to openssl directly on the command line</a></li>
+	
+	
+	
+	
+	<a
+		href="https://security.stackexchange.com/a/159537" title="See on security.stackexchange.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-stack-exchange"></i>&nbsp;<i>
+certificates - Provide subjectAltName to openssl directly on the command line - Information Security Stack Exchange</i></a></li>
 </ul>
 
   </div>
@@ -2174,24 +2136,11 @@
 
 
 
-
-
-
-
-        
-        
-            
-                
-            
-        
-    
-
-
-
-<a
-    href="https://github.com/golang/go/commit/d65e1b2e41deb810565c94555d791e7384618da0"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fab fa-github" title="See on GitHub"></i>&nbsp;this commit</a>.</p>
+	
+	
+	
+	<a
+		href="https://github.com/golang/go/commit/d65e1b2e41deb810565c94555d791e7384618da0" title="See on GitHub" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>&nbsp;this commit</a>.</p>
 </div>
 <!-- # Finally, generate the public key for keycloak
 openssl pkcs12 -export -in keycloak.crt -inkey keycloak.key -out keycloak.p12 -name myserverkeystore -CAfile ca.crt
@@ -2203,23 +2152,11 @@ openssl pkcs12 -export -in keycloak.crt -inkey keycloak.key -out keycloak.p12 -n
 
 
 
-
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://hub.docker.com/r/jboss/keycloak/"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on hub.docker.com"></i>&nbsp;keycloak docker container</a> indicates that keycloak will use certificate and private keys from <code>/etc/x509/https/tls.{crt,key}</code>. So, we are going to pass those via a secret mounted at the desired directory.</p>
+	
+	
+	
+	<a
+		href="https://hub.docker.com/r/jboss/keycloak/" title="See on hub.docker.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;keycloak docker container</a> indicates that keycloak will use certificate and private keys from <code>/etc/x509/https/tls.{crt,key}</code>. So, we are going to pass those via a secret mounted at the desired directory.</p>
 <p>First, create the secret</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -2244,7 +2181,7 @@ openssl pkcs12 -export -in keycloak.crt -inkey keycloak.key -out keycloak.p12 -n
 
 
 <!-- Include code file `./kubernetes/authentication/01-KeycloakChartValues.yaml` with lang `yaml` & label `./kubernetes/authentication/01-KeycloakChartValues.yaml` -->
-<section class="included-file" data-file="./kubernetes/authentication/01-KeycloakChartValues.yaml"><div class="highlight"><div class="chroma">
+<section class="included-file" data-file="./kubernetes/authentication/01-KeycloakChartValues.yaml" data-label="./kubernetes/authentication/01-KeycloakChartValues.yaml" id="included-file-./kubernetes/authentication/01-keycloakchartvalues.yaml"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -2295,7 +2232,7 @@ openssl pkcs12 -export -in keycloak.crt -inkey keycloak.key -out keycloak.p12 -n
 </span><span class="lnt">47
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml:./kubernetes/authentication/01-KeycloakChartValues.yaml" data-lang="yaml:./kubernetes/authentication/01-KeycloakChartValues.yaml"><span class="line"><span class="cl"><span class="nt">extraEnv</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">extraEnv</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
 </span></span></span><span class="line"><span class="cl"><span class="sd">  - name: PROXY_ADDRESS_FORWARDING
 </span></span></span><span class="line"><span class="cl"><span class="sd">    value: &#34;true&#34;
 </span></span></span><span class="line"><span class="cl"><span class="sd">  - name: KEYCLOAK_USER
@@ -2369,7 +2306,7 @@ openssl pkcs12 -export -in keycloak.crt -inkey keycloak.key -out keycloak.p12 -n
 
 
 <!-- Include code file `./kubernetes/authentication/03-InternalRoute.yaml` with lang `yaml` & label `./kubernetes/authentication/03-InternalRoute.yaml` -->
-<section class="included-file" data-file="./kubernetes/authentication/03-InternalRoute.yaml"><div class="highlight"><div class="chroma">
+<section class="included-file" data-file="./kubernetes/authentication/03-InternalRoute.yaml" data-label="./kubernetes/authentication/03-InternalRoute.yaml" id="included-file-./kubernetes/authentication/03-internalroute.yaml"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -2405,7 +2342,7 @@ openssl pkcs12 -export -in keycloak.crt -inkey keycloak.key -out keycloak.p12 -n
 </span><span class="lnt">32
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml:./kubernetes/authentication/03-InternalRoute.yaml" data-lang="yaml:./kubernetes/authentication/03-InternalRoute.yaml"><span class="line"><span class="cl"><span class="c"># apiVersion: traefik.containo.us/v1alpha1</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># apiVersion: traefik.containo.us/v1alpha1</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># kind: Middleware</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># metadata:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#   name: internal-whitelist</span><span class="w">
@@ -2470,6 +2407,32 @@ openssl pkcs12 -export -in keycloak.crt -inkey keycloak.key -out keycloak.p12 -n
 </div>
 </div><p>If the command above works, our certificates are valid !</p>
 <h2 id="enable-oidc-in-the-api-server">Enable OIDC in the API server</h2>
+<div class="expand">
+  <button type="button" class="expand__button" aria-label="Expand Button">
+    <span class="expand-icon expand-icon__right">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+    </span>
+    References
+  </button>
+  <div class="expand__content">
+    <ul>
+<li>
+
+
+
+
+
+	
+	
+	
+	
+	<a
+		href="https://stackoverflow.com/questions/50007654/how-does-kube-apiserver-restart-after-editing-etc-kubernetes-manifests-kube-api" title="See on stackoverflow.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-stack-overflow"></i>&nbsp;<i>
+how does kube-apiserver restart after editing /etc/kubernetes/manifests/kube-apiserver.yaml - Stack Overflow</i></a></li>
+</ul>
+
+  </div>
+</div>
 <p>Place CA files in a safe place where kubernetes will be able to get it to check keycloak&rsquo;s certificate.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -2483,6 +2446,12 @@ openssl pkcs12 -export -in keycloak.crt -inkey keycloak.key -out keycloak.p12 -n
 </span><span class="lnt"> 8
 </span><span class="lnt"> 9
 </span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="c1"># Move and changes rights</span>
@@ -2495,63 +2464,12 @@ openssl pkcs12 -export -in keycloak.crt -inkey keycloak.key -out keycloak.p12 -n
 </span></span><span class="line"><span class="cl"><span class="c1"># Remove the dir</span>
 </span></span><span class="line"><span class="cl"><span class="nb">cd</span> ../
 </span></span><span class="line"><span class="cl">rm -r certs
-</span></span></code></pre></td></tr></table>
-</div>
-</div><p>
-
-
-
-
-
-
-
-
-
-        
-        
-            
-        
-    
-
-
-
-<a
-    href="https://stackoverflow.com/questions/50007654/how-does-kube-apiserver-restart-after-editing-etc-kubernetes-manifests-kube-api"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fab fa-stack-overflow" title="See on StackOverflow"></i>&nbsp;https://stackoverflow.com/questions/50007654/how-does-kube-apiserver-restart-after-editing-etc-kubernetes-manifests-kube-api</a></p>
-<!-- 
-> ## What did not worked
-> 
-> ```sh
-> # Edit cluster config
-> vim /etc/kubernetes/cluster-config.yaml
-> ```
-> 
-> Under `apiServer.extraArgs`, add:
-> ```yaml
->         oidc-issuer-url: https://kube-keycloak.{{cluster.baseHostName}}/auth/realms/{{apiServer.realmName}}
->         oidc-client-id: {{apiServer.clientId}}
->         oidc-groups-claim: user_groups
->         oidc-username-claim: preferred_username
->         oidc-groups-prefix: "oidc:"
->         oidc-username-prefix: "oidc:"
->         oidc-ca-file: /etc/kubernetes/auth-cert/ca.crt
-> ```
-> 
-> 
-> Finally, restart kubelet to apply the configuration changes
-> 
-> ```sh
-> systemctl restart kubelet.service
-> kubeadm upgrade apply "$(kubectl version -o json | jq '.serverVersion.gitVersion' -r | sed 's/^v//')"
-> ``` -->
-<p>Then</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">vim /etc/kubernetes/manifests/kube-apiserver.yaml
+</span></span><span class="line"><span class="cl"><span class="sb">```</span>&gt;
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Then
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="sb">```</span>sh
+</span></span><span class="line"><span class="cl">vim /etc/kubernetes/manifests/kube-apiserver.yaml
 </span></span></code></pre></td></tr></table>
 </div>
 </div><p>Patch it to add following fields</p>
@@ -2639,24 +2557,13 @@ openssl pkcs12 -export -in keycloak.crt -inkey keycloak.key -out keycloak.p12 -n
 
 
 
-
-
-
-
-        
-        
-            
-                
-            
-        
-    
-
-
-
-<a
-    href="https://github.com/int128/kubelogin"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fab fa-github" title="See on GitHub"></i>&nbsp;https://github.com/int128/kubelogin</a></p>
+	
+	
+	
+	
+	<a
+		href="https://github.com/int128/kubelogin" title="See on GitHub" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>&nbsp;<i>
+GitHub - int128/kubelogin: kubectl plugin for Kubernetes OpenID Connect authentication (kubectl oidc-login)</i></a></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -3080,11 +2987,11 @@ su test
         </li>
         
         <li>
-          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/02-cluster/" class="related__link">Kickstart the cluster</a>
+          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/04-reverse-proxy/" class="related__link">Make services reachable from the world</a>
         </li>
         
         <li>
-          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/05-storage/" class="related__link">Make things persistent</a>
+          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/06-monitoring/" class="related__link">Monitoring: See what is going on</a>
         </li>
         
     </ul>
@@ -4291,5 +4198,6 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
     
     
+    <script src="https://gerkindev.github.io/devblog/scripts/custom-code-wrappers.min.42af9b6dcc4acb2dbdb9b3614ff17e55df334242784c1bf2f02cd093880e3e74.js" defer></script>
 </body>
 </html>

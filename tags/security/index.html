@@ -1342,7 +1342,7 @@
 
 
 <meta name="created" content="2021-02-02T00:16:48&#43;0100">
-<meta name="modified" content="2021-02-16T12:06:38&#43;0100">
+<meta name="modified" content="2022-03-29T12:42:24&#43;0200">
 <meta property="article:published_time" content="2021-02-02T00:16:48&#43;0100">
 
 <meta name="author" content="GerkinDev">
@@ -1677,17 +1677,16 @@
         <h6 class="subtitle caption">
           <time title="Written At" dir="ltr">📅&nbsp;Nov 16, 2020 </time>
           
-          <time title="Modified At" dir="ltr"> &middot; 📝&nbsp;Feb 16, 2021 </time>
+          <time title="Modified At" dir="ltr"> &middot; 📝&nbsp;Mar 29, 2022 </time>
           
-          <span title="Reading Time" dir="ltr"> &middot; ☕&nbsp;5&nbsp;min read </span>
+          <span title="Reading Time" dir="ltr"> &middot; ☕&nbsp;6&nbsp;min read </span>
           
         </h6>
       </header>
       <div>
         <div class="summary-classic__text p2">
           
-            References    &nbsp;https://docs.kublr.com/articles/kubernetes-log-audit/  &nbsp;https://mherman.org/blog/logging-in-kubernetes-with-elasticsearch-Kibana-fluentd/  &nbsp;https://kubernetes.io/docs/tasks/debug-application-cluster/audit/#log-collector-examples     Note : Even if this part is not required, you should not ignore it on dev environment and should really really REALLY not skip it for production. In fact, it can contain useful debug informations and security traces to see what is going on in your kubernetes cluster, and even on your whole server(s).
- This tutorial will guide you to setup audit log policy, catch logs with Fluentd, cast them to elasticsearch &amp; show them using Kibana.
+            References    &nbsp; Kubernetes Audit with Elasticsearch and Kibana :: Kublr Documentation  &nbsp; Logging in Kubernetes with Elasticsearch, Kibana, and Fluentd  &nbsp; Auditing | Kubernetes     Note : Even if this part is not required, you should not ignore it on dev environment and should really really REALLY not skip it for production. In fact, it can contain useful debug informations and security traces to see what is going on in your kubernetes cluster, and even on your whole server(s).
           
         </div>
       </div>
@@ -1713,7 +1712,7 @@
         <h6 class="subtitle caption">
           <time title="Written At" dir="ltr">📅&nbsp;Nov 16, 2020 </time>
           
-          <time title="Modified At" dir="ltr"> &middot; 📝&nbsp;Feb 16, 2021 </time>
+          <time title="Modified At" dir="ltr"> &middot; 📝&nbsp;Mar 29, 2022 </time>
           
           <span title="Reading Time" dir="ltr"> &middot; ☕&nbsp;9&nbsp;min read </span>
           
@@ -1749,7 +1748,7 @@
         <h6 class="subtitle caption">
           <time title="Written At" dir="ltr">📅&nbsp;Nov 16, 2020 </time>
           
-          <time title="Modified At" dir="ltr"> &middot; 📝&nbsp;Feb 1, 2021 </time>
+          <time title="Modified At" dir="ltr"> &middot; 📝&nbsp;Mar 29, 2022 </time>
           
           <span title="Reading Time" dir="ltr"> &middot; ☕&nbsp;7&nbsp;min read </span>
           
@@ -1758,9 +1757,7 @@
       <div>
         <div class="summary-classic__text p2">
           
-            Create the realm and the client  &nbsp;https://github.com/zufardhiyaulhaq/engineering-notes/blob/master/notes/kubernetes-keycloak-integration.md
- &nbsp;https://github.com/zufardhiyaulhaq/engineering-notes/blob/master/notes/kubernetes-keycloak-integration.md#integrating
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  REALM_URL=&#34;https://keycloak.{{cluster.baseHostName}}/auth/realms/{{apiServer.realmName}}&#34; # Log in TOKEN_RESPONSE=&#34;$(curl \  -d &#34;grant_type=password&#34; \  -d &#34;client_id={{apiServer.clientId}}&#34; \  -d &#34;client_secret={{apiServer.clientSecret}}&#34; \  -d &#34;username=admin-user&#34; \  -d &#34;password=admin-user&#34; \  $REALM_URL/protocol/openid-connect/token)&#34; # Extract the access token ACCESS_TOKEN=&#34;$(echo &#34;$TOKEN_RESPONSE&#34; | jq &#39;.access_token&#39; -r)&#34; # Check token curl \  --user &#34;{{apiServer.
+            Create the realm and the client   References    &nbsp; engineering-notes/kubernetes-keycloak-integration.md at master · zufardhiyaulhaq/engineering-notes · GitHub    1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  REALM_URL=&#34;https://keycloak.{{cluster.baseHostName}}/auth/realms/{{apiServer.realmName}}&#34; # Log in TOKEN_RESPONSE=&#34;$(curl \  -d &#34;grant_type=password&#34; \  -d &#34;client_id={{apiServer.clientId}}&#34; \  -d &#34;client_secret={{apiServer.clientSecret}}&#34; \  -d &#34;username=admin-user&#34; \  -d &#34;password=admin-user&#34; \  $REALM_URL/protocol/openid-connect/token)&#34; # Extract the access token ACCESS_TOKEN=&#34;$(echo &#34;$TOKEN_RESPONSE&#34; | jq &#39;.
           
         </div>
       </div>
@@ -1786,9 +1783,9 @@
         <h6 class="subtitle caption">
           <time title="Written At" dir="ltr">📅&nbsp;Nov 16, 2020 </time>
           
-          <time title="Modified At" dir="ltr"> &middot; 📝&nbsp;Feb 1, 2021 </time>
+          <time title="Modified At" dir="ltr"> &middot; 📝&nbsp;Mar 29, 2022 </time>
           
-          <span title="Reading Time" dir="ltr"> &middot; ☕&nbsp;1&nbsp;min read </span>
+          <span title="Reading Time" dir="ltr"> &middot; ☕&nbsp;2&nbsp;min read </span>
           
         </h6>
       </header>
@@ -1796,7 +1793,9 @@
         <div class="summary-classic__text p2">
           
             Now that we have our authentication service up and running, we can protect our dashboards installed in the step &nbsp;06 - Monitoring: See what is going on using our Keycloak OpenID Connect provider. Here is a diagram on how authorization will be managed:
-Traefik dashboard Kibana Kube dashboard   References    &nbsp;https://itnext.io/protect-kubernetes-dashboard-with-openid-connect-104b9e75e39c    Again, we are going to set up a new instance of &nbsp;louketo-proxy.
+Traefik dashboard TODO
+Kibana TODO
+Kube dashboard   References    &nbsp; Protect Kubernetes Dashboard with OpenID Connect | by Hidetake Iwata | ITNEXT    Again, we are going to set up a new instance of &nbsp;louketo-proxy.
           
         </div>
       </div>
@@ -2355,5 +2354,6 @@ Traefik dashboard Kibana Kube dashboard   References    &nbsp;https://itnext.io/
     </div>
     
     
+    <script src="https://gerkindev.github.io/devblog/scripts/custom-code-wrappers.min.42af9b6dcc4acb2dbdb9b3614ff17e55df334242784c1bf2f02cd093880e3e74.js" defer></script>
 </body>
 </html>

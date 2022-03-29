@@ -23,9 +23,9 @@
         <link>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/05-storage/</link>
         <pubDate>Mon, 16 Nov 2020 02:35:47 +0100</pubDate>
         
-        <atom:modified>Tue, 16 Feb 2021 12:06:38 +0100</atom:modified>
+        <atom:modified>Tue, 29 Mar 2022 12:42:24 +0200</atom:modified>
         <guid>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/05-storage/</guid>
-        <description>References    &amp;nbsp;Persistent Volume  &amp;nbsp;Dynamic Volume Provisioning  &amp;nbsp;Storage Classes  &amp;nbsp;https://www.youtube.com/watch?v=0swOh5C3OVM    As you may know, docker (and thus, kubernetes) does not persist anything by default. That means that everytime you restart a pod (container), it is in the exact same state as it was at its first execution, except for the mount points. Those mount points are real hard drive directories injected into your pod.</description>
+        <description>References    &amp;nbsp; Persistent Volumes | Kubernetes  &amp;nbsp; Dynamic Volume Provisioning | Kubernetes  &amp;nbsp; Storage Classes | Kubernetes  &amp;nbsp; Kubernetes Volumes explained | Persistent Volume, Persistent Volume Claim &amp;amp; Storage Class - YouTube    As you may know, docker (and thus, kubernetes) does not persist anything by default. That means that everytime you restart a pod (container), it is in the exact same state as it was at its first execution, except for the mount points.</description>
         
         <dc:creator>GerkinDev</dc:creator>
         

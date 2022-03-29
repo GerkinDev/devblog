@@ -1342,7 +1342,7 @@
 <meta name="keywords" content="Kubernetes,Sysadmin,DevOps,Networking,Web service">
 
 <meta name="created" content="2020-11-16T02:35:47&#43;0100">
-<meta name="modified" content="2021-02-16T12:06:38&#43;0100">
+<meta name="modified" content="2022-03-29T12:42:24&#43;0200">
 <meta property="article:published_time" content="2020-11-16T02:35:47&#43;0100">
 
 <meta name="author" content="GerkinDev">
@@ -1391,9 +1391,9 @@
     "@type": "WebPage",
     "headline": "Setup the cluster's internal router",
     "datePublished": "2020-11-16T02:35:47+01:00",
-    "dateModified": "2021-02-16T12:06:38+01:00",
+    "dateModified": "2022-03-29T12:42:24+02:00",
     "url" : "https://gerkindev.github.io/devblog/walkthroughs/kubernetes/03-router/",
-    "description": "References    \u0026nbsp;https://github.com/traefik/traefik-helm-chart/pull/157/files    Start by creating traefik required resources. You can directly use resources from the …",
+    "description": "References    \u0026nbsp; Add OpenAPI v3 schemas to CRDs by jrostand · Pull Request #157 · traefik/traefik-helm-chart · GitHub    Start by creating traefik required resources. …",
     "keywords": ["Kubernetes","Sysadmin","DevOps","Networking","Web service"],
     "mainEntityOfPage": {
       "@type": "WebPage",
@@ -1419,20 +1419,18 @@
 
     
     <meta property="og:title" content="Setup the cluster&#39;s internal router" />
-<meta property="og:description" content="References    &nbsp;https://github.com/traefik/traefik-helm-chart/pull/157/files    Start by creating traefik required resources. You can directly use resources from the &nbsp;kubernetes/traefik templates: it does not contain variables. Those are taken from &nbsp;traefik docs mixed up with &nbsp;this PR for kubernetes 1.19 support and schemas.
- Please look forward for &nbsp;this issue in traefik about official v1.19 support.
- Namespace Definitions Rbac IngressController Services  1 2 3 4 5  # File: ." />
+<meta property="og:description" content="References    &nbsp; Add OpenAPI v3 schemas to CRDs by jrostand · Pull Request #157 · traefik/traefik-helm-chart · GitHub    Start by creating traefik required resources. You can directly use resources from the &nbsp;kubernetes/traefik templates: it does not contain variables. Those are taken from &nbsp;traefik docs mixed up with &nbsp;this PR for kubernetes 1.19 support and schemas.
+ Please look forward for &nbsp;this issue in traefik about official v1." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/03-router/" /><meta property="article:section" content="walkthroughs" />
 <meta property="article:published_time" content="2020-11-16T02:35:47+01:00" />
-<meta property="article:modified_time" content="2021-02-16T12:06:38+01:00" />
+<meta property="article:modified_time" content="2022-03-29T12:42:24+02:00" />
 
 
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Setup the cluster&#39;s internal router"/>
-<meta name="twitter:description" content="References    &nbsp;https://github.com/traefik/traefik-helm-chart/pull/157/files    Start by creating traefik required resources. You can directly use resources from the &nbsp;kubernetes/traefik templates: it does not contain variables. Those are taken from &nbsp;traefik docs mixed up with &nbsp;this PR for kubernetes 1.19 support and schemas.
- Please look forward for &nbsp;this issue in traefik about official v1.19 support.
- Namespace Definitions Rbac IngressController Services  1 2 3 4 5  # File: ."/>
+<meta name="twitter:description" content="References    &nbsp; Add OpenAPI v3 schemas to CRDs by jrostand · Pull Request #157 · traefik/traefik-helm-chart · GitHub    Start by creating traefik required resources. You can directly use resources from the &nbsp;kubernetes/traefik templates: it does not contain variables. Those are taken from &nbsp;traefik docs mixed up with &nbsp;this PR for kubernetes 1.19 support and schemas.
+ Please look forward for &nbsp;this issue in traefik about official v1."/>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css" integrity="sha256-rx5u3IdaOCszi7Jb18XD9HSn8bNiEgAqWJbdBvIYYyU=" crossorigin="anonymous"/>
 </head>
@@ -1482,19 +1480,23 @@
       <table class="legend">
         <tbody>
           <tr>
-            <td>:link:</td>
-            <td>An internal link in this guide</td>
+            <td><i class="fas fa-link"></i></td>
+            <td>A link to a page of this blog</td>
           </tr>
           <tr>
-            <td>:clipboard:</td>
+            <td><i class="fas fa-anchor"></i></td>
+            <td>A link to a section of this page</td>
+          </tr>
+          <tr>
+            <td><i class="fas fa-clipboard-list"></i></td>
             <td>A link to a template of this guide. Templates are files in which you should replace your variables</td>
           </tr>
           <tr>
-            <td>:bookmark:</td>
+            <td><i class="fas fa-bookmark"></i></td>
             <td>A variable</td>
           </tr>
           <tr>
-            <td>📖</td>
+            <td><i class="fas fa-book-open"></i></td>
             <td>A link to an external tool documentation</td>
           </tr>
         </tbody>
@@ -1738,13 +1740,13 @@
   <time class="single__info" title="Written At">📅&nbsp;Nov 16, 2020 </time>
 
   
-    &nbsp;&middot;&nbsp; <time class="single__info" title="Modified At"> 📝&nbsp;Feb 16, 2021 </time> 
+    &nbsp;&middot;&nbsp; <time class="single__info" title="Modified At"> 📝&nbsp;Mar 29, 2022 </time> 
   
 
   
   
   
-    via commit&nbsp;<a href="https://github.com/GerkinDev/devblog/commit/0a6b2c92a587ecc704887f33e271483634185ee3" target="_blank"><code>0a6b2c9</code> (<em>feat: update the bare-metal kubernetes walkthrough</em>) by GerkinDev</a>
+    via commit&nbsp;<a href="https://github.com/GerkinDev/devblog/commit/49ebe76e19bddd4267f8b7b1b1ff525b3ed1dc45" target="_blank"><code>49ebe76</code> (<em>feat: improve links icons, better cross references</em>) by Gerkin</a>
   
 
   &nbsp;&middot;&nbsp; <span class="single__info" title="Reading Time"> ☕&nbsp;8&nbsp;min read </span>
@@ -1879,24 +1881,13 @@
 
 
 
-
-
-
-
-        
-        
-            
-                
-            
-        
-    
-
-
-
-<a
-    href="https://github.com/traefik/traefik-helm-chart/pull/157/files"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fab fa-github" title="See on GitHub"></i>&nbsp;https://github.com/traefik/traefik-helm-chart/pull/157/files</a></li>
+	
+	
+	
+	
+	<a
+		href="https://github.com/traefik/traefik-helm-chart/pull/157/files" title="See on GitHub" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>&nbsp;<i>
+Add OpenAPI v3 schemas to CRDs by jrostand · Pull Request #157 · traefik/traefik-helm-chart · GitHub</i></a></li>
 </ul>
 
   </div>
@@ -1907,24 +1898,11 @@
 
 
 
-
-
-
-
-        
-        
-            
-                
-            
-        
-    
-
-
-
-<a
-    href="https://github.com/GerkinDev/devblog/tree/master/content/walkthroughs/kubernetes/03-router/kubernetes/traefik"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fab fa-github" title="See on GitHub"></i>&nbsp;kubernetes/traefik</a> templates: it does not contain variables. Those are taken from 
+	
+	
+	
+	<a
+		href="https://github.com/GerkinDev/devblog/tree/master/content/walkthroughs/kubernetes/03-router/kubernetes/traefik" title="See on GitHub" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>&nbsp;kubernetes/traefik</a> templates: it does not contain variables. Those are taken from 
 
 
     
@@ -1932,46 +1910,21 @@
 
 
 
-
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://doc.traefik.io/traefik/v2.4/user-guides/crd-acme/#ingressroute-definition"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-book" title="See on doc.traefik.io"></i>&nbsp;traefik docs</a> mixed up with 
+	
+	
+	
+	<a
+		href="https://doc.traefik.io/traefik/v2.4/user-guides/crd-acme/#ingressroute-definition" title="See on doc.traefik.io" target="_blank" rel="noopener noreferrer"><i class="fas fa-book-open"></i>&nbsp;traefik docs</a> mixed up with 
 
 
 
 
 
-
-
-
-
-        
-        
-            
-                
-            
-        
-    
-
-
-
-<a
-    href="https://github.com/traefik/traefik-helm-chart/pull/157/files"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fab fa-github" title="See on GitHub"></i>&nbsp;this PR</a> for kubernetes 1.19 support and schemas.</p>
+	
+	
+	
+	<a
+		href="https://github.com/traefik/traefik-helm-chart/pull/157/files" title="See on GitHub" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>&nbsp;this PR</a> for kubernetes 1.19 support and schemas.</p>
 <blockquote>
 <p>Please look forward for 
 
@@ -1979,27 +1932,14 @@
 
 
 
-
-
-
-
-        
-        
-            
-                
-            
-        
-    
-
-
-
-<a
-    href="https://github.com/traefik/traefik/issues/5473"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-bug" title="See the issue on GitHub"></i>&nbsp;this issue in traefik</a> about official v1.19 support.</p>
+	
+	
+	
+	<a
+		href="https://github.com/traefik/traefik/issues/5473" title="See the GitHub issue/PR" target="_blank" rel="noopener noreferrer"><i class="fas fa-bug"></i>&nbsp;this issue in traefik</a> about official v1.19 support.</p>
 </blockquote>
 
-<div id="e5ae8218ef327f5c" class="codetab">
+<div id="75e98f5175f67f0b" class="codetab">
   <div class="codetab__links">
     
       <button class="codetab__link" aria-label="Tab link">Namespace</button>
@@ -2026,7 +1966,7 @@
 
 
 <!-- Include code file `./kubernetes/traefik/01-Namespace.yaml` with lang `yaml` & label `./kubernetes/traefik/01-Namespace.yaml` -->
-<section class="included-file" data-file="./kubernetes/traefik/01-Namespace.yaml"><div class="highlight"><div class="chroma">
+<section class="included-file" data-file="./kubernetes/traefik/01-Namespace.yaml" data-label="./kubernetes/traefik/01-Namespace.yaml" id="included-file-./kubernetes/traefik/01-namespace.yaml"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
@@ -2035,7 +1975,7 @@
 </span><span class="lnt">5
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml:./kubernetes/traefik/01-Namespace.yaml" data-lang="yaml:./kubernetes/traefik/01-Namespace.yaml"><span class="line"><span class="cl"><span class="c"># File: ./kubernetes/traefik/01-Namespace.yaml</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># File: ./kubernetes/traefik/01-Namespace.yaml</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Namespace</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
@@ -2056,7 +1996,7 @@
 
 
 <!-- Include code file `./kubernetes/traefik/02-CustomResourcesDefinitions.yaml` with lang `yaml` & label `./kubernetes/traefik/02-CustomResourcesDefinitions.yaml` -->
-<section class="included-file" data-file="./kubernetes/traefik/02-CustomResourcesDefinitions.yaml"><div class="highlight"><div class="chroma">
+<section class="included-file" data-file="./kubernetes/traefik/02-CustomResourcesDefinitions.yaml" data-label="./kubernetes/traefik/02-CustomResourcesDefinitions.yaml" id="included-file-./kubernetes/traefik/02-customresourcesdefinitions.yaml"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">  1
 </span><span class="lnt">  2
@@ -3009,7 +2949,7 @@
 </span><span class="lnt">949
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml:./kubernetes/traefik/02-CustomResourcesDefinitions.yaml" data-lang="yaml:./kubernetes/traefik/02-CustomResourcesDefinitions.yaml"><span class="line"><span class="cl"><span class="c"># File: ./kubernetes/traefik/02-CustomResourcesDefinitions.yaml</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># File: ./kubernetes/traefik/02-CustomResourcesDefinitions.yaml</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># From https://doc.traefik.io/traefik/v2.4/user-guides/crd-acme/#ingressroute-definition</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># Applying schemas from https://github.com/traefik/traefik-helm-chart/pull/157/files</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
@@ -3975,7 +3915,7 @@
 
 
 <!-- Include code file `./kubernetes/traefik/03-Rbac.yaml` with lang `yaml` & label `./kubernetes/traefik/03-Rbac.yaml` -->
-<section class="included-file" data-file="./kubernetes/traefik/03-Rbac.yaml"><div class="highlight"><div class="chroma">
+<section class="included-file" data-file="./kubernetes/traefik/03-Rbac.yaml" data-label="./kubernetes/traefik/03-Rbac.yaml" id="included-file-./kubernetes/traefik/03-rbac.yaml"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -4053,7 +3993,7 @@
 </span><span class="lnt">74
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml:./kubernetes/traefik/03-Rbac.yaml" data-lang="yaml:./kubernetes/traefik/03-Rbac.yaml"><span class="line"><span class="cl"><span class="c"># File: ./kubernetes/traefik/03-Rbac.yaml</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># File: ./kubernetes/traefik/03-Rbac.yaml</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># Oddly, those definitions are in the CRD, but are not CRDs</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># https://doc.traefik.io/traefik/v2.4/user-guides/crd-acme/#ingressroute-definition</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
@@ -4143,7 +4083,7 @@
 
 
 <!-- Include code file `./kubernetes/traefik/04-IngressController.yaml` with lang `yaml` & label `./kubernetes/traefik/04-IngressController.yaml` -->
-<section class="included-file" data-file="./kubernetes/traefik/04-IngressController.yaml"><div class="highlight"><div class="chroma">
+<section class="included-file" data-file="./kubernetes/traefik/04-IngressController.yaml" data-label="./kubernetes/traefik/04-IngressController.yaml" id="included-file-./kubernetes/traefik/04-ingresscontroller.yaml"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -4194,7 +4134,7 @@
 </span><span class="lnt">47
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml:./kubernetes/traefik/04-IngressController.yaml" data-lang="yaml:./kubernetes/traefik/04-IngressController.yaml"><span class="line"><span class="cl"><span class="c"># File: ./kubernetes/traefik/04-IngressController.yaml</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># File: ./kubernetes/traefik/04-IngressController.yaml</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># https://doc.traefik.io/traefik/v2.4/user-guides/crd-acme/#deployments</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Deployment</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">apps/v1</span><span class="w">
@@ -4257,7 +4197,7 @@
 
 
 <!-- Include code file `./kubernetes/traefik/05-Services.yaml` with lang `yaml` & label `./kubernetes/traefik/05-Services.yaml` -->
-<section class="included-file" data-file="./kubernetes/traefik/05-Services.yaml"><div class="highlight"><div class="chroma">
+<section class="included-file" data-file="./kubernetes/traefik/05-Services.yaml" data-label="./kubernetes/traefik/05-Services.yaml" id="included-file-./kubernetes/traefik/05-services.yaml"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -4284,7 +4224,7 @@
 </span><span class="lnt">23
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml:./kubernetes/traefik/05-Services.yaml" data-lang="yaml:./kubernetes/traefik/05-Services.yaml"><span class="line"><span class="cl"><span class="c"># File: ./kubernetes/traefik/05-Services.yaml</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># File: ./kubernetes/traefik/05-Services.yaml</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># https://doc.traefik.io/traefik/v2.4/user-guides/crd-acme/#services</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Service</span><span class="w">
@@ -4318,7 +4258,7 @@
 <script>
   'use strict';
 
-  var containerId = JSON.parse("\"e5ae8218ef327f5c\"");
+  var containerId = JSON.parse("\"75e98f5175f67f0b\"");
   var containerElem = document.getElementById(containerId);
   var codetabLinks = null;
   var codetabContents = null;
@@ -4376,49 +4316,13 @@
 
 
 
-
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://docs.traefik.io/routing/providers/kubernetes-crd/"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-book" title="See on docs.traefik.io"></i>&nbsp;custom resource kind <code>IngressRoute</code></a> to map routes using traefik.</p>
-<p>To check if everything works so far, you can use a test nginx instance from 
-
-
-
-
-
-
-
-
-
-        
-        
-    
-    
-        
-            
-        
-    
-
-
-
-
-<a
-    href="./kubernetes/xx-WhoAmI.yaml"
-    
-     target="_blank" rel="noopener noreferrer"><i class="far fa-file-alt" title="See the resource on this site"></i>&nbsp;kubernetes/xx-WhoAmI.yaml</a>. Once deployed, you should be able to display the nginx default page by reaching <code>https://test.{{cluster.baseHostName}}</code> from your host.</p>
+	
+	
+	
+	<a
+		href="https://docs.traefik.io/routing/providers/kubernetes-crd/" title="See on docs.traefik.io" target="_blank" rel="noopener noreferrer"><i class="fas fa-book-open"></i>&nbsp;custom resource kind <code>IngressRoute</code></a> to map routes using traefik.</p>
+<p>To check if everything works so far, you can use a test nginx instance from <a
+		href="#included-file-./kubernetes/xx-whoami.yaml" title="Go to section"><i class="fas fa-anchor"></i>&nbsp;kubernetes/xx-WhoAmI.yaml</a>. Once deployed, you should be able to display the nginx default page by reaching <code>https://test.{{cluster.baseHostName}}</code> from your host.</p>
 
 
 
@@ -4431,7 +4335,7 @@
 
 
 <!-- Include code file `./kubernetes/xx-WhoAmI.yaml` with lang `yaml` & label `./kubernetes/xx-WhoAmI.yaml` -->
-<section class="included-file" data-file="./kubernetes/xx-WhoAmI.yaml"><div class="highlight"><div class="chroma">
+<section class="included-file" data-file="./kubernetes/xx-WhoAmI.yaml" data-label="./kubernetes/xx-WhoAmI.yaml" id="included-file-./kubernetes/xx-whoami.yaml"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -4512,7 +4416,7 @@
 </span><span class="lnt">77
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml:./kubernetes/xx-WhoAmI.yaml" data-lang="yaml:./kubernetes/xx-WhoAmI.yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Namespace</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">whoami</span><span class="w">
@@ -4602,7 +4506,8 @@
 </span></span><span class="line"><span class="cl">curl -kH <span class="s1">&#39;Host: whoami.{{cluster.baseHostName}}&#39;</span> <span class="s2">&#34;https://</span><span class="k">$(</span>kubectl --namespace traefik get svc traefik -o json <span class="p">|</span> jq --raw-output <span class="s1">&#39;.status.loadBalancer.ingress[].ip&#39;</span><span class="k">)</span><span class="s2">&#34;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><div class="alert alert-info" role="alert" data-dir="ltr"><div class="highlight"><div class="chroma">
+</div><div class="alert alert-info" role="alert" data-dir="ltr"><p>To check if a user/serviceaccount can do a specific operation, you can use the <code>kubectl auth can-i [verb] [resource]</code> command:</p>
+<div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
@@ -4950,11 +4855,11 @@
         </li>
         
         <li>
-          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/09-safe-monitoring/" class="related__link">Protect monitoring with authentication</a>
+          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/00-vpn/" class="related__link">Setup the cluster&#39;s VPN</a>
         </li>
         
         <li>
-          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/00-vpn/" class="related__link">Setup the cluster&#39;s VPN</a>
+          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/09-safe-monitoring/" class="related__link">Protect monitoring with authentication</a>
         </li>
         
         <li>
@@ -4962,7 +4867,7 @@
         </li>
         
         <li>
-          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/01-audit-log/" class="related__link">Setup the cluster&#39;s Audit Log</a>
+          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/08-kubernetes-user-management/" class="related__link">Administrate the cluster with authentication</a>
         </li>
         
     </ul>
@@ -6156,5 +6061,6 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
     
     
+    <script src="https://gerkindev.github.io/devblog/scripts/custom-code-wrappers.min.42af9b6dcc4acb2dbdb9b3614ff17e55df334242784c1bf2f02cd093880e3e74.js" defer></script>
 </body>
 </html>

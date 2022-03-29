@@ -1342,7 +1342,7 @@
 <meta name="keywords" content="Kubernetes,Sysadmin,DevOps,Networking,Web service">
 
 <meta name="created" content="2020-11-16T02:35:47&#43;0100">
-<meta name="modified" content="2021-02-16T12:06:38&#43;0100">
+<meta name="modified" content="2022-03-29T12:42:24&#43;0200">
 <meta property="article:published_time" content="2020-11-16T02:35:47&#43;0100">
 
 <meta name="author" content="GerkinDev">
@@ -1391,7 +1391,7 @@
     "@type": "WebPage",
     "headline": "Make services reachable from the world",
     "datePublished": "2020-11-16T02:35:47+01:00",
-    "dateModified": "2021-02-16T12:06:38+01:00",
+    "dateModified": "2022-03-29T12:42:24+02:00",
     "url" : "https://gerkindev.github.io/devblog/walkthroughs/kubernetes/04-reverse-proxy/",
     "description": "Now that you have a router installed, you have to pass requests on your server to it. This setup use a single entry point directly binding some ports on the host server. …",
     "keywords": ["Kubernetes","Sysadmin","DevOps","Networking","Web service"],
@@ -1420,17 +1420,17 @@
     
     <meta property="og:title" content="Make services reachable from the world" />
 <meta property="og:description" content="Now that you have a router installed, you have to pass requests on your server to it. This setup use a single entry point directly binding some ports on the host server.
-1. Make a static and previsible configuration As you may have noticed in the step  &nbsp;Kickstart the cluster, the metallb configuration use only dynamic adresses. But for the reverse proxy to work, we&rsquo;ll need to be sure that our traefik router has a constant IP in your VPN." />
+1. Make a static and previsible configuration As you may have noticed in the step &nbsp;Kickstart the cluster, the metallb configuration use only dynamic adresses. But for the reverse proxy to work, we&rsquo;ll need to be sure that our traefik router has a constant IP in your VPN." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/04-reverse-proxy/" /><meta property="article:section" content="walkthroughs" />
 <meta property="article:published_time" content="2020-11-16T02:35:47+01:00" />
-<meta property="article:modified_time" content="2021-02-16T12:06:38+01:00" />
+<meta property="article:modified_time" content="2022-03-29T12:42:24+02:00" />
 
 
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Make services reachable from the world"/>
 <meta name="twitter:description" content="Now that you have a router installed, you have to pass requests on your server to it. This setup use a single entry point directly binding some ports on the host server.
-1. Make a static and previsible configuration As you may have noticed in the step  &nbsp;Kickstart the cluster, the metallb configuration use only dynamic adresses. But for the reverse proxy to work, we&rsquo;ll need to be sure that our traefik router has a constant IP in your VPN."/>
+1. Make a static and previsible configuration As you may have noticed in the step &nbsp;Kickstart the cluster, the metallb configuration use only dynamic adresses. But for the reverse proxy to work, we&rsquo;ll need to be sure that our traefik router has a constant IP in your VPN."/>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css" integrity="sha256-rx5u3IdaOCszi7Jb18XD9HSn8bNiEgAqWJbdBvIYYyU=" crossorigin="anonymous"/>
 </head>
@@ -1480,19 +1480,23 @@
       <table class="legend">
         <tbody>
           <tr>
-            <td>:link:</td>
-            <td>An internal link in this guide</td>
+            <td><i class="fas fa-link"></i></td>
+            <td>A link to a page of this blog</td>
           </tr>
           <tr>
-            <td>:clipboard:</td>
+            <td><i class="fas fa-anchor"></i></td>
+            <td>A link to a section of this page</td>
+          </tr>
+          <tr>
+            <td><i class="fas fa-clipboard-list"></i></td>
             <td>A link to a template of this guide. Templates are files in which you should replace your variables</td>
           </tr>
           <tr>
-            <td>:bookmark:</td>
+            <td><i class="fas fa-bookmark"></i></td>
             <td>A variable</td>
           </tr>
           <tr>
-            <td>📖</td>
+            <td><i class="fas fa-book-open"></i></td>
             <td>A link to an external tool documentation</td>
           </tr>
         </tbody>
@@ -1736,13 +1740,13 @@
   <time class="single__info" title="Written At">📅&nbsp;Nov 16, 2020 </time>
 
   
-    &nbsp;&middot;&nbsp; <time class="single__info" title="Modified At"> 📝&nbsp;Feb 16, 2021 </time> 
+    &nbsp;&middot;&nbsp; <time class="single__info" title="Modified At"> 📝&nbsp;Mar 29, 2022 </time> 
   
 
   
   
   
-    via commit&nbsp;<a href="https://github.com/GerkinDev/devblog/commit/0a6b2c92a587ecc704887f33e271483634185ee3" target="_blank"><code>0a6b2c9</code> (<em>feat: update the bare-metal kubernetes walkthrough</em>) by GerkinDev</a>
+    via commit&nbsp;<a href="https://github.com/GerkinDev/devblog/commit/49ebe76e19bddd4267f8b7b1b1ff525b3ed1dc45" target="_blank"><code>49ebe76</code> (<em>feat: improve links icons, better cross references</em>) by Gerkin</a>
   
 
   &nbsp;&middot;&nbsp; <span class="single__info" title="Reading Time"> ☕&nbsp;4&nbsp;min read </span>
@@ -1887,53 +1891,12 @@
     
 
 
-
-<em>
-
-
-
-
-        
-        
-    
-    
-        
-    
-
-
-    
-
-
-
-<a
-    href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/02-cluster/"
-     title="Kickstart the cluster"
-    ><i class="fas fa-link" title="See on this site"></i>&nbsp;Kickstart the cluster</a></em>, the <em>metallb</em> configuration use only dynamic adresses. But for the reverse proxy to work, we&rsquo;ll need to be sure that our <em>traefik</em> router has a constant IP in your VPN. For this, modify your <em>metallb</em> configuration using the new 
-
-
-
-
-
-
-
-
-
-        
-        
-    
-    
-        
-            
-        
-    
-
-
-
-
-<a
-    href="./kubernetes/metallb-configmap.yaml"
-    
-     target="_blank" rel="noopener noreferrer"><i class="far fa-file-alt" title="See the resource on this site"></i>&nbsp;kubernetes/metallb-configmap.yaml</a> template. This new configuration declares a new address pool named <code>frontend</code> with a single IP in it.</p>
+	
+	
+	
+	<a
+		href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/02-cluster/" title="See `Kickstart the cluster` on this blog"><i class="fas fa-link"></i>&nbsp;Kickstart the cluster</a>, the <em>metallb</em> configuration use only dynamic adresses. But for the reverse proxy to work, we&rsquo;ll need to be sure that our <em>traefik</em> router has a constant IP in your VPN. For this, modify your <em>metallb</em> configuration using the new <a
+		href="#included-file-./kubernetes/metallb-configmap.yaml" title="Go to section"><i class="fas fa-anchor"></i>&nbsp;kubernetes/metallb-configmap.yaml</a> template. This new configuration declares a new address pool named <code>frontend</code> with a single IP in it.</p>
 
 
 
@@ -1946,7 +1909,7 @@
 
 
 <!-- Include code file `./kubernetes/metallb-configmap.yaml` with lang `yaml` & label `./kubernetes/metallb-configmap.yaml` -->
-<section class="included-file" data-file="./kubernetes/metallb-configmap.yaml"><div class="highlight"><div class="chroma">
+<section class="included-file" data-file="./kubernetes/metallb-configmap.yaml" data-label="./kubernetes/metallb-configmap.yaml" id="included-file-./kubernetes/metallb-configmap.yaml"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -1966,7 +1929,7 @@
 </span><span class="lnt">16
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml:./kubernetes/metallb-configmap.yaml" data-lang="yaml:./kubernetes/metallb-configmap.yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">ConfigMap</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">metallb-system</span><span class="w">
@@ -2011,53 +1974,19 @@
 
 
 
-
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://metallb.universe.tf/usage/#requesting-specific-ips"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on metallb.universe.tf"></i>&nbsp;Requesting specific IPs from metallb</a></li>
+	
+	
+	
+	
+	<a
+		href="https://metallb.universe.tf/usage/#requesting-specific-ips" title="See on metallb.universe.tf" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;<i>
+MetalLB, bare metal load-balancer for Kubernetes</i></a></li>
 </ul>
 
   </div>
 </div>
-<p>Once the configmap has been changed, force our <em>traefik</em> service to use this new address &ldquo;<em>pool</em>&rdquo;. This is done using the <em>annotation</em> <code>metallb.universe.tf/address-pool</code>. Use the new 
-
-
-
-
-
-
-
-
-
-        
-        
-    
-    
-        
-            
-        
-    
-
-
-
-
-<a
-    href="./kubernetes/traefik/05-Services.yaml"
-    
-     target="_blank" rel="noopener noreferrer"><i class="far fa-file-alt" title="See the resource on this site"></i>&nbsp;📋 kubernetes/traefik/05-Services.yaml</a> template, and check that its IP is correct.</p>
+<p>Once the configmap has been changed, force our <em>traefik</em> service to use this new address &ldquo;<em>pool</em>&rdquo;. This is done using the <em>annotation</em> <code>metallb.universe.tf/address-pool</code>. Use the new <a
+		href="#included-file-./kubernetes/traefik/05-services.yaml" title="Go to section"><i class="fas fa-anchor"></i>&nbsp;kubernetes/traefik/05-Services.yaml</a> template, and check that its IP is correct.</p>
 
 
 
@@ -2070,7 +1999,7 @@
 
 
 <!-- Include code file `./kubernetes/traefik/05-Services.yaml` with lang `yaml` & label `./kubernetes/traefik/05-Services.yaml` -->
-<section class="included-file" data-file="./kubernetes/traefik/05-Services.yaml"><div class="highlight"><div class="chroma">
+<section class="included-file" data-file="./kubernetes/traefik/05-Services.yaml" data-label="./kubernetes/traefik/05-Services.yaml" id="included-file-./kubernetes/traefik/05-services.yaml"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -2100,7 +2029,7 @@
 </span><span class="lnt">26
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml:./kubernetes/traefik/05-Services.yaml" data-lang="yaml:./kubernetes/traefik/05-Services.yaml"><span class="line"><span class="cl"><span class="c"># File: ./kubernetes/traefik/05-Services.yaml</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># File: ./kubernetes/traefik/05-Services.yaml</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># https://doc.traefik.io/traefik/v2.4/user-guides/crd-acme/#services</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># With custom address pool for metallb</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
@@ -2162,28 +2091,11 @@
     
 
 
-
-<em>
-
-
-
-
-        
-        
-    
-    
-        
-    
-
-
-    
-
-
-
-<a
-    href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/03-router/"
-     title="Setup the cluster&#39;s internal router"
-    ><i class="fas fa-link" title="See on this site"></i>&nbsp;previously installed in kubernetes</a></em>. In the case of an SSL connection, it won&rsquo;t be unwrapped.</p>
+	
+	
+	
+	<a
+		href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/03-router/" title="See `Setup the cluster&#39;s internal router` on this blog"><i class="fas fa-link"></i>&nbsp;previously installed in kubernetes</a>. In the case of an SSL connection, it won&rsquo;t be unwrapped.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
@@ -2244,32 +2156,8 @@
 </span></span><span class="line"><span class="cl">systemctl <span class="nb">enable</span> --now nginx.service
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>Now, you should be able to reach your traefik router by requesting directly your entry point server. Test this with the 
-
-
-
-
-
-
-
-
-
-        
-        
-    
-    
-        
-    
-
-
-    
-
-
-
-<a
-    href="../03-router/kubernetes/xx-WhoAmI.yaml"
-    
-    ><i class="fas fa-link" title="See on this site"></i>&nbsp;kubernetes/xx-WhoAmI.yaml</a> template.</p>
+</div><p>Now, you should be able to reach your traefik router by requesting directly your entry point server. Test this with the <a
+		href="#included-file-../03-router/kubernetes/xx-whoami.yaml" title="Go to section"><i class="fas fa-anchor"></i>&nbsp;kubernetes/xx-WhoAmI.yaml</a> template.</p>
 
 
 
@@ -2282,7 +2170,7 @@
 
 
 <!-- Include code file `../03-router/kubernetes/xx-WhoAmI.yaml` with lang `yaml` & label `./kubernetes/xx-WhoAmI.yaml` -->
-<section class="included-file" data-file="../03-router/kubernetes/xx-WhoAmI.yaml"><div class="highlight"><div class="chroma">
+<section class="included-file" data-file="../03-router/kubernetes/xx-WhoAmI.yaml" data-label="./kubernetes/xx-WhoAmI.yaml" id="included-file-../03-router/kubernetes/xx-whoami.yaml"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -2363,7 +2251,7 @@
 </span><span class="lnt">77
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml:./kubernetes/xx-WhoAmI.yaml" data-lang="yaml:./kubernetes/xx-WhoAmI.yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Namespace</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">whoami</span><span class="w">
@@ -2461,36 +2349,22 @@
 
 
 
-
-
-
-
-        
-
-
-
-<a
-    href="https://whoami.%7b%7bcluster.baseHostName%7d%7d/tls"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on parametric domain"></i>&nbsp;https://whoami.{{cluster.baseHostName}}/tls</a></li>
+	
+	
+	
+	<a
+		href="https://whoami.%7b%7bcluster.baseHostName%7d%7d/tls" title="See on parametric domain" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;https://whoami.{{cluster.baseHostName}}/tls</a></li>
 <li>
 
 
 
 
 
-
-
-
-
-        
-
-
-
-<a
-    href="http://whoami.%7b%7bcluster.baseHostName%7d%7d/notls"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on parametric domain"></i>&nbsp;http://whoami.{{cluster.baseHostName}}/notls</a></li>
+	
+	
+	
+	<a
+		href="http://whoami.%7b%7bcluster.baseHostName%7d%7d/notls" title="See on parametric domain" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;http://whoami.{{cluster.baseHostName}}/notls</a></li>
 </ul>
 <p>If this works, you&rsquo;re good to go !</p>
 <div class="highlight"><div class="chroma">
@@ -2830,7 +2704,7 @@
         </li>
         
         <li>
-          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/07-authentication/" class="related__link">Setup cluster&#39;s authentication</a>
+          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/00-vpn/" class="related__link">Setup the cluster&#39;s VPN</a>
         </li>
         
         <li>
@@ -2838,11 +2712,11 @@
         </li>
         
         <li>
-          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/00-vpn/" class="related__link">Setup the cluster&#39;s VPN</a>
+          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/07-authentication/" class="related__link">Setup cluster&#39;s authentication</a>
         </li>
         
         <li>
-          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/01-audit-log/" class="related__link">Setup the cluster&#39;s Audit Log</a>
+          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/05-storage/" class="related__link">Make things persistent</a>
         </li>
         
     </ul>
@@ -4042,5 +3916,6 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
     
     
+    <script src="https://gerkindev.github.io/devblog/scripts/custom-code-wrappers.min.42af9b6dcc4acb2dbdb9b3614ff17e55df334242784c1bf2f02cd093880e3e74.js" defer></script>
 </body>
 </html>

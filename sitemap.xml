@@ -8,57 +8,57 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/00-vpn/</loc>
-    <lastmod>2021-02-16T12:06:38+01:00</lastmod>
+    <lastmod>2022-03-29T12:42:24+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/01-audit-log/</loc>
-    <lastmod>2021-02-16T12:06:38+01:00</lastmod>
+    <lastmod>2022-03-29T12:42:24+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/02-cluster/</loc>
-    <lastmod>2021-02-16T15:23:26+01:00</lastmod>
+    <lastmod>2022-03-29T12:42:24+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/03-router/</loc>
-    <lastmod>2021-02-16T12:06:38+01:00</lastmod>
+    <lastmod>2022-03-29T12:42:24+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/04-reverse-proxy/</loc>
-    <lastmod>2021-02-16T12:06:38+01:00</lastmod>
+    <lastmod>2022-03-29T12:42:24+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/05-storage/</loc>
-    <lastmod>2021-02-16T12:06:38+01:00</lastmod>
+    <lastmod>2022-03-29T12:42:24+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/06-monitoring/</loc>
-    <lastmod>2021-02-16T12:06:38+01:00</lastmod>
+    <lastmod>2022-03-29T12:42:24+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/07-authentication/</loc>
-    <lastmod>2021-02-16T12:06:38+01:00</lastmod>
+    <lastmod>2022-03-29T12:42:24+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/08-kubernetes-user-management/</loc>
-    <lastmod>2021-02-01T16:42:59+01:00</lastmod>
+    <lastmod>2022-03-29T12:42:24+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/09-safe-monitoring/</loc>
-    <lastmod>2021-02-01T16:42:59+01:00</lastmod>
+    <lastmod>2022-03-29T12:42:24+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/10-scaling-up/</loc>
-    <lastmod>2021-02-01T16:42:59+01:00</lastmod>
+    <lastmod>2022-03-29T12:42:24+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -78,17 +78,17 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://gerkindev.github.io/devblog/tags/security/</loc>
-    <lastmod>2021-02-16T12:06:38+01:00</lastmod>
+    <lastmod>2022-03-29T12:42:24+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://gerkindev.github.io/devblog/tags/sysadmin/</loc>
-    <lastmod>2021-02-16T15:23:26+01:00</lastmod>
+    <lastmod>2022-03-29T12:42:24+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://gerkindev.github.io/devblog/tags/</loc>
-    <lastmod>2022-03-28T04:42:52-04:00</lastmod>
+    <lastmod>2022-03-29T12:42:24+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -98,17 +98,17 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://gerkindev.github.io/devblog/categories/</loc>
-    <lastmod>2022-03-28T04:42:52-04:00</lastmod>
+    <lastmod>2022-03-29T12:42:24+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://gerkindev.github.io/devblog/tags/kubernetes/</loc>
-    <lastmod>2022-03-28T04:42:52-04:00</lastmod>
+    <lastmod>2022-03-29T12:42:24+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://gerkindev.github.io/devblog/categories/kubernetes/</loc>
-    <lastmod>2022-03-28T04:42:52-04:00</lastmod>
+    <lastmod>2022-03-29T12:42:24+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -123,32 +123,32 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://gerkindev.github.io/devblog/tags/authentication/</loc>
-    <lastmod>2021-02-16T12:06:38+01:00</lastmod>
+    <lastmod>2022-03-29T12:42:24+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://gerkindev.github.io/devblog/tags/devops/</loc>
-    <lastmod>2021-02-16T15:23:26+01:00</lastmod>
+    <lastmod>2022-03-29T12:42:24+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://gerkindev.github.io/devblog/tags/monitoring/</loc>
-    <lastmod>2021-02-16T12:06:38+01:00</lastmod>
+    <lastmod>2022-03-29T12:42:24+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://gerkindev.github.io/devblog/tags/networking/</loc>
-    <lastmod>2021-02-16T12:06:38+01:00</lastmod>
+    <lastmod>2022-03-29T12:42:24+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://gerkindev.github.io/devblog/tags/storage/</loc>
-    <lastmod>2021-02-16T12:06:38+01:00</lastmod>
+    <lastmod>2022-03-29T12:42:24+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://gerkindev.github.io/devblog/tags/web-service/</loc>
-    <lastmod>2021-02-16T12:06:38+01:00</lastmod>
+    <lastmod>2022-03-29T12:42:24+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>

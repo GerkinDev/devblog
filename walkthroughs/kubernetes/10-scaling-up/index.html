@@ -1342,7 +1342,7 @@
 <meta name="keywords" content="Kubernetes,Sysadmin">
 
 <meta name="created" content="2020-11-22T04:03:47&#43;0100">
-<meta name="modified" content="2021-02-01T16:42:59&#43;0100">
+<meta name="modified" content="2022-03-29T12:42:24&#43;0200">
 <meta property="article:published_time" content="2020-11-22T04:03:47&#43;0100">
 
 <meta name="author" content="GerkinDev">
@@ -1391,7 +1391,7 @@
     "@type": "WebPage",
     "headline": "Scaling up",
     "datePublished": "2020-11-22T04:03:47+01:00",
-    "dateModified": "2021-02-01T16:42:59+01:00",
+    "dateModified": "2022-03-29T12:42:24+02:00",
     "url" : "https://gerkindev.github.io/devblog/walkthroughs/kubernetes/10-scaling-up/",
     "description": "Your setup is running, everything runs smoothly, and suddenly, ‼️ nothing is responding: your cluster is overloaded. Well, I hope you\u0026rsquo;ll expand your cluster …",
     "keywords": ["Kubernetes","Sysadmin"],
@@ -1425,7 +1425,7 @@ Hopefully, here comes the real huge advantage of kubernetes: it is meant to scal
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/10-scaling-up/" /><meta property="article:section" content="walkthroughs" />
 <meta property="article:published_time" content="2020-11-22T04:03:47+01:00" />
-<meta property="article:modified_time" content="2021-02-01T16:42:59+01:00" />
+<meta property="article:modified_time" content="2022-03-29T12:42:24+02:00" />
 
 
     <meta name="twitter:card" content="summary"/>
@@ -1482,19 +1482,23 @@ Hopefully, here comes the real huge advantage of kubernetes: it is meant to scal
       <table class="legend">
         <tbody>
           <tr>
-            <td>:link:</td>
-            <td>An internal link in this guide</td>
+            <td><i class="fas fa-link"></i></td>
+            <td>A link to a page of this blog</td>
           </tr>
           <tr>
-            <td>:clipboard:</td>
+            <td><i class="fas fa-anchor"></i></td>
+            <td>A link to a section of this page</td>
+          </tr>
+          <tr>
+            <td><i class="fas fa-clipboard-list"></i></td>
             <td>A link to a template of this guide. Templates are files in which you should replace your variables</td>
           </tr>
           <tr>
-            <td>:bookmark:</td>
+            <td><i class="fas fa-bookmark"></i></td>
             <td>A variable</td>
           </tr>
           <tr>
-            <td>📖</td>
+            <td><i class="fas fa-book-open"></i></td>
             <td>A link to an external tool documentation</td>
           </tr>
         </tbody>
@@ -1738,13 +1742,13 @@ Hopefully, here comes the real huge advantage of kubernetes: it is meant to scal
   <time class="single__info" title="Written At">📅&nbsp;Nov 22, 2020 </time>
 
   
-    &nbsp;&middot;&nbsp; <time class="single__info" title="Modified At"> 📝&nbsp;Feb 1, 2021 </time> 
+    &nbsp;&middot;&nbsp; <time class="single__info" title="Modified At"> 📝&nbsp;Mar 29, 2022 </time> 
   
 
   
   
   
-    via commit&nbsp;<a href="https://github.com/GerkinDev/devblog/commit/7bfc033ea6400fd67869ce2c582fc4fcbba7073e" target="_blank"><code>7bfc033</code> (<em>Publish bare-metal kubernetes cluster walkthrough</em>) by GerkinDev</a>
+    via commit&nbsp;<a href="https://github.com/GerkinDev/devblog/commit/49ebe76e19bddd4267f8b7b1b1ff525b3ed1dc45" target="_blank"><code>49ebe76</code> (<em>feat: improve links icons, better cross references</em>) by Gerkin</a>
   
 
   &nbsp;&middot;&nbsp; <span class="single__info" title="Reading Time"> ☕&nbsp;3&nbsp;min read </span>
@@ -1878,6 +1882,10 @@ Hopefully, here comes the real huge advantage of kubernetes: it is meant to scal
 <p>Hopefully, here comes the real huge advantage of <em>kubernetes</em>: it is meant to scale, up, and down. So, assuming you have followed the full guide so far, let&rsquo;s review together how to add some juice to our cluster ⚡.</p>
 <h2 id="join-the-clusters-vpn">Join the cluster&rsquo;s VPN</h2>
 <p>In the step 
+    
+    
+
+
 
 
 
@@ -1890,11 +1898,11 @@ Hopefully, here comes the real huge advantage of kubernetes: it is meant to scal
     
 
 
-
-<a
-    
-    
-    ><i class="fas fa-tools" title="TODO"></i>&nbsp;00 Setup the cluster&rsquo;s VPN</a>, we have set up a VPN so that each of our nodes can communicate safely with each others, on their own virtual network across the internet. This comes with the great power of being able to have servers spread all around the globe.</p>
+	
+	
+	
+	<a
+		href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/00-vpn/" title="See `Setup the cluster&#39;s VPN` on this blog"><i class="fas fa-link"></i>&nbsp;Setup the cluster's VPN</a>, we have set up a VPN so that each of our nodes can communicate safely with each others, on their own virtual network across the internet. This comes with the great power of being able to have servers spread all around the globe.</p>
 <h3 id="from-the-openvpn-server-node">From the <em>OpenVPN server node</em></h3>
 <p>So, log in to the <strong>OpenVPN master server</strong>, and run the following to generate a configuration for your brand new machine:</p>
 <div class="highlight"><div class="chroma">
@@ -1976,26 +1984,11 @@ Hopefully, here comes the real huge advantage of kubernetes: it is meant to scal
 
 
 
-
-
-
-
-        
-        
-    
-    
-        
-    
-
-
-    
-
-
-
-<a
-    href="../02-cluster/#join-workers"
-    
-    ><i class="fas fa-link" title="See on this site"></i>&nbsp;02 - Kickstart the cluster</a></p>
+	
+	
+	
+	<a
+		href="../02-cluster/#join-workers" title="See on this blog"><i class="fas fa-link"></i>&nbsp;02 - Kickstart the cluster</a></p>
 <h3 id="from-any-account-or-node-with-cluster-admin-capabilities">From any account or node with cluster admin capabilities</h3>
 <p>Create a new cluster token:</p>
 <div class="highlight"><div class="chroma">
@@ -2385,15 +2378,11 @@ Hopefully, here comes the real huge advantage of kubernetes: it is meant to scal
     <ul class="related-ul">
         
         <li>
+          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/00-vpn/" class="related__link">Setup the cluster&#39;s VPN</a>
+        </li>
+        
+        <li>
           <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/02-cluster/" class="related__link">Kickstart the cluster</a>
-        </li>
-        
-        <li>
-          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/04-reverse-proxy/" class="related__link">Make services reachable from the world</a>
-        </li>
-        
-        <li>
-          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/09-safe-monitoring/" class="related__link">Protect monitoring with authentication</a>
         </li>
         
         <li>
@@ -2402,6 +2391,10 @@ Hopefully, here comes the real huge advantage of kubernetes: it is meant to scal
         
         <li>
           <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/05-storage/" class="related__link">Make things persistent</a>
+        </li>
+        
+        <li>
+          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/06-monitoring/" class="related__link">Monitoring: See what is going on</a>
         </li>
         
     </ul>
@@ -3603,5 +3596,6 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
     
     
+    <script src="https://gerkindev.github.io/devblog/scripts/custom-code-wrappers.min.42af9b6dcc4acb2dbdb9b3614ff17e55df334242784c1bf2f02cd093880e3e74.js" defer></script>
 </body>
 </html>

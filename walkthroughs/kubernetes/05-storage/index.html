@@ -1342,7 +1342,7 @@
 <meta name="keywords" content="Kubernetes,Sysadmin,DevOps,Storage">
 
 <meta name="created" content="2020-11-16T02:35:47&#43;0100">
-<meta name="modified" content="2021-02-16T12:06:38&#43;0100">
+<meta name="modified" content="2022-03-29T12:42:24&#43;0200">
 <meta property="article:published_time" content="2020-11-16T02:35:47&#43;0100">
 
 <meta name="author" content="GerkinDev">
@@ -1391,9 +1391,9 @@
     "@type": "WebPage",
     "headline": "Make things persistent",
     "datePublished": "2020-11-16T02:35:47+01:00",
-    "dateModified": "2021-02-16T12:06:38+01:00",
+    "dateModified": "2022-03-29T12:42:24+02:00",
     "url" : "https://gerkindev.github.io/devblog/walkthroughs/kubernetes/05-storage/",
-    "description": "References    \u0026nbsp;Persistent Volume  \u0026nbsp;Dynamic Volume Provisioning  \u0026nbsp;Storage Classes  \u0026nbsp;https://www.youtube.com/watch?v=0swOh5C3OVM    As you may know, …",
+    "description": "References    \u0026nbsp; Persistent Volumes | Kubernetes  \u0026nbsp; Dynamic Volume Provisioning | Kubernetes  \u0026nbsp; Storage Classes | Kubernetes  \u0026nbsp; Kubernetes Volumes …",
     "keywords": ["Kubernetes","Sysadmin","DevOps","Storage"],
     "mainEntityOfPage": {
       "@type": "WebPage",
@@ -1419,16 +1419,16 @@
 
     
     <meta property="og:title" content="Make things persistent" />
-<meta property="og:description" content="References    &nbsp;Persistent Volume  &nbsp;Dynamic Volume Provisioning  &nbsp;Storage Classes  &nbsp;https://www.youtube.com/watch?v=0swOh5C3OVM    As you may know, docker (and thus, kubernetes) does not persist anything by default. That means that everytime you restart a pod (container), it is in the exact same state as it was at its first execution, except for the mount points. Those mount points are real hard drive directories injected into your pod." />
+<meta property="og:description" content="References    &nbsp; Persistent Volumes | Kubernetes  &nbsp; Dynamic Volume Provisioning | Kubernetes  &nbsp; Storage Classes | Kubernetes  &nbsp; Kubernetes Volumes explained | Persistent Volume, Persistent Volume Claim &amp; Storage Class - YouTube    As you may know, docker (and thus, kubernetes) does not persist anything by default. That means that everytime you restart a pod (container), it is in the exact same state as it was at its first execution, except for the mount points." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/05-storage/" /><meta property="article:section" content="walkthroughs" />
 <meta property="article:published_time" content="2020-11-16T02:35:47+01:00" />
-<meta property="article:modified_time" content="2021-02-16T12:06:38+01:00" />
+<meta property="article:modified_time" content="2022-03-29T12:42:24+02:00" />
 
 
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Make things persistent"/>
-<meta name="twitter:description" content="References    &nbsp;Persistent Volume  &nbsp;Dynamic Volume Provisioning  &nbsp;Storage Classes  &nbsp;https://www.youtube.com/watch?v=0swOh5C3OVM    As you may know, docker (and thus, kubernetes) does not persist anything by default. That means that everytime you restart a pod (container), it is in the exact same state as it was at its first execution, except for the mount points. Those mount points are real hard drive directories injected into your pod."/>
+<meta name="twitter:description" content="References    &nbsp; Persistent Volumes | Kubernetes  &nbsp; Dynamic Volume Provisioning | Kubernetes  &nbsp; Storage Classes | Kubernetes  &nbsp; Kubernetes Volumes explained | Persistent Volume, Persistent Volume Claim &amp; Storage Class - YouTube    As you may know, docker (and thus, kubernetes) does not persist anything by default. That means that everytime you restart a pod (container), it is in the exact same state as it was at its first execution, except for the mount points."/>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css" integrity="sha256-rx5u3IdaOCszi7Jb18XD9HSn8bNiEgAqWJbdBvIYYyU=" crossorigin="anonymous"/>
 </head>
@@ -1478,19 +1478,23 @@
       <table class="legend">
         <tbody>
           <tr>
-            <td>:link:</td>
-            <td>An internal link in this guide</td>
+            <td><i class="fas fa-link"></i></td>
+            <td>A link to a page of this blog</td>
           </tr>
           <tr>
-            <td>:clipboard:</td>
+            <td><i class="fas fa-anchor"></i></td>
+            <td>A link to a section of this page</td>
+          </tr>
+          <tr>
+            <td><i class="fas fa-clipboard-list"></i></td>
             <td>A link to a template of this guide. Templates are files in which you should replace your variables</td>
           </tr>
           <tr>
-            <td>:bookmark:</td>
+            <td><i class="fas fa-bookmark"></i></td>
             <td>A variable</td>
           </tr>
           <tr>
-            <td>📖</td>
+            <td><i class="fas fa-book-open"></i></td>
             <td>A link to an external tool documentation</td>
           </tr>
         </tbody>
@@ -1734,13 +1738,13 @@
   <time class="single__info" title="Written At">📅&nbsp;Nov 16, 2020 </time>
 
   
-    &nbsp;&middot;&nbsp; <time class="single__info" title="Modified At"> 📝&nbsp;Feb 16, 2021 </time> 
+    &nbsp;&middot;&nbsp; <time class="single__info" title="Modified At"> 📝&nbsp;Mar 29, 2022 </time> 
   
 
   
   
   
-    via commit&nbsp;<a href="https://github.com/GerkinDev/devblog/commit/0a6b2c92a587ecc704887f33e271483634185ee3" target="_blank"><code>0a6b2c9</code> (<em>feat: update the bare-metal kubernetes walkthrough</em>) by GerkinDev</a>
+    via commit&nbsp;<a href="https://github.com/GerkinDev/devblog/commit/49ebe76e19bddd4267f8b7b1b1ff525b3ed1dc45" target="_blank"><code>49ebe76</code> (<em>feat: improve links icons, better cross references</em>) by Gerkin</a>
   
 
   &nbsp;&middot;&nbsp; <span class="single__info" title="Reading Time"> ☕&nbsp;5&nbsp;min read </span>
@@ -1884,89 +1888,52 @@
 
 
 
-
-
-
-
-        
-        
-            
-        
-    
-
-
-
-<a
-    href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-book" title="See the docs"></i>&nbsp;Persistent Volume</a></li>
+	
+	
+	
+	
+	<a
+		href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/" title="See in the docs of kubernetes.io" target="_blank" rel="noopener noreferrer"><i class="fas fa-book-open"></i>&nbsp;<i>
+Persistent Volumes | Kubernetes</i></a></li>
 <li>
 
 
 
 
 
-
-
-
-
-        
-        
-            
-        
-    
-
-
-
-<a
-    href="https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-book" title="See the docs"></i>&nbsp;Dynamic Volume Provisioning</a></li>
+	
+	
+	
+	
+	<a
+		href="https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/" title="See in the docs of kubernetes.io" target="_blank" rel="noopener noreferrer"><i class="fas fa-book-open"></i>&nbsp;<i>
+Dynamic Volume Provisioning | Kubernetes</i></a></li>
 <li>
 
 
 
 
 
-
-
-
-
-        
-        
-            
-        
-    
-
-
-
-<a
-    href="https://kubernetes.io/docs/concepts/storage/storage-classes/"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-book" title="See the docs"></i>&nbsp;Storage Classes</a></li>
+	
+	
+	
+	
+	<a
+		href="https://kubernetes.io/docs/concepts/storage/storage-classes/" title="See in the docs of kubernetes.io" target="_blank" rel="noopener noreferrer"><i class="fas fa-book-open"></i>&nbsp;<i>
+Storage Classes | Kubernetes</i></a></li>
 <li>
 
 
 
 
 
-
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://www.youtube.com/watch?v=0swOh5C3OVM"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on www.youtube.com"></i>&nbsp;https://www.youtube.com/watch?v=0swOh5C3OVM</a></li>
+	
+	
+	
+	
+	<a
+		href="https://www.youtube.com/watch?v=0swOh5C3OVM" title="See on www.youtube.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;<i>
+Kubernetes Volumes explained | Persistent Volume, Persistent Volume Claim &amp; Storage Class - YouTube</i></a></li>
 </ul>
 
   </div>
@@ -1978,22 +1945,7 @@
 
 
 
-
-
-
-
-
-    
-
-
-    
-
-
-
-<a
-    href=""
-    
-    ><i class="fas fa-link" title="See on this site"></i>&nbsp;CephFS</a>.</p>
+<a title="TODO"><i class="fas fa-tools"></i>&nbsp;CephFS</a>.</p>
 <p>❗ I repeat myself, but you <strong>should really</strong> do this part by yourself. <strong>Do not</strong> use those as-is if you are using your cluster to host real applications. But just like you, I&rsquo;m doing tests here and I am tired of walking around the whole internet just to experiment a few things.</p>
 </blockquote>
 <p>Now that I&rsquo;ve warned you enough (just look above, <strong>again</strong>), let&rsquo;s declare a 
@@ -2002,25 +1954,14 @@
 
 
 
-
-
-
-
-        
-        
-            
-        
-    
-
-
-
-<a
-    href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-book" title="See the docs"></i>&nbsp;persistent volume</a> !</p>
+	
+	
+	
+	<a
+		href="https://kubernetes.io/docs/concepts/storage/persistent-volumes/" title="See in the docs of kubernetes.io" target="_blank" rel="noopener noreferrer"><i class="fas fa-book-open"></i>&nbsp;persistent volume</a> !</p>
 <h2 id="setup-cephfs">Setup CephFS</h2>
 <h3 id="check-prerequisites">Check prerequisites</h3>
-<p><div class="expand">
+<div class="expand">
   <button type="button" class="expand__button" aria-label="Expand Button">
     <span class="expand-icon expand-icon__right">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
@@ -2035,70 +1976,37 @@
 
 
 
+	
+	
+	
+	<a
+		href="https://rook.io/docs/rook/v1.5/ceph-prerequisites.html" title="See in the docs of rook.io" target="_blank" rel="noopener noreferrer"><i class="fas fa-book-open"></i>&nbsp;Ceph docs: General prerequisites</a></li>
+<li>
 
 
 
 
-        
-        
-            
-        
-    
+
+	
+	
+	
+	<a
+		href="https://rook.io/docs/rook/v1.5/k8s-pre-reqs.html" title="See in the docs of rook.io" target="_blank" rel="noopener noreferrer"><i class="fas fa-book-open"></i>&nbsp;Ceph docs: Kubernetes prerequisites</a></li>
+<li>
 
 
 
-<a
-    href="https://rook.io/docs/rook/v1.5/ceph-prerequisites.html"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-book" title="See the docs"></i>&nbsp;https://rook.io/docs/rook/v1.5/ceph-prerequisites.html</a></li>
+
+
+	
+	
+	
+	<a
+		href="https://rook.io/docs/rook/v1.5/ceph-quickstart.html" title="See in the docs of rook.io" target="_blank" rel="noopener noreferrer"><i class="fas fa-book-open"></i>&nbsp;Ceph docs: Quickstart</a></li>
 </ul>
 
   </div>
-</div>}}</p>
-<p>
-
-
-
-
-
-
-
-
-
-        
-        
-            
-        
-    
-
-
-
-<a
-    href="https://rook.io/docs/rook/v1.5/k8s-pre-reqs.html"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-book" title="See the docs"></i>&nbsp;https://rook.io/docs/rook/v1.5/k8s-pre-reqs.html</a><br />
-
-
-
-
-
-
-
-
-
-
-        
-        
-            
-        
-    
-
-
-
-<a
-    href="https://rook.io/docs/rook/v1.5/ceph-quickstart.html"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-book" title="See the docs"></i>&nbsp;https://rook.io/docs/rook/v1.5/ceph-quickstart.html</a></p>
+</div>
 <!-- TODO: Mention in intro about free disk -->
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -2129,28 +2037,7 @@
 <pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">lsblk -f
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>
-
-
-
-
-
-
-
-
-
-        
-        
-            
-        
-    
-
-
-
-<a
-    href="https://rook.io/docs/rook/v1.5/ceph-quickstart.html#tldr"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-book" title="See the docs"></i>&nbsp;https://rook.io/docs/rook/v1.5/ceph-quickstart.html#tldr</a></p>
+</div><p>Then, create resources for Cepth</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -2259,7 +2146,7 @@
 
 
 <!-- Include code file `./kubernetes/rook/xx-PersistentNginx.yaml` with lang `yaml` & label `./kubernetes/rook/xx-PersistentNginx.yaml` -->
-<section class="included-file" data-file="./kubernetes/rook/xx-PersistentNginx.yaml"><div class="highlight"><div class="chroma">
+<section class="included-file" data-file="./kubernetes/rook/xx-PersistentNginx.yaml" data-label="./kubernetes/rook/xx-PersistentNginx.yaml" id="included-file-./kubernetes/rook/xx-persistentnginx.yaml"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -2361,7 +2248,7 @@
 </span><span class="lnt">98
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml:./kubernetes/rook/xx-PersistentNginx.yaml" data-lang="yaml:./kubernetes/rook/xx-PersistentNginx.yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Namespace</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">persistent-nginx</span><span class="w">
@@ -2481,18 +2368,11 @@
 
 
 
-
-
-
-
-        
-
-
-
-<a
-    href="http://persistent-nginx.%7b%7bcluster.baseHostName%7d%7d/index.html"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on parametric domain"></i>&nbsp;http://persistent-nginx.{{cluster.baseHostName}}/index.html</a> should display <code>Hello world !</code>. And if you kill and restart your container, your data will be kept ;).</p>
+	
+	
+	
+	<a
+		href="http://persistent-nginx.%7b%7bcluster.baseHostName%7d%7d/index.html" title="See on parametric domain" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;http://persistent-nginx.{{cluster.baseHostName}}/index.html</a> should display <code>Hello world !</code>. And if you kill and restart your container, your data will be kept ;).</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -2515,7 +2395,7 @@
 
 
 <!-- Include code file `./kubernetes/rook/dashboard-ingress.yaml` with lang `yaml` & label `./kubernetes/rook/dashboard-ingress.yaml` -->
-<section class="included-file" data-file="./kubernetes/rook/dashboard-ingress.yaml"><div class="highlight"><div class="chroma">
+<section class="included-file" data-file="./kubernetes/rook/dashboard-ingress.yaml" data-label="./kubernetes/rook/dashboard-ingress.yaml" id="included-file-./kubernetes/rook/dashboard-ingress.yaml"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -2557,7 +2437,7 @@
 </span><span class="lnt">38
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml:./kubernetes/rook/dashboard-ingress.yaml" data-lang="yaml:./kubernetes/rook/dashboard-ingress.yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Service</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">rook-ceph-mgr-dashboard</span><span class="w">
@@ -2613,18 +2493,11 @@
 
 
 
-
-
-
-
-        
-
-
-
-<a
-    href="https://ceph.%7b%7bcluster.baseHostName%7d%7d"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on parametric domain"></i>&nbsp;https://ceph.{{cluster.baseHostName}}</a></p>
+	
+	
+	
+	<a
+		href="https://ceph.%7b%7bcluster.baseHostName%7d%7d" title="See on parametric domain" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;https://ceph.{{cluster.baseHostName}}</a></p>
 <hr />
 <ul>
 <li>The default <strong>username</strong> is <code>admin</code>.</li>
@@ -2650,22 +2523,11 @@ kubectl apply -f https://raw.githubusercontent.com/prometheus-operator/kube-prom
 
 
 
-
-
-
-
-        
-        
-            
-        
-    
-
-
-
-<a
-    href="https://rook.io/docs/rook/v1.5/ceph-toolbox.html"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-book" title="See the docs"></i>&nbsp;RTFM</a></p>
+	
+	
+	
+	<a
+		href="https://rook.io/docs/rook/v1.5/ceph-toolbox.html" title="See in the docs of rook.io" target="_blank" rel="noopener noreferrer"><i class="fas fa-book-open"></i>&nbsp;RTFM</a></p>
 <p>If you made errors and want to purge rook-ceph, remove following patterns <strong>on each nodes</strong> running cephfs (usually, all the worker nodes):</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -2687,24 +2549,13 @@ kubectl apply -f https://raw.githubusercontent.com/prometheus-operator/kube-prom
 
 
 
-
-
-
-
-        
-        
-            
-                
-            
-        
-    
-
-
-
-<a
-    href="https://github.com/rook/rook/issues/4553"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-bug" title="See the issue on GitHub"></i>&nbsp;https://github.com/rook/rook/issues/4553</a></p>
+	
+	
+	
+	
+	<a
+		href="https://github.com/rook/rook/issues/4553" title="See the GitHub issue/PR" target="_blank" rel="noopener noreferrer"><i class="fas fa-bug"></i>&nbsp;<i>
+rook-ceph-crash-collector-keyring secret not created for crash reporter · Issue #4553 · rook/rook · GitHub</i></a></p>
 <hr />
 <hr>
 
@@ -3035,11 +2886,11 @@ kubectl apply -f https://raw.githubusercontent.com/prometheus-operator/kube-prom
         </li>
         
         <li>
-          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/01-audit-log/" class="related__link">Setup the cluster&#39;s Audit Log</a>
+          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/00-vpn/" class="related__link">Setup the cluster&#39;s VPN</a>
         </li>
         
         <li>
-          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/09-safe-monitoring/" class="related__link">Protect monitoring with authentication</a>
+          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/03-router/" class="related__link">Setup the cluster&#39;s internal router</a>
         </li>
         
         <li>
@@ -3047,7 +2898,7 @@ kubectl apply -f https://raw.githubusercontent.com/prometheus-operator/kube-prom
         </li>
         
         <li>
-          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/00-vpn/" class="related__link">Setup the cluster&#39;s VPN</a>
+          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/01-audit-log/" class="related__link">Setup the cluster&#39;s Audit Log</a>
         </li>
         
     </ul>
@@ -4252,5 +4103,6 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
     
     
+    <script src="https://gerkindev.github.io/devblog/scripts/custom-code-wrappers.min.42af9b6dcc4acb2dbdb9b3614ff17e55df334242784c1bf2f02cd093880e3e74.js" defer></script>
 </body>
 </html>

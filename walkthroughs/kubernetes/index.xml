@@ -23,9 +23,9 @@
         <link>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/00-vpn/</link>
         <pubDate>Mon, 16 Nov 2020 02:35:47 +0100</pubDate>
         
-        <atom:modified>Tue, 16 Feb 2021 12:06:38 +0100</atom:modified>
+        <atom:modified>Tue, 29 Mar 2022 12:42:24 +0200</atom:modified>
         <guid>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/00-vpn/</guid>
-        <description>References    &amp;nbsp;How To Run OpenVPN in a Docker Container on Ubuntu 14.04  &amp;nbsp;Running Docker Containers with Systemd    Because we are installing our cluster bare metal on servers exposed on the Internet, we&amp;rsquo;ll need a way to secure all of our network traffic around the critical parts of kubernetes. To do so, we&amp;rsquo;ll use OpenVPN to create a virtual secured network where all of our nodes will work.</description>
+        <description>References    &amp;nbsp; How To Run OpenVPN in a Docker Container on Ubuntu 14.04 | DigitalOcean  &amp;nbsp; Running Docker Containers with Systemd    Because we are installing our cluster bare metal on servers exposed on the Internet, we&amp;rsquo;ll need a way to secure all of our network traffic around the critical parts of kubernetes. To do so, we&amp;rsquo;ll use OpenVPN to create a virtual secured network where all of our nodes will work.</description>
         
         <dc:creator>GerkinDev</dc:creator>
         
@@ -65,10 +65,9 @@
         <link>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/01-audit-log/</link>
         <pubDate>Mon, 16 Nov 2020 02:35:47 +0100</pubDate>
         
-        <atom:modified>Tue, 16 Feb 2021 12:06:38 +0100</atom:modified>
+        <atom:modified>Tue, 29 Mar 2022 12:42:24 +0200</atom:modified>
         <guid>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/01-audit-log/</guid>
-        <description>References    &amp;nbsp;https://docs.kublr.com/articles/kubernetes-log-audit/  &amp;nbsp;https://mherman.org/blog/logging-in-kubernetes-with-elasticsearch-Kibana-fluentd/  &amp;nbsp;https://kubernetes.io/docs/tasks/debug-application-cluster/audit/#log-collector-examples     Note : Even if this part is not required, you should not ignore it on dev environment and should really really REALLY not skip it for production. In fact, it can contain useful debug informations and security traces to see what is going on in your kubernetes cluster, and even on your whole server(s).
- This tutorial will guide you to setup audit log policy, catch logs with Fluentd, cast them to elasticsearch &amp;amp; show them using Kibana.</description>
+        <description>References    &amp;nbsp; Kubernetes Audit with Elasticsearch and Kibana :: Kublr Documentation  &amp;nbsp; Logging in Kubernetes with Elasticsearch, Kibana, and Fluentd  &amp;nbsp; Auditing | Kubernetes     Note : Even if this part is not required, you should not ignore it on dev environment and should really really REALLY not skip it for production. In fact, it can contain useful debug informations and security traces to see what is going on in your kubernetes cluster, and even on your whole server(s).</description>
         
         <dc:creator>GerkinDev</dc:creator>
         
@@ -112,10 +111,9 @@
         <link>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/02-cluster/</link>
         <pubDate>Mon, 16 Nov 2020 02:35:47 +0100</pubDate>
         
-        <atom:modified>Tue, 16 Feb 2021 15:23:26 +0100</atom:modified>
+        <atom:modified>Tue, 29 Mar 2022 12:42:24 +0200</atom:modified>
         <guid>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/02-cluster/</guid>
-        <description>Create the cluster config file   References   How to set bind address by config file: &amp;nbsp;https://stackoverflow.com/a/60391611    We are now going to configure the cluster. For the sake of traceability, this configuration won&amp;rsquo;t be done via CLI flags, but via &amp;nbsp;a configuration file. The path of the cluster config file will later be referenced as the 🔖 cluster.configFile ({{cluster.configFile}}), and should be inside /etc/kubernetes.
-Following &amp;nbsp;flannel requirements, you need to use --pod-network-cidr with address 10.</description>
+        <description>Create the cluster config file   References    &amp;nbsp; kubernetes - kubeadm init --apiserver-advertise-address flag equivalent in config file - Stack Overflow    We are now going to configure the cluster. For the sake of traceability, this configuration won&amp;rsquo;t be done via CLI flags, but via &amp;nbsp;a configuration file. The path of the cluster config file will later be referenced as the  {{cluster.configFile}}, and should be inside /etc/kubernetes.</description>
         
         <dc:creator>GerkinDev</dc:creator>
         
@@ -151,11 +149,10 @@ Following &amp;nbsp;flannel requirements, you need to use --pod-network-cidr wit
         <link>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/03-router/</link>
         <pubDate>Mon, 16 Nov 2020 02:35:47 +0100</pubDate>
         
-        <atom:modified>Tue, 16 Feb 2021 12:06:38 +0100</atom:modified>
+        <atom:modified>Tue, 29 Mar 2022 12:42:24 +0200</atom:modified>
         <guid>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/03-router/</guid>
-        <description>References    &amp;nbsp;https://github.com/traefik/traefik-helm-chart/pull/157/files    Start by creating traefik required resources. You can directly use resources from the &amp;nbsp;kubernetes/traefik templates: it does not contain variables. Those are taken from &amp;nbsp;traefik docs mixed up with &amp;nbsp;this PR for kubernetes 1.19 support and schemas.
- Please look forward for &amp;nbsp;this issue in traefik about official v1.19 support.
- Namespace Definitions Rbac IngressController Services  1 2 3 4 5  # File: .</description>
+        <description>References    &amp;nbsp; Add OpenAPI v3 schemas to CRDs by jrostand · Pull Request #157 · traefik/traefik-helm-chart · GitHub    Start by creating traefik required resources. You can directly use resources from the &amp;nbsp;kubernetes/traefik templates: it does not contain variables. Those are taken from &amp;nbsp;traefik docs mixed up with &amp;nbsp;this PR for kubernetes 1.19 support and schemas.
+ Please look forward for &amp;nbsp;this issue in traefik about official v1.</description>
         
         <dc:creator>GerkinDev</dc:creator>
         
@@ -199,10 +196,10 @@ Following &amp;nbsp;flannel requirements, you need to use --pod-network-cidr wit
         <link>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/04-reverse-proxy/</link>
         <pubDate>Mon, 16 Nov 2020 02:35:47 +0100</pubDate>
         
-        <atom:modified>Tue, 16 Feb 2021 12:06:38 +0100</atom:modified>
+        <atom:modified>Tue, 29 Mar 2022 12:42:24 +0200</atom:modified>
         <guid>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/04-reverse-proxy/</guid>
         <description>Now that you have a router installed, you have to pass requests on your server to it. This setup use a single entry point directly binding some ports on the host server.
-1. Make a static and previsible configuration As you may have noticed in the step  &amp;nbsp;Kickstart the cluster, the metallb configuration use only dynamic adresses. But for the reverse proxy to work, we&amp;rsquo;ll need to be sure that our traefik router has a constant IP in your VPN.</description>
+1. Make a static and previsible configuration As you may have noticed in the step &amp;nbsp;Kickstart the cluster, the metallb configuration use only dynamic adresses. But for the reverse proxy to work, we&amp;rsquo;ll need to be sure that our traefik router has a constant IP in your VPN.</description>
         
         <dc:creator>GerkinDev</dc:creator>
         
@@ -246,9 +243,9 @@ Following &amp;nbsp;flannel requirements, you need to use --pod-network-cidr wit
         <link>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/05-storage/</link>
         <pubDate>Mon, 16 Nov 2020 02:35:47 +0100</pubDate>
         
-        <atom:modified>Tue, 16 Feb 2021 12:06:38 +0100</atom:modified>
+        <atom:modified>Tue, 29 Mar 2022 12:42:24 +0200</atom:modified>
         <guid>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/05-storage/</guid>
-        <description>References    &amp;nbsp;Persistent Volume  &amp;nbsp;Dynamic Volume Provisioning  &amp;nbsp;Storage Classes  &amp;nbsp;https://www.youtube.com/watch?v=0swOh5C3OVM    As you may know, docker (and thus, kubernetes) does not persist anything by default. That means that everytime you restart a pod (container), it is in the exact same state as it was at its first execution, except for the mount points. Those mount points are real hard drive directories injected into your pod.</description>
+        <description>References    &amp;nbsp; Persistent Volumes | Kubernetes  &amp;nbsp; Dynamic Volume Provisioning | Kubernetes  &amp;nbsp; Storage Classes | Kubernetes  &amp;nbsp; Kubernetes Volumes explained | Persistent Volume, Persistent Volume Claim &amp;amp; Storage Class - YouTube    As you may know, docker (and thus, kubernetes) does not persist anything by default. That means that everytime you restart a pod (container), it is in the exact same state as it was at its first execution, except for the mount points.</description>
         
         <dc:creator>GerkinDev</dc:creator>
         
@@ -288,7 +285,7 @@ Following &amp;nbsp;flannel requirements, you need to use --pod-network-cidr wit
         <link>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/06-monitoring/</link>
         <pubDate>Mon, 16 Nov 2020 02:35:47 +0100</pubDate>
         
-        <atom:modified>Tue, 16 Feb 2021 12:06:38 +0100</atom:modified>
+        <atom:modified>Tue, 29 Mar 2022 12:42:24 +0200</atom:modified>
         <guid>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/06-monitoring/</guid>
         <description>Well, things are getting real and are on the point to become quite complex. So we&amp;rsquo;ll setup (super unsafe) dashboards to see what is going on easily. After all, we have nothing critical for now, but we might get troubles soon. And, don&amp;rsquo;t worry, we&amp;rsquo;ll make it safe just after that.
 1. Traefik dashboard: monitoring routes The traefik dashboard will help us in the diagnostics of our ingress routes and traefik-related stuff.</description>
@@ -331,7 +328,7 @@ Following &amp;nbsp;flannel requirements, you need to use --pod-network-cidr wit
         <link>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/07-authentication/</link>
         <pubDate>Mon, 16 Nov 2020 02:35:47 +0100</pubDate>
         
-        <atom:modified>Tue, 16 Feb 2021 12:06:38 +0100</atom:modified>
+        <atom:modified>Tue, 29 Mar 2022 12:42:24 +0200</atom:modified>
         <guid>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/07-authentication/</guid>
         <description>Here is a graph of the RBAC setup we are going to implement:
 1. Setup keycloak We&amp;rsquo;ll use keycloak to proxy our authentication for all monitors, using a single realm. You may use several realms in real-life situations. This is probably the tough part, and you may tweak heavily the following guide. Moreover, I may forgot to write some instructions, or somes are heavily linked to your very own setup.</description>
@@ -382,11 +379,9 @@ Following &amp;nbsp;flannel requirements, you need to use --pod-network-cidr wit
         <link>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/08-kubernetes-user-management/</link>
         <pubDate>Mon, 16 Nov 2020 02:35:47 +0100</pubDate>
         
-        <atom:modified>Mon, 01 Feb 2021 16:42:59 +0100</atom:modified>
+        <atom:modified>Tue, 29 Mar 2022 12:42:24 +0200</atom:modified>
         <guid>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/08-kubernetes-user-management/</guid>
-        <description>Create the realm and the client  &amp;nbsp;https://github.com/zufardhiyaulhaq/engineering-notes/blob/master/notes/kubernetes-keycloak-integration.md
- &amp;nbsp;https://github.com/zufardhiyaulhaq/engineering-notes/blob/master/notes/kubernetes-keycloak-integration.md#integrating
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  REALM_URL=&amp;#34;https://keycloak.{{cluster.baseHostName}}/auth/realms/{{apiServer.realmName}}&amp;#34; # Log in TOKEN_RESPONSE=&amp;#34;$(curl \  -d &amp;#34;grant_type=password&amp;#34; \  -d &amp;#34;client_id={{apiServer.clientId}}&amp;#34; \  -d &amp;#34;client_secret={{apiServer.clientSecret}}&amp;#34; \  -d &amp;#34;username=admin-user&amp;#34; \  -d &amp;#34;password=admin-user&amp;#34; \  $REALM_URL/protocol/openid-connect/token)&amp;#34; # Extract the access token ACCESS_TOKEN=&amp;#34;$(echo &amp;#34;$TOKEN_RESPONSE&amp;#34; | jq &amp;#39;.access_token&amp;#39; -r)&amp;#34; # Check token curl \  --user &amp;#34;{{apiServer.</description>
+        <description>Create the realm and the client   References    &amp;nbsp; engineering-notes/kubernetes-keycloak-integration.md at master · zufardhiyaulhaq/engineering-notes · GitHub    1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  REALM_URL=&amp;#34;https://keycloak.{{cluster.baseHostName}}/auth/realms/{{apiServer.realmName}}&amp;#34; # Log in TOKEN_RESPONSE=&amp;#34;$(curl \  -d &amp;#34;grant_type=password&amp;#34; \  -d &amp;#34;client_id={{apiServer.clientId}}&amp;#34; \  -d &amp;#34;client_secret={{apiServer.clientSecret}}&amp;#34; \  -d &amp;#34;username=admin-user&amp;#34; \  -d &amp;#34;password=admin-user&amp;#34; \  $REALM_URL/protocol/openid-connect/token)&amp;#34; # Extract the access token ACCESS_TOKEN=&amp;#34;$(echo &amp;#34;$TOKEN_RESPONSE&amp;#34; | jq &amp;#39;.</description>
         
         <dc:creator>GerkinDev</dc:creator>
         
@@ -430,10 +425,12 @@ Following &amp;nbsp;flannel requirements, you need to use --pod-network-cidr wit
         <link>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/09-safe-monitoring/</link>
         <pubDate>Mon, 16 Nov 2020 02:35:47 +0100</pubDate>
         
-        <atom:modified>Mon, 01 Feb 2021 16:42:59 +0100</atom:modified>
+        <atom:modified>Tue, 29 Mar 2022 12:42:24 +0200</atom:modified>
         <guid>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/09-safe-monitoring/</guid>
         <description>Now that we have our authentication service up and running, we can protect our dashboards installed in the step &amp;nbsp;06 - Monitoring: See what is going on using our Keycloak OpenID Connect provider. Here is a diagram on how authorization will be managed:
-Traefik dashboard Kibana Kube dashboard   References    &amp;nbsp;https://itnext.io/protect-kubernetes-dashboard-with-openid-connect-104b9e75e39c    Again, we are going to set up a new instance of &amp;nbsp;louketo-proxy.</description>
+Traefik dashboard TODO
+Kibana TODO
+Kube dashboard   References    &amp;nbsp; Protect Kubernetes Dashboard with OpenID Connect | by Hidetake Iwata | ITNEXT    Again, we are going to set up a new instance of &amp;nbsp;louketo-proxy.</description>
         
         <dc:creator>GerkinDev</dc:creator>
         
@@ -481,7 +478,7 @@ Traefik dashboard Kibana Kube dashboard   References    &amp;nbsp;https://itnext
         <link>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/10-scaling-up/</link>
         <pubDate>Sun, 22 Nov 2020 04:03:47 +0100</pubDate>
         
-        <atom:modified>Mon, 01 Feb 2021 16:42:59 +0100</atom:modified>
+        <atom:modified>Tue, 29 Mar 2022 12:42:24 +0200</atom:modified>
         <guid>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/10-scaling-up/</guid>
         <description>Your setup is running, everything runs smoothly, and suddenly, ‼️ nothing is responding: your cluster is overloaded.
 Well, I hope you&amp;rsquo;ll expand your cluster capacity before it happens. It&amp;rsquo;s always really bad and stressful to do maintenance because of downtime.

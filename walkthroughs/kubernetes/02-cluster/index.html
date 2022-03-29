@@ -1342,7 +1342,7 @@
 <meta name="keywords" content="Kubernetes,Sysadmin,DevOps">
 
 <meta name="created" content="2020-11-16T02:35:47&#43;0100">
-<meta name="modified" content="2021-02-16T15:23:26&#43;0100">
+<meta name="modified" content="2022-03-29T12:42:24&#43;0200">
 <meta property="article:published_time" content="2020-11-16T02:35:47&#43;0100">
 
 <meta name="author" content="GerkinDev">
@@ -1391,9 +1391,9 @@
     "@type": "WebPage",
     "headline": "Kickstart the cluster",
     "datePublished": "2020-11-16T02:35:47+01:00",
-    "dateModified": "2021-02-16T15:23:26+01:00",
+    "dateModified": "2022-03-29T12:42:24+02:00",
     "url" : "https://gerkindev.github.io/devblog/walkthroughs/kubernetes/02-cluster/",
-    "description": "Create the cluster config file   References   How to set bind address by config file: \u0026nbsp;https://stackoverflow.com/a/60391611    We are now going to configure the …",
+    "description": "Create the cluster config file   References    \u0026nbsp; kubernetes - kubeadm init --apiserver-advertise-address flag equivalent in config file - Stack Overflow    We are …",
     "keywords": ["Kubernetes","Sysadmin","DevOps"],
     "mainEntityOfPage": {
       "@type": "WebPage",
@@ -1419,18 +1419,16 @@
 
     
     <meta property="og:title" content="Kickstart the cluster" />
-<meta property="og:description" content="Create the cluster config file   References   How to set bind address by config file: &nbsp;https://stackoverflow.com/a/60391611    We are now going to configure the cluster. For the sake of traceability, this configuration won&rsquo;t be done via CLI flags, but via &nbsp;a configuration file. The path of the cluster config file will later be referenced as the 🔖 cluster.configFile ({{cluster.configFile}}), and should be inside /etc/kubernetes.
-Following &nbsp;flannel requirements, you need to use --pod-network-cidr with address 10." />
+<meta property="og:description" content="Create the cluster config file   References    &nbsp; kubernetes - kubeadm init --apiserver-advertise-address flag equivalent in config file - Stack Overflow    We are now going to configure the cluster. For the sake of traceability, this configuration won&rsquo;t be done via CLI flags, but via &nbsp;a configuration file. The path of the cluster config file will later be referenced as the  {{cluster.configFile}}, and should be inside /etc/kubernetes." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/02-cluster/" /><meta property="article:section" content="walkthroughs" />
 <meta property="article:published_time" content="2020-11-16T02:35:47+01:00" />
-<meta property="article:modified_time" content="2021-02-16T15:23:26+01:00" />
+<meta property="article:modified_time" content="2022-03-29T12:42:24+02:00" />
 
 
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Kickstart the cluster"/>
-<meta name="twitter:description" content="Create the cluster config file   References   How to set bind address by config file: &nbsp;https://stackoverflow.com/a/60391611    We are now going to configure the cluster. For the sake of traceability, this configuration won&rsquo;t be done via CLI flags, but via &nbsp;a configuration file. The path of the cluster config file will later be referenced as the 🔖 cluster.configFile ({{cluster.configFile}}), and should be inside /etc/kubernetes.
-Following &nbsp;flannel requirements, you need to use --pod-network-cidr with address 10."/>
+<meta name="twitter:description" content="Create the cluster config file   References    &nbsp; kubernetes - kubeadm init --apiserver-advertise-address flag equivalent in config file - Stack Overflow    We are now going to configure the cluster. For the sake of traceability, this configuration won&rsquo;t be done via CLI flags, but via &nbsp;a configuration file. The path of the cluster config file will later be referenced as the  {{cluster.configFile}}, and should be inside /etc/kubernetes."/>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css" integrity="sha256-rx5u3IdaOCszi7Jb18XD9HSn8bNiEgAqWJbdBvIYYyU=" crossorigin="anonymous"/>
 </head>
@@ -1480,19 +1478,23 @@ Following &nbsp;flannel requirements, you need to use --pod-network-cidr with ad
       <table class="legend">
         <tbody>
           <tr>
-            <td>:link:</td>
-            <td>An internal link in this guide</td>
+            <td><i class="fas fa-link"></i></td>
+            <td>A link to a page of this blog</td>
           </tr>
           <tr>
-            <td>:clipboard:</td>
+            <td><i class="fas fa-anchor"></i></td>
+            <td>A link to a section of this page</td>
+          </tr>
+          <tr>
+            <td><i class="fas fa-clipboard-list"></i></td>
             <td>A link to a template of this guide. Templates are files in which you should replace your variables</td>
           </tr>
           <tr>
-            <td>:bookmark:</td>
+            <td><i class="fas fa-bookmark"></i></td>
             <td>A variable</td>
           </tr>
           <tr>
-            <td>📖</td>
+            <td><i class="fas fa-book-open"></i></td>
             <td>A link to an external tool documentation</td>
           </tr>
         </tbody>
@@ -1736,13 +1738,13 @@ Following &nbsp;flannel requirements, you need to use --pod-network-cidr with ad
   <time class="single__info" title="Written At">📅&nbsp;Nov 16, 2020 </time>
 
   
-    &nbsp;&middot;&nbsp; <time class="single__info" title="Modified At"> 📝&nbsp;Feb 16, 2021 </time> 
+    &nbsp;&middot;&nbsp; <time class="single__info" title="Modified At"> 📝&nbsp;Mar 29, 2022 </time> 
   
 
   
   
   
-    via commit&nbsp;<a href="https://github.com/GerkinDev/devblog/commit/64a64dd17d4de77f29fbd3f6a25c9ca8c29f4faa" target="_blank"><code>64a64dd</code> (<em>fix: remove dead links</em>) by GerkinDev</a>
+    via commit&nbsp;<a href="https://github.com/GerkinDev/devblog/commit/49ebe76e19bddd4267f8b7b1b1ff525b3ed1dc45" target="_blank"><code>49ebe76</code> (<em>feat: improve links icons, better cross references</em>) by Gerkin</a>
   
 
   &nbsp;&middot;&nbsp; <span class="single__info" title="Reading Time"> ☕&nbsp;7&nbsp;min read </span>
@@ -1800,8 +1802,11 @@ Following &nbsp;flannel requirements, you need to use --pod-network-cidr with ad
       <ul>
         <li><a href="#kubelet-is-not-running">Kubelet is not running</a></li>
         <li><a href="#nginx-external-ip-is-always-pending">Nginx external ip is always <code>pending</code></a></li>
+        <li><a href="#cluster-never-starts">Cluster never starts</a></li>
+        <li><a href="#network-interfaces-are-not-deleted-after-reseting-kubeadm">Network interfaces are not deleted after reseting kubeadm</a></li>
       </ul>
     </li>
+    <li><a href="#usefull-commands-memo">Usefull commands memo</a></li>
   </ul>
 </nav>
           </div>
@@ -1881,28 +1886,19 @@ Following &nbsp;flannel requirements, you need to use --pod-network-cidr with ad
   </button>
   <div class="expand__content">
     <ul>
-<li>How to set bind address by config file: 
+<li>
 
 
 
 
 
-
-
-
-
-        
-        
-            
-        
-    
-
-
-
-<a
-    href="https://stackoverflow.com/a/60391611"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fab fa-stack-overflow" title="See on StackOverflow"></i>&nbsp;https://stackoverflow.com/a/60391611</a></li>
+	
+	
+	
+	
+	<a
+		href="https://stackoverflow.com/a/60391611" title="See on stackoverflow.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-stack-overflow"></i>&nbsp;<i>
+kubernetes - kubeadm init --apiserver-advertise-address flag equivalent in config file - Stack Overflow</i></a></li>
 </ul>
 
   </div>
@@ -1912,65 +1908,29 @@ Following &nbsp;flannel requirements, you need to use --pod-network-cidr with ad
 
 
 
-
-
-
-
-
-    
-
-
-
-<a
-    
-    
-    ><i class="fas fa-tools" title="TODO"></i>&nbsp;a configuration file</a>. The path of the cluster config file will later be referenced as the 🔖 <code>cluster.configFile</code> (<code>{{cluster.configFile}}</code>), and <strong>should</strong> be inside <code>/etc/kubernetes</code>.</p>
+<a title="TODO"><i class="fas fa-tools"></i>&nbsp;a configuration file</a>. The path of the cluster config file will later be referenced as the <i class="fas fa-bookmark"></i> <code>{{cluster.configFile}}</code>, and <strong>should</strong> be inside <code>/etc/kubernetes</code>.</p>
 <p>Following 
 
 
 
 
 
-
-
-
-
-        
-        
-            
-        
-    
-
-
-
-<a
-    href="https://github.com/coreos/flannel/blob/master/Documentation/kubernetes.md#kubeadm"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-book" title="See the docs"></i>&nbsp;flannel requirements</a>, you need to use <code>--pod-network-cidr</code> with address <code>10.244.0.0./16</code>. This CLI option is equivalent to <code>networking.podSubnet</code> in our 🔖 <code>cluster.configFile</code> (<code>{{cluster.configFile}}</code>) file (see 
+	
+	
+	
+	<a
+		href="https://github.com/coreos/flannel/blob/master/Documentation/kubernetes.md#kubeadm" title="See in the docs of github.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-book-open"></i>&nbsp;flannel requirements</a>, you need to use <code>--pod-network-cidr</code> with address <code>10.244.0.0./16</code>. This CLI option is equivalent to <code>networking.podSubnet</code> in our <i class="fas fa-bookmark"></i> <code>{{cluster.configFile}}</code> file (see 
 
 
 
 
 
-
-
-
-
-        
-        
-            
-                
-            
-        
-    
-
-
-
-<a
-    href="https://github.com/kubernetes/kubeadm/issues/1899"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-bug" title="See the issue on GitHub"></i>&nbsp;this issue</a>).</p>
-<p>The variable 🔖 <code>cluster.advertiseAddress</code> (<code>{{cluster.advertiseAddress}}</code>) must be set to the network address of your master node <strong>through the <em>VPN</em></strong>. You can get it like so:</p>
+	
+	
+	
+	<a
+		href="https://github.com/kubernetes/kubeadm/issues/1899" title="See the GitHub issue/PR" target="_blank" rel="noopener noreferrer"><i class="fas fa-bug"></i>&nbsp;this issue</a>).</p>
+<p>The variable <i class="fas fa-bookmark"></i> <code>{{cluster.advertiseAddress}}</code> must be set to the network address of your master node <strong>through the <em>VPN</em></strong>. You can get it like so:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -1979,7 +1939,7 @@ Following &nbsp;flannel requirements, you need to use --pod-network-cidr with ad
 <pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">ip -4 a show tun0 <span class="p">|</span> grep -Po <span class="s1">&#39;inet \K[0-9.]*&#39;</span>
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>The variables 🔖 <code>audit.sourceLogDir</code> (<code>{{audit.sourceLogDir}}</code>) &amp; 🔖 <code>audit.sourceLogFile</code> (<code>{{audit.sourceLogFile}}</code>) were set in 
+</div><p>The variables <i class="fas fa-bookmark"></i> <code>{{audit.sourceLogDir}}</code> &amp; <i class="fas fa-bookmark"></i> <code>{{audit.sourceLogFile}}</code> were set in 
     
     
 
@@ -1996,28 +1956,11 @@ Following &nbsp;flannel requirements, you need to use --pod-network-cidr with ad
     
 
 
-
-<em>
-
-
-
-
-        
-        
-    
-    
-        
-    
-
-
-    
-
-
-
-<a
-    href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/01-audit-log/"
-     title="Setup the cluster&#39;s Audit Log"
-    ><i class="fas fa-link" title="See on this site"></i>&nbsp;Setup the cluster's Audit Log</a></em></p>
+	
+	
+	
+	<a
+		href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/01-audit-log/" title="See `Setup the cluster&#39;s Audit Log` on this blog"><i class="fas fa-link"></i>&nbsp;Setup the cluster's Audit Log</a></p>
 
 
 
@@ -2030,7 +1973,7 @@ Following &nbsp;flannel requirements, you need to use --pod-network-cidr with ad
 
 
 <!-- Include code file `./kubernetes/cluster-config.yaml` with lang `yaml` & label `./kubernetes/cluster-config.yaml` -->
-<section class="included-file" data-file="./kubernetes/cluster-config.yaml"><div class="highlight"><div class="chroma">
+<section class="included-file" data-file="./kubernetes/cluster-config.yaml" data-label="./kubernetes/cluster-config.yaml" id="included-file-./kubernetes/cluster-config.yaml"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -2058,7 +2001,7 @@ Following &nbsp;flannel requirements, you need to use --pod-network-cidr with ad
 </span><span class="lnt">24
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml:./kubernetes/cluster-config.yaml" data-lang="yaml:./kubernetes/cluster-config.yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">kubeadm.k8s.io/v1beta2</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">kubeadm.k8s.io/v1beta2</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">InitConfiguration</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">localAPIEndpoint</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">advertiseAddress</span><span class="p">:</span><span class="w"> </span>{{<span class="l">cluster.advertiseAddress}}</span><span class="w">
@@ -2113,114 +2056,65 @@ Following &nbsp;flannel requirements, you need to use --pod-network-cidr with ad
 
 
 
-
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://godoc.org/k8s.io/kubernetes/cmd/kubeadm/app/apis/kubeadm/v1beta2"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on godoc.org"></i>&nbsp;kubeadm API resources</a></li>
+	
+	
+	
+	
+	<a
+		href="https://godoc.org/k8s.io/kubernetes/cmd/kubeadm/app/apis/kubeadm/v1beta2" title="See on godoc.org" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;<i>
+v1beta2 package - k8s.io/kubernetes/cmd/kubeadm/app/apis/kubeadm/v1beta2 - pkg.go.dev</i></a></li>
 <li>
 
 
 
 
 
-
-
-
-
-        
-        
-            
-        
-    
-
-
-
-<a
-    href="https://github.com/coreos/flannel/blob/master/Documentation/kubernetes.md"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-book" title="See the docs"></i>&nbsp;Flannel kubernetes RTFM</a></li>
+	
+	
+	
+	
+	<a
+		href="https://github.com/coreos/flannel/blob/master/Documentation/kubernetes.md" title="See in the docs of github.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-book-open"></i>&nbsp;<i>
+flannel/kubernetes.md at master · flannel-io/flannel · GitHub</i></a></li>
 <li>
 
 
 
 
 
-
-
-
-
-        
-        
-            
-                
-            
-        
-    
-
-
-
-<a
-    href="https://github.com/kubernetes/kubeadm/issues/203#issuecomment-335416377"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-bug" title="See the issue on GitHub"></i>&nbsp;https://github.com/kubernetes/kubeadm/issues/203#issuecomment-335416377</a></li>
+	
+	
+	
+	
+	<a
+		href="https://github.com/kubernetes/kubeadm/issues/203#issuecomment-335416377" title="See the GitHub issue/PR" target="_blank" rel="noopener noreferrer"><i class="fas fa-bug"></i>&nbsp;<i>
+kubeadm should make the --node-ip option available · Issue #203 · kubernetes/kubeadm · GitHub</i></a></li>
 <li>
 
 
 
 
 
-
-
-
-
-        
-        
-            
-        
-    
-
-
-
-<a
-    href="https://coreos.com/os/docs/latest/using-systemd-drop-in-units.html"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-book" title="See the docs"></i>&nbsp;https://coreos.com/os/docs/latest/using-systemd-drop-in-units.html</a></li>
+	
+	
+	
+	
+	<a
+		href="https://coreos.com/os/docs/latest/using-systemd-drop-in-units.html" title="See in the docs of coreos.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-book-open"></i>&nbsp;<i>
+Products - Red Hat Customer Portal</i></a></li>
 <li>
 
 
 
 
 
-
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://discuss.kubernetes.io/t/flannel-yaml-file-customization-iface-for-vagrant-linux-cluster/4873"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on discuss.kubernetes.io"></i>&nbsp;Flannel yaml file customization –iface for vagrant Linux cluster</a></li>
+	
+	
+	
+	
+	<a
+		href="https://discuss.kubernetes.io/t/flannel-yaml-file-customization-iface-for-vagrant-linux-cluster/4873" title="See on discuss.kubernetes.io" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;<i>
+Flannel yaml file customization --iface for vagrant Linux cluster - General Discussions - Discuss Kubernetes</i></a></li>
 </ul>
 
   </div>
@@ -2246,24 +2140,11 @@ Following &nbsp;flannel requirements, you need to use --pod-network-cidr with ad
 
 
 
-
-
-
-
-        
-        
-            
-                
-            
-        
-    
-
-
-
-<a
-    href="https://github.com/kubernetes/kubeadm/issues/203"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-bug" title="See the issue on GitHub"></i>&nbsp;here</a>, it assumes that it should work through the default gateway (our public network), but that&rsquo;s not what we want. So, we need to explicitly declare our node&rsquo;s IP.</p>
+	
+	
+	
+	<a
+		href="https://github.com/kubernetes/kubeadm/issues/203" title="See the GitHub issue/PR" target="_blank" rel="noopener noreferrer"><i class="fas fa-bug"></i>&nbsp;here</a>, it assumes that it should work through the default gateway (our public network), but that&rsquo;s not what we want. So, we need to explicitly declare our node&rsquo;s IP.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -2284,87 +2165,41 @@ Following &nbsp;flannel requirements, you need to use --pod-network-cidr with ad
 
 
 
-
-
-
-
-        
-        
-            
-                
-            
-        
-    
-
-
-
-<a
-    href="https://github.com/coreos/flannel#deploying-flannel-manually"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fab fa-github" title="See on GitHub"></i>&nbsp;installation instruction</a>, you need to deploy 
+	
+	
+	
+	<a
+		href="https://github.com/coreos/flannel#deploying-flannel-manually" title="See on GitHub" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i>&nbsp;installation instruction</a>, you need to deploy 
 
 
 
 
 
-
-
-
-
-        
-        
-            
-        
-    
-
-
-
-<a
-    href="https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-book" title="See the docs"></i>&nbsp;this file</a>. But there&rsquo;s a problem: as mentioned in the 
+	
+	
+	
+	<a
+		href="https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml" title="See in the docs of raw.githubusercontent.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-book-open"></i>&nbsp;this file</a>. But there&rsquo;s a problem: as mentioned in the 
 
 
 
 
 
-
-
-
-
-        
-        
-            
-        
-    
-
-
-
-<a
-    href="https://github.com/coreos/flannel/blob/master/Documentation/configuration.md#key-command-line-options"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-book" title="See the docs"></i>&nbsp;configuration documentation</a>, <em>flannel</em> use the default route (our public network) by default, and we still want to use the VPN fio this. So, I&rsquo;ve just added a single line in the 
+	
+	
+	
+	<a
+		href="https://github.com/coreos/flannel/blob/master/Documentation/configuration.md#key-command-line-options" title="See in the docs of github.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-book-open"></i>&nbsp;configuration documentation</a>, <em>flannel</em> use the default route (our public network) by default, and we still want to use the VPN fio this. So, I&rsquo;ve just added a single line in the 
 
 
 
 
 
-
-
-
-
-        
-        
-            
-        
-    
-
-
-
-<a
-    href="https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-book" title="See the docs"></i>&nbsp;kube-flannel file</a> to specify our VPN interface (line 188, <code>- --iface=tun0</code>).</p>
+	
+	
+	
+	<a
+		href="https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml" title="See in the docs of raw.githubusercontent.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-book-open"></i>&nbsp;kube-flannel file</a> to specify our VPN interface (line 188, <code>- --iface=tun0</code>).</p>
 
 
 
@@ -2377,7 +2212,7 @@ Following &nbsp;flannel requirements, you need to use --pod-network-cidr with ad
 
 
 <!-- Include code file `./kubernetes/flannel.yaml` with lang `yaml` & label `./kubernetes/flannel.yaml` -->
-<section class="included-file" data-file="./kubernetes/flannel.yaml"><div class="highlight"><div class="chroma">
+<section class="included-file" data-file="./kubernetes/flannel.yaml" data-label="./kubernetes/flannel.yaml" id="included-file-./kubernetes/flannel.yaml"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">  1
 </span><span class="lnt">  2
@@ -2606,7 +2441,7 @@ Following &nbsp;flannel requirements, you need to use --pod-network-cidr with ad
 </span><span class="lnt">225
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml:./kubernetes/flannel.yaml" data-lang="yaml:./kubernetes/flannel.yaml"><span class="line"><span class="cl"><span class="c"># From https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># From https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nn">---</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">policy/v1beta1</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">PodSecurityPolicy</span><span class="w">
@@ -2900,55 +2735,34 @@ Following &nbsp;flannel requirements, you need to use --pod-network-cidr with ad
 </div><p>After some time, you should see the new node joining the cluster !</p>
 <p>You may repeat this part of the process during the life of your cluster to add new nodes.</p>
 <h2 id="initialize-metallb">Initialize metallb</h2>
-<p>
+<div class="expand">
+  <button type="button" class="expand__button" aria-label="Expand Button">
+    <span class="expand-icon expand-icon__right">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"/></svg>
+    </span>
+    References
+  </button>
+  <div class="expand__content">
+    <ul>
+<li>
 
 
 
 
 
+	
+	
+	
+	
+	<a
+		href="https://metallb.universe.tf/installation/" title="See on metallb.universe.tf" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;<i>
+MetalLB, bare metal load-balancer for Kubernetes</i></a></li>
+</ul>
 
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://metallb.universe.tf/installation/"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on metallb.universe.tf"></i>&nbsp;https://metallb.universe.tf/installation/</a></p>
-<p>Create a metallb configmap, from the 
-
-
-
-
-
-
-
-
-
-        
-        
-    
-    
-        
-            
-        
-    
-
-
-
-
-<a
-    href="./kubernetes/metallb-configmap.yaml"
-    
-     target="_blank" rel="noopener noreferrer"><i class="far fa-file-alt" title="See the resource on this site"></i>&nbsp;kubernetes/metallb-configmap.yaml</a> template. 
+  </div>
+</div>
+<p>Create a metallb configmap, from the <a
+		href="#included-file-./kubernetes/metallb-configmap.yaml" title="Go to section"><i class="fas fa-anchor"></i>&nbsp;kubernetes/metallb-configmap.yaml</a> template. 
 
 
     
@@ -2956,24 +2770,12 @@ Following &nbsp;flannel requirements, you need to use --pod-network-cidr with ad
 
 
 
-
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://metallb.universe.tf/configuration/"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-book" title="See on metallb.universe.tf"></i>&nbsp;See the docs</a> for full reference on this config file &amp; how to adapt it to your network configuration..</p>
-<p>The 🔖 <code>cluster.networkAddress</code> (<code>{{cluster.networkAddress}}</code>) corresponds to the network part of your 🔖 <code>cluster.advertiseAddress</code> (<code>{{cluster.advertiseAddress}}</code>).</p>
+	
+	
+	
+	<a
+		href="https://metallb.universe.tf/configuration/" title="See on metallb.universe.tf" target="_blank" rel="noopener noreferrer"><i class="fas fa-book-open"></i>&nbsp;See the docs</a> for full reference on this config file &amp; how to adapt it to your network configuration..</p>
+<p>The <i class="fas fa-bookmark"></i> <code>{{cluster.networkAddress}}</code> corresponds to the network part of your <i class="fas fa-bookmark"></i> <code>{{cluster.advertiseAddress}}</code>.</p>
 
 
 
@@ -2986,7 +2788,7 @@ Following &nbsp;flannel requirements, you need to use --pod-network-cidr with ad
 
 
 <!-- Include code file `./kubernetes/metallb-configmap.yaml` with lang `yaml` & label `./kubernetes/metallb-configmap.yaml` -->
-<section class="included-file" data-file="./kubernetes/metallb-configmap.yaml"><div class="highlight"><div class="chroma">
+<section class="included-file" data-file="./kubernetes/metallb-configmap.yaml" data-label="./kubernetes/metallb-configmap.yaml" id="included-file-./kubernetes/metallb-configmap.yaml"><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt"> 1
 </span><span class="lnt"> 2
@@ -3002,7 +2804,7 @@ Following &nbsp;flannel requirements, you need to use --pod-network-cidr with ad
 </span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml:./kubernetes/metallb-configmap.yaml" data-lang="yaml:./kubernetes/metallb-configmap.yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">v1</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">ConfigMap</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l">metallb-system</span><span class="w">
@@ -3083,8 +2885,7 @@ Following &nbsp;flannel requirements, you need to use --pod-network-cidr with ad
 <pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl">kubectl delete namespace nginx-test
 </span></span></code></pre></td></tr></table>
 </div>
-</div><hr />
-<hr>
+</div><hr>
 
 <div class="notices success" data-title="All set !">
     <p>Hey, we’ve done important things here ! Maybe it’s time to commit…</p>
@@ -3131,24 +2932,17 @@ Following &nbsp;flannel requirements, you need to use --pod-network-cidr with ad
 
 
 
-
-
-
-
-        
-        
-            
-        
-    
-
-
-
-<a
-    href="https://stackoverflow.com/a/60151612"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fab fa-stack-overflow" title="See on StackOverflow"></i>&nbsp;https://stackoverflow.com/a/60151612</a><br />
-{{ /expand }}</li>
+	
+	
+	
+	
+	<a
+		href="https://stackoverflow.com/a/60151612" title="See on stackoverflow.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-stack-overflow"></i>&nbsp;<i>
+raspberry pi3 - External ip always &lt;none&gt; or &lt;pending&gt; in kubernetes - Stack Overflow</i></a></li>
 </ul>
+
+  </div>
+</div>
 <p>Check that iptables is patched correctly.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -3194,85 +2988,46 @@ Following &nbsp;flannel requirements, you need to use --pod-network-cidr with ad
   <div class="expand__content">
     <ul>
 <li>
-<p>&lt;a<br />
-href=&ldquo;
 
 
 
 
 
-
-
-
-
-        
-        
-            
-            
-        
-    
-
-
-
-<a
-    href="https://blog.heptio.com/properly-resetting-your-kubeadm-bootstrapped-cluster-nodes-heptioprotip-473bd0b824aa%22"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" title="See on blog.heptio.com"></i>&nbsp;https://blog.heptio.com/properly-resetting-your-kubeadm-bootstrapped-cluster-nodes-heptioprotip-473bd0b824aa"</a></p>
-<pre><code> target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;i class=&quot;fas fa-external-link-alt&quot; title=&quot;See on blog.heptio.com&quot;&gt;&lt;/i&gt;&amp;nbsp;https://blog.heptio.com/properly-resetting-your-kubeadm-bootstrapped-cluster-nodes-heptioprotip-473bd0b824aa&lt;/a&gt;&lt;/li&gt;
-</code></pre>
+	
+	
+	
+	
+	<a
+		href="https://blog.heptio.com/properly-resetting-your-kubeadm-bootstrapped-cluster-nodes-heptioprotip-473bd0b824aa" title="See on blog.heptio.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i>&nbsp;<i>
+Properly Resetting Your kubeadm-bootstrapped Cluster Nodes — #HeptioProTip | by Ruben Orduz | Heptio</i></a></li>
 <li>
-<p>&lt;a<br />
-href=&ldquo;
 
 
 
 
 
-
-
-
-
-        
-        
-            
-        
-    
-
-
-
-<a
-    href="https://stackoverflow.com/a/46438072%22"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fab fa-stack-overflow" title="See on StackOverflow"></i>&nbsp;https://stackoverflow.com/a/46438072"</a></p>
-<pre><code> target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;i class=&quot;fab fa-stack-overflow&quot; title=&quot;See on StackOverflow&quot;&gt;&lt;/i&gt;&amp;nbsp;Kubernetes cannot cleanup Flannel&lt;/a&gt;&lt;/li&gt;
-</code></pre>
+	
+	
+	
+	
+	<a
+		href="https://stackoverflow.com/a/46438072" title="See on stackoverflow.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-stack-overflow"></i>&nbsp;<i>
+Kubernetes cannot cleanup Flannel - Stack Overflow</i></a></li>
 <li>
-<p>&lt;a<br />
-href=&ldquo;
 
 
 
 
 
-
-
-
-
-        
-        
-            
-        
-    
-
-
-
-<a
-    href="https://stackoverflow.com/a/46480447/4839162%22"
-    
-     target="_blank" rel="noopener noreferrer"><i class="fab fa-stack-overflow" title="See on StackOverflow"></i>&nbsp;https://stackoverflow.com/a/46480447/4839162"</a></p>
-<pre><code> target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;i class=&quot;fab fa-stack-overflow&quot; title=&quot;See on StackOverflow&quot;&gt;&lt;/i&gt;&amp;nbsp;Kubernetes flannel pod getting the wrong network&lt;/a&gt;&lt;/li&gt;
-</code></pre>
+	
+	
+	
+	
+	<a
+		href="https://stackoverflow.com/a/46480447/4839162" title="See on stackoverflow.com" target="_blank" rel="noopener noreferrer"><i class="fab fa-stack-overflow"></i>&nbsp;<i>
+docker - Kubernetes flannel pod getting the wrong network - Stack Overflow</i></a></li>
 </ul>
+
   </div>
 </div>
 <div class="highlight"><div class="chroma">
@@ -3292,22 +3047,16 @@ href=&ldquo;
 <li>Force reinit cluster:
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code></code></pre></td>
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-sh" data-lang="sh"><span class="line"><span class="cl"><span class="o">(</span> sudo kubeadm reset -f <span class="o">&amp;&amp;</span> sudo rm -rf /etc/cni/net.d <span class="o">||</span> <span class="m">1</span> <span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  sudo kubeadm init --config cluster-config.yaml
+</span></span></code></pre></td></tr></table>
 </div>
 </div></li>
 </ul>
-<p>( sudo kubeadm reset -f &amp;&amp; sudo rm -rf /etc/cni/net.d || 1 ) &amp;&amp; sudo kubeadm init &ndash;config  cluster-config.yaml</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre tabindex="0" class="chroma"><code></code></pre></td>
-<td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"></code></pre></td></tr></table>
-</div>
-</div>
-  </div>
-</div>
 
     </article>
     
@@ -3617,7 +3366,7 @@ href=&ldquo;
         </li>
         
         <li>
-          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/06-monitoring/" class="related__link">Monitoring: See what is going on</a>
+          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/04-reverse-proxy/" class="related__link">Make services reachable from the world</a>
         </li>
         
         <li>
@@ -3625,11 +3374,11 @@ href=&ldquo;
         </li>
         
         <li>
-          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/00-vpn/" class="related__link">Setup the cluster&#39;s VPN</a>
+          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/03-router/" class="related__link">Setup the cluster&#39;s internal router</a>
         </li>
         
         <li>
-          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/03-router/" class="related__link">Setup the cluster&#39;s internal router</a>
+          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/07-authentication/" class="related__link">Setup cluster&#39;s authentication</a>
         </li>
         
     </ul>
@@ -4761,8 +4510,11 @@ document.addEventListener('DOMContentLoaded', function () {
       <ul>
         <li><a href="#kubelet-is-not-running">Kubelet is not running</a></li>
         <li><a href="#nginx-external-ip-is-always-pending">Nginx external ip is always <code>pending</code></a></li>
+        <li><a href="#cluster-never-starts">Cluster never starts</a></li>
+        <li><a href="#network-interfaces-are-not-deleted-after-reseting-kubeadm">Network interfaces are not deleted after reseting kubeadm</a></li>
       </ul>
     </li>
+    <li><a href="#usefull-commands-memo">Usefull commands memo</a></li>
   </ul>
 </nav>
           </div>
@@ -4836,5 +4588,6 @@ document.addEventListener('DOMContentLoaded', function () {
     </div>
     
     
+    <script src="https://gerkindev.github.io/devblog/scripts/custom-code-wrappers.min.42af9b6dcc4acb2dbdb9b3614ff17e55df334242784c1bf2f02cd093880e3e74.js" defer></script>
 </body>
 </html>
