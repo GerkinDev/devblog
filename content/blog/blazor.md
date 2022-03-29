@@ -17,7 +17,7 @@ tags:
 series:
 categories:
 - Front-end
-image:
+image: /assets/images/blazor.png
 ---
 
 In 2018, *:imp: Microsoft* released its new framework, *Blazor*, which tease MVVM capabilities through component-oriented *AJAX* or *WebAssembly* application builds. Near 4 years later (and with many improvements & versions), what is the current state of *Blazor*?

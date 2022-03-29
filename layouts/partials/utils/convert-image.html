@@ -1,0 +1,13 @@
+{{- with .imageUrl }}
+    {{- if not $.targetSize }}
+        {{- errorf "Missing 'targetSize'" -}}
+    {{- end }}
+    {{- if hasPrefix . "/assets" }}
+        {{- $asset := resources.Get (. | strings.TrimPrefix "/assets") -}}
+        {{- ($asset.Resize (printf "%s webp" $.targetSize)).RelPermalink -}}
+    {{- else }}
+        {{- . -}}
+    {{- end}}
+{{- else }}
+    {{ errorf "Missing 'imageUrl'"}}
+{{- end }}

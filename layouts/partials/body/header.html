@@ -1,0 +1,14 @@
+{{ with .Param "image" }}
+<header>
+    {{ $image := partial "utils/convert-image" (dict
+        "imageUrl" .
+        "targetSize" "928x"
+    )}}
+    <img src="{{ $image | relURL }}" alt="{{ $.Title }}"/>
+    <header class="title-container">
+        {{ partial "body/header-title" $ }}
+    </header>
+</header>
+{{ else }}
+    {{ partial "body/header-title" $ }}
+{{ end }}
