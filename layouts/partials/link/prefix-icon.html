@@ -1,23 +1,25 @@
-{{- if eq .Type "wikipedia" -}}
-    <i class="fab fa-wikipedia-w" title="{{.Label | default "See on Wikipedia" }}"></i>
-{{- else if eq .Type "docs" -}}
-    <i class="fas fa-book" title="{{.Label | default "See the docs" }}"></i>
-{{- else if eq .Type "github-issue" -}}
-    <i class="fas fa-bug" title="{{.Label | default "See the issue on GitHub" }}"></i>
-{{- else if eq .Type "github" -}}
-    <i class="fab fa-github" title="{{.Label | default "See on GitHub" }}"></i>
-{{- else if eq .Type "stackoverflow" -}}
-    <i class="fab fa-stack-overflow" title="{{.Label | default "See on StackOverflow" }}"></i>
-{{- else if eq .Type "stackexchange" -}}
-    <i class="fab fa-stack-exchange" title="{{.Label | default "See on StackExchange" }}"></i>
-{{- else if eq .Type "external" -}}
-    <i class="fas fa-external-link-alt" title="{{ .Label }}"></i>
-{{- else if eq .Type "todo" -}}
-    <i class="fas fa-tools" title="TODO"></i>
-{{- else if eq .Type "internal" -}}
-    <i class="fas fa-link" title="{{ .Label | default "See on this site" }}"></i>
-{{- else if eq .Type "internal-resource" -}}
-    <i class="far fa-file-alt" title="{{ .Label | default "See the resource on this site" }}"></i>
+{{- if eq . "wikipedia" -}}
+    <i class="fab fa-wikipedia-w"></i>
+{{- else if eq . "docs" -}}
+    <i class="fas fa-book-open"></i>
+{{- else if eq . "github-issue" -}}
+    <i class="fas fa-bug"></i>
+{{- else if eq . "github" -}}
+    <i class="fab fa-github"></i>
+{{- else if eq . "stackoverflow" -}}
+    <i class="fab fa-stack-overflow"></i>
+{{- else if eq . "stackexchange" -}}
+    <i class="fab fa-stack-exchange"></i>
+{{- else if eq . "external" -}}
+    <i class="fas fa-external-link-alt"></i>
+{{- else if eq . "todo" -}}
+    <i class="fas fa-tools"></i>
+{{- else if eq . "internal" -}}
+    <i class="fas fa-link"></i>
+{{- else if eq . "internal-resource" -}}
+    <i class="fas fa-clipboard-list"></i>
+{{- else if eq . "anchor" -}}
+    <i class="fas fa-anchor"></i>
 {{- else -}}
-    {{ errorf "Incorrect type %q" .Type }}
+    {{ errorf "Incorrect type %q" . }}
 {{- end -}}

@@ -33,11 +33,15 @@ In order to pipe audit log messages to Elasticsearch, we need to install fluentd
 
 ## Install fluentd (on the kubernetes master host)
 
-<https://docs.fluentd.org/installation/before-install>
+{{< expand "References" >}}
+* <https://docs.fluentd.org/installation/before-install>
+{{</ expand >}}
 
 ### Install Chrony
 
-<https://www.tecmint.com/install-ntp-in-rhel-8/>
+{{< expand "References" >}}
+* <https://www.tecmint.com/install-ntp-in-rhel-8/>
+{{</ expand >}}
 
 Start by installing Chrony for accurate timestamps
 
@@ -94,7 +98,9 @@ If the environment is expected to have a high load, follow [this section of the 
 
 ### Install FluentD & plugins
 
-<https://docs.fluentd.org/installation/install-by-rpm>
+{{< expand "References" >}}
+* <https://docs.fluentd.org/installation/install-by-rpm>
+{{</ expand >}}
 
 Add the `td-agent` repository & install it
 
@@ -124,11 +130,9 @@ If having errors here, see the [Troubleshoot section at the end](#troubleshoot).
 * <https://kubernetes.io/docs/tasks/debug-application-cluster/audit/#log-collector-examples>
 {{</ expand >}}
 
-<https://kubernetes.io/docs/tasks/debug-application-cluster/audit/#log-collector-examples>
+Install the {{< linkToIncludedFile "./td-agent/kube.conf" >}} template template into `/etc/td-agent/`, include it in your master configuration, and create the log dirs.
 
-Install the [td-agent/kube.conf](./td-agent/kube.conf) template template into `/etc/td-agent/`, include it in your master configuration, and create the log dirs.
-
-{{< includeCodeFile "./td-agent/kube.conf" >}}
+{{< includeCodeFile "./td-agent/kube.conf" "" "genshi" >}}
 
 ```sh
 mv ./td-agent/kube.conf /etc/td-agent/td-agent.conf
@@ -150,7 +154,7 @@ systemctl restart td-agent.service
 * <https://medium.com/@noqcks/kubernetes-audit-logging-introduction-464a34a53f6c>
 {{</ expand >}}
 
-See the [example audit log policy](https://raw.githubusercontent.com/kubernetes/website/master/content/en/examples/audit/audit-policy.yaml) & the [template audit log file](./kubernetes/audit-log-policy.yaml).
+See the [example audit log policy](https://raw.githubusercontent.com/kubernetes/website/master/content/en/examples/audit/audit-policy.yaml) & the {{< linkToIncludedFile "./kubernetes/audit-log-policy.yaml" "template audit log file" >}}.
 
 {{< includeCodeFile "./kubernetes/audit-log-policy.yaml" >}}
 

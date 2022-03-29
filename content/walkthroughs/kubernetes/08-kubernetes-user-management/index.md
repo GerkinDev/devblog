@@ -15,11 +15,9 @@ tags:
 
 ## Create the realm and the client
 
-https://github.com/zufardhiyaulhaq/engineering-notes/blob/master/notes/kubernetes-keycloak-integration.md
-
-
-
-https://github.com/zufardhiyaulhaq/engineering-notes/blob/master/notes/kubernetes-keycloak-integration.md#integrating
+{{< expand "References" >}}
+* <https://github.com/zufardhiyaulhaq/engineering-notes/blob/master/notes/kubernetes-keycloak-integration.md>
+{{</ expand >}}
 
 ```sh
 REALM_URL="https://keycloak.{{cluster.baseHostName}}/auth/realms/{{apiServer.realmName}}"
@@ -42,13 +40,15 @@ curl \
 
 ## Set up certificates
 
-https://medium.com/@zufardhiyaulhaq/kubernetes-authentication-with-keycloak-openid-connect-part-1-14f4e778b5e9#5252
+{{< expand "References" >}}
+* <https://medium.com/@zufardhiyaulhaq/kubernetes-authentication-with-keycloak-openid-connect-part-1-14f4e778b5e9#5252>
+{{</ expand >}}
 
 ### Generate the certificates
 
 {{< expand "References" >}}
-* https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes
-* [Provide subjectAltName to openssl directly on the command line](https://security.stackexchange.com/a/159537)
+* <https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes>
+* <https://security.stackexchange.com/a/159537>
 {{</ expand >}}
 
 ```sh
@@ -176,6 +176,10 @@ If the command above works, our certificates are valid !
 
 ## Enable OIDC in the API server
 
+{{< expand "References" >}}
+* <https://stackoverflow.com/questions/50007654/how-does-kube-apiserver-restart-after-editing-etc-kubernetes-manifests-kube-api>
+{{</ expand >}}
+
 Place CA files in a safe place where kubernetes will be able to get it to check keycloak's certificate.
 
 ```sh
@@ -189,37 +193,7 @@ chown -R root:root /etc/kubernetes/auth-cert
 # Remove the dir
 cd ../
 rm -r certs
-```
-
-
-https://stackoverflow.com/questions/50007654/how-does-kube-apiserver-restart-after-editing-etc-kubernetes-manifests-kube-api
-
-<!-- 
-> ## What did not worked
-> 
-> ```sh
-> # Edit cluster config
-> vim /etc/kubernetes/cluster-config.yaml
-> ```
-> 
-> Under `apiServer.extraArgs`, add:
-> ```yaml
->         oidc-issuer-url: https://kube-keycloak.{{cluster.baseHostName}}/auth/realms/{{apiServer.realmName}}
->         oidc-client-id: {{apiServer.clientId}}
->         oidc-groups-claim: user_groups
->         oidc-username-claim: preferred_username
->         oidc-groups-prefix: "oidc:"
->         oidc-username-prefix: "oidc:"
->         oidc-ca-file: /etc/kubernetes/auth-cert/ca.crt
-> ```
-> 
-> 
-> Finally, restart kubelet to apply the configuration changes
-> 
-> ```sh
-> systemctl restart kubelet.service
-> kubeadm upgrade apply "$(kubectl version -o json | jq '.serverVersion.gitVersion' -r | sed 's/^v//')"
-> ``` -->
+```>
 
 Then
 
@@ -305,8 +279,6 @@ kubectl config use-context oidc@{{cluster.name}}
 # Go back to the admin context
 kubectl config use-context kubernetes-admin@{{cluster.name}}
 ```
-
-
 
 {{< notice "info" "Small tips about user management" >}}
 ```sh

@@ -18,7 +18,7 @@ Hopefully, here comes the real huge advantage of *kubernetes*: it is meant to sc
 
 ## Join the cluster's VPN
 
-In the step [00 Setup the cluster's VPN](<!-- TODO -->), we have set up a VPN so that each of our nodes can communicate safely with each others, on their own virtual network across the internet. This comes with the great power of being able to have servers spread all around the globe.
+In the step {{< linkToPage "/walkthroughs/kubernetes/00-vpn" >}}, we have set up a VPN so that each of our nodes can communicate safely with each others, on their own virtual network across the internet. This comes with the great power of being able to have servers spread all around the globe.
 
 ### From the *OpenVPN server node*
 

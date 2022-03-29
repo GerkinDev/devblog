@@ -37,5 +37,6 @@
     </div>
     {{ block "foot" . }}{{ end }}
     {{ template "_internal/google_analytics.html" . }}
+    <script src="{{ (resources.Get "scripts/custom-code-wrappers.ts" | js.Build | resources.Minify | resources.Fingerprint).Permalink }}" defer></script>
 </body>
 </html>

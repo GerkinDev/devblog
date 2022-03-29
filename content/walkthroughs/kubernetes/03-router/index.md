@@ -14,7 +14,7 @@ tags:
 ---
 
 {{< expand "References" >}}
-* https://github.com/traefik/traefik-helm-chart/pull/157/files
+* <https://github.com/traefik/traefik-helm-chart/pull/157/files>
 {{</ expand >}}
 
 Start by creating traefik required resources. You can directly use resources from the [kubernetes/traefik](https://github.com/GerkinDev/devblog/tree/master/content/walkthroughs/kubernetes/03-router/kubernetes/traefik) templates: it does not contain variables. Those are taken from [traefik docs](https://doc.traefik.io/traefik/v2.4/user-guides/crd-acme/#ingressroute-definition$docs) mixed up with [this PR](https://github.com/traefik/traefik-helm-chart/pull/157/files) for kubernetes 1.19 support and schemas.
@@ -39,7 +39,7 @@ kubectl apply -f ./kubernetes/traefik/05-Services.yaml
 
 You can now use the [custom resource kind `IngressRoute`](https://docs.traefik.io/routing/providers/kubernetes-crd/$docs) to map routes using traefik.
 
-To check if everything works so far, you can use a test nginx instance from [kubernetes/xx-WhoAmI.yaml](./kubernetes/xx-WhoAmI.yaml). Once deployed, you should be able to display the nginx default page by reaching `https://test.{{cluster.baseHostName}}` from your host.
+To check if everything works so far, you can use a test nginx instance from {{< linkToIncludedFile "./kubernetes/xx-WhoAmI.yaml" >}}. Once deployed, you should be able to display the nginx default page by reaching `https://test.{{cluster.baseHostName}}` from your host.
 
 {{< includeCodeFile "./kubernetes/xx-WhoAmI.yaml" >}}
 
@@ -49,6 +49,8 @@ curl -kH 'Host: whoami.{{cluster.baseHostName}}' "https://$(kubectl --namespace 
 ```
 
 {{< alert theme="info" >}}
+To check if a user/serviceaccount can do a specific operation, you can use the `kubectl auth can-i [verb] [resource]` command:
+
 ```sh
 kubectl --namespace whoami auth can-i get service --as=system:serviceaccount:traefik:traefik
 ```

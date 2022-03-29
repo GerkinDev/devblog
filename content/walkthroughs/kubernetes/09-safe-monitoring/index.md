@@ -20,7 +20,11 @@ Now that we have our authentication service up and running, we can protect our d
 
 ## Traefik dashboard
 
+TODO
+
 ## Kibana
+
+TODO
 
 ## Kube dashboard
 

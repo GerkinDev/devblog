@@ -24,6 +24,9 @@
 {{ end }}
 {{ $href:= .Scratch.Get "href" }}
 
-<em>
-{{- partial "link/link" (dict "Destination" $href "Text" $text "Title" $page.LinkTitle "Blank" $blank ) -}}
-</em>
+{{- partial "link/link" (dict
+    "Destination" $href
+    "Text" $text
+    "Title" $page.LinkTitle
+    "Blank" $blank
+) -}}

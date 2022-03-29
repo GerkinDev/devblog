@@ -20,7 +20,7 @@ The traefik dashboard will help us in the diagnostics of our ingress routes and 
 * update our ingress controller previously deployed to enable the dashboard
 * and create routes to the dashboard.
 
-Use the [kubernetes/traefik/04-IngressController.yaml](./kubernetes/traefik/04-IngressController.yaml) and [kubernetes/traefik/06-IngressRoutes.yaml](./kubernetes/traefik/06-IngressRoutes.yaml) templates.
+Use the {{< linkToIncludedFile "./kubernetes/traefik/04-IngressController.yaml" >}} and {{< linkToIncludedFile "./kubernetes/traefik/06-IngressRoutes.yaml" >}} templates.
 
 {{< includeCodeFile "./kubernetes/traefik/04-IngressController.yaml" >}}
 {{< includeCodeFile "./kubernetes/traefik/06-IngressRoutes.yaml" >}}
@@ -35,7 +35,7 @@ Now, you should be able to reach the dashboard via <https://traefik.{{cluster.ba
 ## 2. Kibana: harvest data from your cluster
 
 {{< expand "References" >}}
-* <https://kubernetes.io/docs/tasks/debug-application-cluster/logging-elasticsearch-kibana/>
+* <https://v1-19.docs.kubernetes.io/docs/tasks/debug-application-cluster/logging-elasticsearch-kibana/>
 * <https://mherman.org/blog/logging-in-kubernetes-with-elasticsearch-Kibana-fluentd/#fluentd>
 * <https://www.elastic.co/kibana>
 * <https://www.elastic.co/elasticsearch/>
@@ -92,7 +92,7 @@ I strongly recommend you to inspect logs carefully, to clean up as many errors a
 
 ### 2.2. Audit logs
 
-For a reason I can't explain, the default settings for audit log parsing from fluentd are incorrect. Moreover, I find the "all settings in a single file" pattern awful. So we are going to reconfigure fluentd to parse correctly our logs. Use the [kubernetes/kibana/31-Fluentd.yaml](./kubernetes/kibana/31-Fluentd.yaml) & [kubernetes/kibana/32-FluentdConfigMap.yaml](./kubernetes/kibana/32-FluentdConfigMap.yaml) templates. The 1st one revrite some of the configuration of fluentd to use our custom configs.
+For a reason I can't explain, the default settings for audit log parsing from fluentd are incorrect. Moreover, I find the "all settings in a single file" pattern awful. So we are going to reconfigure fluentd to parse correctly our logs. Use the {{< linkToIncludedFile "./kubernetes/kibana/31-Fluentd.yaml" >}} & {{< linkToIncludedFile "./kubernetes/kibana/32-FluentdConfigMap.yaml" >}} templates. The 1st one rewrites some of the configuration of fluentd to use our custom configs.
 
 {{< includeCodeFile "./kubernetes/kibana/31-Fluentd.yaml" >}}
 {{< includeCodeFile "./kubernetes/kibana/32-FluentdConfigMap.yaml" >}}
@@ -117,7 +117,7 @@ Now that you have set up everything, you might have seen that everytime the Elas
 ## 3. Kube dashboard: Web UI to administrate the cluster
 
 {{< expand "References" >}}
-* <https://kubernetes.io/fr/docs/tasks/access-application-cluster/web-ui-dashboard/>
+* <https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/>
 {{</ expand >}}
 
 {{< includeCodeFile "./kubernetes/kube-dashboard/01-Dashboard.yaml" >}}
@@ -141,7 +141,7 @@ secret_name="$(kubectl get serviceaccount watchdog -n kubernetes-dashboard -o js
 echo $(kubectl get secret $secret_name -n kubernetes-dashboard -o json | jq '.data.token' -r  | base64 --decode)
 ```
 
-Now, navigate to `https://kube-dashboard.{{cluster.baseHostName}}` and log in using the token you got above.
+Now, navigate to <https://kube-dashboard.{{cluster.baseHostName}}> and log in using the token you got above.
 
 ![Authentication screen](./_assets/kube-dashboard-1.png)
 

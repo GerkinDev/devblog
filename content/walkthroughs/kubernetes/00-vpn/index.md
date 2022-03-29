@@ -13,8 +13,8 @@ tags:
 ---
 
 {{< expand "References" >}}
-* [How To Run OpenVPN in a Docker Container on Ubuntu 14.04](https://www.digitalocean.com/community/tutorials/how-to-run-openvpn-in-a-docker-container-on-ubuntu-14-04)
-* [Running Docker Containers with Systemd](https://blog.container-solutions.com/running-docker-containers-with-systemd)
+* <https://www.digitalocean.com/community/tutorials/how-to-run-openvpn-in-a-docker-container-on-ubuntu-14-04>
+* <https://blog.container-solutions.com/running-docker-containers-with-systemd>
 {{</ expand >}}
 
 Because we are installing our cluster bare metal on servers exposed on the Internet, we'll need a way to secure all of our network traffic around the critical parts of *kubernetes*. To do so, we'll use OpenVPN to create a virtual secured network where all of our nodes will work. Moreover, this network will also contains *MetalLB* services when {{< linkToPage "/walkthroughs/kubernetes/02-cluster#initialize-metallb" "configuring our bare metal load balancer" >}}.
@@ -54,7 +54,7 @@ Once the last command is executed, your *OpenVPN* server should start. If it sta
 If you're not using systemd, see [how to use init.d](https://www.digitalocean.com/community/tutorials/how-to-run-openvpn-in-a-docker-container-on-ubuntu-14-04#step-3-%E2%80%94-launch-the-openvpn-server), and skip this section.
 {{</ alert >}}
 
-Install the [systemd/kubernetes-vpn.service](./systemd/kubernetes-vpn.service) template into `/usr/lib/systemd/system`, then enable this service. It will run our *OpenVPN* server container.
+Install the {{< linkToIncludedFile "./systemd/kubernetes-vpn.service" >}} template into `/usr/lib/systemd/system`, then enable this service. It will run our *OpenVPN* server container.
 
 {{< includeCodeFile "./systemd/kubernetes-vpn.service" >}}
 
@@ -65,47 +65,6 @@ systemctl daemon-reload
 # Start & auto start it
 systemctl enable --now kubernetes-vpn.service
 ```
-
-<!-- TODO
-{{< expand "Have Fail2Ban installed ?" >}}
-{{< expand "References" >}}
- * https://www.fail2ban.org/wiki/index.php/HOWTO_fail2ban_with_OpenVPN
-{{</ expand >}}
-
-```sh
-cat <<EOF | tee /etc/fail2ban/filter.d/openvpn.local
-# Fail2Ban filter for selected OpenVPN rejections
-#
-#
-
-[Definition]
-
-# Example messages (other matched messages not seen in the testing server's logs):
-# Fri Sep 23 11:55:36 2016 TLS Error: incoming packet authentication failed from [AF_INET]59.90.146.160:51223
-# Thu Aug 25 09:36:02 2016 117.207.115.143:58922 TLS Error: TLS handshake failed
-
-failregex = ^ TLS Error: incoming packet authentication failed from \[AF_INET\]<HOST>:\d+$
-            ^ <HOST>:\d+ Connection reset, restarting
-            ^ <HOST>:\d+ TLS Auth Error
-            ^ <HOST>:\d+ TLS Error: TLS handshake failed$
-            ^ <HOST>:\d+ VERIFY ERROR
-
-ignoreregex = 
-EOF
-cat <<EOF | tee /etc/fail2ban/jail.d/openvpn.local
-# Fail2Ban configuration fragment for OpenVPN
-
-[openvpn]
-enabled  = true
-port     = 1194
-protocol = udp
-filter   = openvpn
-logpath  = /var/log/openvpn.log
-maxretry = 3
-EOF
-systemctl reload fail2ban
-```
-{{</ expand >}} -->
 
 You can check our docker container with `docker container inspect kubernetes-vpn.service` & get our *OpenVPN* logs with `journalctl -u kubernetes-vpn.service`.
 
@@ -144,7 +103,7 @@ echo "ifconfig-push {{node.ip}} {{vpn.serverIp}}" | docker run -v {{vpn.volumeNa
 docker run -v {{vpn.volumeName}}:/etc/openvpn --rm kylemanna/openvpn:2.4 ovpn_getclient {{node.name}} > {{node.name}}.ovpn
 ```
 
-Move this `{{node.name}}.ovpn` file to the {{node.name}} node **by a safe mean**. Those files are super critical, so be very careful to not put it anywhere usafe.
+Move this `{{node.name}}.ovpn` file to the {{< var "node.name" >}} node **by a safe mean**. Those files are super critical, so be very careful to not put it anywhere usafe.
 
 Next operations have to be run on clients.
 
@@ -153,6 +112,8 @@ Next operations have to be run on clients.
 {{< expand "References" >}}
 * <https://www.vpsserver.com/community/tutorials/4035/install-openvpn-on-centos-8/>
 {{< /expand >}}
+
+Install required dependencies.
 
 ```sh
 dnf install epel-release git
@@ -185,7 +146,7 @@ If you're having troubles pinging `8.8.8.8` or another's node IP, please refer t
 
 ---
 
-You should be good to go :fire:
+You should be good to go ! :fire:
 
 ## Troubleshoot
 

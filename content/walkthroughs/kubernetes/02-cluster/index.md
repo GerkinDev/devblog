@@ -15,7 +15,7 @@ tags:
 ## Create the cluster config file
 
 {{< expand "References" >}}
-* How to set bind address by config file: <https://stackoverflow.com/a/60391611>
+* <https://stackoverflow.com/a/60391611>
 {{</ expand >}}
 
 We are now going to configure the cluster. For the sake of traceability, this configuration won't be done via CLI flags, but via [a configuration file](<!-- TODO -->). The path of the cluster config file will later be referenced as the {{< var "cluster.configFile" >}}, and **should** be inside `/etc/kubernetes`.
@@ -41,11 +41,11 @@ chmod 600 {{cluster.configFile}}
 ## Finally, init the cluster
 
 {{< expand "References" >}}
-* [kubeadm API resources](https://godoc.org/k8s.io/kubernetes/cmd/kubeadm/app/apis/kubeadm/v1beta2)
-* [Flannel kubernetes RTFM](https://github.com/coreos/flannel/blob/master/Documentation/kubernetes.md)
-* https://github.com/kubernetes/kubeadm/issues/203#issuecomment-335416377
-* https://coreos.com/os/docs/latest/using-systemd-drop-in-units.html
-* [Flannel yaml file customization –iface for vagrant Linux cluster](https://discuss.kubernetes.io/t/flannel-yaml-file-customization-iface-for-vagrant-linux-cluster/4873)
+* <https://godoc.org/k8s.io/kubernetes/cmd/kubeadm/app/apis/kubeadm/v1beta2>
+* <https://github.com/coreos/flannel/blob/master/Documentation/kubernetes.md>
+* <https://github.com/kubernetes/kubeadm/issues/203#issuecomment-335416377>
+* <https://coreos.com/os/docs/latest/using-systemd-drop-in-units.html>
+* <https://discuss.kubernetes.io/t/flannel-yaml-file-customization-iface-for-vagrant-linux-cluster/4873>
 {{</ expand >}}
 
 Pay attention to the feedbacks of the `kubeadm` command. It will show warnings about misconfigurations.
@@ -114,9 +114,11 @@ You may repeat this part of the process during the life of your cluster to add n
 
 ## Initialize metallb
 
-<https://metallb.universe.tf/installation/>
+{{< expand "References" >}}
+* <https://metallb.universe.tf/installation/>
+{{</ expand >}}
 
-Create a metallb configmap, from the [kubernetes/metallb-configmap.yaml](./kubernetes/metallb-configmap.yaml) template. [See the docs](https://metallb.universe.tf/configuration/$docs) for full reference on this config file & how to adapt it to your network configuration..
+Create a metallb configmap, from the {{< linkToIncludedFile "./kubernetes/metallb-configmap.yaml" >}} template. [See the docs](https://metallb.universe.tf/configuration/$docs) for full reference on this config file & how to adapt it to your network configuration..
 
 The {{< var "cluster.networkAddress" >}} corresponds to the network part of your {{< var "cluster.advertiseAddress" >}}.
 
@@ -161,8 +163,6 @@ Cleanup the namespace afterwards
 kubectl delete namespace nginx-test
 ```
 
----
-
 {{< commitAdvice >}}
 
 ## Troubleshoot
@@ -179,7 +179,7 @@ dnf reinstall -y kubelet kubeadm kubectl --disableexcludes=kubernetes
 
 {{< expand "References" >}}
 * <https://stackoverflow.com/a/60151612>
-{{ /expand }}
+{{< /expand >}}
 
 Check that iptables is patched correctly.
 
@@ -201,8 +201,6 @@ cat /proc/swaps
 
 Make sure your nodes are ready and that the networking plugin is correctly installed.
 
-
-
 ### Cluster never starts
 
 Move or remove the existing kubeadm config file (if any) in `/etc/systemd/system/kubelet.service.d/10-kubeadm.conf`
@@ -212,9 +210,9 @@ Check firewall, getenforce & swap status.
 ### Network interfaces are not deleted after reseting kubeadm
 
 {{< expand "References" >}}
-* https://blog.heptio.com/properly-resetting-your-kubeadm-bootstrapped-cluster-nodes-heptioprotip-473bd0b824aa
-* [Kubernetes cannot cleanup Flannel](https://stackoverflow.com/a/46438072)
-* [Kubernetes flannel pod getting the wrong network](https://stackoverflow.com/a/46480447/4839162)
+* <https://blog.heptio.com/properly-resetting-your-kubeadm-bootstrapped-cluster-nodes-heptioprotip-473bd0b824aa>
+* <https://stackoverflow.com/a/46438072>
+* <https://stackoverflow.com/a/46480447/4839162>
 {{</ expand >}}
 
 ```sh
@@ -227,5 +225,6 @@ ip link delete flannel.1
 
 * Force reinit cluster: 
   ```sh
-( sudo kubeadm reset -f && sudo rm -rf /etc/cni/net.d || 1 ) && sudo kubeadm init --config  cluster-config.yaml
-```
+  ( sudo kubeadm reset -f && sudo rm -rf /etc/cni/net.d || 1 ) && \
+    sudo kubeadm init --config cluster-config.yaml
+  ```

@@ -1,0 +1,10 @@
+{{ $href := . }}
+{{ with resources.GetRemote . (dict "headers" (dict "User-Agent" (slice "gerkindev.github.io meta fetcher"))) }}
+    {{- with index (findRE "(?:<title[^>]*>)(.*?)</title>" .Content 1) 0 }}
+        {{- (replaceRE "<title[^>]*>(.*)</title>" "$1" .) | safeHTML }}
+    {{- else }}
+        {{- warnf "%s don't have a <title> tag" $href }}
+    {{- end }}
+{{- else }}
+    {{- warnf "Failed to fetch %s" $href }}
+{{- end }}

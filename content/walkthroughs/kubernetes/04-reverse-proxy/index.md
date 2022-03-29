@@ -17,7 +17,7 @@ Now that you have a router installed, you have to pass requests on your server t
 
 ## 1. Make a static and previsible configuration
 
-As you may have noticed in the step {{< linkToPage "../02-cluster" >}}, the *metallb* configuration use only dynamic adresses. But for the reverse proxy to work, we'll need to be sure that our *traefik* router has a constant IP in your VPN. For this, modify your *metallb* configuration using the new [kubernetes/metallb-configmap.yaml](./kubernetes/metallb-configmap.yaml) template. This new configuration declares a new address pool named `frontend` with a single IP in it.
+As you may have noticed in the step {{< linkToPage "../02-cluster" >}}, the *metallb* configuration use only dynamic adresses. But for the reverse proxy to work, we'll need to be sure that our *traefik* router has a constant IP in your VPN. For this, modify your *metallb* configuration using the new {{< linkToIncludedFile "./kubernetes/metallb-configmap.yaml" >}} template. This new configuration declares a new address pool named `frontend` with a single IP in it.
 
 {{< includeCodeFile "./kubernetes/metallb-configmap.yaml" >}}
 
@@ -29,10 +29,10 @@ kubectl apply -f ./kubernetes/metallb-configmap.yaml
 ## 2. Set the router's IP
 
 {{< expand "References" >}}
-* [Requesting specific IPs from metallb](https://metallb.universe.tf/usage/#requesting-specific-ips)
+* <https://metallb.universe.tf/usage/#requesting-specific-ips>
 {{</ expand >}}
 
-Once the configmap has been changed, force our *traefik* service to use this new address "*pool*". This is done using the *annotation* `metallb.universe.tf/address-pool`. Use the new [:clipboard: kubernetes/traefik/05-Services.yaml](./kubernetes/traefik/05-Services.yaml) template, and check that its IP is correct.
+Once the configmap has been changed, force our *traefik* service to use this new address "*pool*". This is done using the *annotation* `metallb.universe.tf/address-pool`. Use the new {{< linkToIncludedFile "./kubernetes/traefik/05-Services.yaml" >}} template, and check that its IP is correct.
 
 {{< includeCodeFile "./kubernetes/traefik/05-Services.yaml" >}}
 
@@ -77,7 +77,7 @@ echo '\ninclude /etc/nginx/streams.d/*.conf;\n' | tee -a /etc/nginx/nginx.conf
 systemctl enable --now nginx.service
 ```
 
-Now, you should be able to reach your traefik router by requesting directly your entry point server. Test this with the [kubernetes/xx-WhoAmI.yaml](../03-router/kubernetes/xx-WhoAmI.yaml) template.
+Now, you should be able to reach your traefik router by requesting directly your entry point server. Test this with the {{< linkToIncludedFile "../03-router/kubernetes/xx-WhoAmI.yaml" "kubernetes/xx-WhoAmI.yaml" >}} template.
 
 {{< includeCodeFile "../03-router/kubernetes/xx-WhoAmI.yaml" "./kubernetes/xx-WhoAmI.yaml" >}}
 

@@ -29,19 +29,17 @@ We'll use keycloak to proxy our authentication for all monitors, using a single 
 * <https://itnext.io/protect-kubernetes-dashboard-with-openid-connect-104b9e75e39c>
 * <https://geek-cookbook.funkypenguin.co.nz/ha-docker-swarm/traefik-forward-auth/keycloak/>
 * <https://medium.com/docker-hacks/how-to-apply-authentication-to-any-web-service-in-15-minutes-using-keycloak-and-keycloak-proxy-e4dd88bc1cd5>
+* <https://www.openshift.com/blog/adding-authentication-to-your-kubernetes-web-applications-with-keycloak>
 {{</ expand >}}
 
-
-<https://www.openshift.com/blog/adding-authentication-to-your-kubernetes-web-applications-with-keycloak>
-
-Start by installing *Keycloak* via the [:books: *Helm* chart](https://hub.helm.sh/charts/codecentric/keycloak) & expose it, using following templates: 
-* [kubernetes/authentication/01-KeycloakChartValues.yaml](./kubernetes/authentication/01-KeycloakChartValues.yaml)
-* [kubernetes/authentication/02-PublicRoute.yaml](./kubernetes/authentication/02-PublicRoute.yaml)
+Start by installing *Keycloak* via the [*Helm* chart](https://hub.helm.sh/charts/codecentric/keycloak) & expose it, using following templates: 
+* {{< linkToIncludedFile "./kubernetes/authentication/01-KeycloakChartValues.yaml" >}}
+* {{< linkToIncludedFile "./kubernetes/authentication/02-PublicRoute.yaml" >}}
 
 {{< includeCodeFile "./kubernetes/authentication/01-KeycloakChartValues.yaml" >}}
 {{< includeCodeFile "./kubernetes/authentication/02-PublicRoute.yaml" >}}
 
-Note that the template [`kubernetes/authentication/01-KeycloakChartValues.yaml`](./kubernetes/authentication/01-KeycloakChartValues.yaml) contains the bare minimum settings for the keycloak chart with your route. You **should** tweak them to match your setup & security requirements. [RTFM the chart](https://hub.helm.sh/charts/codecentric/keycloak$docs)
+Note that the template {{< linkToIncludedFile "./kubernetes/authentication/01-KeycloakChartValues.yaml" >}} contains the bare minimum settings for the keycloak chart with your route. You **should** tweak them to match your setup & security requirements. [RTFM the chart](https://hub.helm.sh/charts/codecentric/keycloak$docs)
 
 ```sh
 # Add the keycloak chart repository
@@ -59,7 +57,7 @@ This install should end by displaying either the default keycloak user's passwor
 ### 1.2. Alias hostname of keycloak from the cluster
 
 {{< expand "References" >}}
-* https://stackoverflow.com/a/54692872
+* <https://stackoverflow.com/a/54692872>
 {{</ expand >}}
 
 > **Note :** This part is not required if you use a real host name registered with a A record. But if you use a fake hostname (which I still recommend at that point), DNS resolution of services trying to reach keycloak will fail, because your pods don't know where is `https://keycloak.{{cluster.baseHostName}}`.
@@ -132,7 +130,7 @@ Go on and create all the users you need, and assign relevant groups to them.
 
 > :information_source: Info: If you're not familiar with oauth2, *clients* are *roughly* applications that are allowed to authenticate users in your authentication system (keycloak). *Clients* can ask for grants of *scopes*, that are user informations they want to access to.
 
-Back in the dashboards setup, we'll protect our apps `Test app`, `kibana`, `kube dashboard` & `traefik` using [`gogatekeeper/gatekeeper`](https://github.com/gogatekeeper/gatekeeper).
+Back in the dashboards setup, we'll protect our apps `Test app`, `kibana`, `kube dashboard` & `traefik` using [gogatekeeper/gatekeeper](https://github.com/gogatekeeper/gatekeeper).
 
 ##### 1.4.3.1. Create scopes
 
@@ -156,9 +154,9 @@ Set the valid redirect URIs to `https://test.{{cluster.baseHostName}}/oauth/call
 
 Then, we need to add an audience. This field is required by gatekeeper to check our key. Go to the *`Mappers` tab*, & create a new mapper. Name it, for instance, `audience`, of `Mapper Type` `Audience`, & set the `Included Client Audience` to our {{< var "nginxTest.clientId" >}}. Save it.
 
-After this, check our *client scopes* by going to the *`Client Scopes` tab*. In the *`Setup` sub-tab*, make sure that our `groups` *client scope* is **assigned**. Then, you can test our setup ! Go to the *`Evaluate` sub-tab*, pick the `User` you want to check, click `Evaluate` then go to *`Generated Access Token` sub-sub-tab*. It should contain a key `groups` with all our user's groups, prefixed with a `/`, and a key `aud` with at least our :bookmark: `{{nginxTest.clientId}}`. If its okay, we are good to go !
+After this, check our *client scopes* by going to the *`Client Scopes` tab*. In the *`Setup` sub-tab*, make sure that our `groups` *client scope* is **assigned**. Then, you can test our setup ! Go to the *`Evaluate` sub-tab*, pick the `User` you want to check, click `Evaluate` then go to *`Generated Access Token` sub-sub-tab*. It should contain a key `groups` with all our user's groups, prefixed with a `/`, and a key `aud` with at least our {{< var "nginxTest.clientId" >}}. If its okay, we are good to go !
 
-And, finally, go to the *`Credentials` tab* & get the secret. It will be used as :bookmark: `{{nginxTest.clientSecret}}`.
+And, finally, go to the *`Credentials` tab* & get the secret. It will be used as {{< var "nginxTest.clientSecret" >}}.
 
 Other clients protected by our gatekeeper will be very similar.
 
@@ -170,7 +168,7 @@ Other clients protected by our gatekeeper will be very similar.
 
 We'll start with the simplest of our cases: the `nginx-test` app. This will allow us to get used to keycloak for our authorization mechanism. We'll proxy a simple nginx default instance behind our authentication proxy.
 
-Look at the [11-TestNginx.yaml](./kubernetes/11-NginxTest.yaml) template.
+Look at the {{< linkToIncludedFile "./kubernetes/11-NginxTest.yaml" >}} template.
 
 {{< includeCodeFile "./kubernetes/11-NginxTest.yaml" >}}
 
@@ -197,7 +195,7 @@ kubectl delete -f 11-NginxTest.yaml
 ## 3. Persist data from *Keycloak*
 
 {{< expand "References" >}}
-* [chown: changing ownership of ‘/var/lib/postgresql/data’: Operation not permitted, when running in kubernetes with mounted "/var/lib/postgres/data" volume #361](https://github.com/docker-library/postgres/issues/361)
+* <https://github.com/docker-library/postgres/issues/361>
 {{</ expand >}}
 
 You can use a persistent datastore by setting `postgresql.enabled` to `true`. Think about setting `postgresql.storageClass`.

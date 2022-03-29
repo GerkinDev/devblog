@@ -1,0 +1,5 @@
+{{- (printf
+    "[%s](#%s)"
+    ((.Get 1) | default (replaceRE "^./" "" (.Get 0)))
+    (partial "include-code-file-id" (.Get 0))
+) | .Page.RenderString }}
