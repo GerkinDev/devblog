@@ -1350,9 +1350,12 @@
 
 <meta property="og:site_name" content="GerkinDev Devblog">
 <meta property="og:title" content="Administrate the cluster with authentication">
+<meta property="twitter:title" content="Administrate the cluster with authentication">
 <meta property="og:url" content="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/08-kubernetes-user-management/">
 <meta property="og:type" content="article">
+<meta name="twitter:app:name:iphone" content="GerkinDev Devblog">
 <meta property="og:description" content="GerkinDev DevBlog, with some dev &amp; sysadmin tips, tricks and guides">
+<meta property="twitter:description" content="GerkinDev DevBlog, with some dev &amp; sysadmin tips, tricks and guides">
 
 <meta name="generator" content="Hugo 0.96.0" />
 <meta name="msapplication-TileColor" content="#fff">
@@ -1418,18 +1421,6 @@
 
 
     
-    <meta property="og:title" content="Administrate the cluster with authentication" />
-<meta property="og:description" content="Create the realm and the client   References    &nbsp; engineering-notes/kubernetes-keycloak-integration.md at master · zufardhiyaulhaq/engineering-notes · GitHub    1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  REALM_URL=&#34;https://keycloak.{{cluster.baseHostName}}/auth/realms/{{apiServer.realmName}}&#34; # Log in TOKEN_RESPONSE=&#34;$(curl \  -d &#34;grant_type=password&#34; \  -d &#34;client_id={{apiServer.clientId}}&#34; \  -d &#34;client_secret={{apiServer.clientSecret}}&#34; \  -d &#34;username=admin-user&#34; \  -d &#34;password=admin-user&#34; \  $REALM_URL/protocol/openid-connect/token)&#34; # Extract the access token ACCESS_TOKEN=&#34;$(echo &#34;$TOKEN_RESPONSE&#34; | jq &#39;." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/08-kubernetes-user-management/" /><meta property="article:section" content="walkthroughs" />
-<meta property="article:published_time" content="2020-11-16T02:35:47+01:00" />
-<meta property="article:modified_time" content="2022-03-29T13:34:49+02:00" />
-
-
-    <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Administrate the cluster with authentication"/>
-<meta name="twitter:description" content="Create the realm and the client   References    &nbsp; engineering-notes/kubernetes-keycloak-integration.md at master · zufardhiyaulhaq/engineering-notes · GitHub    1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  REALM_URL=&#34;https://keycloak.{{cluster.baseHostName}}/auth/realms/{{apiServer.realmName}}&#34; # Log in TOKEN_RESPONSE=&#34;$(curl \  -d &#34;grant_type=password&#34; \  -d &#34;client_id={{apiServer.clientId}}&#34; \  -d &#34;client_secret={{apiServer.clientSecret}}&#34; \  -d &#34;username=admin-user&#34; \  -d &#34;password=admin-user&#34; \  $REALM_URL/protocol/openid-connect/token)&#34; # Extract the access token ACCESS_TOKEN=&#34;$(echo &#34;$TOKEN_RESPONSE&#34; | jq &#39;."/>
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css" integrity="sha256-rx5u3IdaOCszi7Jb18XD9HSn8bNiEgAqWJbdBvIYYyU=" crossorigin="anonymous"/>
 </head>
 
@@ -2981,11 +2972,11 @@ su test
     <ul class="related-ul">
         
         <li>
-          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/09-safe-monitoring/" class="related__link">Protect monitoring with authentication</a>
+          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/07-authentication/" class="related__link">Setup cluster&#39;s authentication</a>
         </li>
         
         <li>
-          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/07-authentication/" class="related__link">Setup cluster&#39;s authentication</a>
+          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/09-safe-monitoring/" class="related__link">Protect monitoring with authentication</a>
         </li>
         
         <li>
@@ -2993,11 +2984,11 @@ su test
         </li>
         
         <li>
-          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/06-monitoring/" class="related__link">Monitoring: See what is going on</a>
+          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/05-storage/" class="related__link">Make things persistent</a>
         </li>
         
         <li>
-          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/03-router/" class="related__link">Setup the cluster&#39;s internal router</a>
+          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/06-monitoring/" class="related__link">Monitoring: See what is going on</a>
         </li>
         
     </ul>

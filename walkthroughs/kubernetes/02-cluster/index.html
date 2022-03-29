@@ -1350,9 +1350,12 @@
 
 <meta property="og:site_name" content="GerkinDev Devblog">
 <meta property="og:title" content="Kickstart the cluster">
+<meta property="twitter:title" content="Kickstart the cluster">
 <meta property="og:url" content="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/02-cluster/">
 <meta property="og:type" content="article">
+<meta name="twitter:app:name:iphone" content="GerkinDev Devblog">
 <meta property="og:description" content="GerkinDev DevBlog, with some dev &amp; sysadmin tips, tricks and guides">
+<meta property="twitter:description" content="GerkinDev DevBlog, with some dev &amp; sysadmin tips, tricks and guides">
 
 <meta name="generator" content="Hugo 0.96.0" />
 <meta name="msapplication-TileColor" content="#fff">
@@ -1418,18 +1421,6 @@
 
 
     
-    <meta property="og:title" content="Kickstart the cluster" />
-<meta property="og:description" content="Create the cluster config file   References    &nbsp; kubernetes - kubeadm init --apiserver-advertise-address flag equivalent in config file - Stack Overflow    We are now going to configure the cluster. For the sake of traceability, this configuration won&rsquo;t be done via CLI flags, but via &nbsp;a configuration file. The path of the cluster config file will later be referenced as the  {{cluster.configFile}}, and should be inside /etc/kubernetes." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/02-cluster/" /><meta property="article:section" content="walkthroughs" />
-<meta property="article:published_time" content="2020-11-16T02:35:47+01:00" />
-<meta property="article:modified_time" content="2022-03-29T13:34:49+02:00" />
-
-
-    <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Kickstart the cluster"/>
-<meta name="twitter:description" content="Create the cluster config file   References    &nbsp; kubernetes - kubeadm init --apiserver-advertise-address flag equivalent in config file - Stack Overflow    We are now going to configure the cluster. For the sake of traceability, this configuration won&rsquo;t be done via CLI flags, but via &nbsp;a configuration file. The path of the cluster config file will later be referenced as the  {{cluster.configFile}}, and should be inside /etc/kubernetes."/>
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.1/css/all.min.css" integrity="sha256-rx5u3IdaOCszi7Jb18XD9HSn8bNiEgAqWJbdBvIYYyU=" crossorigin="anonymous"/>
 </head>
 
@@ -3368,7 +3359,15 @@ docker - Kubernetes flannel pod getting the wrong network - Stack Overflow</i></
     <ul class="related-ul">
         
         <li>
-          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/01-audit-log/" class="related__link">Setup the cluster&#39;s Audit Log</a>
+          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/06-monitoring/" class="related__link">Monitoring: See what is going on</a>
+        </li>
+        
+        <li>
+          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/03-router/" class="related__link">Setup the cluster&#39;s internal router</a>
+        </li>
+        
+        <li>
+          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/09-safe-monitoring/" class="related__link">Protect monitoring with authentication</a>
         </li>
         
         <li>
@@ -3376,15 +3375,7 @@ docker - Kubernetes flannel pod getting the wrong network - Stack Overflow</i></
         </li>
         
         <li>
-          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/00-vpn/" class="related__link">Setup the cluster&#39;s VPN</a>
-        </li>
-        
-        <li>
-          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/04-reverse-proxy/" class="related__link">Make services reachable from the world</a>
-        </li>
-        
-        <li>
-          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/03-router/" class="related__link">Setup the cluster&#39;s internal router</a>
+          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/08-kubernetes-user-management/" class="related__link">Administrate the cluster with authentication</a>
         </li>
         
     </ul>
