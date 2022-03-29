@@ -23,7 +23,7 @@
         <link>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/00-vpn/</link>
         <pubDate>Mon, 16 Nov 2020 02:35:47 +0100</pubDate>
         
-        <atom:modified>Tue, 29 Mar 2022 12:42:24 +0200</atom:modified>
+        <atom:modified>Tue, 29 Mar 2022 13:34:49 +0200</atom:modified>
         <guid>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/00-vpn/</guid>
         <description>References    &amp;nbsp; How To Run OpenVPN in a Docker Container on Ubuntu 14.04 | DigitalOcean  &amp;nbsp; Running Docker Containers with Systemd    Because we are installing our cluster bare metal on servers exposed on the Internet, we&amp;rsquo;ll need a way to secure all of our network traffic around the critical parts of kubernetes. To do so, we&amp;rsquo;ll use OpenVPN to create a virtual secured network where all of our nodes will work.</description>
         
@@ -65,7 +65,7 @@
         <link>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/03-router/</link>
         <pubDate>Mon, 16 Nov 2020 02:35:47 +0100</pubDate>
         
-        <atom:modified>Tue, 29 Mar 2022 12:42:24 +0200</atom:modified>
+        <atom:modified>Tue, 29 Mar 2022 13:34:49 +0200</atom:modified>
         <guid>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/03-router/</guid>
         <description>References    &amp;nbsp; Add OpenAPI v3 schemas to CRDs by jrostand · Pull Request #157 · traefik/traefik-helm-chart · GitHub    Start by creating traefik required resources. You can directly use resources from the &amp;nbsp;kubernetes/traefik templates: it does not contain variables. Those are taken from &amp;nbsp;traefik docs mixed up with &amp;nbsp;this PR for kubernetes 1.19 support and schemas.
  Please look forward for &amp;nbsp;this issue in traefik about official v1.</description>
@@ -112,7 +112,7 @@
         <link>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/04-reverse-proxy/</link>
         <pubDate>Mon, 16 Nov 2020 02:35:47 +0100</pubDate>
         
-        <atom:modified>Tue, 29 Mar 2022 12:42:24 +0200</atom:modified>
+        <atom:modified>Tue, 29 Mar 2022 13:34:49 +0200</atom:modified>
         <guid>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/04-reverse-proxy/</guid>
         <description>Now that you have a router installed, you have to pass requests on your server to it. This setup use a single entry point directly binding some ports on the host server.
 1. Make a static and previsible configuration As you may have noticed in the step &amp;nbsp;Kickstart the cluster, the metallb configuration use only dynamic adresses. But for the reverse proxy to work, we&amp;rsquo;ll need to be sure that our traefik router has a constant IP in your VPN.</description>

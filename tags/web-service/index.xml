@@ -23,7 +23,7 @@
         <link>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/03-router/</link>
         <pubDate>Mon, 16 Nov 2020 02:35:47 +0100</pubDate>
         
-        <atom:modified>Tue, 29 Mar 2022 12:42:24 +0200</atom:modified>
+        <atom:modified>Tue, 29 Mar 2022 13:34:49 +0200</atom:modified>
         <guid>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/03-router/</guid>
         <description>References    &amp;nbsp; Add OpenAPI v3 schemas to CRDs by jrostand · Pull Request #157 · traefik/traefik-helm-chart · GitHub    Start by creating traefik required resources. You can directly use resources from the &amp;nbsp;kubernetes/traefik templates: it does not contain variables. Those are taken from &amp;nbsp;traefik docs mixed up with &amp;nbsp;this PR for kubernetes 1.19 support and schemas.
  Please look forward for &amp;nbsp;this issue in traefik about official v1.</description>
@@ -70,7 +70,7 @@
         <link>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/04-reverse-proxy/</link>
         <pubDate>Mon, 16 Nov 2020 02:35:47 +0100</pubDate>
         
-        <atom:modified>Tue, 29 Mar 2022 12:42:24 +0200</atom:modified>
+        <atom:modified>Tue, 29 Mar 2022 13:34:49 +0200</atom:modified>
         <guid>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/04-reverse-proxy/</guid>
         <description>Now that you have a router installed, you have to pass requests on your server to it. This setup use a single entry point directly binding some ports on the host server.
 1. Make a static and previsible configuration As you may have noticed in the step &amp;nbsp;Kickstart the cluster, the metallb configuration use only dynamic adresses. But for the reverse proxy to work, we&amp;rsquo;ll need to be sure that our traefik router has a constant IP in your VPN.</description>
@@ -117,7 +117,7 @@
         <link>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/07-authentication/</link>
         <pubDate>Mon, 16 Nov 2020 02:35:47 +0100</pubDate>
         
-        <atom:modified>Tue, 29 Mar 2022 12:42:24 +0200</atom:modified>
+        <atom:modified>Tue, 29 Mar 2022 13:34:49 +0200</atom:modified>
         <guid>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/07-authentication/</guid>
         <description>Here is a graph of the RBAC setup we are going to implement:
 1. Setup keycloak We&amp;rsquo;ll use keycloak to proxy our authentication for all monitors, using a single realm. You may use several realms in real-life situations. This is probably the tough part, and you may tweak heavily the following guide. Moreover, I may forgot to write some instructions, or somes are heavily linked to your very own setup.</description>
@@ -168,7 +168,7 @@
         <link>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/09-safe-monitoring/</link>
         <pubDate>Mon, 16 Nov 2020 02:35:47 +0100</pubDate>
         
-        <atom:modified>Tue, 29 Mar 2022 12:42:24 +0200</atom:modified>
+        <atom:modified>Tue, 29 Mar 2022 13:34:49 +0200</atom:modified>
         <guid>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/09-safe-monitoring/</guid>
         <description>Now that we have our authentication service up and running, we can protect our dashboards installed in the step &amp;nbsp;06 - Monitoring: See what is going on using our Keycloak OpenID Connect provider. Here is a diagram on how authorization will be managed:
 Traefik dashboard TODO

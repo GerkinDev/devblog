@@ -1342,7 +1342,7 @@
 <meta name="keywords" content="Kubernetes,Sysadmin,DevOps,Storage">
 
 <meta name="created" content="2020-11-16T02:35:47&#43;0100">
-<meta name="modified" content="2022-03-29T12:42:24&#43;0200">
+<meta name="modified" content="2022-03-29T13:34:49&#43;0200">
 <meta property="article:published_time" content="2020-11-16T02:35:47&#43;0100">
 
 <meta name="author" content="GerkinDev">
@@ -1391,7 +1391,7 @@
     "@type": "WebPage",
     "headline": "Make things persistent",
     "datePublished": "2020-11-16T02:35:47+01:00",
-    "dateModified": "2022-03-29T12:42:24+02:00",
+    "dateModified": "2022-03-29T13:34:49+02:00",
     "url" : "https://gerkindev.github.io/devblog/walkthroughs/kubernetes/05-storage/",
     "description": "References    \u0026nbsp; Persistent Volumes | Kubernetes  \u0026nbsp; Dynamic Volume Provisioning | Kubernetes  \u0026nbsp; Storage Classes | Kubernetes  \u0026nbsp; Kubernetes Volumes …",
     "keywords": ["Kubernetes","Sysadmin","DevOps","Storage"],
@@ -1423,7 +1423,7 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/05-storage/" /><meta property="article:section" content="walkthroughs" />
 <meta property="article:published_time" content="2020-11-16T02:35:47+01:00" />
-<meta property="article:modified_time" content="2022-03-29T12:42:24+02:00" />
+<meta property="article:modified_time" content="2022-03-29T13:34:49+02:00" />
 
 
     <meta name="twitter:card" content="summary"/>
@@ -1744,7 +1744,7 @@
   
   
   
-    via commit&nbsp;<a href="https://github.com/GerkinDev/devblog/commit/49ebe76e19bddd4267f8b7b1b1ff525b3ed1dc45" target="_blank"><code>49ebe76</code> (<em>feat: improve links icons, better cross references</em>) by Gerkin</a>
+    via commit&nbsp;<a href="https://github.com/GerkinDev/devblog/commit/1c91ff112b1a9cc81e7924153a2aaae34156cf01" target="_blank"><code>1c91ff1</code> (<em>chore: change shortcodes format (HTML tag like)</em>) by Gerkin</a>
   
 
   &nbsp;&middot;&nbsp; <span class="single__info" title="Reading Time"> ☕&nbsp;5&nbsp;min read </span>
@@ -1796,12 +1796,16 @@
           <div class="toc toc__outer " data-dir="ltr" data-folding="false" data-ani="true">
             <nav id="TableOfContents">
   <ul>
-    <li><a href="#setup-cephfs">Setup CephFS</a>
+    <li>
       <ul>
-        <li><a href="#check-prerequisites">Check prerequisites</a></li>
-        <li><a href="#configure-the-rook-cluster">Configure the rook cluster</a></li>
-        <li><a href="#create-a-test-pvc">Create a test PVC</a></li>
-        <li><a href="#dashboard">Dashboard</a></li>
+        <li><a href="#setup-cephfs">Setup CephFS</a>
+          <ul>
+            <li><a href="#check-prerequisites">Check prerequisites</a></li>
+            <li><a href="#configure-the-rook-cluster">Configure the rook cluster</a></li>
+            <li><a href="#create-a-test-pvc">Create a test PVC</a></li>
+            <li><a href="#dashboard">Dashboard</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -2882,15 +2886,15 @@ rook-ceph-crash-collector-keyring secret not created for crash reporter · Issue
     <ul class="related-ul">
         
         <li>
-          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/02-cluster/" class="related__link">Kickstart the cluster</a>
-        </li>
-        
-        <li>
           <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/00-vpn/" class="related__link">Setup the cluster&#39;s VPN</a>
         </li>
         
         <li>
-          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/03-router/" class="related__link">Setup the cluster&#39;s internal router</a>
+          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/02-cluster/" class="related__link">Kickstart the cluster</a>
+        </li>
+        
+        <li>
+          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/09-safe-monitoring/" class="related__link">Protect monitoring with authentication</a>
         </li>
         
         <li>
@@ -2898,7 +2902,7 @@ rook-ceph-crash-collector-keyring secret not created for crash reporter · Issue
         </li>
         
         <li>
-          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/01-audit-log/" class="related__link">Setup the cluster&#39;s Audit Log</a>
+          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/08-kubernetes-user-management/" class="related__link">Administrate the cluster with authentication</a>
         </li>
         
     </ul>
@@ -4022,12 +4026,16 @@ document.addEventListener('DOMContentLoaded', function () {
           <div class="toc toc__outer " data-dir="ltr" data-folding="false" data-ani="true">
             <nav id="TableOfContents">
   <ul>
-    <li><a href="#setup-cephfs">Setup CephFS</a>
+    <li>
       <ul>
-        <li><a href="#check-prerequisites">Check prerequisites</a></li>
-        <li><a href="#configure-the-rook-cluster">Configure the rook cluster</a></li>
-        <li><a href="#create-a-test-pvc">Create a test PVC</a></li>
-        <li><a href="#dashboard">Dashboard</a></li>
+        <li><a href="#setup-cephfs">Setup CephFS</a>
+          <ul>
+            <li><a href="#check-prerequisites">Check prerequisites</a></li>
+            <li><a href="#configure-the-rook-cluster">Configure the rook cluster</a></li>
+            <li><a href="#create-a-test-pvc">Create a test PVC</a></li>
+            <li><a href="#dashboard">Dashboard</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>

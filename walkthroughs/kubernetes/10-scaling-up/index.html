@@ -1342,7 +1342,7 @@
 <meta name="keywords" content="Kubernetes,Sysadmin">
 
 <meta name="created" content="2020-11-22T04:03:47&#43;0100">
-<meta name="modified" content="2022-03-29T12:42:24&#43;0200">
+<meta name="modified" content="2022-03-29T13:34:49&#43;0200">
 <meta property="article:published_time" content="2020-11-22T04:03:47&#43;0100">
 
 <meta name="author" content="GerkinDev">
@@ -1391,7 +1391,7 @@
     "@type": "WebPage",
     "headline": "Scaling up",
     "datePublished": "2020-11-22T04:03:47+01:00",
-    "dateModified": "2022-03-29T12:42:24+02:00",
+    "dateModified": "2022-03-29T13:34:49+02:00",
     "url" : "https://gerkindev.github.io/devblog/walkthroughs/kubernetes/10-scaling-up/",
     "description": "Your setup is running, everything runs smoothly, and suddenly, ‼️ nothing is responding: your cluster is overloaded. Well, I hope you\u0026rsquo;ll expand your cluster …",
     "keywords": ["Kubernetes","Sysadmin"],
@@ -1425,7 +1425,7 @@ Hopefully, here comes the real huge advantage of kubernetes: it is meant to scal
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/10-scaling-up/" /><meta property="article:section" content="walkthroughs" />
 <meta property="article:published_time" content="2020-11-22T04:03:47+01:00" />
-<meta property="article:modified_time" content="2022-03-29T12:42:24+02:00" />
+<meta property="article:modified_time" content="2022-03-29T13:34:49+02:00" />
 
 
     <meta name="twitter:card" content="summary"/>
@@ -1748,7 +1748,7 @@ Hopefully, here comes the real huge advantage of kubernetes: it is meant to scal
   
   
   
-    via commit&nbsp;<a href="https://github.com/GerkinDev/devblog/commit/49ebe76e19bddd4267f8b7b1b1ff525b3ed1dc45" target="_blank"><code>49ebe76</code> (<em>feat: improve links icons, better cross references</em>) by Gerkin</a>
+    via commit&nbsp;<a href="https://github.com/GerkinDev/devblog/commit/1c91ff112b1a9cc81e7924153a2aaae34156cf01" target="_blank"><code>1c91ff1</code> (<em>chore: change shortcodes format (HTML tag like)</em>) by Gerkin</a>
   
 
   &nbsp;&middot;&nbsp; <span class="single__info" title="Reading Time"> ☕&nbsp;3&nbsp;min read </span>
@@ -1796,16 +1796,20 @@ Hopefully, here comes the real huge advantage of kubernetes: it is meant to scal
           <div class="toc toc__outer " data-dir="ltr" data-folding="false" data-ani="true">
             <nav id="TableOfContents">
   <ul>
-    <li><a href="#join-the-clusters-vpn">Join the cluster&rsquo;s VPN</a>
+    <li>
       <ul>
-        <li><a href="#from-the-openvpn-server-node">From the <em>OpenVPN server node</em></a></li>
-        <li><a href="#from-the-new-node">From the new node</a></li>
-      </ul>
-    </li>
-    <li><a href="#join-the-cluster">Join the cluster</a>
-      <ul>
-        <li><a href="#from-any-account-or-node-with-cluster-admin-capabilities">From any account or node with cluster admin capabilities</a></li>
-        <li><a href="#from-the-new-node-1">From the new node</a></li>
+        <li><a href="#join-the-clusters-vpn">Join the cluster&rsquo;s VPN</a>
+          <ul>
+            <li><a href="#from-the-openvpn-server-node">From the <em>OpenVPN server node</em></a></li>
+            <li><a href="#from-the-new-node">From the new node</a></li>
+          </ul>
+        </li>
+        <li><a href="#join-the-cluster">Join the cluster</a>
+          <ul>
+            <li><a href="#from-any-account-or-node-with-cluster-admin-capabilities">From any account or node with cluster admin capabilities</a></li>
+            <li><a href="#from-the-new-node-1">From the new node</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -2378,15 +2382,15 @@ Hopefully, here comes the real huge advantage of kubernetes: it is meant to scal
     <ul class="related-ul">
         
         <li>
-          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/00-vpn/" class="related__link">Setup the cluster&#39;s VPN</a>
-        </li>
-        
-        <li>
           <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/02-cluster/" class="related__link">Kickstart the cluster</a>
         </li>
         
         <li>
-          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/01-audit-log/" class="related__link">Setup the cluster&#39;s Audit Log</a>
+          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/03-router/" class="related__link">Setup the cluster&#39;s internal router</a>
+        </li>
+        
+        <li>
+          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/04-reverse-proxy/" class="related__link">Make services reachable from the world</a>
         </li>
         
         <li>
@@ -2394,7 +2398,7 @@ Hopefully, here comes the real huge advantage of kubernetes: it is meant to scal
         </li>
         
         <li>
-          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/06-monitoring/" class="related__link">Monitoring: See what is going on</a>
+          <a href="https://gerkindev.github.io/devblog/walkthroughs/kubernetes/07-authentication/" class="related__link">Setup cluster&#39;s authentication</a>
         </li>
         
     </ul>
@@ -3511,16 +3515,20 @@ document.addEventListener('DOMContentLoaded', function () {
           <div class="toc toc__outer " data-dir="ltr" data-folding="false" data-ani="true">
             <nav id="TableOfContents">
   <ul>
-    <li><a href="#join-the-clusters-vpn">Join the cluster&rsquo;s VPN</a>
+    <li>
       <ul>
-        <li><a href="#from-the-openvpn-server-node">From the <em>OpenVPN server node</em></a></li>
-        <li><a href="#from-the-new-node">From the new node</a></li>
-      </ul>
-    </li>
-    <li><a href="#join-the-cluster">Join the cluster</a>
-      <ul>
-        <li><a href="#from-any-account-or-node-with-cluster-admin-capabilities">From any account or node with cluster admin capabilities</a></li>
-        <li><a href="#from-the-new-node-1">From the new node</a></li>
+        <li><a href="#join-the-clusters-vpn">Join the cluster&rsquo;s VPN</a>
+          <ul>
+            <li><a href="#from-the-openvpn-server-node">From the <em>OpenVPN server node</em></a></li>
+            <li><a href="#from-the-new-node">From the new node</a></li>
+          </ul>
+        </li>
+        <li><a href="#join-the-cluster">Join the cluster</a>
+          <ul>
+            <li><a href="#from-any-account-or-node-with-cluster-admin-capabilities">From any account or node with cluster admin capabilities</a></li>
+            <li><a href="#from-the-new-node-1">From the new node</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>

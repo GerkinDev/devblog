@@ -23,7 +23,7 @@
         <link>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/07-authentication/</link>
         <pubDate>Mon, 16 Nov 2020 02:35:47 +0100</pubDate>
         
-        <atom:modified>Tue, 29 Mar 2022 12:42:24 +0200</atom:modified>
+        <atom:modified>Tue, 29 Mar 2022 13:34:49 +0200</atom:modified>
         <guid>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/07-authentication/</guid>
         <description>Here is a graph of the RBAC setup we are going to implement:
 1. Setup keycloak We&amp;rsquo;ll use keycloak to proxy our authentication for all monitors, using a single realm. You may use several realms in real-life situations. This is probably the tough part, and you may tweak heavily the following guide. Moreover, I may forgot to write some instructions, or somes are heavily linked to your very own setup.</description>
@@ -74,7 +74,7 @@
         <link>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/08-kubernetes-user-management/</link>
         <pubDate>Mon, 16 Nov 2020 02:35:47 +0100</pubDate>
         
-        <atom:modified>Tue, 29 Mar 2022 12:42:24 +0200</atom:modified>
+        <atom:modified>Tue, 29 Mar 2022 13:34:49 +0200</atom:modified>
         <guid>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/08-kubernetes-user-management/</guid>
         <description>Create the realm and the client   References    &amp;nbsp; engineering-notes/kubernetes-keycloak-integration.md at master · zufardhiyaulhaq/engineering-notes · GitHub    1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16  REALM_URL=&amp;#34;https://keycloak.{{cluster.baseHostName}}/auth/realms/{{apiServer.realmName}}&amp;#34; # Log in TOKEN_RESPONSE=&amp;#34;$(curl \  -d &amp;#34;grant_type=password&amp;#34; \  -d &amp;#34;client_id={{apiServer.clientId}}&amp;#34; \  -d &amp;#34;client_secret={{apiServer.clientSecret}}&amp;#34; \  -d &amp;#34;username=admin-user&amp;#34; \  -d &amp;#34;password=admin-user&amp;#34; \  $REALM_URL/protocol/openid-connect/token)&amp;#34; # Extract the access token ACCESS_TOKEN=&amp;#34;$(echo &amp;#34;$TOKEN_RESPONSE&amp;#34; | jq &amp;#39;.</description>
         
@@ -120,7 +120,7 @@
         <link>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/09-safe-monitoring/</link>
         <pubDate>Mon, 16 Nov 2020 02:35:47 +0100</pubDate>
         
-        <atom:modified>Tue, 29 Mar 2022 12:42:24 +0200</atom:modified>
+        <atom:modified>Tue, 29 Mar 2022 13:34:49 +0200</atom:modified>
         <guid>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/09-safe-monitoring/</guid>
         <description>Now that we have our authentication service up and running, we can protect our dashboards installed in the step &amp;nbsp;06 - Monitoring: See what is going on using our Keycloak OpenID Connect provider. Here is a diagram on how authorization will be managed:
 Traefik dashboard TODO
