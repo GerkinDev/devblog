@@ -4,7 +4,9 @@
     {{- end }}
     {{- if hasPrefix . "/assets" }}
         {{- $asset := resources.Get (. | strings.TrimPrefix "/assets") -}}
-        {{- ($asset.Resize (printf "%s webp" $.targetSize)).Permalink -}}
+        {{- ($asset.Resize (printf "%s %s"
+        $.targetSize
+        ($.targetFormat | default "webp"))).Permalink -}}
     {{- else }}
         {{- . -}}
     {{- end}}

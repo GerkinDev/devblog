@@ -30,6 +30,7 @@
   {{ $image := partial "utils/convert-image" (dict
     "imageUrl" .
     "targetSize" "1200x628"
+    "targetFormat" "png"
   )}}
   <meta name="twitter:card" content="summary_large_image">
   <meta name="image" property="og:image" content="{{ $image | absURL }}">
