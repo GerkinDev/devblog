@@ -24,9 +24,9 @@ When configuring firewall rules to be as strict as required, you may have some t
 
 ## Enable "*Access Denied*"
 
-{{< expand "References" >}}
+{{<expand "References">}}
  * [How to enable firewalld logging for denied packets on Linux](https://www.cyberciti.biz/faq/enable-firewalld-logging-for-denied-packets-on-linux/)
-{{</ expand >}}
+{{</expand>}}
 
 `firewalld` can log events to `rsyslog`, the events journal in most linux distribution. This can be enable either at runtime (that won't persist across service restarts) or by configuration to keep it enabled for longer periods.
 
@@ -40,7 +40,7 @@ sudo sed -i.bak -E 's/#?LogDenied=off/LogDenied=all/' /etc/firewalld/firewalld.c
 sudo firewall-cmd --get-log-denied
 ```
 
-Then, we'll put rejection logs in {{< var "logFileName" >}}.
+Then, we'll put rejection logs in {{<var "logFileName">}}.
 
 ```sh
 cat <<EOF | sudo tee /etc/rsyslog.d/{{logFileName}}.conf

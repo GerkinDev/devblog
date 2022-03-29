@@ -28,16 +28,16 @@ TODO
 
 ## Kube dashboard
 
-{{< expand "References" >}}
+{{<expand "References">}}
 * https://itnext.io/protect-kubernetes-dashboard-with-openid-connect-104b9e75e39c
-{{</ expand >}}
+{{</expand>}}
 
 Again, we are going to set up a new instance of [*louketo-proxy*](https://github.com/louketo/louketo-proxy).
 
-{{< includeCodeFile "./kubernetes/kubernetes-dashboard/02-Gatekeeper.yaml" >}}
+{{<includeCodeFile "./kubernetes/kubernetes-dashboard/02-Gatekeeper.yaml">}}
 
 Finally, modify your ingress route
 
-{{< includeCodeFile "./kubernetes/kubernetes-dashboard/10-IngressRoute.yaml" >}}
+{{<includeCodeFile "./kubernetes/kubernetes-dashboard/10-IngressRoute.yaml">}}
 
-{{< commitAdvice >}}
+{{<commitAdvice>}}

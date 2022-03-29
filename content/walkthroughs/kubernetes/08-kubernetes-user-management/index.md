@@ -15,9 +15,9 @@ tags:
 
 ## Create the realm and the client
 
-{{< expand "References" >}}
+{{<expand "References">}}
 * <https://github.com/zufardhiyaulhaq/engineering-notes/blob/master/notes/kubernetes-keycloak-integration.md>
-{{</ expand >}}
+{{</expand>}}
 
 ```sh
 REALM_URL="https://keycloak.{{cluster.baseHostName}}/auth/realms/{{apiServer.realmName}}"
@@ -40,16 +40,16 @@ curl \
 
 ## Set up certificates
 
-{{< expand "References" >}}
+{{<expand "References">}}
 * <https://medium.com/@zufardhiyaulhaq/kubernetes-authentication-with-keycloak-openid-connect-part-1-14f4e778b5e9#5252>
-{{</ expand >}}
+{{</expand>}}
 
 ### Generate the certificates
 
-{{< expand "References" >}}
+{{<expand "References">}}
 * <https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes>
 * <https://security.stackexchange.com/a/159537>
-{{</ expand >}}
+{{</expand>}}
 
 ```sh
 mkdir certs
@@ -114,11 +114,11 @@ Certificate:
          # ...
 ```
 
-{{< alert theme="warning" >}}
+{{<alert theme="warning">}}
 The important part is that your certificate contains the correct `X509v3 Subject Alternative Name` field. If it is missing, Go will complain to you that the certificate use obsolete Common Name.
 
 Go deprecated use of Common Name by default since v1.15 via [this commit](https://github.com/golang/go/commit/d65e1b2e41deb810565c94555d791e7384618da0).
-{{</ alert >}}
+{{</alert>}}
 <!-- # Finally, generate the public key for keycloak
 openssl pkcs12 -export -in keycloak.crt -inkey keycloak.key -out keycloak.p12 -name myserverkeystore -CAfile ca.crt
 -->
@@ -136,7 +136,7 @@ kubectl create secret generic certs -n keycloak --from-file keycloak.crt --from-
 
 Then, update your *keycloak* chart values to mount this new secret.
 
-{{< includeCodeFile "./kubernetes/authentication/01-KeycloakChartValues.yaml" >}}
+{{<includeCodeFile "./kubernetes/authentication/01-KeycloakChartValues.yaml">}}
 
 Finally, update your chart.
 
@@ -147,7 +147,7 @@ helm upgrade -n keycloak -f ./kubernetes/authentication/01-KeycloakChartValues.y
 
 ## Enable alternative routing to *keycloak*
 
-{{< includeCodeFile "./kubernetes/authentication/03-InternalRoute.yaml" >}}
+{{<includeCodeFile "./kubernetes/authentication/03-InternalRoute.yaml">}}
 
 ```sh
 # Add a new route from "kube-keycloak.{{cluster.baseHostName}}" that delegates to the TLS connection using the certs declared above
@@ -176,9 +176,9 @@ If the command above works, our certificates are valid !
 
 ## Enable OIDC in the API server
 
-{{< expand "References" >}}
+{{<expand "References">}}
 * <https://stackoverflow.com/questions/50007654/how-does-kube-apiserver-restart-after-editing-etc-kubernetes-manifests-kube-api>
-{{</ expand >}}
+{{</expand>}}
 
 Place CA files in a safe place where kubernetes will be able to get it to check keycloak's certificate.
 
@@ -232,7 +232,7 @@ spec:
     # ...
 ```
 
-{{< alert theme="info" >}}
+{{<alert theme="info">}}
 The API server should restart automatically, because it is watching this manifest file.
 
 If it does not, (or you want to restart it anyway because you changed the certificates), run:
@@ -240,7 +240,7 @@ If it does not, (or you want to restart it anyway because you changed the certif
 ```sh
 kubectl -n kube-system delete pod kube-apiserver-{{cluster.masterNode.1}}
 ```
-{{</ alert >}}
+{{</alert>}}
 
 Then, create the `ClusterRoleBinding`s for the test groups:
 
@@ -280,7 +280,7 @@ kubectl config use-context oidc@{{cluster.name}}
 kubectl config use-context kubernetes-admin@{{cluster.name}}
 ```
 
-{{< notice "info" "Small tips about user management" >}}
+{{<notice "info" "Small tips about user management">}}
 ```sh
 # Get the current context
 kubectl config current-context
@@ -289,7 +289,7 @@ kubectl config get-contexts
 # Switch to other context
 kubectl config use-context {{contextName}}
 ```
-{{</ notice >}}
+{{</notice>}}
 
 
 <!-- Create a test user, so that you can try your new contexts
@@ -305,4 +305,4 @@ su test
 kubectl -n keycloak get secret certs -o json | jq '.data["keycloak.crt"]' -r | base64 --decode | openssl x509 -noout -text
 ```
 
-{{< commitAdvice >}}
+{{<commitAdvice>}}

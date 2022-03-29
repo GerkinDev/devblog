@@ -13,19 +13,19 @@ tags:
 - Security
 ---
 
-{{< expand "References" >}}
+{{<expand "References">}}
 * <https://docs.kublr.com/articles/kubernetes-log-audit/>
 * <https://mherman.org/blog/logging-in-kubernetes-with-elasticsearch-Kibana-fluentd/>
 * <https://kubernetes.io/docs/tasks/debug-application-cluster/audit/#log-collector-examples>
-{{</ expand >}}
+{{</expand>}}
 
 > **Note :** Even if this part is not **required**, you **should** not ignore it on dev environment and **should** really *really* **REALLY** not skip it for production. In fact, it can contain useful debug informations and security traces to see what is going on in your kubernetes cluster, and even on your whole server(s).
 
 This tutorial will guide you to setup audit log policy, catch logs with Fluentd, cast them to elasticsearch & show them using Kibana.
 
-First, choose an audit log dir name on the host {{< var "audit.sourceLogDir" >}}. This is the directory where kubernetes will write its audit logs, and **should** be in `/var/log`. Then, choose an audit log file {{< var "audit.sourceLogFile" >}} in {{< var "audit.sourceLogDir" >}}. The final audit logs path is then `{{audit.sourceLogDir}}/{{audit.sourceLogFile}}`
+First, choose an audit log dir name on the host {{<var "audit.sourceLogDir">}}. This is the directory where kubernetes will write its audit logs, and **should** be in `/var/log`. Then, choose an audit log file {{<var "audit.sourceLogFile">}} in {{<var "audit.sourceLogDir">}}. The final audit logs path is then `{{audit.sourceLogDir}}/{{audit.sourceLogFile}}`
 
-*FluentD* will parse those audit logs, and split them by tags for easier sorting of logs. It will then write those zones in {{< var "audit.destLogDir" >}}
+*FluentD* will parse those audit logs, and split them by tags for easier sorting of logs. It will then write those zones in {{<var "audit.destLogDir">}}
 
 In order to pipe audit log messages to Elasticsearch, we need to install fluentd on the kubernetes master host.
 
@@ -33,15 +33,15 @@ In order to pipe audit log messages to Elasticsearch, we need to install fluentd
 
 ## Install fluentd (on the kubernetes master host)
 
-{{< expand "References" >}}
+{{<expand "References">}}
 * <https://docs.fluentd.org/installation/before-install>
-{{</ expand >}}
+{{</expand>}}
 
 ### Install Chrony
 
-{{< expand "References" >}}
+{{<expand "References">}}
 * <https://www.tecmint.com/install-ntp-in-rhel-8/>
-{{</ expand >}}
+{{</expand>}}
 
 Start by installing Chrony for accurate timestamps
 
@@ -54,9 +54,9 @@ You should be good to go.
 
 ### Configure other settings
 
-{{< expand "References" >}}
+{{<expand "References">}}
 * https://superuser.com/questions/740000/modify-and-apply-limits-conf-without-reboot
-{{</ expand >}}
+{{</expand>}}
 
 Check the file descriptors limit **for the root user** (use sudo):
 
@@ -89,18 +89,18 @@ ulimit -n # should be 65536
 ulimit -Hn # should be at least 65536
 ```
 
-{{< alert theme="warning" >}}
+{{<alert theme="warning">}}
 If you run this as your normal user, `ulimit -n` changes might not be changed.
-{{</ alert >}}
+{{</alert>}}
 
 If the environment is expected to have a high load, follow [this section of the guide](https://docs.fluentd.org/installation/before-install#optimize-network-kernel-parameters)
 
 
 ### Install FluentD & plugins
 
-{{< expand "References" >}}
+{{<expand "References">}}
 * <https://docs.fluentd.org/installation/install-by-rpm>
-{{</ expand >}}
+{{</expand>}}
 
 Add the `td-agent` repository & install it
 
@@ -126,13 +126,13 @@ If having errors here, see the [Troubleshoot section at the end](#troubleshoot).
 
 ### Configure Fluentd
 
-{{< expand "References" >}}
+{{<expand "References">}}
 * <https://kubernetes.io/docs/tasks/debug-application-cluster/audit/#log-collector-examples>
-{{</ expand >}}
+{{</expand>}}
 
-Install the {{< linkToIncludedFile "./td-agent/kube.conf" >}} template template into `/etc/td-agent/`, include it in your master configuration, and create the log dirs.
+Install the {{<linkToIncludedFile "./td-agent/kube.conf">}} template template into `/etc/td-agent/`, include it in your master configuration, and create the log dirs.
 
-{{< includeCodeFile "./td-agent/kube.conf" "" "genshi" >}}
+{{<includeCodeFile "./td-agent/kube.conf" "" "genshi">}}
 
 ```sh
 mv ./td-agent/kube.conf /etc/td-agent/td-agent.conf
@@ -149,14 +149,14 @@ systemctl restart td-agent.service
 
 ## Setup the audit log
 
-{{< expand "References" >}}
+{{<expand "References">}}
 * <https://kubernetes.io/docs/tasks/debug-application-cluster/audit/#audit-policy>
 * <https://medium.com/@noqcks/kubernetes-audit-logging-introduction-464a34a53f6c>
-{{</ expand >}}
+{{</expand>}}
 
-See the [example audit log policy](https://raw.githubusercontent.com/kubernetes/website/master/content/en/examples/audit/audit-policy.yaml) & the {{< linkToIncludedFile "./kubernetes/audit-log-policy.yaml" "template audit log file" >}}.
+See the [example audit log policy](https://raw.githubusercontent.com/kubernetes/website/master/content/en/examples/audit/audit-policy.yaml) & the {{<linkToIncludedFile "./kubernetes/audit-log-policy.yaml" "template audit log file">}}.
 
-{{< includeCodeFile "./kubernetes/audit-log-policy.yaml" >}}
+{{<includeCodeFile "./kubernetes/audit-log-policy.yaml">}}
 
 Move it in the `/etc/kubernetes` folder (because this is a kubernete's configuration).
 

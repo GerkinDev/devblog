@@ -24,22 +24,22 @@ We'll use keycloak to proxy our authentication for all monitors, using a single 
 
 ### 1.1. Install keycloak
 
-{{< expand "References" >}}
+{{<expand "References">}}
 * <https://kubernetes.github.io/ingress-nginx/examples/auth/oauth-external-auth/>
 * <https://itnext.io/protect-kubernetes-dashboard-with-openid-connect-104b9e75e39c>
 * <https://geek-cookbook.funkypenguin.co.nz/ha-docker-swarm/traefik-forward-auth/keycloak/>
 * <https://medium.com/docker-hacks/how-to-apply-authentication-to-any-web-service-in-15-minutes-using-keycloak-and-keycloak-proxy-e4dd88bc1cd5>
 * <https://www.openshift.com/blog/adding-authentication-to-your-kubernetes-web-applications-with-keycloak>
-{{</ expand >}}
+{{</expand>}}
 
 Start by installing *Keycloak* via the [*Helm* chart](https://hub.helm.sh/charts/codecentric/keycloak) & expose it, using following templates: 
-* {{< linkToIncludedFile "./kubernetes/authentication/01-KeycloakChartValues.yaml" >}}
-* {{< linkToIncludedFile "./kubernetes/authentication/02-PublicRoute.yaml" >}}
+* {{<linkToIncludedFile "./kubernetes/authentication/01-KeycloakChartValues.yaml">}}
+* {{<linkToIncludedFile "./kubernetes/authentication/02-PublicRoute.yaml">}}
 
-{{< includeCodeFile "./kubernetes/authentication/01-KeycloakChartValues.yaml" >}}
-{{< includeCodeFile "./kubernetes/authentication/02-PublicRoute.yaml" >}}
+{{<includeCodeFile "./kubernetes/authentication/01-KeycloakChartValues.yaml">}}
+{{<includeCodeFile "./kubernetes/authentication/02-PublicRoute.yaml">}}
 
-Note that the template {{< linkToIncludedFile "./kubernetes/authentication/01-KeycloakChartValues.yaml" >}} contains the bare minimum settings for the keycloak chart with your route. You **should** tweak them to match your setup & security requirements. [RTFM the chart](https://hub.helm.sh/charts/codecentric/keycloak$docs)
+Note that the template {{<linkToIncludedFile "./kubernetes/authentication/01-KeycloakChartValues.yaml">}} contains the bare minimum settings for the keycloak chart with your route. You **should** tweak them to match your setup & security requirements. [RTFM the chart](https://hub.helm.sh/charts/codecentric/keycloak$docs)
 
 ```sh
 # Add the keycloak chart repository
@@ -56,9 +56,9 @@ This install should end by displaying either the default keycloak user's passwor
 
 ### 1.2. Alias hostname of keycloak from the cluster
 
-{{< expand "References" >}}
+{{<expand "References">}}
 * <https://stackoverflow.com/a/54692872>
-{{</ expand >}}
+{{</expand>}}
 
 > **Note :** This part is not required if you use a real host name registered with a A record. But if you use a fake hostname (which I still recommend at that point), DNS resolution of services trying to reach keycloak will fail, because your pods don't know where is `https://keycloak.{{cluster.baseHostName}}`.
 
@@ -91,12 +91,12 @@ So, now, we can use `keycloak.{{cluster.baseHostName}}` as a domain name everywh
 
 Log in to your keycloak admin dashboard by reaching `https://keycloak.{{cluster.baseHostName}}/auth/admin/`.
 
-* Username: {{< var "keycloak.adminUser" >}}
-* Password: {{< var "keycloak.adminPassword" >}}
+* Username: {{<var "keycloak.adminUser">}}
+* Password: {{<var "keycloak.adminPassword">}}
 
-{{< alert theme="danger" >}}
+{{<alert theme="danger">}}
 At your first login, **change your password** !
-{{</ alert >}}
+{{</alert>}}
 
 ### 1.4. Configure keycloak
 
@@ -146,31 +146,31 @@ Once done, you **may** add it to the default *client scopes*.  Go to *`Master` r
 
 ##### 1.4.3.2. Create client
 
-We are going to create our authentication for the app {{< var "nginxTest.clientId" >}} (for instance, `nginx-test`), with url `https://test.{{cluster.baseHostName}}`). Fill the `Client ID` with `{{nginxTest.clientId}}`.
+We are going to create our authentication for the app {{<var "nginxTest.clientId">}} (for instance, `nginx-test`), with url `https://test.{{cluster.baseHostName}}`). Fill the `Client ID` with `{{nginxTest.clientId}}`.
 
 Since this application will be logged in through a proxy (we'll get back to that part next in the dashboard setups), set its `Access Type` to `confidential`.
 
 Set the valid redirect URIs to `https://test.{{cluster.baseHostName}}/oauth/callback` (the `/oauth/callback` part is required by the gatekeeper).
 
-Then, we need to add an audience. This field is required by gatekeeper to check our key. Go to the *`Mappers` tab*, & create a new mapper. Name it, for instance, `audience`, of `Mapper Type` `Audience`, & set the `Included Client Audience` to our {{< var "nginxTest.clientId" >}}. Save it.
+Then, we need to add an audience. This field is required by gatekeeper to check our key. Go to the *`Mappers` tab*, & create a new mapper. Name it, for instance, `audience`, of `Mapper Type` `Audience`, & set the `Included Client Audience` to our {{<var "nginxTest.clientId">}}. Save it.
 
-After this, check our *client scopes* by going to the *`Client Scopes` tab*. In the *`Setup` sub-tab*, make sure that our `groups` *client scope* is **assigned**. Then, you can test our setup ! Go to the *`Evaluate` sub-tab*, pick the `User` you want to check, click `Evaluate` then go to *`Generated Access Token` sub-sub-tab*. It should contain a key `groups` with all our user's groups, prefixed with a `/`, and a key `aud` with at least our {{< var "nginxTest.clientId" >}}. If its okay, we are good to go !
+After this, check our *client scopes* by going to the *`Client Scopes` tab*. In the *`Setup` sub-tab*, make sure that our `groups` *client scope* is **assigned**. Then, you can test our setup ! Go to the *`Evaluate` sub-tab*, pick the `User` you want to check, click `Evaluate` then go to *`Generated Access Token` sub-sub-tab*. It should contain a key `groups` with all our user's groups, prefixed with a `/`, and a key `aud` with at least our {{<var "nginxTest.clientId">}}. If its okay, we are good to go !
 
-And, finally, go to the *`Credentials` tab* & get the secret. It will be used as {{< var "nginxTest.clientSecret" >}}.
+And, finally, go to the *`Credentials` tab* & get the secret. It will be used as {{<var "nginxTest.clientSecret">}}.
 
 Other clients protected by our gatekeeper will be very similar.
 
 ## 2. Setup our test application protected by authentication
 
-{{< expand "References" >}}
+{{<expand "References">}}
 * https://www.openshift.com/blog/adding-authentication-to-your-kubernetes-web-applications-with-keycloak
-{{</ expand >}}
+{{</expand>}}
 
 We'll start with the simplest of our cases: the `nginx-test` app. This will allow us to get used to keycloak for our authorization mechanism. We'll proxy a simple nginx default instance behind our authentication proxy.
 
-Look at the {{< linkToIncludedFile "./kubernetes/11-NginxTest.yaml" >}} template.
+Look at the {{<linkToIncludedFile "./kubernetes/11-NginxTest.yaml">}} template.
 
-{{< includeCodeFile "./kubernetes/11-NginxTest.yaml" >}}
+{{<includeCodeFile "./kubernetes/11-NginxTest.yaml">}}
 
 As you may notice in this template, the option `--discovery-url=https://keycloak.{{cluster.baseHostName}}/auth/realms/master` tells our authentication proxy where is our OAuth2 provider. If you are using an aliased hostname, this won't resolve, as your server can't resolve an IP for this hostname. That's why we edited *CoreDNS* configuration earlier.
 
@@ -194,9 +194,9 @@ kubectl delete -f 11-NginxTest.yaml
 
 ## 3. Persist data from *Keycloak*
 
-{{< expand "References" >}}
+{{<expand "References">}}
 * <https://github.com/docker-library/postgres/issues/361>
-{{</ expand >}}
+{{</expand>}}
 
 You can use a persistent datastore by setting `postgresql.enabled` to `true`. Think about setting `postgresql.storageClass`.
 
@@ -208,4 +208,4 @@ Initialization of PostgreSQL may take some time. Don't hesitate to look at the l
 
 Once done, you will need to redo all the steps above, because you're now using a brand new real database.
 
-{{< commitAdvice >}}
+{{<commitAdvice>}}

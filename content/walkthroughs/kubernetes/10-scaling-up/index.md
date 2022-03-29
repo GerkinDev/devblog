@@ -18,7 +18,7 @@ Hopefully, here comes the real huge advantage of *kubernetes*: it is meant to sc
 
 ## Join the cluster's VPN
 
-In the step {{< linkToPage "/walkthroughs/kubernetes/00-vpn" >}}, we have set up a VPN so that each of our nodes can communicate safely with each others, on their own virtual network across the internet. This comes with the great power of being able to have servers spread all around the globe.
+In the step {{<linkToPage "/walkthroughs/kubernetes/00-vpn">}}, we have set up a VPN so that each of our nodes can communicate safely with each others, on their own virtual network across the internet. This comes with the great power of being able to have servers spread all around the globe.
 
 ### From the *OpenVPN server node*
 
@@ -44,13 +44,13 @@ dnf install epel-release
 dnf install openvpn
 ```
 
-{{< alert theme="info" >}}
+{{<alert theme="info">}}
 Add the *OpenVPN* server to your `/etc/hosts` file (if not a real *DNS* name).
 
 ```sh
 echo '{{vpn.publicServerIp}}	vpn.{{cluster.baseHostName}}' >> /etc/hosts
 ```
-{{</ alert >}}
+{{</alert>}}
 
 Install the *OpenVPN* configuration you just copied
 
@@ -84,11 +84,11 @@ Create a new cluster token:
 kubeadm token create --print-join-command
 ```
 
-{{< expand "Sample output" >}}
+{{<expand "Sample output">}}
 ```
 kubeadm join 192.168.255.10:6443 --token gmedpt.veqzvuhcazac26gf --discovery-token-ca-cert-hash sha256:cb316693e48403ff18f840d47930f6737744d2ead362838695df3a1e1400cec1
 ```
-{{</ expand >}}
+{{</expand>}}
 
 Copy the `kubeadm join ...` command outputted by the command above.
 
@@ -102,7 +102,7 @@ kubeadm join ...:6443 --token ... --discovery-token-ca-cert-hash sha256:....
 
 If everything worked correctly, you should have an output like below:
 
-{{< expand "Sample output" >}}
+{{<expand "Sample output">}}
 ```
 [preflight] Running pre-flight checks
 [preflight] Reading configuration from the cluster...
@@ -118,4 +118,4 @@ This node has joined the cluster:
 
 Run 'kubectl get nodes' on the control-plane to see this node join the cluster.
 ```
-{{</ expand >}}
+{{</expand>}}

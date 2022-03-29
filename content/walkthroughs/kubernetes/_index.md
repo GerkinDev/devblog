@@ -11,9 +11,9 @@ tags:
 - DevOps
 ---
 
-{{< notice warning >}}
+{{<notice warning>}}
 Keep in mind that some things may not work out of the box, and you'll probably require a lot of try & errors. Kubernetes is complex. Also, I'm not a power user of kubernetes, so there may be things that can be done in a better way. Hey, I did all of this by try & error too.
-{{</ notice >}}
+{{</notice>}}
 
 ## What are the goals
 
@@ -29,14 +29,14 @@ This guide will walk you through the process of creating a **self-hosted *kubern
 
 I'll try to use as few 3rd party tools outside of *kubernetes*, except *helm* (to deploy complex apps more easily) and *krew* (to add some features to `kubectl`). But we'll get to that later. The goal is that you use as much *kubernetes* itself as possible so that you can get used to it, understand it, and thus, be able to troubleshoot if you have problems later. If you're a *kubernetes* power-user, **1.** what are you doing here ? and **2.** you might find other guides more applicable to your needs.
 
-{{< alert theme="info" >}}
+{{<alert theme="info">}}
 Other similar guides you might prefer:
 
 * [Bare-metal Kubernetes with K3s (without SPOF)](https://blog.alexellis.io/bare-metal-kubernetes-with-k3s/)
 * [Kubernetes on bare-metal in 10 minutes](https://blog.alexellis.io/kubernetes-in-10-minutes/)
 
 Those tutorials are for bare-metal cluster initialization, but without the extra security of running *kubernetes* only through a *VPN*. You're welcome to get the best of both worlds tho. Plus, [the author, Alex Ellis](https://www.alexellis.io/) is a professional of Cloud Native solutions, so you should better trust a pro than me doing this as experiments.
-{{</ alert >}}
+{{</alert>}}
 
 ## How to follow this guide
 
@@ -48,11 +48,11 @@ I'll provide you explanations on each steps we are doing together, & give you **
 
 *Kubernetes* ecosystem & *docker* images evolve pretty fast, so this guide may become obsolete. Check regularly if new *docker* images aren't available, and how their interactions or configurations evolve.
 
-{{< alert theme="warning" >}}
+{{<alert theme="warning">}}
 **For security reasons**, I **highly** recommend you to start doing all your stuffs with domain name aliases until your setup is safe enough to be publicly exposed. We are going to setup dashboards & logging tools without authentication in a first time, so this is important that nobody else than you can access them. Because all of those services will run behind a router that routes based on domain name, using a forced DNS resolution instead of a public A record will prevent your router to route things to your apps.
 
 **This is not safe**, I know. But this is temporary. I will tell you when you can change your host names.
-{{</ alert >}}
+{{</alert>}}
 
 ## The author's comment
 
@@ -85,9 +85,9 @@ I'll assume that:
   getenforce
   # » Permissive
   ```
-  {{< alert theme="warning" >}}
+  {{<alert theme="warning">}}
   Yeah, I know this isn't recommended. Though, there's [an issue on kubernetes repository](https://github.com/kubernetes/website/issues/14457), but without any instructions to keep it on. I'm working on it, and I'll post my work here [*Soon™*](https://wowwiki.fandom.com/wiki/Soon).
-  {{</ alert >}}
+  {{</alert>}}
 * [x] you have the *kubernetes* CLI installed (`kubectl`, `kubeadm`) v1.20.2 or above.
   Other versions may have changes. Again, RTFM.
   ```sh
@@ -97,13 +97,13 @@ I'll assume that:
   # » Client Version: v1.20.2
   ```
 * [x] you are somewhat familiar with *kubernetes* CLI.
-  {{< alert theme="info" >}}
+  {{<alert theme="info">}}
   In fact, it is very likely that some parts of this guide won't work directly in your case, and you'll have to tweak things out to make them work properly.
-  {{</ alert >}}
+  {{</alert>}}
 * [x] You have [*Helm* charts](https://helm.sh/) installed. 
-  See {{< linkToPage path="blog/kubernetes-qol#helm-a-kubernetes-stack-template-repository" blank=true >}} for more infos.
+  See {{<linkToPage path="blog/kubernetes-qol#helm-a-kubernetes-stack-template-repository" blank=true >}} for more infos.
 * [x] You have [*krew*](https://krew.sigs.k8s.io/) installed.
-  See {{< linkToPage path="blog/kubernetes-qol#krew-a-kubectl-plugins-manager" blank=true >}} for more infos.
+  See {{<linkToPage path="blog/kubernetes-qol#krew-a-kubectl-plugins-manager" blank=true >}} for more infos.
 
 ---
 

@@ -17,5 +17,5 @@ categories:
 image:
 ---
 
-{{< includeCodeFile "./foo.yaml" >}}
-{{< includeCodeFile "./bar.conf" "fallback" >}}
+{{<includeCodeFile "./foo.yaml">}}
+{{<includeCodeFile "./bar.conf" "fallback">}}

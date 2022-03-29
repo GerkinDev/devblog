@@ -12,12 +12,12 @@ tags:
 - Storage
 ---
 
-{{< expand "References" >}}
+{{<expand "References">}}
 * <https://kubernetes.io/docs/concepts/storage/persistent-volumes/>
 * <https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/>
 * <https://kubernetes.io/docs/concepts/storage/storage-classes/>
 * <https://www.youtube.com/watch?v=0swOh5C3OVM>
-{{</ expand >}}
+{{</expand>}}
 
 As you may know, *docker* (and thus, *kubernetes*) does not persist anything by default. That means that everytime you restart a pod (container), it is in the exact same state as it was at its first execution, except for the mount points. Those mount points are real hard drive directories injected into your pod. Some apps we'll setup later will require to persist data, and, more generally, when you'll run real applications on your own, they will probably use a database or something.
 
@@ -31,11 +31,11 @@ Now that I've warned you enough (just look above, **again**), let's declare a [p
 
 ### Check prerequisites
 
-{{< expand "References" >}}
+{{<expand "References">}}
  * [Ceph docs: General prerequisites](https://rook.io/docs/rook/v1.5/ceph-prerequisites.html)
  * [Ceph docs: Kubernetes prerequisites](https://rook.io/docs/rook/v1.5/k8s-pre-reqs.html)
  * [Ceph docs: Quickstart](https://rook.io/docs/rook/v1.5/ceph-quickstart.html)
-{{</ expand >}}
+{{</expand>}}
 
 <!-- TODO: Mention in intro about free disk -->
 
@@ -114,7 +114,7 @@ kubectl apply -f ./kubernetes/rook/cluster.yaml
 
 ### Create a test PVC
 
-{{< includeCodeFile "./kubernetes/rook/xx-PersistentNginx.yaml" >}}
+{{<includeCodeFile "./kubernetes/rook/xx-PersistentNginx.yaml">}}
 
 ```sh
 kubectl apply -f ./kubernetes/rook/xx-PersistentNginx.yaml
@@ -132,7 +132,7 @@ kubectl -n persistent-nginx exec -it deploy/nginx -- /bin/sh -c "kill 1"
 
 If you're planning to expose the dashboard from outside of the cluster, you have to disable `spec.dashboard.ssl` to false, since *traefik* will do the SSL encription. Then, deploy the routing:
 
-{{< includeCodeFile "./kubernetes/rook/dashboard-ingress.yaml" >}}
+{{<includeCodeFile "./kubernetes/rook/dashboard-ingress.yaml">}}
 
 ```sh
 kubectl apply -f ./kubernetes/rook/dashboard-ingress.yaml
@@ -171,4 +171,4 @@ See https://github.com/rook/rook/issues/4553
 
 ---
 
-{{< commitAdvice >}}
+{{<commitAdvice>}}

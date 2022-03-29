@@ -16,7 +16,7 @@ tags:
 
 https://linoxide.com/how-tos/how-to-flush-routing-table-from-cache/
 
-{{< notice "info" "To try" >}}
+{{<notice "info" "To try">}}
 Flush cached routes
 
 ```sh
@@ -25,15 +25,15 @@ ip route show cache
 # Flush cache
 ip route flush cache
 ```
-{{</ notice >}}
+{{</notice>}}
 
-{{< notice "danger" "Last resort" >}}
+{{<notice "danger" "Last resort">}}
 In the worst case, fully reset routing
 
 ```sh
 ip route flush table main
 ```
-{{</ notice >}}
+{{</notice>}}
 
 ### Can't reach ClusterIP from node 
 

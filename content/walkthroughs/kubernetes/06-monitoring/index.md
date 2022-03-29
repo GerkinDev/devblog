@@ -20,10 +20,10 @@ The traefik dashboard will help us in the diagnostics of our ingress routes and 
 * update our ingress controller previously deployed to enable the dashboard
 * and create routes to the dashboard.
 
-Use the {{< linkToIncludedFile "./kubernetes/traefik/04-IngressController.yaml" >}} and {{< linkToIncludedFile "./kubernetes/traefik/06-IngressRoutes.yaml" >}} templates.
+Use the {{<linkToIncludedFile "./kubernetes/traefik/04-IngressController.yaml">}} and {{<linkToIncludedFile "./kubernetes/traefik/06-IngressRoutes.yaml">}} templates.
 
-{{< includeCodeFile "./kubernetes/traefik/04-IngressController.yaml" >}}
-{{< includeCodeFile "./kubernetes/traefik/06-IngressRoutes.yaml" >}}
+{{<includeCodeFile "./kubernetes/traefik/04-IngressController.yaml">}}
+{{<includeCodeFile "./kubernetes/traefik/06-IngressRoutes.yaml">}}
 
 ```sh
 kubectl apply -f ./kubernetes/traefik/04-IngressController.yaml
@@ -34,12 +34,12 @@ Now, you should be able to reach the dashboard via <https://traefik.{{cluster.ba
 
 ## 2. Kibana: harvest data from your cluster
 
-{{< expand "References" >}}
+{{<expand "References">}}
 * <https://v1-19.docs.kubernetes.io/docs/tasks/debug-application-cluster/logging-elasticsearch-kibana/>
 * <https://mherman.org/blog/logging-in-kubernetes-with-elasticsearch-Kibana-fluentd/#fluentd>
 * <https://www.elastic.co/kibana>
 * <https://www.elastic.co/elasticsearch/>
-{{</ expand >}}
+{{</expand>}}
 
 [*Kibana*](https://www.elastic.co/kibana) is a super versatile tool to visualize data stored in *Elasticsearch*.
 
@@ -47,21 +47,21 @@ Now, you should be able to reach the dashboard via <https://traefik.{{cluster.ba
 
 Together, they compose the perfect combo to ingest all our cluster's logs, and do searches, visualizations, tracking, and everything you'll need to understand what is going on in your cluster's apps.
 
-{{< notice "warning" "Beware !" >}}
+{{<notice "warning" "Beware !">}}
 Elasticsearch may be quite resources-consuming, and your machines may not be optimized to make it run smoothly with the consequent flow of data its about to ingest. I **strongly** advise you to read some [installation documentations](https://www.elastic.co/guide/en/elasticsearch/reference/master/docker.html#docker-prod-prerequisites) to make things correctly.
 
 Reading a guide don't dispense you from RTFMing.
-{{</ notice >}}
+{{</notice>}}
 
 ### 2.1. Pods logs
 
 We'll start by getting our pods (container) logs. Deploy the following configuration files:
 
-{{< includeCodeFile "./kubernetes/kibana/01-Namespace.yaml" >}}
-{{< includeCodeFile "./kubernetes/kibana/11-Elasticsearch.yaml" >}}
-{{< includeCodeFile "./kubernetes/kibana/12-Kibana.yaml" >}}
-{{< includeCodeFile "./kubernetes/kibana/13-Fluentd.yaml" >}}
-{{< includeCodeFile "./kubernetes/kibana/21-Ingress.yaml" >}}
+{{<includeCodeFile "./kubernetes/kibana/01-Namespace.yaml">}}
+{{<includeCodeFile "./kubernetes/kibana/11-Elasticsearch.yaml">}}
+{{<includeCodeFile "./kubernetes/kibana/12-Kibana.yaml">}}
+{{<includeCodeFile "./kubernetes/kibana/13-Fluentd.yaml">}}
+{{<includeCodeFile "./kubernetes/kibana/21-Ingress.yaml">}}
 
 
 ```sh
@@ -92,10 +92,10 @@ I strongly recommend you to inspect logs carefully, to clean up as many errors a
 
 ### 2.2. Audit logs
 
-For a reason I can't explain, the default settings for audit log parsing from fluentd are incorrect. Moreover, I find the "all settings in a single file" pattern awful. So we are going to reconfigure fluentd to parse correctly our logs. Use the {{< linkToIncludedFile "./kubernetes/kibana/31-Fluentd.yaml" >}} & {{< linkToIncludedFile "./kubernetes/kibana/32-FluentdConfigMap.yaml" >}} templates. The 1st one rewrites some of the configuration of fluentd to use our custom configs.
+For a reason I can't explain, the default settings for audit log parsing from fluentd are incorrect. Moreover, I find the "all settings in a single file" pattern awful. So we are going to reconfigure fluentd to parse correctly our logs. Use the {{<linkToIncludedFile "./kubernetes/kibana/31-Fluentd.yaml">}} & {{<linkToIncludedFile "./kubernetes/kibana/32-FluentdConfigMap.yaml">}} templates. The 1st one rewrites some of the configuration of fluentd to use our custom configs.
 
-{{< includeCodeFile "./kubernetes/kibana/31-Fluentd.yaml" >}}
-{{< includeCodeFile "./kubernetes/kibana/32-FluentdConfigMap.yaml" >}}
+{{<includeCodeFile "./kubernetes/kibana/31-Fluentd.yaml">}}
+{{<includeCodeFile "./kubernetes/kibana/32-FluentdConfigMap.yaml">}}
 
 <!-- To update. See https://github.com/fluent/fluentd-kubernetes-daemonset/issues/519 . Expected log format is `legacy` -->
 ```sh
@@ -116,12 +116,12 @@ Now that you have set up everything, you might have seen that everytime the Elas
 
 ## 3. Kube dashboard: Web UI to administrate the cluster
 
-{{< expand "References" >}}
+{{<expand "References">}}
 * <https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/>
-{{</ expand >}}
+{{</expand>}}
 
-{{< includeCodeFile "./kubernetes/kube-dashboard/01-Dashboard.yaml" >}}
-{{< includeCodeFile "./kubernetes/kube-dashboard/02-IngressRoutes.yaml" >}}
+{{<includeCodeFile "./kubernetes/kube-dashboard/01-Dashboard.yaml">}}
+{{<includeCodeFile "./kubernetes/kube-dashboard/02-IngressRoutes.yaml">}}
 
 ```sh
 kubectl apply -f ./kubernetes/kube-dashboard/01-Dashboard.yaml
@@ -130,7 +130,7 @@ kubectl apply -f ./kubernetes/kube-dashboard/02-IngressRoutes.yaml
 
 Then, for debugging purpose, we'll set up a test service account that can only view and list items in the dashboard. This service account will be named `watchdog`.
 
-{{< includeCodeFile "./kubernetes/kube-dashboard/03-ServiceAccount.yaml" >}}
+{{<includeCodeFile "./kubernetes/kube-dashboard/03-ServiceAccount.yaml">}}
 
 ```sh
 # Create the role, cluster role and service account using them
@@ -151,4 +151,4 @@ You should be able to see all resources in your cluster.
 
 Yes, this is super unsafe. That's why we are going to add authentication right now, and why I told you not to make this publicly exposed for now.
 
-{{< commitAdvice >}}
+{{<commitAdvice>}}

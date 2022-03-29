@@ -21,9 +21,9 @@ image:
 
 ## `kubectl` auto-complete
 
-{{< expand "References" >}}
+{{<expand "References">}}
 * [:books: kubectl installation manual](https://kubernetes.io/docs/tasks/tools/install-kubectl/#enable-kubectl-autocompletion)
-{{</ expand >}}
+{{</expand>}}
 
 Autocomplete is nice, and a real time saver. It avoids typos, and it's quite satisfying to type a complete command in 4 keystrokes and a couple of `tab`s correctly placed. (even if I'm always unsure when relying on my browser's autocomplete for https://**anal**ytics.google.com :expressionless:).
 
@@ -33,8 +33,8 @@ But for this one, I can only say one thing, and you have no excuses:
 
 So, short stories short, and depending on your shell, type in:
 
-{{< tabs "zsh" "bash" >}}
-{{< tab >}}
+{{<tabs "zsh" "bash">}}
+{{<tab>}}
 ```sh
 cat <<EOF | tee -a ~/.zshrc
 autoload -Uz compinit
@@ -43,8 +43,8 @@ source <(kubectl completion zsh)
 EOF
 source ~/.zshrc
 ```
-{{</ tab >}}
-{{< tab >}}
+{{</tab>}}
+{{<tab>}}
 
 > All the (bad) flavours come from the natural world.
 
@@ -61,15 +61,15 @@ fi
 echo 'source <(kubectl completion bash)' >> ~/.bashrc
 source ~/.bashrc
 ```
-{{</ tab >}}
-{{</ tabs >}}
+{{</tab>}}
+{{</tabs>}}
 
 ## `kubecolor`: prettier `kubectl` commands outputs with colors
 
-{{< expand "References" >}}
+{{<expand "References">}}
 * [Add ANSI colors to kubectl describe and other outputs](https://github.com/kubernetes/kubectl/issues/524)
 * [kubecolor](https://github.com/dty1er/kubecolor)
-{{</ expand >}}
+{{</expand>}}
 
 ```sh
 go get -u github.com/dty1er/kubecolor/cmd/kubecolor
@@ -77,7 +77,7 @@ go get -u github.com/dty1er/kubecolor/cmd/kubecolor
 which kubecolor
 ```
 
-{{< alert theme="warning" >}}
+{{<alert theme="warning">}}
 If the command above did not worked, then you may have a problem with your `$GOPATH` or `$GOHOME` environment variables. If none are set, then the package was installed in `~/go/bin`. Either fix your vars or add `~/go/bin` to your `$PATH`.
 
 ```sh
@@ -86,7 +86,7 @@ PATH="\$PATH:\$HOME/go/bin"
 EOF
 source ~/.zshrc
 ```
-{{</ alert >}}
+{{</alert>}}
 
 Finally, you could either use `kubecolor` instead of `kubectl`, or alias `kubectl` as `kubecolor` with the following code sample:
 
@@ -104,11 +104,11 @@ EOF
 source {{profileFile}}
 ```
 
-{{< alert theme="warning">}}
+{{<alert theme="warning">}}
 I noticed some little things does not work well with `kubecolor`. That's why the script above let you use the original `kubectl` command through `kubectll`. For instance, I noticed that some commands prompting user input (so using *stdin*), such as `kubectl login`, don't work.
 
 So, if you try a command that seems to not work as expected, or stay stuck, fall back to `kubectll`.
-{{</ alert >}}
+{{</alert>}}
 
 ## `helm`: a kubernetes stack template repository
 
@@ -116,9 +116,9 @@ So, if you try a command that seems to not work as expected, or stay stuck, fall
 
 To install *helm*, run the following command:
 
-{{< alert theme="info">}}
+{{<alert theme="info">}}
 Make sure that OpenSSL is installed before proceeding.
-{{</ alert >}}
+{{</alert>}}
 
 ```sh
 # See https://helm.sh/docs/intro/install/
@@ -127,9 +127,9 @@ curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bas
 
 ## `krew`: a `kubectl` plugins manager
 
-{{< expand "References" >}}
+{{<expand "References">}}
 * [Installing krew](https://krew.sigs.k8s.io/docs/user-guide/setup/install/)
-{{</ expand >}}
+{{</expand>}}
 
 [*krew*](https://krew.sigs.k8s.io/) is a nice small plugin manager for your `kubectl` command. At the time of writing, it has [129 plugins available](https://krew.sigs.k8s.io/plugins/), including some pretty convinient to restart pods, login using OpenId, check the state of your cluster, and more.
 
