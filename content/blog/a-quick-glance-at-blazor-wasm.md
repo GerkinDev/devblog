@@ -18,9 +18,11 @@ series:
 categories:
 - Front-end
 image: /assets/images/blazor.png
+aliases:
+- /blog/blazor
 ---
 
-In 2018, *:imp: Microsoft* released its new framework, *Blazor*, which tease MVVM capabilities through component-oriented *AJAX* or *WebAssembly* application builds. Near 4 years later (and with many improvements & versions), what is the current state of *Blazor*?
+In 2018, *:imp: Microsoft* released its new framework, *Blazor*, which tease MVVM capabilities through component-oriented *AJAX* or *WebAssembly* application builds. 4 years later (and with many improvements & versions), what is the current state of *Blazor*?
 
 In this article, I'll share with you my experiences with *Blazor WebAssembly*, the pros, the cons, the whatnot.
 
@@ -131,7 +133,7 @@ It was the first thing I ended up rage-quitting my workday. CSS isolation of *Bl
 
 Combine those drawbacks with unstable *hot-reload* features that partially work and make regressions every new version, and the assets usual madness & opacity of *ASP.NET* feat. *Visual Studio*, and you'll end up losing hours wondering why your styles aren't applied and aren't even in your client `.css`. You've been warned.
 
-## Inheriting AspNet, for (the better and) the worse: :thumbsdown:
+## Inheriting *ASP.NET*, for (the better and) the worse: :thumbsdown:
 
 ### Automagical assets random behavior
 
