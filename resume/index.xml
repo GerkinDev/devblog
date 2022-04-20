@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" 
+  xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+  xmlns:dc="http://purl.org/dc/elements/1.1/" 
+  xmlns:atom="http://www.w3.org/2005/Atom" 
+  xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
+  xmlns:media="http://search.yahoo.com/mrss/">
+  <channel>
+    <title>Resumes on GerkinDev Devblog</title>
+    <link>https://gerkindev.github.io/devblog/resume/</link>
+    <description>Recent content in Resumes on GerkinDev Devblog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>©2022, All Rights Reserved</copyright>
+    <lastBuildDate>Sun, 09 Feb 2020 20:13:59 +0900</lastBuildDate>
+    
+        <atom:link href="https://gerkindev.github.io/devblog/resume/index.xml" rel="self" type="application/rss+xml" />
+    
+
+      
+      <item>
+        <title>Resume</title>
+        <link>https://gerkindev.github.io/devblog/resume/gerkindev/</link>
+        <pubDate>Sun, 09 Feb 2020 20:13:59 +0900</pubDate>
+        
+        <atom:modified>Wed, 20 Apr 2022 09:27:09 +0200</atom:modified>
+        <guid>https://gerkindev.github.io/devblog/resume/gerkindev/</guid>
+        <description></description>
+        
+        <dc:creator>GerkinDev</dc:creator>
+        
+        
+        
+        
+        
+        
+      </item>
+      
+
+    
+  </channel>
+</rss>
