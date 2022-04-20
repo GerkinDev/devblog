@@ -1,0 +1,116 @@
+{{ define "main" }}
+<main class="main resume">
+  {{ with .Params.header }}
+    <main class="resume__section" data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}">
+      <aside class="resume__section--side">
+        {{ with .image }}
+          <div class="resume__header--image">
+            {{ $url := partial "partials/whoami/img-url" (dict
+              "fileSource" .src
+              "size" 222
+            )}}
+            <img
+              data-src="{{ $url }}"
+              src="data:image/svg+xml,%0A%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='none' d='M0 0h24v24H0V0z'/%3E%3Cpath fill='%23aaa' d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 16H6c-.55 0-1-.45-1-1V6c0-.55.45-1 1-1h12c.55 0 1 .45 1 1v12c0 .55-.45 1-1 1zm-4.44-6.19l-2.35 3.02-1.56-1.88c-.2-.25-.58-.24-.78.01l-1.74 2.23c-.26.33-.02.81.39.81h8.98c.41 0 .65-.47.4-.8l-2.55-3.39c-.19-.26-.59-.26-.79 0z'/%3E%3C/svg%3E"
+              class="lazyload whoami__image"
+              alt="{{.alt}}"/>
+          </div>
+        {{ end }}
+      </aside>
+      <article class="resume__section--main">
+        {{ with .infos.name }}
+          <h2 class="resume__header--name">
+            {{ . }}
+          </h2>
+        {{ end }}
+        {{ with .infos.email }}
+          <div class="resume__header--info">
+            {{ . }}
+          </div>
+        {{ end }}
+        {{ with .infos.phone }}
+          <div class="resume__header--info">
+            {{ . }}
+          </div>
+        {{ end }}
+        {{ with .infos.addr }}
+          <div class="resume__header--info">
+            {{ . }}
+          </div>
+        {{ end }}
+        {{ with .infos.website }}
+          <div class="resume__header--info">
+            <a href="{{ . }}" target="_blank" rel="noreferrer">{{ . }}</a>
+          </div>
+        {{ end }}
+        {{ with .infos.socialLinks }}
+          <div class="social">
+            {{ range . }}
+              {{ if .url }}
+              <a href="{{ .url | safeURL }}" title="{{ .name }}" aria-label="{{ .name }}">
+                {{ partial (print "svgs/social/" .name ".svg") (dict "width" 32 "height" 32) }}
+              </a>
+              {{ end }}
+            {{ end }}
+          </div>
+        {{ end }}
+        {{ with .infos.intro }}
+          <div class="resume__header--info" style="margin-top: auto;">
+            {{ . | markdownify }}
+          </div>
+        {{ end }}
+      </article>
+    </main>
+  {{ end }}
+  {{ range .Params.items }}
+    <main class="resume__section" data-dir="{{ if ne ($.Param "languagedir") "rtl" }}ltr{{ else }}rtl{{ end }}">
+      <aside class="resume__section--side">
+        <div class="resume__section--sectiontitle">{{ .title }}</div>
+      </aside>
+      
+      <article class="resume__section--main">
+        {{ range .sections }}
+          <div class="resume__section--title">
+            {{ with .title }}
+              {{ . }}
+              <div class="grow"></div>
+            {{ end }}
+            {{ with .startDate }}
+              <span class="resume__section--meta">
+                {{ dateFormat (i18n "resume-dateformat") . }}
+              </span>
+            {{ end }}
+            {{ if .endDate }}
+              {{ with .endDate }}
+                <span class="resume__section--meta">
+                  &nbsp;~&nbsp;{{ dateFormat (i18n "resume-dateformat") . }}
+                </span>
+              {{ end }}
+            {{ else }}
+              {{ with .endDateText }}
+                <span class="resume__section--meta">
+                  &nbsp;~&nbsp;{{ . }}
+                </span>
+              {{ end }}
+            {{ end }}
+          </div>
+          {{ with .subtitle }}
+            <div class="resume__section--subtitle">
+              {{ . }}
+            </div>
+          {{ end }}
+          {{ with .contents }}
+            <div class="single__contents resume__section--contents" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
+              {{ . | markdownify }}
+            </div>
+          {{ end }}
+        {{ end }}
+      </article>
+    </main>
+  {{ end }}
+</main>
+<div class="hide">
+  {{ partial "search/site-search" . }}
+</div>
+{{ partial "script/resume-script" . }}
+{{ end }}
