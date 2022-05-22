@@ -35,7 +35,6 @@ Now, you should be able to reach the dashboard via <https://traefik.{{cluster.ba
 ## 2. Kibana: harvest data from your cluster
 
 {{<expand "References">}}
-* <https://v1-19.docs.kubernetes.io/docs/tasks/debug-application-cluster/logging-elasticsearch-kibana/>
 * <https://mherman.org/blog/logging-in-kubernetes-with-elasticsearch-Kibana-fluentd/#fluentd>
 * <https://www.elastic.co/kibana>
 * <https://www.elastic.co/elasticsearch/>
