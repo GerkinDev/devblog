@@ -67,7 +67,7 @@
         
         <atom:modified>Tue, 29 Mar 2022 13:34:49 +0200</atom:modified>
         <guid>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/01-audit-log/</guid>
-        <description>References    &amp;nbsp; Kubernetes Audit with Elasticsearch and Kibana :: Kublr Documentation  &amp;nbsp; Logging in Kubernetes with Elasticsearch, Kibana, and Fluentd  &amp;nbsp; Auditing | Kubernetes     Note : Even if this part is not required, you should not ignore it on dev environment and should really really REALLY not skip it for production. In fact, it can contain useful debug informations and security traces to see what is going on in your kubernetes cluster, and even on your whole server(s).</description>
+        <description>References    &amp;nbsp; https://docs.kublr.com/logging/logging-api-audit/  &amp;nbsp; Logging in Kubernetes with Elasticsearch, Kibana, and Fluentd  &amp;nbsp; Auditing | Kubernetes     Note : Even if this part is not required, you should not ignore it on dev environment and should really really REALLY not skip it for production. In fact, it can contain useful debug informations and security traces to see what is going on in your kubernetes cluster, and even on your whole server(s).</description>
         
         <dc:creator>GerkinDev</dc:creator>
         
@@ -285,7 +285,7 @@
         <link>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/06-monitoring/</link>
         <pubDate>Mon, 16 Nov 2020 02:35:47 +0100</pubDate>
         
-        <atom:modified>Tue, 29 Mar 2022 13:34:49 +0200</atom:modified>
+        <atom:modified>Sun, 22 May 2022 15:13:26 +0200</atom:modified>
         <guid>https://gerkindev.github.io/devblog/walkthroughs/kubernetes/06-monitoring/</guid>
         <description>Well, things are getting real and are on the point to become quite complex. So we&amp;rsquo;ll setup (super unsafe) dashboards to see what is going on easily. After all, we have nothing critical for now, but we might get troubles soon. And, don&amp;rsquo;t worry, we&amp;rsquo;ll make it safe just after that.
 1. Traefik dashboard: monitoring routes The traefik dashboard will help us in the diagnostics of our ingress routes and traefik-related stuff.</description>
