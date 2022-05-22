@@ -11,7 +11,7 @@
                     </article>
                 </div>
             {{ end }}
-            {{ $filteredPages := .Site.RegularPages }}
+            {{ $filteredPages := .Site.RegularPages.ByDate.Reverse }}
             {{ range $.Param "notAllowedTypesInHome" }}
                 {{ $filteredPages = (where $filteredPages "Type" "!=" (lower .)) }}
             {{ end }}

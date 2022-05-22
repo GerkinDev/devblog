@@ -1,4 +1,4 @@
 ---
-title: "Welcome"
+title: "All latest posts"
 ---
-# Wololo
+# Latest posts
