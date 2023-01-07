@@ -3,10 +3,7 @@
 #pre-header {
 	grid-area: 2/1/3/3;
 	position: relative;
-}
-
-.github-corner:hover .octo-arm {
-	animation: octocat-wave 560ms ease-in-out;
+	pointer-events: none;
 }
 
 #github-corner {
@@ -16,7 +13,25 @@
 	right: 0;
 	z-index: 1;
 
+	&:hover .octo-arm {
+		animation: octocat-wave 560ms ease-in-out;
+	}
+
+	@media (max-width: 500px) {
+		&:hover .octo-arm {
+			animation: none;
+		}
+		
+		.octo-arm {
+			animation: octocat-wave 560ms ease-in-out;
+		}
+	}
+
 	> svg {
+		.corner{
+			pointer-events: visiblepainted;
+		}
+
 		@at-root .theme__dark & {
 			color:#fcfcfa;
 			fill:#aed581;
@@ -63,15 +78,5 @@
 	
 	100% {
 		transform: rotate(0deg);
-	}
-}
-
-@media (max-width: 500px) {
-	.github-corner:hover .octo-arm {
-		animation: none;
-	}
-	
-	.github-corner .octo-arm {
-		animation: octocat-wave 560ms ease-in-out;
 	}
 }
