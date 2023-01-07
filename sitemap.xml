@@ -78,12 +78,12 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://gerkindev.github.io/devblog/blog/</loc>
-    <lastmod>2022-03-30T10:31:47+02:00</lastmod>
+    <lastmod>2023-01-07T08:17:26+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://gerkindev.github.io/devblog/categories/</loc>
-    <lastmod>2022-05-22T15:13:26+02:00</lastmod>
+    <lastmod>2023-01-07T08:17:26+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -98,7 +98,7 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://gerkindev.github.io/devblog/tags/</loc>
-    <lastmod>2022-05-22T15:13:26+02:00</lastmod>
+    <lastmod>2023-01-07T08:17:26+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -133,17 +133,17 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://gerkindev.github.io/devblog/tags/kubernetes/</loc>
-    <lastmod>2022-05-22T15:13:26+02:00</lastmod>
+    <lastmod>2023-01-07T08:17:26+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://gerkindev.github.io/devblog/categories/kubernetes/</loc>
-    <lastmod>2022-05-22T15:13:26+02:00</lastmod>
+    <lastmod>2023-01-07T08:17:26+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://gerkindev.github.io/devblog/blog/kubernetes-qol/</loc>
-    <lastmod>2022-03-29T13:34:49+02:00</lastmod>
+    <lastmod>2023-01-07T08:17:26+01:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>

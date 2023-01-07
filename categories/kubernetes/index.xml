@@ -11,7 +11,7 @@
     <description>Recent content in Kubernetes on GerkinDev Devblog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>©2022, All Rights Reserved</copyright>
+    <copyright>©2023, All Rights Reserved</copyright>
     <lastBuildDate>Sun, 22 Nov 2020 04:03:47 +0100</lastBuildDate>
     
         <atom:link href="https://gerkindev.github.io/devblog/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
@@ -552,7 +552,7 @@ Hopefully, here comes the real huge advantage of kubernetes: it is meant to scal
         <link>https://gerkindev.github.io/devblog/blog/kubernetes-qol/</link>
         <pubDate>Wed, 18 Nov 2020 00:22:31 +0100</pubDate>
         
-        <atom:modified>Tue, 29 Mar 2022 13:34:49 +0200</atom:modified>
+        <atom:modified>Sat, 07 Jan 2023 08:17:26 +0100</atom:modified>
         <guid>https://gerkindev.github.io/devblog/blog/kubernetes-qol/</guid>
         <description>Kubernetes is&amp;hellip;. Quite a thing, to say the least ! 😅 Even if their conceptors did a great job at making the kubectl cli as usable as possible, it can sometimes be a pain to be productive with it, read outputs, or do repetitive tasks. That&amp;rsquo;s why I wrote this small Quality of life improvements post: to regroup some install steps you might have missed, give you some useful 3rd party tools or maybe even give you tips a step ahead.</description>
         
