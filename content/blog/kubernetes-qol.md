@@ -19,6 +19,14 @@ image:
 
 *Kubernetes* is.... Quite a thing, to say the least ! :sweat_smile: Even if their conceptors did a great job at making the *`kubectl` cli* as usable as possible, it can sometimes be a pain to be productive with it, read outputs, or do repetitive tasks. That's why I wrote this small *Quality of life* improvements post: to regroup some install steps you might have missed, give you some useful 3rd party tools or maybe even give you tips a step ahead.
 
+{{<alert theme="info">}}
+Code samples are headed with the expected shell. Since I use ZSH, if there is no indication of the shell, you can assume it would work for pretty much any shell.
+{{</alert>}}
+
+{{<alert theme="success">}}
+Fill out the {{<var "profileFile">}} with your profile file path. Usually, it's `~/.zshrc` for ZSH, and `~/.bashrc` for bash, but feel free to put all this stuff in a separate file you'll include from your main profile.
+{{</alert>}}
+
 ## `kubectl` auto-complete
 
 {{<expand "References">}}
@@ -36,12 +44,12 @@ So, short stories short, and depending on your shell, type in:
 {{<tabs "zsh" "bash">}}
 {{<tab>}}
 ```sh
-cat <<EOF | tee -a ~/.zshrc
+cat <<EOF | tee -a {{profileFile}}
 autoload -Uz compinit
 compinit
 source <(kubectl completion zsh)
 EOF
-source ~/.zshrc
+source {{profileFile}}
 ```
 {{</tab>}}
 {{<tab>}}
@@ -55,11 +63,11 @@ dnf install bash-completion
 source ~/.bashrc
 # Check if bash_completion is properly imported, or add it to your bashrc
 if ! type _init_completion; then
-    echo 'source /usr/share/bash-completion/bash_completion' >> ~/.bashrc
+    echo 'source /usr/share/bash-completion/bash_completion' >> {{profileFile}}
 fi
 # Source the completion script
-echo 'source <(kubectl completion bash)' >> ~/.bashrc
-source ~/.bashrc
+echo 'source <(kubectl completion bash)' >> {{profileFile}}
+source {{profileFile}}
 ```
 {{</tab>}}
 {{</tabs>}}
@@ -72,7 +80,7 @@ source ~/.bashrc
 {{</expand>}}
 
 ```sh
-go get -u github.com/dty1er/kubecolor/cmd/kubecolor
+go install github.com/hidetatz/kubecolor/cmd/kubecolor@latest
 # Make sure kubecolor is found
 which kubecolor
 ```
@@ -90,6 +98,9 @@ source ~/.zshrc
 
 Finally, you could either use `kubecolor` instead of `kubectl`, or alias `kubectl` as `kubecolor` with the following code sample:
 
+
+{{<tabs "zsh">}}
+{{<tab>}}
 ```sh
 cat <<EOF | tee -a {{profileFile}}
 # Backup original "kubectl" command path. Supports subsequent imports of the file.
@@ -99,10 +110,13 @@ alias kubectll="\${KUBECTL_ORIG_PATH}"
 # Alias kubectl to use colors by default
 alias kubectl="kubecolor"
 # Enable the autocompletion for the alias too (see auto-complete install above)
-complete -o default -F __start_kubectl kubecolor
+compdef kubecolor=kubectl
+compdef kubectll=kubectl
 EOF
 source {{profileFile}}
 ```
+{{</tab>}}
+{{</tabs>}}
 
 {{<alert theme="warning">}}
 I noticed some little things does not work well with `kubecolor`. That's why the script above let you use the original `kubectl` command through `kubectll`. For instance, I noticed that some commands prompting user input (so using *stdin*), such as `kubectl login`, don't work.
@@ -135,7 +149,7 @@ curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bas
 
 To install *krew*, run the following: (taken from [the docs](https://krew.sigs.k8s.io/docs/user-guide/setup/install/))
 
-> Think about replacing `{{profileFile}}` with your actual *zsh* or *bash* profile
+> Think about replacing {{<var "profileFile">}} with your actual *zsh* or *bash* profile
 
 ```sh
 # Install krew
