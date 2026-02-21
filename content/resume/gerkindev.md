@@ -5,7 +5,7 @@ description: Resume of Alexandre GERMAIN (GerkinDev)
 type: resume
 enableToc: false
 header:
-  image: 
+  image:
     src: assets/images/whoami/avatar.jpg
     alt: Image of Alexandre GERMAIN
   infos:
@@ -24,7 +24,7 @@ header:
         url: 'https://twitter.com/gerkindev'
     intro: |
         Enthusiast developer and [FOSS](https://en.wikipedia.org/wiki/Free_and_open-source_software) evangelist, I always try to stay open to new processes to improve.
-        
+
         > It's not about being serious, but doing things seriously.
 items:
   - title: Professional Experiences
@@ -37,7 +37,7 @@ items:
             Development of a media platform aiming to facilitate access to science by the general public.
 
             Choice of technologies & software implementation. Creation of a scrapper to retrieve scientific papers & popularization metadata. Deployment, tests, proxies & database configuration & setup.
-            
+
             In progress.
 
             > Angular 13, Angular Material, Nest.JS, TypeORM, Express, MongoDB, Kubernetes, Podman/Docker
@@ -76,16 +76,16 @@ items:
         startDate: 2014-06-01T00:00:00
         endDate: 2017-02-01T00:00:00
         contents: |
-        
-        
-  - title: Studies & Formations
+          Various
+
+  - title: "Studies & Formations"
     sections:
       - title: 42 School Paris
         startDate: 2014-06-01T00:00:00
-        contents: | 
+        contents: |
             C formation, rewrite of stdlib functions. Unix & Systems specialization.
       - title: Bac STI2D Mention Très Bien
         startDate: 2013-06-01T00:00:00
-        contents: | 
+        contents: |
             Year-end project : Programmation & realization of an autonomous oriented solar panel.
 ---

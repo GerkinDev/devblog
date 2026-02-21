@@ -6,27 +6,39 @@
     {{ .Scratch.Set "dest" (.Get 0) }}
     {{ .Scratch.Set "text" (.Get 1) }}
 {{ end }}
-{{ $target := .Scratch.Get "dest" }}
-{{ $nonAnchoredTarget := replaceRE "(#.*$)?" "" $target }}
-{{ $page := .Page.GetPage $nonAnchoredTarget }}
-{{ $text := .Scratch.Get "text" | default $page.LinkTitle }}
-{{ $blank := .Scratch.Get "blank" }}
+{{ $dest := .Scratch.Get "dest" }}
 
+{{/* Parse path */}}
+{{ $parsedDest := findRESubmatch `^([^#]*)(?:#(.*$))?$` $dest }}
+{{ $destPath := index $parsedDest 0 1 }}
+{{ $destFragment := index $parsedDest 0 2 }}
+{{/*  {{ warnf "Source: '%s'; Path: '%s', Fragment: '%s', absolute '%b'" $dest $destPath $destFragment (hasPrefix $destPath "/")}}  */}}
 
+{{/* Resolve the destination */}}
+{{ $destResolved := cond
+    (hasPrefix $destPath "/")
+    (strings.TrimPrefix "/" $destPath)
+    (path.Join (path.Dir .Page.File.Path) $destPath)
+}}
+{{ $page := .Page.GetPage $destResolved }}
 {{ if not $page }}
-    {{ errorf "Page %s not found (from %s)" $nonAnchoredTarget .Page.File.Path }}
-{{ end }}
-{{ $parsedUrl := urls.Parse $target }}
-{{ if $parsedUrl.Fragment }}
-    {{ .Scratch.Set "href" (printf "%s#%s" $page.Permalink $parsedUrl.Fragment) }}
+    {{ errorf "<linkToPage \"%s\" /> Page %s not found (from %s)" $dest $destPath .Page.File.Path }}
 {{ else }}
-    {{ .Scratch.Set "href" $page.Permalink }}
-{{ end }}
-{{ $href:= .Scratch.Get "href" }}
+    {{ $text := .Scratch.Get "text" | default $page.LinkTitle }}
+    {{ $blank := .Scratch.Get "blank" }}
 
-{{- partial "link/link" (dict
-    "Destination" $href
-    "Text" $text
-    "Title" $page.LinkTitle
-    "Blank" $blank
-) -}}
+
+    {{ if $destFragment }}
+        {{ .Scratch.Set "href" (printf "%s#%s" $page.Permalink $destFragment) }}
+    {{ else }}
+        {{ .Scratch.Set "href" $page.Permalink }}
+    {{ end }}
+    {{ $href:= .Scratch.Get "href" }}
+
+    {{- partial "link/link" (dict
+        "Destination" $href
+        "Text" $text
+        "Title" $page.LinkTitle
+        "Blank" $blank
+    ) -}}
+{{ end }}

@@ -101,9 +101,9 @@ I'll assume that:
   In fact, it is very likely that some parts of this guide won't work directly in your case, and you'll have to tweak things out to make them work properly.
   {{</alert>}}
 * [x] You have [*Helm* charts](https://helm.sh/) installed. 
-  See {{<linkToPage path="blog/kubernetes-qol#helm-a-kubernetes-stack-template-repository" blank=true >}} for more infos.
+  See {{<linkToPage path="/blog/kubernetes-qol#helm-a-kubernetes-stack-template-repository" blank=true >}} for more infos.
 * [x] You have [*krew*](https://krew.sigs.k8s.io/) installed.
-  See {{<linkToPage path="blog/kubernetes-qol#krew-a-kubectl-plugins-manager" blank=true >}} for more infos.
+  See {{<linkToPage path="/blog/kubernetes-qol#krew-a-kubectl-plugins-manager" blank=true >}} for more infos.
 
 ---
 

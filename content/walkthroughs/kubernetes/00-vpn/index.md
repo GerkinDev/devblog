@@ -17,7 +17,7 @@ tags:
 * <https://blog.container-solutions.com/running-docker-containers-with-systemd>
 {{</expand>}}
 
-Because we are installing our cluster bare metal on servers exposed on the Internet, we'll need a way to secure all of our network traffic around the critical parts of *kubernetes*. To do so, we'll use OpenVPN to create a virtual secured network where all of our nodes will work. Moreover, this network will also contains *MetalLB* services when {{<linkToPage "/walkthroughs/kubernetes/02-cluster#initialize-metallb" "configuring our bare metal load balancer">}}.
+Because we are installing our cluster bare metal on servers exposed on the Internet, we'll need a way to secure all of our network traffic around the critical parts of *kubernetes*. To do so, we'll use OpenVPN to create a virtual secured network where all of our nodes will work. Moreover, this network will also contains *MetalLB* services when {{<linkToPage "../02-cluster#initialize-metallb" "configuring our bare metal load balancer">}}.
 
 {{<alert theme="info">}}
 You **may** need to edit your `/etc/hosts` files to associate `vpn.{{cluster.baseHostName}}` to your future *OpenVPN* server on **each of the devices that will join the cluster** (if `vpn.{{cluster.baseHostName}}` is not a real *DNS* name).

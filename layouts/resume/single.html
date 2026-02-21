@@ -5,7 +5,7 @@
       <aside class="resume__section--side">
         {{ with .image }}
           <div class="resume__header--image">
-            {{ $url := partial "partials/whoami/img-url" (dict
+            {{ $url := partial "whoami/img-url" (dict
               "fileSource" .src
               "size" 222
             )}}

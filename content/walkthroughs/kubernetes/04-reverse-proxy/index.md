@@ -45,7 +45,7 @@ kubectl --namespace traefik get svc
 
 ## 3. Setup the bare metal proxy
 
-We'll use *nginx* as our bare reverse proxy. It will simply redirect every requests on the specified ports to traefik, that was {{<linkToPage "./03-router" "previously installed in kubernetes">}}. In the case of an SSL connection, it won't be unwrapped.
+We'll use *nginx* as our bare reverse proxy. It will simply redirect every requests on the specified ports to traefik, that was {{<linkToPage "../03-router" "previously installed in kubernetes">}}. In the case of an SSL connection, it won't be unwrapped.
 
 ```sh
 # Install nginx

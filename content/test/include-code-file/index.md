@@ -19,3 +19,4 @@ image:
 
 {{<includeCodeFile "./foo.yaml">}}
 {{<includeCodeFile "./bar.conf" "fallback">}}
+{{<linkToPage "./index">}}
