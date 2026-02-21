@@ -1,0 +1,7 @@
+{{ if and (.Param "enableVarsEditor" | default true) (not .Parent.IsHome) }}
+  <section>
+    <h4>Vars editor</h4>
+    <p>Variables in articles are noted <code>{{ "{{myVar}}" }}</code></p>
+    <div id="vars-container" data-empty-text="No vars on this page !"></div>
+  </section>
+{{ end }}

@@ -6,6 +6,7 @@ type: resume
 menu: main
 weight: -1
 enableToc: false
+enableVarsEditor: false
 header:
   image:
     src: assets/images/whoami/avatar.jpg

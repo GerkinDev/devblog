@@ -3,52 +3,48 @@
 {{ $dir := ($.Param "languagedir") }}
 
 <div class="wrapper__{{ $side }} hide" data-pad="{{ $isPad }}" dir="{{ $dir }}">
-  {{ if and (in (slice "page" "section") .Kind) (ne .Params.vars false) }}
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/findAndReplaceDOMText/0.4.6/findAndReplaceDOMText.min.js" integrity="sha512-KJxyO81TRgb6HTSjpLHhJgOJMCuBkQtmH/ODpfAcqSOpNX3nnU5Hefbb5MZ3SwaSlFwCn+mwdg1466XEVv4Rew==" crossorigin="anonymous" defer></script>
-  <script src="{{ (resources.Get "scripts/vars.ts" | js.Build | resources.Minify | resources.Fingerprint).Permalink }}" defer></script>
-  <script>document.querySelector('.wrapper__{{ $side }}').classList.remove('hide')</script>
-  <div class="toc__flexbox--outer" data-position="fixed" data-dir="{{ $dir }}" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
-    <h6 class="toc__title toc__title--outer" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">Help</h6>
-    {{ if $.Param "enableTocSwitch" }}
-    <label class="switch" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
-      <input id="visible-help" aria-label="Visible help" type="checkbox" {{ if $.Param "hideToc" }}{{ else }}checked{{ end }}>
-      <span class="slider round"></span>
-    </label>
-    {{ end }}
-  </div>
-  <div class="walkthrough-help toc__outer {{ if $.Param "hideToc" }}hide{{ end }}" data-dir="{{ $dir }}" data-folding="{{ if $.Param "tocFolding" }}true{{ else }}false{{ end }}" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
-    <section>
-      <h4>Vars editor</h4>
-      <p>Variables in articles are noted <code>{{ "{{myVar}}" }}</code></p>
-      <div id="vars-container" data-empty-text="No vars on this page !"></div>
-    </section>
-    <section>
-      <h4>Legend</h4>
-      <table class="legend">
-        <tbody>
-          <tr>
-            <td><i class="fas fa-link"></i></td>
-            <td>A link to a page of this blog</td>
-          </tr>
-          <tr>
-            <td><i class="fas fa-anchor"></i></td>
-            <td>A link to a section of this page</td>
-          </tr>
-          <tr>
-            <td><i class="fas fa-clipboard-list"></i></td>
-            <td>A link to a template of this guide. Templates are files in which you should replace your variables</td>
-          </tr>
-          <tr>
-            <td><i class="fas fa-bookmark"></i></td>
-            <td>A variable</td>
-          </tr>
-          <tr>
-            <td><i class="fas fa-book-open"></i></td>
-            <td>A link to an external tool documentation</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-  </div>
+  {{ if and (or (.Param "enableToc" | default true) (.Param "enableVarsEditor" | default true)) .Parent (not .Parent.IsHome) }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/findAndReplaceDOMText/0.4.6/findAndReplaceDOMText.min.js" integrity="sha512-KJxyO81TRgb6HTSjpLHhJgOJMCuBkQtmH/ODpfAcqSOpNX3nnU5Hefbb5MZ3SwaSlFwCn+mwdg1466XEVv4Rew==" crossorigin="anonymous" defer></script>
+    <script src="{{ (resources.Get "scripts/vars.ts" | js.Build | resources.Minify | resources.Fingerprint).Permalink }}" defer></script>
+    <script>document.querySelector('.wrapper__{{ $side }}').classList.remove('hide')</script>
+    <div class="toc__flexbox--outer" data-position="fixed" data-dir="{{ $dir }}" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
+      <h6 class="toc__title toc__title--outer" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">Help</h6>
+      {{ if $.Param "enableTocSwitch" }}
+      <label class="switch" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
+        <input id="visible-help" aria-label="Visible help" type="checkbox" {{ if $.Param "hideToc" }}{{ else }}checked{{ end }}>
+        <span class="slider round"></span>
+      </label>
+      {{ end }}
+    </div>
+    <div class="walkthrough-help toc__outer {{ if $.Param "hideToc" }}hide{{ end }}" data-dir="{{ $dir }}" data-folding="{{ if $.Param "tocFolding" }}true{{ else }}false{{ end }}" data-ani="{{ $.Site.Params.enableUiAnimation | default "true" }}">
+      {{ partial "body/vars-editor" . }}
+      <section>
+        <h4>Legend</h4>
+        <table class="legend">
+          <tbody>
+            <tr>
+              <td><i class="fas fa-link"></i></td>
+              <td>A link to a page of this blog</td>
+            </tr>
+            <tr>
+              <td><i class="fas fa-anchor"></i></td>
+              <td>A link to a section of this page</td>
+            </tr>
+            <tr>
+              <td><i class="fas fa-clipboard-list"></i></td>
+              <td>A link to a template of this guide. Templates are files in which you should replace your variables</td>
+            </tr>
+            <tr>
+              <td><i class="fas fa-bookmark"></i></td>
+              <td>A variable</td>
+            </tr>
+            <tr>
+              <td><i class="fas fa-book-open"></i></td>
+              <td>A link to an external tool documentation</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
   {{ end }}
 </div>
