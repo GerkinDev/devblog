@@ -1,5 +1,5 @@
 # Help with config: https://zzo-docs.vercel.app/zzo/configuration/configfiles/
-baseURL: "https://gerkindev.github.io/devblog"
+baseURL: "https://gerkin.dev"
 title: "GerkinDev Devblog"
 theme: "zzo"
 languageCode: "en-us"
