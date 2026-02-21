@@ -1,8 +1,10 @@
 ---
-title: Resume
+title: Who am I ?
 date: 2020-02-09T20:13:59+09:00
 description: Resume of Alexandre GERMAIN (GerkinDev)
 type: resume
+menu: main
+weight: -1
 enableToc: false
 header:
   image:
