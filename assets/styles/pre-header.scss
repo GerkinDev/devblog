@@ -1,82 +1,82 @@
 // Github corner: https://github.com/tholman/github-corners
 
 #pre-header {
-	grid-area: 2/1/3/3;
-	position: relative;
-	pointer-events: none;
+  grid-area: 2/1/3/3;
+  position: relative;
+  pointer-events: none;
 }
 
 #github-corner {
-	position: absolute;
-	top: 0;
-	border: 0;
-	right: 0;
-	z-index: 1;
+  position: absolute;
+  top: 0;
+  border: 0;
+  right: 0;
+  z-index: 1;
 
-	&:hover .octo-arm {
-		animation: octocat-wave 560ms ease-in-out;
-	}
+  &:hover .octo-arm {
+    animation: octocat-wave 560ms ease-in-out;
+  }
 
-	@media (max-width: 500px) {
-		&:hover .octo-arm {
-			animation: none;
-		}
-		
-		.octo-arm {
-			animation: octocat-wave 560ms ease-in-out;
-		}
-	}
+  @media (max-width: 500px) {
+    &:hover .octo-arm {
+      animation: none;
+    }
 
-	> svg {
-		.corner{
-			pointer-events: visiblepainted;
-		}
+    .octo-arm {
+      animation: octocat-wave 560ms ease-in-out;
+    }
+  }
 
-		@at-root .theme__dark & {
-			color:#fcfcfa;
-			fill:#aed581;
-		}
-		@at-root .theme__light & {
-			color:#424242;
-			fill:#607d8b;
-		}
-		@at-root .theme__hacker & {
-			color:#1fff2a;
-			fill:#a1ad64;
-		}
-		@at-root .theme__solarized & {
-			color:#586e75;
-			fill:#cb4b16;
-		}
-		@at-root .theme__kimbie & {
-			color:#e3b583;
-			fill:#889b4a;
-		}
-	}
+  > svg {
+    .corner {
+      pointer-events: visiblepainted;
+    }
+
+    @at-root .theme__dark & {
+      color: #fcfcfa;
+      fill: #aed581;
+    }
+    @at-root .theme__light & {
+      color: #424242;
+      fill: #607d8b;
+    }
+    @at-root .theme__hacker & {
+      color: #1fff2a;
+      fill: #a1ad64;
+    }
+    @at-root .theme__solarized & {
+      color: #586e75;
+      fill: #cb4b16;
+    }
+    @at-root .theme__kimbie & {
+      color: #e3b583;
+      fill: #889b4a;
+    }
+  }
 }
 
 @keyframes octocat-wave {
-	0% {
-		transform: rotate(0deg);
-	}
-	
-	20% {
-		transform: rotate(-25deg);
-	}
-	
-	40% {
-		transform: rotate(10deg);
-	}
-	
-	60% {
-		transform: rotate(-25deg);
-	}
-	
-	80% {
-		transform: rotate(10deg);
-	}
-	
-	100% {
-		transform: rotate(0deg);
-	}
+  0% {
+    transform: rotate(0deg);
+  }
+
+  20% {
+    transform: rotate(-25deg);
+  }
+
+  40% {
+    transform: rotate(10deg);
+  }
+
+  60% {
+    transform: rotate(-25deg);
+  }
+
+  80% {
+    transform: rotate(10deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
 }

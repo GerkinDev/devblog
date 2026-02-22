@@ -1,58 +1,58 @@
 .walkthrough-help {
-	-webkit-animation: slide-in-down-little .2s .3s 1 ease-in backwards;
-	-moz-animation: slide-in-down-little .2s .3s 1 ease-in backwards;
-	-ms-animation: slide-in-down-little .2s .3s 1 ease-in backwards;
-	-o-animation: slide-in-down-little .2s .3s 1 ease-in backwards;
-	animation: slide-in-down-little .2s .3s 1 ease-in backwards;
-	width: 100%;
-	// max-width: 250px;
-	position: fixed;
-	top: 7rem;
-	font-size: .85rem;
-	// padding-left: .5rem;
-	z-index: 4;
-	-webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
+  -webkit-animation: slide-in-down-little 0.2s 0.3s 1 ease-in backwards;
+  -moz-animation: slide-in-down-little 0.2s 0.3s 1 ease-in backwards;
+  -ms-animation: slide-in-down-little 0.2s 0.3s 1 ease-in backwards;
+  -o-animation: slide-in-down-little 0.2s 0.3s 1 ease-in backwards;
+  animation: slide-in-down-little 0.2s 0.3s 1 ease-in backwards;
+  width: 100%;
+  // max-width: 250px;
+  position: fixed;
+  top: 7rem;
+  font-size: 0.85rem;
+  // padding-left: .5rem;
+  z-index: 4;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 
-	> section {
-		margin-bottom: 1rem;
-	}
+  > section {
+    margin-bottom: 1rem;
+  }
 
-	.legend td:first-child {
-		padding-right: 1rem;
-	}
+  .legend td:first-child {
+    padding-right: 1rem;
+  }
 }
 
 #vars-container {
-	&:empty{
-		&::before {
-			content: attr(data-empty-text);
-			// content: "Hello";
-		}
-	}
+  &:empty {
+    &::before {
+      content: attr(data-empty-text);
+      // content: "Hello";
+    }
+  }
 
-	.vars-category {
-		margin-left: 1rem;
-	}
-	// .vars-category-label {
-	// 	margin-bottom: 0.2rem;
-	// 	display: block;
-	// }
+  .vars-category {
+    margin-left: 1rem;
+  }
+  // .vars-category-label {
+  // 	margin-bottom: 0.2rem;
+  // 	display: block;
+  // }
 
-	.var-input {
-		display: block;
-		width: 100%;
-		padding: 0;
-		background-color: rgba(255,255,255,.1);
-		appearance: none;
-		border: none;
-		padding: .25rem .5rem ;
-		color: inherit;
-		border-radius: 0.3rem;
-		margin-bottom: 0.2rem;
-	}
+  .var-input {
+    display: block;
+    width: 100%;
+    padding: 0;
+    background-color: rgba(255, 255, 255, 0.1);
+    appearance: none;
+    border: none;
+    padding: 0.25rem 0.5rem;
+    color: inherit;
+    border-radius: 0.3rem;
+    margin-bottom: 0.2rem;
+  }
 }

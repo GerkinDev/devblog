@@ -1,113 +1,113 @@
-@import './pre-header.scss';
-@import './walkthrough.scss';
+@import "./pre-header.scss";
+@import "./walkthrough.scss";
 
 // #region Fixes
 html {
-    width: 100vw;
-    min-width: 100vw;
+  width: 100vw;
+  min-width: 100vw;
 }
 body {
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
 .navbar {
-	margin: 0;
-    max-width: 100vw;
+  margin: 0;
+  max-width: 100vw;
 }
 .list__main {
-	max-width: 100%;
+  max-width: 100%;
 }
 
-li{
-	margin-left: 1rem;
+li {
+  margin-left: 1rem;
 }
 
 h1, h2, h3, h4, h5, h6 {
-	code {
-		font-size: inherit;
-	}
+  code {
+    font-size: inherit;
+  }
 }
 
 .single__contents p {
-	margin-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
 }
 
 .notices {
-	@mixin theme($child) {
-		@at-root #{selector-replace(&, ".notices", ".notices.#{$child}")} {
-			@content;
-		}
-	}
+  @mixin theme($child) {
+    @at-root #{selector-replace(&, ".notices", ".notices.#{$child}")} {
+      @content;
+    }
+  }
 
-	.highlight {
-		pre.chroma > code {
-			background-color: unset!important;
-		}
-		.chroma {
-			@include theme("info") {
-				background: #cce6f7;
-			}
-			@include theme("success") {
-				background: #d3f0cf;
-			}
-		}
-	}
+  .highlight {
+    pre.chroma > code {
+      background-color: unset !important;
+    }
+    .chroma {
+      @include theme("info") {
+        background: #cce6f7;
+      }
+      @include theme("success") {
+        background: #d3f0cf;
+      }
+    }
+  }
 }
 
 .alert > :last-child {
-	margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .expand__content > .language-code:only-child {
-	margin: 0 -1.125rem;
+  margin: 0 -1.125rem;
 }
 
 .tab__content {
-	padding: .5rem;
+  padding: 0.5rem;
 
-	& > .highlight > .chroma {
-		@at-root #{selector-replace(&, ".highlight", ":first-child")} {
-			margin-top: .5em;
-		}
-		@at-root #{selector-replace(&, ".highlight", ":last-child")} {
-			margin-bottom: .5em;
-		}
-	}
+  & > .highlight > .chroma {
+    @at-root #{selector-replace(&, ".highlight", ":first-child")} {
+      margin-top: 0.5em;
+    }
+    @at-root #{selector-replace(&, ".highlight", ":last-child")} {
+      margin-bottom: 0.5em;
+    }
+  }
 }
 // #endregion
 
 .pagination-single {
-	flex-direction: column;
+  flex-direction: column;
 }
 
 .prev-next {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: flex-end;
-	flex-wrap: wrap;
-	width: 100%;
-	margin: 1rem 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 1rem 0;
 }
 
 // #region Vars related
 .var > code {
-	font-weight: bold;
-	font-style: italic;
-	text-decoration: underline;
-	cursor: pointer;
-	padding: 0!important;
-	@at-root .chroma & {
-		color: inherit;
-	}
+  font-weight: bold;
+  font-style: italic;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0 !important;
+  @at-root .chroma & {
+    color: inherit;
+  }
 }
 // #endregion
 
 .wrapper__left, .wrapper__right {
-	word-break: break-word;
+  word-break: break-word;
 }
 
 blockquote {
-	border-left: 0.25em solid currentColor;
-	padding-left: 0.5em;
-	margin-top: 1em;
+  border-left: 0.25em solid currentColor;
+  padding-left: 0.5em;
+  margin-top: 1em;
 }
