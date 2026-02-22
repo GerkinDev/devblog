@@ -236,7 +236,7 @@ params:
     # weibo: ''
     # douban: ''
     # csdn: ''
-    # gitlab: ''
+    gitlab: 'https://gitlab.com/GerkinDev'
     # mastodon: ''
     # jianshu: ''
     # zhihu: ''

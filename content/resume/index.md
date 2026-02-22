@@ -1,7 +1,7 @@
 ---
 title: Who am I ?
 date: 2020-02-09T20:13:59+09:00
-description: Resume of Alexandre GERMAIN (GerkinDev)
+description: Resume of Alexandre GERMAIN-RAFFIER (GerkinDev)
 type: resume
 menu: main
 weight: -1
@@ -10,10 +10,10 @@ enableVarsEditor: false
 header:
   image:
     src: assets/images/whoami/avatar.jpg
-    alt: Image of Alexandre GERMAIN
+    alt: Image of Alexandre GERMAIN-RAFFIER
   infos:
-    name: Alexandre GERMAIN
-    addr: 29 rue Émile Roche, 42460 Cuinzier
+    name: Alexandre GERMAIN-RAFFIER
+    addr: 353 route de Saint Bonnet, 42820 Ambierle, France
     socialLinks:
       - name: linkedin
         url: 'https://www.linkedin.com/in/alexandrejpgermain/'
