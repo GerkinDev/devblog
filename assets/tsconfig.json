@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "target": "es2022",
+    "strict": true,
+    "strictNullChecks": true
+  }
+}

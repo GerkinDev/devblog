@@ -1,0 +1,48 @@
+{{ if .Site.Params.custom_js }}
+{{ range .Site.Params.custom_js }}
+  {{ $custom_template := resources.Get . }}
+  {{ if $custom_template }}
+    {{ $custom_js := $custom_template | resources.Minify | resources.Fingerprint }}
+    <script defer src="{{ $custom_js.RelPermalink }}"></script>
+  {{ end }}
+{{ end }}
+{{ end }}
+
+{{ if $.Param "enableSearch" }}
+  {{ $fuse := resources.Get "js/fuse.min.js" | resources.Fingerprint }}
+  <script defer src="{{ $fuse.RelPermalink }}"></script>
+{{ end }}
+
+{{ $enquire := resources.Get "js/enquire.min.js" | resources.Fingerprint }}
+<script src="{{ $enquire.RelPermalink }}"></script>
+{{ $lazysizes := resources.Get "js/lazysizes.min.js" | resources.Fingerprint }}
+<script defer src="{{ $lazysizes.RelPermalink }}"></script>
+{{ $getParents := resources.Get "js/helper/getParents.js" | resources.Minify | resources.Fingerprint }}
+<script defer src="{{ $getParents.RelPermalink }}"></script>
+{{ $fadeinout := resources.Get "js/helper/fadeinout.js" | resources.Minify | resources.Fingerprint }}
+<script defer src="{{ $fadeinout.RelPermalink }}"></script>
+{{ $closest := resources.Get "js/helper/closest.js" | resources.Minify | resources.Fingerprint }}
+<script defer src="{{ $closest.RelPermalink }}"></script>
+
+{{ $zzo := resources.Get "scripts/zzo/index.ts" | js.Build | resources.Minify | resources.Fingerprint }}
+<script
+  defer src="{{ $zzo.RelPermalink }}"
+  data-tocFolding="{{ $.Param "tocFolding" | jsonify | htmlEscape }}"
+  data-tocLevels="{{ ($.Param "tocLevels") | jsonify | htmlEscape }}"
+  data-skinDarkCode="{{ (i18n "skin-dark") | jsonify | htmlEscape }}"
+  data-skinLightCode="{{ (i18n "skin-light") | jsonify | htmlEscape }}"
+  data-skinHackerCode="{{ (i18n "skin-hacker") | jsonify | htmlEscape }}"
+  data-skinSolarizedCode="{{ (i18n "skin-solarized") | jsonify | htmlEscape }}"
+  data-skinKimbieCode="{{ (i18n "skin-kimbie") | jsonify | htmlEscape }}"
+  data-roothref="{{ $.Site.BaseURL | jsonify | htmlEscape }}"
+  data-permalink="{{ .Permalink | jsonify | htmlEscape }}"
+  data-langprefix="{{ $.Site.LanguagePrefix | jsonify | htmlEscape }}"
+  data-enableSearch="{{ ($.Param "enableSearch") | jsonify | htmlEscape }}"
+  data-searchDistance="{{ ($.Param "searchDistance") | jsonify | htmlEscape }}"
+  data-searchThreshold="{{ ($.Param "searchThreshold") | jsonify | htmlEscape }}"
+  data-searchContent="{{ ($.Param "searchContent") | jsonify | htmlEscape }}"
+  data-enableSearchHighlight="{{ ($.Param "enableSearchHighlight") | jsonify | htmlEscape }}"
+  data-searchResultPosition="{{ ($.Param "searchResultPosition") | jsonify | htmlEscape }}"
+  data-sectionType="{{ .Type | jsonify | htmlEscape }}"
+  data-kind="{{ .Kind | jsonify | htmlEscape }}"
+  ></script>
