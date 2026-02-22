@@ -1,16 +1,25 @@
 import { ParamGetter } from "../params";
-import { getDom } from "./dom";
+import { getDom, requiredById } from "./dom";
 
-var scrollFunction = function () {
-  if (
-    document.body.scrollTop > 250 || document.documentElement.scrollTop > 250
-  ) {
-    gttBtn.style.display = "block";
-  } else {
-    gttBtn.style.display = "none";
-  }
-};
 export const initScroll = (param: ParamGetter) => {
+  const gttBtn = requiredById<HTMLElement>("gtt");
+  gttBtn.style.display = "none";
+  gttBtn.addEventListener("click", function () {
+    if (window.document.documentMode) {
+      document.documentElement.scrollTop = 0;
+    } else {
+      scrollToTop(250);
+    }
+  });
+
+  function scrollToTop(scrollDuration: number) {
+    var scrollStep = -window.scrollY / (scrollDuration / 15);
+    var scrollInterval = setInterval(function () {
+      if (window.scrollY != 0) {
+        window.scrollBy(0, scrollStep);
+      } else clearInterval(scrollInterval);
+    }, 15);
+  }
   var lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
   var tocElem = document.querySelector(".toc");
   var tableOfContentsElem = tocElem
@@ -70,7 +79,12 @@ export const initScroll = (param: ParamGetter) => {
     : null;
 
   window.onscroll = function () {
-    scrollFunction();
+    gttBtn.style.display = (
+        document.body.scrollTop > 250 ||
+        document.documentElement.scrollTop > 250
+      )
+      ? "block"
+      : "none";
 
     var st = window.pageYOffset || document.documentElement.scrollTop;
     if (st > lastScrollTop) { // scroll down

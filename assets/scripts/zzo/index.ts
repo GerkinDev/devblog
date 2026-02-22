@@ -167,27 +167,6 @@ document.addEventListener("DOMContentLoaded", function () {
     : null;
   // =============================================================
 
-  // ========================= go to top =========================
-  var gttBtn = requiredById<HTMLElement>("gtt");
-  gttBtn.style.display = "none";
-  gttBtn.addEventListener("click", function () {
-    if (window.document.documentMode) {
-      document.documentElement.scrollTop = 0;
-    } else {
-      scrollToTop(250);
-    }
-  });
-
-  function scrollToTop(scrollDuration: number) {
-    var scrollStep = -window.scrollY / (scrollDuration / 15);
-    var scrollInterval = setInterval(function () {
-      if (window.scrollY != 0) {
-        window.scrollBy(0, scrollStep);
-      } else clearInterval(scrollInterval);
-    }, 15);
-  }
-  // ============================================================
-
   // ========================== expand ==========================
   var expandBtn = document.querySelectorAll<HTMLElement>(".expand__button");
 

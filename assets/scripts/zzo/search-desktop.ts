@@ -479,6 +479,57 @@ function renderSearch(
 }
 
 export const initSearchDesktop = (param: ParamGetter) => {
+  var enableSearch = param("enableSearch");
+  var searchDistance = param("searchDistance");
+  var searchThreshold = param("searchThreshold");
+  var searchContent = param("searchContent");
+  var enableSearchHighlight = param("enableSearchHighlight");
+  var sectionType = param("sectionType");
+  var kind = param("kind");
+
+  var fuse = null;
+
+  if (!enableSearch) {
+    return;
+  }
+  (function initFuse() {
+    var xhr = new XMLHttpRequest();
+    if (sectionType === "publication" && kind !== "page") {
+      xhr.open("GET", permalink + "index.json");
+    } else {
+      xhr.open("GET", baseurl + langprefix + "/index.json");
+    }
+
+    xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        fuse = new Fuse(JSON.parse(xhr.response.toString("utf-8")), {
+          keys: sectionType.includes("publication")
+            ? ["title", "abstract"]
+            : searchContent
+            ? ["title", "description", "content"]
+            : ["title", "description"],
+          includeMatches: enableSearchHighlight,
+          shouldSort: true, // default: true
+          threshold: searchThreshold ? searchThreshold : 0.4, // default: 0.6 (0.0 requires a perfect match)
+          location: 0, // default: 0
+          distance: searchDistance ? searchDistance : 100, // default: 100
+          maxPatternLength: 32,
+          minMatchCharLength: 1,
+          isCaseSensitive: false, // defualt: false
+          findAllMatches: false, // default: false
+          useExtendedSearch: false, // default: false
+        });
+        window.fuse = fuse;
+      } else {
+        console.error("[" + xhr.status + "]Error:", xhr.statusText);
+      }
+    };
+    xhr.send();
+  })();
+
+  var searchMobile = document.getElementById("search-mobile");
+  var searchResultsContainer = document.getElementById("search-results");
   var summaryContainer = requiredBySelector(".summary__container");
   var searchResult = requiredBySelector(".search-result");
   var searchResultCloseBtn = document.querySelector(".search-result__close");
@@ -494,57 +545,6 @@ export const initSearchDesktop = (param: ParamGetter) => {
   var langprefix = param("langprefix");
   const searchResults = requiredById("search-results");
   let searchText: string | null = null;
-
-  var enableSearch = param("enableSearch");
-  var searchDistance = param("searchDistance");
-  var searchThreshold = param("searchThreshold");
-  var searchContent = param("searchContent");
-  var enableSearchHighlight = param("enableSearchHighlight");
-  var sectionType = param("sectionType");
-  var kind = param("kind");
-
-  var fuse = null;
-
-  if (enableSearch) {
-    (function initFuse() {
-      var xhr = new XMLHttpRequest();
-      if (sectionType === "publication" && kind !== "page") {
-        xhr.open("GET", permalink + "index.json");
-      } else {
-        xhr.open("GET", baseurl + langprefix + "/index.json");
-      }
-
-      xhr.setRequestHeader("Content-Type", "application/json; charset=utf-8");
-      xhr.onload = function () {
-        if (xhr.status === 200) {
-          fuse = new Fuse(JSON.parse(xhr.response.toString("utf-8")), {
-            keys: sectionType.includes("publication")
-              ? ["title", "abstract"]
-              : searchContent
-              ? ["title", "description", "content"]
-              : ["title", "description"],
-            includeMatches: enableSearchHighlight,
-            shouldSort: true, // default: true
-            threshold: searchThreshold ? searchThreshold : 0.4, // default: 0.6 (0.0 requires a perfect match)
-            location: 0, // default: 0
-            distance: searchDistance ? searchDistance : 100, // default: 100
-            maxPatternLength: 32,
-            minMatchCharLength: 1,
-            isCaseSensitive: false, // defualt: false
-            findAllMatches: false, // default: false
-            useExtendedSearch: false, // default: false
-          });
-          window.fuse = fuse;
-        } else {
-          console.error("[" + xhr.status + "]Error:", xhr.statusText);
-        }
-      };
-      xhr.send();
-    })();
-  }
-
-  var searchMobile = document.getElementById("search-mobile");
-  var searchResultsContainer = document.getElementById("search-results");
 
   const searchElem = document.getElementById("search");
   if (searchElem) {

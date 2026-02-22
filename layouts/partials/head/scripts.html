@@ -23,8 +23,7 @@
 <script defer src="{{ $fadeinout.RelPermalink }}"></script>
 {{ $closest := resources.Get "js/helper/closest.js" | resources.Minify | resources.Fingerprint }}
 <script defer src="{{ $closest.RelPermalink }}"></script>
-
-{{ $zzo := resources.Get "scripts/zzo/index.ts" | js.Build | resources.Minify | resources.Fingerprint }}
+{{ $zzo := resources.Get "scripts/zzo/index.ts" | js.Build (dict "sourceMap" "linked" "minify" hugo.IsProduction) | resources.Fingerprint }}
 <script
   defer src="{{ $zzo.RelPermalink }}"
   data-tocFolding="{{ $.Param "tocFolding" | jsonify | htmlEscape }}"
