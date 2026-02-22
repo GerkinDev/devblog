@@ -6,7 +6,7 @@
 {{ $label := .Scratch.Get "label" }}
 
 {{ printf "<!-- Include code file `%s` with lang `%s` & label `%s` -->" $targetRelFile $language $label | safeHTML }}
-<section class="included-file" data-file="{{$targetRelFile}}" data-label="{{ $label }}" id="{{ partial "include-code-file-id" $targetRelFile }}">
+<section class="included-file" data-file="{{$targetRelFile}}" data-code-block-label-override="{{ $label }}" id="{{ partial "include-code-file-id" $targetRelFile }}">
     {{- highlight
         $targetFileContent
         $language
