@@ -1,0 +1,32 @@
+.linkedin-embed {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  overflow: hidden;
+  max-width: 504px;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0 auto;
+  width: fit-content;
+  position: relative;
+
+  .fallback {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    > *:last-child {
+      margin-bottom: 0;
+    }
+  }
+  iframe {
+    position: relative;
+    display: block;
+    margin: 0 auto;
+  }
+}
