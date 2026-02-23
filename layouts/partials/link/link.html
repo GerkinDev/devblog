@@ -73,12 +73,11 @@
 			true
 			$isExternal) }}
 	
-	{{ $body := .Text }}
-	{{ if and $canFetch (eq .Text .Destination)}}
-		{{- $body = (printf "<i>%s</i>" (partial "link/fetch-title" $href)) }}
-	{{ end }}
-	<a
-		href="{{- $href }}"
+	{{- $body := .Text }}
+	{{- if and $canFetch (eq .Text .Destination) -}}
+		{{- $body = (printf "<i>%s</i>" (partial "link/fetch-title" $href)) -}}
+	{{- end -}}
+	<a href="{{- $href }}"
 		{{- if $label }} title="{{- $label }}"{{- end }}
 		{{- if $targetBlank }} target="_blank" rel="noopener noreferrer"{{- end }}>
 		{{- partial "link/prefix-icon" (.Type | default $type) -}}&nbsp;

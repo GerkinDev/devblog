@@ -1,8 +1,8 @@
-{{ $scratch := newScratch }}
-{{ $typeWithSep := index (findRE "\\$.*$" .Destination) 0 }}
-{{ if not (or (eq $typeWithSep nil) (eq $typeWithSep "")) }}
-    {{ $scratch.Set "tag" (slicestr $typeWithSep 1)}}
-{{ end }}
-{{ $type := $scratch.Get "tag" }}
-{{ $dest := strings.TrimSuffix $typeWithSep .Destination }}
-{{ partial "link/link" (dict "Destination" $dest "Text" .Text "Title" .Title "Type" $type) }}
+{{- $scratch := newScratch -}}
+{{- $typeWithSep := index (findRE "\\$.*$" .Destination) 0 -}}
+{{- if not (or (eq $typeWithSep nil) (eq $typeWithSep "")) -}}
+    {{- $scratch.Set "tag" (slicestr $typeWithSep 1)}}
+{{- end -}}
+{{- $type := $scratch.Get "tag" -}}
+{{- $dest := strings.TrimSuffix $typeWithSep .Destination -}}
+{{- partial "link/link" (dict "Destination" $dest "Text" .Text "Title" .Title "Type" $type) -}}
