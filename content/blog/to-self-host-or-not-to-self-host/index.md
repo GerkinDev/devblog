@@ -35,6 +35,8 @@ plan: |
 
 I wont go into the details of the tools I ended up using (I may make a dedicated post about that later on), but the overall philosophy, and why I believe it is a move to make.
 
+This post is aimed at people with low to moderate tech knowledge, but if you're someone experienced, maybe I can bring some points on the table; in any case, I would _love_ to read about your thoughts, experiments, achievements, or considerations. 
+
 ## The Why
 
 ### Freedom and privacy
@@ -88,11 +90,39 @@ And it is not limited to open-source tools: Even closed-source services (as long
 - Automate workflows (e.g., trigger a script, send a notification, or log data) based on specific events.
 - Modify UI/UX (e.g., add custom themes, shortcuts, etc).
 
-Self-hosting turns your setup into a personalized ecosystem, where you’re not just a user—you’re the architect of your own digital environment. Whether it’s a silly ping, a productivity hack, or a privacy-focused tweak, the possibilities are limited only by your imagination and technical curiosity.
+Self-hosting turns your setup into a personalized ecosystem, where you’re not just a user: you’re the architect of your own digital environment. Whether it’s a silly ping, a productivity hack, or a privacy-focused tweak, the possibilities are limited only by your imagination and technical curiosity.
 
 ### Learning is fun
 
+Obviously, customizing stuff from the correct injection point requires that you _know_ how to code there. What if it is written in Cobol? (it won't, and even if, don't miss an opportunity to get rich btw).
+
+And yes, it requires some work, learning new architecture, logical concepts, business logic, frameworks, maybe even language. It isn't necessarily something you feel like you want to invest time into, yet it is something _valuable_ in your technical journey. We need to do this journey when taking a new day job, but the plasticity and ability to learn is something you have to train, continuously. So it can be seen as an investment, in addition to having fun with the possibilities you offered yourself
+
 ## The What
+
+Now, let's discuss a few considerations about what services you could self host. And for that, there are a few considerations to weight:
+- Do you host stuff on a machine that you shut off, a dedicated home server up 24/7, or some remote server ? 
+- What time do you feel ready to invest? 
+- How confident are you, and what impacts do you allow if you mess up something? 
+- How reliable do you _require_ your services to be?
+- Is the service accessible from an uncontrolled network? 
+
+Let's start with the easier ones you probably already have:
+
+### A public file sharing client (like a torrent)
+
+### An LLM chat interface
+
+### A video streaming server
+
+- Plex
+- TrucFin
+
+### A photo sharing service
+
+### A file sync service
+
+## 
 
 ## The Fuck
 
@@ -100,7 +130,37 @@ Self-hosting turns your setup into a personalized ecosystem, where you’re not 
 Yeah, that's a shitty pun related to the previous section's title... Sorry
 {{</ alert >}}
 
+So far, that's all and good. Yeah, I would love to self host pretty much everything. However, there are, as you know, caveats. 
+
 <!--
 - AI lowered the price of wide spread attacks
 - Price of hardware
 -->
+
+### The cost
+
+For all I said above in [the Why section](<!-- TODO -->), I would lie saying such project is cheap in terms of time. You'll need quite a lot of it, both to set up your services and to keep it running over time. That is a choice among the prices you have to pay, and to say it boldly, it is either your time and personnal investment, or money (assuming it will bring some sort of guarantee over your data ownership). 
+
+Dep[ending on your choice about sovereignty, it may also require you to invest in hard cash as an investment: investment that may not become economically <!-- forgot the English word --> rentable before the probable expected lifetime of your wardware plus the price of electricity and other dependencies. And still, this is highly probable __if your measurement is in some monetary value_: __your__ privacy has an intrinsic value. 
+
+### The moving landscape, and the landslide of AI
+
+<!-- draft start -->
+A few numbers from recent years:
+- In 2025, AI made n PRs on Github
+- In the same year, it has been suspected to raise n security notices, with n evaluated as serious among them. 
+- Some services leverage using Ai reachable from the internet with very serious system access (Hello Clawd)
+- This was the first year when OpenAI said there was the first autonomous AI attack 
+<!-- draft end -->
+
+Yet, such tools have real capabilities. They tend to be quite oversold, like the announcement of the compiler written by Ai 
+<!-- Hardware price: get links about Ai proportion -->
+
+
+###  
+
+
+
+
+
+Pegasus? 
