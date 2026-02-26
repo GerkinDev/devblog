@@ -52,10 +52,6 @@ outputs:
     - HTML
     - RSS
     - SearchIndex
-  taxonomyTerm:
-    - HTML
-    - RSS
-    - SearchIndex
   taxonomy:
     - HTML
     - RSS
