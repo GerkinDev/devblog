@@ -108,8 +108,16 @@ h1, h2, h3, h4, h5, h6 {
   word-break: break-word;
 }
 
-blockquote {
-  border-left: 0.25em solid currentColor;
-  padding-left: 0.5em;
-  margin-top: 1em;
+#root {
+  blockquote {
+    border-left: 0.25em solid currentColor;
+    padding-left: 0.5em;
+    margin-top: 1em;
+    > *:last-child {
+      margin-bottom: 0;
+    }
+  }
+  li > blockquote {
+    margin: 0.5rem 0 0.5rem 1rem;
+  }
 }
