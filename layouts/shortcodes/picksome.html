@@ -1,0 +1,4 @@
+{{- $count := (.Get "count") }}
+<div class="picksome" data-count="{{$count | safeHTMLAttr}}">
+{{.Inner | .Page.RenderString }}
+</div>

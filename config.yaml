@@ -26,7 +26,10 @@ markup:
       taskList: true
       typographer: true
     parser:
-      attribute: true
+      # attribute: true
+      attribute:
+        block: true
+        title: true
       autoHeadingID: true
       autoHeadingIDType: github
     renderer:

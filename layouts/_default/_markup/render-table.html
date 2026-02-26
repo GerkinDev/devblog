@@ -1,0 +1,57 @@
+{{- $tableMode := index .Attributes "tablemode" | default "default" }}
+{{- $attributes := merge .Attributes (dict "tableMode" nil) }}
+{{- if isset $attributes "class" }}
+    {{- $attributes = merge $attributes (dict "class" (printf "%s %s" (index $attributes "class") $tableMode))}}
+{{- else }}
+    {{- $attributes = merge $attributes (dict "class" $tableMode)}}
+{{- end }}
+<table
+    {{- range $k, $v := $attributes }}
+        {{- if $v }}
+            {{- printf " %s=%q" $k $v | safeHTMLAttr }}
+        {{- end }}
+    {{- end }}>
+    <thead>
+        {{- range .THead }}
+            <tr>
+                {{- range . }}
+                    <th
+                        {{- with .Alignment }}
+                            {{- printf " style=%q" (printf "text-align: %s" .) | safeHTMLAttr }}
+                        {{- end -}}
+                    >
+                        {{- .Text -}}
+                    </th>
+                {{- end }}
+            </tr>
+        {{- end }}
+    </thead>
+    <tbody>
+        {{- $THead := .THead -}}
+        {{- if eq $tableMode "default" }}
+        {{- else if eq $tableMode "headRowCol" }}
+            {{- range .TBody }}
+                <tr>
+                    {{- range $index, $cell := . }}
+                        {{- with $cell }}
+                            {{- if eq $index 0 }}
+                                <th
+                                    {{- with .Alignment }}
+                                        {{- printf " style=%q" (printf "text-align: %s" .) | safeHTMLAttr }}
+                                    {{- end }}
+                                    >{{- .Text -}}</th>
+                            {{- else }}
+                                <td
+                                    {{- with .Alignment }}
+                                        {{- printf " style=%q" (printf "text-align: %s" .) | safeHTMLAttr }}
+                                    {{- end }}
+                                        aria-label="{{( index $THead 0 $index).Text | safeHTMLAttr }}"
+                                    >{{- .Text -}}</td>
+                            {{- end }}
+                        {{- end }}
+                    {{- end }}
+                </tr>
+            {{- end }}
+        {{- end }}
+    </tbody>
+</table>

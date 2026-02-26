@@ -40,6 +40,8 @@
 			{{- $type = "stackoverflow" }}
 		{{- else if or (in $parsedUrl.Host "serverfault.com") (in $parsedUrl.Host "stackexchange.com") }}
 			{{- $type = "stackexchange" }}
+		{{- else if in $parsedUrl.Host "steampowered.com" }}
+			{{- $type = "steam" }}
 		{{- else if $isExternal }}
 			{{- $type = "external" }}
 		{{- end }}

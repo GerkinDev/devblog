@@ -22,6 +22,8 @@
     <i class="fas fa-clipboard-list"></i>
 {{- else if eq . "anchor" -}}
     <i class="fas fa-anchor"></i>
+{{- else if eq . "steam" }}
+    <i class="fab fa-steam-symbol"></i>
 {{- else -}}
     {{ errorf "Incorrect type %q" . }}
 {{- end -}}
