@@ -4,23 +4,23 @@ date: 2020-11-22T04:03:47+01:00
 draft: false
 weight: 110
 categories:
-- Kubernetes
+  - Kubernetes
 tags:
-- Kubernetes
-- Sysadmin
+  - Kubernetes
+  - Sysadmin
 ---
 
 Your setup is running, everything runs smoothly, and suddenly, :bangbang: nothing is responding: your cluster is overloaded.
 
 Well, I hope you'll expand your cluster capacity before it happens. It's always really bad and stressful to do maintenance because of downtime.
 
-Hopefully, here comes the real huge advantage of *kubernetes*: it is meant to scale, up, and down. So, assuming you have followed the full guide so far, let's review together how to add some juice to our cluster :zap:.
+Hopefully, here comes the real huge advantage of _kubernetes_: it is meant to scale, up, and down. So, assuming you have followed the full guide so far, let's review together how to add some juice to our cluster :zap:.
 
 ## Join the cluster's VPN
 
 In the step {{<linkToPage "../00-vpn">}}, we have set up a VPN so that each of our nodes can communicate safely with each others, on their own virtual network across the internet. This comes with the great power of being able to have servers spread all around the globe.
 
-### From the *OpenVPN server node*
+### From the _OpenVPN server node_
 
 So, log in to the **OpenVPN master server**, and run the following to generate a configuration for your brand new machine:
 
@@ -37,7 +37,7 @@ Then, move `{{newNode.name}}.ovpn` to your new node **by a safe mean**.
 
 ### From the new node
 
-Install *OpenVPN*:
+Install _OpenVPN_:
 
 ```sh
 dnf install epel-release
@@ -45,14 +45,15 @@ dnf install openvpn
 ```
 
 {{<alert theme="info">}}
-Add the *OpenVPN* server to your `/etc/hosts` file (if not a real *DNS* name).
+Add the _OpenVPN_ server to your `/etc/hosts` file (if not a real _DNS_ name).
 
 ```sh
 echo '{{vpn.publicServerIp}}	vpn.{{cluster.baseHostName}}' >> /etc/hosts
 ```
+
 {{</alert>}}
 
-Install the *OpenVPN* configuration you just copied
+Install the _OpenVPN_ configuration you just copied
 
 ```sh
 # Install the OpenVPN configuration
@@ -72,7 +73,7 @@ ping -c 4 192.168.255.1
 
 ## Join the cluster
 
-Since I assume you've initialized your cluster a while ago, and your previous cluster's *join token* is expired, we are going to create a new one and use it.
+Since I assume you've initialized your cluster a while ago, and your previous cluster's _join token_ is expired, we are going to create a new one and use it.
 
 If you've just created your cluster, you can check out [02 - Kickstart the cluster](../02-cluster/#join-workers)
 
@@ -85,9 +86,11 @@ kubeadm token create --print-join-command
 ```
 
 {{<expand "Sample output">}}
+
 ```
 kubeadm join 192.168.255.10:6443 --token gmedpt.veqzvuhcazac26gf --discovery-token-ca-cert-hash sha256:cb316693e48403ff18f840d47930f6737744d2ead362838695df3a1e1400cec1
 ```
+
 {{</expand>}}
 
 Copy the `kubeadm join ...` command outputted by the command above.
@@ -103,6 +106,7 @@ kubeadm join ...:6443 --token ... --discovery-token-ca-cert-hash sha256:....
 If everything worked correctly, you should have an output like below:
 
 {{<expand "Sample output">}}
+
 ```
 [preflight] Running pre-flight checks
 [preflight] Reading configuration from the cluster...
@@ -118,4 +122,5 @@ This node has joined the cluster:
 
 Run 'kubectl get nodes' on the control-plane to see this node join the cluster.
 ```
+
 {{</expand>}}

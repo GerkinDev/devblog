@@ -649,9 +649,9 @@ metadata:
 spec:
   group: traefik.containo.us
   versions:
-  - name: v1alpha1
-    served: true
-    storage: true
+    - name: v1alpha1
+      served: true
+      storage: true
   names:
     kind: IngressRouteUDP
     plural: ingressrouteudps
@@ -722,9 +722,9 @@ metadata:
 spec:
   group: traefik.containo.us
   versions:
-  - name: v1alpha1
-    served: true
-    storage: true
+    - name: v1alpha1
+      served: true
+      storage: true
   names:
     kind: TLSStore
     plural: tlsstores
@@ -939,9 +939,9 @@ metadata:
 spec:
   group: traefik.containo.us
   versions:
-  - name: v1alpha1
-    served: true
-    storage: true
+    - name: v1alpha1
+      served: true
+      storage: true
   names:
     kind: ServersTransport
     plural: serverstransports

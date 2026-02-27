@@ -49,13 +49,13 @@ spec:
   entryPoints:
     - websecure
   routes:
-  - match: Host(`whoami.{{cluster.baseHostName}}`) && PathPrefix(`/tls`)
-    kind: Rule
-    services:
-    # Beware: the service MUST be in the same namespace than the IngressRoute.
-    - name: whoami
-      kind: Service
-      port: 80
+    - match: Host(`whoami.{{cluster.baseHostName}}`) && PathPrefix(`/tls`)
+      kind: Rule
+      services:
+        # Beware: the service MUST be in the same namespace than the IngressRoute.
+        - name: whoami
+          kind: Service
+          port: 80
   tls:
     certResolver: myresolver
 ---
@@ -68,10 +68,10 @@ spec:
   entryPoints:
     - web
   routes:
-  - match: Host(`whoami.{{cluster.baseHostName}}`) && PathPrefix(`/notls`)
-    kind: Rule
-    services:
-    # Beware: the service MUST be in the same namespace than the IngressRoute.
-    - name: whoami
-      kind: Service
-      port: 80
+    - match: Host(`whoami.{{cluster.baseHostName}}`) && PathPrefix(`/notls`)
+      kind: Rule
+      services:
+        # Beware: the service MUST be in the same namespace than the IngressRoute.
+        - name: whoami
+          kind: Service
+          port: 80

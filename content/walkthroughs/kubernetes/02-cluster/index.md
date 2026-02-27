@@ -5,24 +5,26 @@ draft: false
 weight: 30
 layout: single
 categories:
-- Kubernetes
+  - Kubernetes
 tags:
-- Kubernetes
-- Sysadmin
-- DevOps
+  - Kubernetes
+  - Sysadmin
+  - DevOps
 ---
 
 ## Create the cluster config file
 
 {{<expand "References">}}
-* <https://stackoverflow.com/a/60391611>
+
+- <https://stackoverflow.com/a/60391611>
+
 {{</expand>}}
 
-We are now going to configure the cluster. For the sake of traceability, this configuration won't be done via CLI flags, but via [a configuration file](<!-- TODO -->). The path of the cluster config file will later be referenced as the {{<var "cluster.configFile">}}, and **should** be inside `/etc/kubernetes`.
+We are now going to configure the cluster. For the sake of traceability, this configuration won't be done via CLI flags, but via [a configuration file]((<!-- TODO -->)). The path of the cluster config file will later be referenced as the {{<var "cluster.configFile">}}, and **should** be inside `/etc/kubernetes`.
 
 Following [flannel requirements](https://github.com/coreos/flannel/blob/master/Documentation/kubernetes.md#kubeadm), you need to use `--pod-network-cidr` with address `10.244.0.0./16`. This CLI option is equivalent to `networking.podSubnet` in our {{<var "cluster.configFile">}} file (see [this issue](https://github.com/kubernetes/kubeadm/issues/1899)).
 
-The variable {{<var "cluster.advertiseAddress">}} must be set to the network address of your master node **through the *VPN***. You can get it like so:
+The variable {{<var "cluster.advertiseAddress">}} must be set to the network address of your master node **through the _VPN_**. You can get it like so:
 
 ```sh
 ip -4 a show tun0 | grep -Po 'inet \K[0-9.]*'
@@ -41,11 +43,13 @@ chmod 600 {{cluster.configFile}}
 ## Finally, init the cluster
 
 {{<expand "References">}}
-* <https://godoc.org/k8s.io/kubernetes/cmd/kubeadm/app/apis/kubeadm/v1beta2>
-* <https://github.com/coreos/flannel/blob/master/Documentation/kubernetes.md>
-* <https://github.com/kubernetes/kubeadm/issues/203#issuecomment-335416377>
-* <https://coreos.com/os/docs/latest/using-systemd-drop-in-units.html>
-* <https://discuss.kubernetes.io/t/flannel-yaml-file-customization-iface-for-vagrant-linux-cluster/4873>
+
+- <https://godoc.org/k8s.io/kubernetes/cmd/kubeadm/app/apis/kubeadm/v1beta2>
+- <https://github.com/coreos/flannel/blob/master/Documentation/kubernetes.md>
+- <https://github.com/kubernetes/kubeadm/issues/203#issuecomment-335416377>
+- <https://coreos.com/os/docs/latest/using-systemd-drop-in-units.html>
+- <https://discuss.kubernetes.io/t/flannel-yaml-file-customization-iface-for-vagrant-linux-cluster/4873>
+
 {{</expand>}}
 
 Pay attention to the feedbacks of the `kubeadm` command. It will show warnings about misconfigurations.
@@ -66,7 +70,7 @@ systemctl restart kubelet.service
 systemctl status kubelet.service
 ```
 
-To communicate with each other, pods need a network layer. We'll use *flannel* for this. Following its [installation instruction](https://github.com/coreos/flannel#deploying-flannel-manually), you need to deploy [this file](https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml). But there's a problem: as mentioned in the [configuration documentation](https://github.com/coreos/flannel/blob/master/Documentation/configuration.md#key-command-line-options), *flannel* use the default route (our public network) by default, and we still want to use the VPN fio this. So, I've just added a single line in the [kube-flannel file](https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml) to specify our VPN interface (line 188, `- --iface=tun0`).
+To communicate with each other, pods need a network layer. We'll use _flannel_ for this. Following its [installation instruction](https://github.com/coreos/flannel#deploying-flannel-manually), you need to deploy [this file](https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml). But there's a problem: as mentioned in the [configuration documentation](https://github.com/coreos/flannel/blob/master/Documentation/configuration.md#key-command-line-options), _flannel_ use the default route (our public network) by default, and we still want to use the VPN fio this. So, I've just added a single line in the [kube-flannel file](https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml) to specify our VPN interface (line 188, `- --iface=tun0`).
 
 {{<includeCodeFile "./kubernetes/flannel.yaml">}}
 
@@ -92,7 +96,6 @@ If lost, you can create a new one by executing following command on the control 
 kubeadm token create --print-join-command
 ```
 
-
 ```sh
 sed -i.bak "s/KUBELET_EXTRA_ARGS=/KUBELET_EXTRA_ARGS=--node-ip=$(ip -4 a show tun0 | grep -Po 'inet \K[0-9.]*') /" /etc/sysconfig/kubelet
 systemctl restart kubelet.service
@@ -115,7 +118,9 @@ You may repeat this part of the process during the life of your cluster to add n
 ## Initialize metallb
 
 {{<expand "References">}}
-* <https://metallb.universe.tf/installation/>
+
+- <https://metallb.universe.tf/installation/>
+
 {{</expand>}}
 
 Create a metallb configmap, from the {{<linkToIncludedFile "./kubernetes/metallb-configmap.yaml">}} template. [See the docs](https://metallb.universe.tf/configuration/$docs) for full reference on this config file & how to adapt it to your network configuration..
@@ -178,7 +183,9 @@ dnf reinstall -y kubelet kubeadm kubectl --disableexcludes=kubernetes
 ### Nginx external ip is always `pending`
 
 {{<expand "References">}}
-* <https://stackoverflow.com/a/60151612>
+
+- <https://stackoverflow.com/a/60151612>
+
 {{</expand>}}
 
 Check that iptables is patched correctly.
@@ -210,9 +217,11 @@ Check firewall, getenforce & swap status.
 ### Network interfaces are not deleted after reseting kubeadm
 
 {{<expand "References">}}
-* <https://blog.heptio.com/properly-resetting-your-kubeadm-bootstrapped-cluster-nodes-heptioprotip-473bd0b824aa>
-* <https://stackoverflow.com/a/46438072>
-* <https://stackoverflow.com/a/46480447/4839162>
+
+- <https://blog.heptio.com/properly-resetting-your-kubeadm-bootstrapped-cluster-nodes-heptioprotip-473bd0b824aa>
+- <https://stackoverflow.com/a/46438072>
+- <https://stackoverflow.com/a/46480447/4839162>
+
 {{</expand>}}
 
 ```sh
@@ -223,7 +232,7 @@ ip link delete flannel.1
 
 ## Usefull commands memo
 
-* Force reinit cluster: 
+- Force reinit cluster:
   ```sh
   ( sudo kubeadm reset -f && sudo rm -rf /etc/cni/net.d || 1 ) && \
     sudo kubeadm init --config cluster-config.yaml

@@ -21,9 +21,9 @@ ingress:
     component: keycloak
 
   tls:
-  - hosts:
-    - keycloak.{{cluster.baseHostName}}
-    - kube-keycloak.{{cluster.baseHostName}}
+    - hosts:
+        - keycloak.{{cluster.baseHostName}}
+        - kube-keycloak.{{cluster.baseHostName}}
 postgresql:
   postgresqlPassword: keycloak
   postgresqlDatabase: keycloak

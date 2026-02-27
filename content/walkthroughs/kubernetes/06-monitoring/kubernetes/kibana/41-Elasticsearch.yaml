@@ -39,24 +39,23 @@ spec:
 
     spec:
       containers:
-      - name: elasticsearch
-        image: docker.elastic.co/elasticsearch/elasticsearch:6.5.4
-        env:
-        - name: discovery.type
-          value: single-node
-        ports:
-        - containerPort: 9200
-          name: http
-          protocol: TCP
-        volumeMounts:
-          - mountPath: "/usr/share/elasticsearch/data"
-            name: elasticsearch-data
-            subPath: kibana-elasticsearch
+        - name: elasticsearch
+          image: docker.elastic.co/elasticsearch/elasticsearch:6.5.4
+          env:
+            - name: discovery.type
+              value: single-node
+          ports:
+            - containerPort: 9200
+              name: http
+              protocol: TCP
+          volumeMounts:
+            - mountPath: "/usr/share/elasticsearch/data"
+              name: elasticsearch-data
+              subPath: kibana-elasticsearch
       volumes:
         - name: elasticsearch-data
           persistentVolumeClaim:
             claimName: elasticsearch-data
-
 
 ---
 

@@ -9,19 +9,14 @@ draft: true
 # tocPosition: inner
 # tocLevels: ["h2", "h3", "h4"]
 tags:
-- Security
-series:
--
-categories:
--
-image:
+  - Security
 ---
 
-[*RSA* (*`R`ivest–`S`hamir–`A`dleman*)](https://en.wikipedia.org/wiki/RSA_(cryptosystem)) is an *asymmetric encryption* protocol, widely used in the tech world because of its robustness. It is one of the central pieces of [*TLS* (_`T`ransport `L`ayer `S`ecurity_) and its predecessor, *SSL* (_`S`ecure `S`ocket `L`ayer_)](https://en.wikipedia.org/wiki/Transport_Layer_Security)
+[_RSA_ (_`R`ivest–`S`hamir–`A`dleman_)](https://en.wikipedia.org/wiki/RSA_(cryptosystem)) is an _asymmetric encryption_ protocol, widely used in the tech world because of its robustness. It is one of the central pieces of [_TLS_ (_`T`ransport `L`ayer `S`ecurity_) and its predecessor, _SSL_ (_`S`ecure `S`ocket `L`ayer_)](https://en.wikipedia.org/wiki/Transport_Layer_Security)
 
-What does *asymmetric encryption* means ? It is opposed to the *symmetric encryption*, where the same key can be used to encode and decode data. In *asymmetric encryption*, there are 2 keys, and each of those keys can encrypt messages, and decode messages encrypted by the other key.
+What does _asymmetric encryption_ means ? It is opposed to the _symmetric encryption_, where the same key can be used to encode and decode data. In _asymmetric encryption_, there are 2 keys, and each of those keys can encrypt messages, and decode messages encrypted by the other key.
 
-*RSA* is also able to give a proof that you are actually talking with the right person, preventing [*Man-In-The-Middle* attacks](https://en.wikipedia.org/wiki/Man-in-the-middle_attack), if you use it correctly.
+_RSA_ is also able to give a proof that you are actually talking with the right person, preventing [_Man-In-The-Middle_ attacks](https://en.wikipedia.org/wiki/Man-in-the-middle_attack), if you use it correctly.
 
 While the 2 points above are super great for security and privacy, they come also with some drawbacks: generating, manipulating and using RSA keys can be a bit confusing, and that's why I'm writing this article.
 
@@ -31,7 +26,7 @@ See this article like a personal guide I publish in case it can help someone. It
 
 ## File formats
 
-As said above, [*RSA*](https://en.wikipedia.org/wiki/RSA_(cryptosystem)) being an *asymmetric encryption* protocol, it must have 2 different keys. But to support more security methods, like [*Man-In-The-Middle*](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) prevention, there are other file formats, each with its own use. Let's explain the most common of them.
+As said above, [_RSA_](https://en.wikipedia.org/wiki/RSA_(cryptosystem)) being an _asymmetric encryption_ protocol, it must have 2 different keys. But to support more security methods, like [_Man-In-The-Middle_](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) prevention, there are other file formats, each with its own use. Let's explain the most common of them.
 
 ### `.key`: The private `key`
 
@@ -40,12 +35,12 @@ The private key is one of the 2 keys mentioned above, that is meant to be used b
 {{<alert theme="danger">}}
 As its name suggests, this file is **super** critical: anyone having this can decode messages that are sent to you, encrypted with your [public key](#pub-the-public-key).
 
-You should **never __ever__** send it to untrusted party. Other people should have the [public key](#pub-the-public-key).
+You should **never **ever**** send it to untrusted party. Other people should have the [public key](#pub-the-public-key).
 {{</alert>}}
 
 #### What does it contains ?
 
-A "*simple*" [base64](https://en.wikipedia.org/wiki/Base64) string with a distinguishing header to identify it as a private key. It looks like this:
+A "_simple_" [base64](https://en.wikipedia.org/wiki/Base64) string with a distinguishing header to identify it as a private key. It looks like this:
 
 ```
 -----BEGIN RSA PRIVATE KEY-----
@@ -56,7 +51,7 @@ mQIhAO8md6mejmATo2fEit3D3kWhHRGl....
 -----END RSA PRIVATE KEY-----
 ```
 
-The random stuff in the middle has a length depending on the *modulus* of the key, measured in *bits* (not *bytes*).
+The random stuff in the middle has a length depending on the _modulus_ of the key, measured in _bits_ (not _bytes_).
 
 #### How to make one ?
 
@@ -64,7 +59,7 @@ The random stuff in the middle has a length depending on the *modulus* of the ke
 openssl genrsa -out test.key 2048
 ```
 
-Here, `2048` is the modulus. To be considered safe until 2030, it is recommended to be [at least 2048 *bits*](https://www.javamex.com/tutorials/cryptography/rsa_key_length.shtml) (so 256 *bytes*). But if computation is not a problem, don't hesitate to go for 4096 *bits*. Without misplaced analogy, keep in mind that the larger, the better :grin:.
+Here, `2048` is the modulus. To be considered safe until 2030, it is recommended to be [at least 2048 _bits_](https://www.javamex.com/tutorials/cryptography/rsa_key_length.shtml) (so 256 _bytes_). But if computation is not a problem, don't hesitate to go for 4096 _bits_. Without misplaced analogy, keep in mind that the larger, the better :grin:.
 
 #### How to inspect ?
 
@@ -73,6 +68,7 @@ openssl rsa -text -in foo.key
 ```
 
 {{<expand "Sample output">}}
+
 ```
 RSA Private-Key: (512 bit, 2 primes)
 modulus:
@@ -109,6 +105,7 @@ coefficient:
     f9:3e:07:e3:99:59:03:13:5f:49:97:79:86:96:9e:
     a8:c3
 ```
+
 {{</expand>}}
 
 There is a lot of maths involved here, so I won't go any further. But if you're curious, go ahead and find out what those are !
@@ -135,7 +132,7 @@ There is a lot of maths involved here, so I won't go any further. But if you're 
 openssl x509 -noout -text -in foo.crt
 ```
 
-### `.pem`: 
+### `.pem`:
 
 [How to create a .pem file for SSL Certificate Installations](https://www.suse.com/support/kb/doc/?id=000018152)
 https://en.wikipedia.org/wiki/Privacy-enhanced_Electronic_Mail

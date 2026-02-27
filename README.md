@@ -10,6 +10,7 @@ hugo server -DEF
 ```
 
 Tested on
+
 ```
 $ hugo version  
 hugo v0.156.0-9d914726dee87b0e8e3d7890d660221bde372eec+extended linux/amd64 BuildDate=2026-02-18T16:39:55Z VendorInfo=snap:0.156.0
@@ -17,8 +18,8 @@ hugo v0.156.0-9d914726dee87b0e8e3d7890d660221bde372eec+extended linux/amd64 Buil
 
 ## Third party
 
-* [**GitHub corners**](https://github.com/tholman/github-corners): MIT
-* [**findAndReplaceDOMText**](https://github.com/padolsey/findAndReplaceDOMText): unlicense
+- [**GitHub corners**](https://github.com/tholman/github-corners): MIT
+- [**findAndReplaceDOMText**](https://github.com/padolsey/findAndReplaceDOMText): unlicense
 
 ## Continuous Deployment
 

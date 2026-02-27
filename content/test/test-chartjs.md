@@ -5,14 +5,10 @@ description: "Simple yet flexible JavaScript charting for designers & developers
 draft: true
 enableToc: false
 enableTocContent: false
-tags:
--
-series:
--
 categories:
-- diagram
+  - diagram
 libraries:
-- chart
+  - chart
 image: images/feature1/graph.png
 ---
 
@@ -31,24 +27,24 @@ image: images/feature1/graph.png
 ```
 
 ```chart
-    {
-    "type": "line",
-        "data": {
-            "labels": ["One", "Two", "Three", "Four", "Five", "Six"],
-            "datasets": [
-            {
-                "label": "# of Votes",
-                "data": [12, 19, 3, 5, 2, 3],
-                "backgroundColor":"transparent",
-                "borderColor":"orange"
-            },
-            {
-                "label": "Some other set",
-                "data": [15, 8, 13, 5, 5, 9],
-                "backgroundColor":"transparent",
-                "borderColor":"#44ccff"
-            }
-            ]
+{
+"type": "line",
+    "data": {
+        "labels": ["One", "Two", "Three", "Four", "Five", "Six"],
+        "datasets": [
+        {
+            "label": "# of Votes",
+            "data": [12, 19, 3, 5, 2, 3],
+            "backgroundColor":"transparent",
+            "borderColor":"orange"
+        },
+        {
+            "label": "Some other set",
+            "data": [15, 8, 13, 5, 5, 9],
+            "backgroundColor":"transparent",
+            "borderColor":"#44ccff"
         }
+        ]
     }
+}
 ```

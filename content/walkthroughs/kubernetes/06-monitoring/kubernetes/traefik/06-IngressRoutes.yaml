@@ -7,14 +7,14 @@ spec:
   entryPoints:
     - websecure
   routes:
-  - match: Host(`traefik.{{cluster.baseHostName}}`) && PathPrefix(`/dashboard`)
-    kind: Rule
-    services:
-    - name: dashboard@internal
-      kind: TraefikService
-    middlewares:
-    - name: dashboard-stripprefix
-      namespace: traefik
+    - match: Host(`traefik.{{cluster.baseHostName}}`) && PathPrefix(`/dashboard`)
+      kind: Rule
+      services:
+        - name: dashboard@internal
+          kind: TraefikService
+      middlewares:
+        - name: dashboard-stripprefix
+          namespace: traefik
   tls:
     certResolver: myresolver
 ---
@@ -27,11 +27,11 @@ spec:
   entryPoints:
     - websecure
   routes:
-  - match: Host(`traefik.{{cluster.baseHostName}}`) && PathPrefix(`/api`)
-    kind: Rule
-    services:
-    - name: api@internal
-      kind: TraefikService
+    - match: Host(`traefik.{{cluster.baseHostName}}`) && PathPrefix(`/api`)
+      kind: Rule
+      services:
+        - name: api@internal
+          kind: TraefikService
   tls:
     certResolver: myresolver
 ---

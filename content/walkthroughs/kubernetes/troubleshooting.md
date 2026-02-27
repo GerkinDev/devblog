@@ -4,12 +4,12 @@ date: 2020-11-16T02:35:47+01:00
 draft: true
 weight: 1000
 categories:
-- Kubernetes
+  - Kubernetes
 tags:
-- Kubernetes
-- Sysadmin
-- DevOps
-- Troubleshooting
+  - Kubernetes
+  - Sysadmin
+  - DevOps
+  - Troubleshooting
 ---
 
 ## Networking
@@ -25,6 +25,7 @@ ip route show cache
 # Flush cache
 ip route flush cache
 ```
+
 {{</notice>}}
 
 {{<notice "danger" "Last resort">}}
@@ -33,9 +34,10 @@ In the worst case, fully reset routing
 ```sh
 ip route flush table main
 ```
+
 {{</notice>}}
 
-### Can't reach ClusterIP from node 
+### Can't reach ClusterIP from node
 
 https://stackoverflow.com/a/54849731
 
@@ -68,4 +70,3 @@ Remember that at this point, changes to iptables are applied **until the machine
 ```sh
 iptables-save
 ```
-

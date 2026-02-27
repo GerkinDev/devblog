@@ -4,14 +4,14 @@ date: 2020-11-16T02:35:47+01:00
 draft: false
 weight: 80
 categories:
-- Kubernetes
+  - Kubernetes
 tags:
-- Kubernetes
-- Sysadmin
-- DevOps
-- Web service
-- Security
-- Authentication
+  - Kubernetes
+  - Sysadmin
+  - DevOps
+  - Web service
+  - Security
+  - Authentication
 ---
 
 Here is a graph of the RBAC setup we are going to implement:
@@ -25,16 +25,19 @@ We'll use keycloak to proxy our authentication for all monitors, using a single 
 ### 1.1. Install keycloak
 
 {{<expand "References">}}
-* <https://kubernetes.github.io/ingress-nginx/examples/auth/oauth-external-auth/>
-* <https://itnext.io/protect-kubernetes-dashboard-with-openid-connect-104b9e75e39c>
-* <https://geek-cookbook.funkypenguin.co.nz/ha-docker-swarm/traefik-forward-auth/keycloak/>
-* <https://medium.com/docker-hacks/how-to-apply-authentication-to-any-web-service-in-15-minutes-using-keycloak-and-keycloak-proxy-e4dd88bc1cd5>
-* <https://www.openshift.com/blog/adding-authentication-to-your-kubernetes-web-applications-with-keycloak>
+
+- <https://kubernetes.github.io/ingress-nginx/examples/auth/oauth-external-auth/>
+- <https://itnext.io/protect-kubernetes-dashboard-with-openid-connect-104b9e75e39c>
+- <https://geek-cookbook.funkypenguin.co.nz/ha-docker-swarm/traefik-forward-auth/keycloak/>
+- <https://medium.com/docker-hacks/how-to-apply-authentication-to-any-web-service-in-15-minutes-using-keycloak-and-keycloak-proxy-e4dd88bc1cd5>
+- <https://www.openshift.com/blog/adding-authentication-to-your-kubernetes-web-applications-with-keycloak>
+
 {{</expand>}}
 
-Start by installing *Keycloak* via the [*Helm* chart](https://hub.helm.sh/charts/codecentric/keycloak) & expose it, using following templates: 
-* {{<linkToIncludedFile "./kubernetes/authentication/01-KeycloakChartValues.yaml">}}
-* {{<linkToIncludedFile "./kubernetes/authentication/02-PublicRoute.yaml">}}
+Start by installing _Keycloak_ via the [_Helm_ chart](https://hub.helm.sh/charts/codecentric/keycloak) & expose it, using following templates:
+
+- {{<linkToIncludedFile "./kubernetes/authentication/01-KeycloakChartValues.yaml">}}
+- {{<linkToIncludedFile "./kubernetes/authentication/02-PublicRoute.yaml">}}
 
 {{<includeCodeFile "./kubernetes/authentication/01-KeycloakChartValues.yaml">}}
 {{<includeCodeFile "./kubernetes/authentication/02-PublicRoute.yaml">}}
@@ -57,12 +60,14 @@ This install should end by displaying either the default keycloak user's passwor
 ### 1.2. Alias hostname of keycloak from the cluster
 
 {{<expand "References">}}
-* <https://stackoverflow.com/a/54692872>
+
+- <https://stackoverflow.com/a/54692872>
+
 {{</expand>}}
 
 > **Note :** This part is not required if you use a real host name registered with a A record. But if you use a fake hostname (which I still recommend at that point), DNS resolution of services trying to reach keycloak will fail, because your pods don't know where is `https://keycloak.{{cluster.baseHostName}}`.
 
-We are going to alias the hostname `keycloak.{{cluster.baseHostName}}` so that it resolves to the internal name of our keycloak service, `keycloak-http.keycloak.svc.cluster.local`. For this, you need to edit *CoreDNS* configuration.
+We are going to alias the hostname `keycloak.{{cluster.baseHostName}}` so that it resolves to the internal name of our keycloak service, `keycloak-http.keycloak.svc.cluster.local`. For this, you need to edit _CoreDNS_ configuration.
 
 ```sh
 # Open the CoreDNS config map
@@ -77,7 +82,7 @@ rewrite name keycloak.{{cluster.baseHostName}} keycloak-http.keycloak.svc.cluste
 
 > I added it just above the `ready` block (I don't know if it really matters).
 
-Then, restart *CoreDNS* pods by deleting them.
+Then, restart _CoreDNS_ pods by deleting them.
 
 ```sh
 kubectl -n kube-system delete pods $(kubectl -n kube-system get pods -l k8s-app=kube-dns -o json | jq '.items[].metadata.name' -r)
@@ -91,8 +96,8 @@ So, now, we can use `keycloak.{{cluster.baseHostName}}` as a domain name everywh
 
 Log in to your keycloak admin dashboard by reaching `https://keycloak.{{cluster.baseHostName}}/auth/admin/`.
 
-* Username: {{<var "keycloak.adminUser">}}
-* Password: {{<var "keycloak.adminPassword">}}
+- Username: {{<var "keycloak.adminUser">}}
+- Password: {{<var "keycloak.adminPassword">}}
 
 {{<alert theme="danger">}}
 At your first login, **change your password** !
@@ -102,7 +107,7 @@ At your first login, **change your password** !
 
 #### 1.4.1. Create groups
 
-To manage our groups, go to *`Master` realm* > *`Manage`* > *`Groups` section* > *`New` button*.
+To manage our groups, go to _`Master` realm_ > _`Manage`_ > _`Groups` section_ > _`New` button_.
 
 ![Group creation screen](./_assets/screen-groups-add-group.png)
 
@@ -110,17 +115,17 @@ Create all the groups you need. For the setup I describe, I have to create group
 
 #### 1.4.2. Create users
 
-To manage our users, go to *`Master` realm* > *`Manage`* > *`Users` section* > *`Add user` button*. Fill the form with at least a username. I usually **check** *email verified* just in case because I trust the emails I put in.
+To manage our users, go to _`Master` realm_ > _`Manage`_ > _`Users` section_ > _`Add user` button_. Fill the form with at least a username. I usually **check** _email verified_ just in case because I trust the emails I put in.
 
 ![Users management screen](./_assets/screen-users.png)
 
 ![User creation screen](./_assets/screen-users-add-user.png)
 
-If you want to allow this user to log in via username/password, set its password in the *`Credentials` tab*. If the `Temporary` option is set, the user will have to change its password on first login.
+If you want to allow this user to log in via username/password, set its password in the _`Credentials` tab_. If the `Temporary` option is set, the user will have to change its password on first login.
 
 ![User credentials settings](./_assets/screen-users-user-credentials.png)
 
-Assign your new user to the groups you want by going to the *`Groups` tab*.
+Assign your new user to the groups you want by going to the _`Groups` tab_.
 
 ![User groups management](./_assets/screen-users-user-groups.png)
 
@@ -128,21 +133,21 @@ Go on and create all the users you need, and assign relevant groups to them.
 
 #### 1.4.3. Setup clients & scopes
 
-> :information_source: Info: If you're not familiar with oauth2, *clients* are *roughly* applications that are allowed to authenticate users in your authentication system (keycloak). *Clients* can ask for grants of *scopes*, that are user informations they want to access to.
+> :information_source: Info: If you're not familiar with oauth2, _clients_ are _roughly_ applications that are allowed to authenticate users in your authentication system (keycloak). _Clients_ can ask for grants of _scopes_, that are user informations they want to access to.
 
 Back in the dashboards setup, we'll protect our apps `Test app`, `kibana`, `kube dashboard` & `traefik` using [gogatekeeper/gatekeeper](https://github.com/gogatekeeper/gatekeeper).
 
 ##### 1.4.3.1. Create scopes
 
-Since our apps `Test app`, `kibana`, `kube dashboard` & `traefik` will all rely on the same information (`group`), we can get our setup easier by adding a shared `Client scope`. Go to *`Master` realm* > *`Configure`* > *`Client Scopes` section*. Here, check if there is a client scope named `groups` (I didn't, but just in case).
+Since our apps `Test app`, `kibana`, `kube dashboard` & `traefik` will all rely on the same information (`group`), we can get our setup easier by adding a shared `Client scope`. Go to _`Master` realm_ > _`Configure`_ > _`Client Scopes` section_. Here, check if there is a client scope named `groups` (I didn't, but just in case).
 
 If not, create one named `groups`, then save it. If there is one, check if the following config matches or create a new one.
 
-After, go to the new *`Mappers` tab* & create a new mapper. This mapper will put the groups we set up earlier in our user's token. Set its `Mapper Type` to `Group Membership`, & the `Token Claim Name` to `groups`. This is the name of the token's field we'll use later in our authentication proxy.
+After, go to the new _`Mappers` tab_ & create a new mapper. This mapper will put the groups we set up earlier in our user's token. Set its `Mapper Type` to `Group Membership`, & the `Token Claim Name` to `groups`. This is the name of the token's field we'll use later in our authentication proxy.
 
 ![Groups mapper](./_assets/screen-client-scopes-mappers-group.png)
 
-Once done, you **may** add it to the default *client scopes*.  Go to *`Master` realm* > *`Configure`* > *`Client Scopes` section* > *`Default Client Scopes` tab*, & add our `groups` to the assigned column. You should probably not set it as `Optional`.
+Once done, you **may** add it to the default _client scopes_. Go to _`Master` realm_ > _`Configure`_ > _`Client Scopes` section_ > _`Default Client Scopes` tab_, & add our `groups` to the assigned column. You should probably not set it as `Optional`.
 
 ##### 1.4.3.2. Create client
 
@@ -152,18 +157,20 @@ Since this application will be logged in through a proxy (we'll get back to that
 
 Set the valid redirect URIs to `https://test.{{cluster.baseHostName}}/oauth/callback` (the `/oauth/callback` part is required by the gatekeeper).
 
-Then, we need to add an audience. This field is required by gatekeeper to check our key. Go to the *`Mappers` tab*, & create a new mapper. Name it, for instance, `audience`, of `Mapper Type` `Audience`, & set the `Included Client Audience` to our {{<var "nginxTest.clientId">}}. Save it.
+Then, we need to add an audience. This field is required by gatekeeper to check our key. Go to the _`Mappers` tab_, & create a new mapper. Name it, for instance, `audience`, of `Mapper Type` `Audience`, & set the `Included Client Audience` to our {{<var "nginxTest.clientId">}}. Save it.
 
-After this, check our *client scopes* by going to the *`Client Scopes` tab*. In the *`Setup` sub-tab*, make sure that our `groups` *client scope* is **assigned**. Then, you can test our setup ! Go to the *`Evaluate` sub-tab*, pick the `User` you want to check, click `Evaluate` then go to *`Generated Access Token` sub-sub-tab*. It should contain a key `groups` with all our user's groups, prefixed with a `/`, and a key `aud` with at least our {{<var "nginxTest.clientId">}}. If its okay, we are good to go !
+After this, check our _client scopes_ by going to the _`Client Scopes` tab_. In the _`Setup` sub-tab_, make sure that our `groups` _client scope_ is **assigned**. Then, you can test our setup ! Go to the _`Evaluate` sub-tab_, pick the `User` you want to check, click `Evaluate` then go to _`Generated Access Token` sub-sub-tab_. It should contain a key `groups` with all our user's groups, prefixed with a `/`, and a key `aud` with at least our {{<var "nginxTest.clientId">}}. If its okay, we are good to go !
 
-And, finally, go to the *`Credentials` tab* & get the secret. It will be used as {{<var "nginxTest.clientSecret">}}.
+And, finally, go to the _`Credentials` tab_ & get the secret. It will be used as {{<var "nginxTest.clientSecret">}}.
 
 Other clients protected by our gatekeeper will be very similar.
 
 ## 2. Setup our test application protected by authentication
 
 {{<expand "References">}}
-* https://www.openshift.com/blog/adding-authentication-to-your-kubernetes-web-applications-with-keycloak
+
+- https://www.openshift.com/blog/adding-authentication-to-your-kubernetes-web-applications-with-keycloak
+
 {{</expand>}}
 
 We'll start with the simplest of our cases: the `nginx-test` app. This will allow us to get used to keycloak for our authorization mechanism. We'll proxy a simple nginx default instance behind our authentication proxy.
@@ -172,7 +179,7 @@ Look at the {{<linkToIncludedFile "./kubernetes/11-NginxTest.yaml">}} template.
 
 {{<includeCodeFile "./kubernetes/11-NginxTest.yaml">}}
 
-As you may notice in this template, the option `--discovery-url=https://keycloak.{{cluster.baseHostName}}/auth/realms/master` tells our authentication proxy where is our OAuth2 provider. If you are using an aliased hostname, this won't resolve, as your server can't resolve an IP for this hostname. That's why we edited *CoreDNS* configuration earlier.
+As you may notice in this template, the option `--discovery-url=https://keycloak.{{cluster.baseHostName}}/auth/realms/master` tells our authentication proxy where is our OAuth2 provider. If you are using an aliased hostname, this won't resolve, as your server can't resolve an IP for this hostname. That's why we edited _CoreDNS_ configuration earlier.
 
 So let's deploy that:
 
@@ -192,10 +199,12 @@ Well, now we know that our stuff work ! Let's delete this test application.
 kubectl delete -f 11-NginxTest.yaml
 ```
 
-## 3. Persist data from *Keycloak*
+## 3. Persist data from _Keycloak_
 
 {{<expand "References">}}
-* <https://github.com/docker-library/postgres/issues/361>
+
+- <https://github.com/docker-library/postgres/issues/361>
+
 {{</expand>}}
 
 You can use a persistent datastore by setting `postgresql.enabled` to `true`. Think about setting `postgresql.storageClass`.
