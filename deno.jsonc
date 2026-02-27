@@ -1,6 +1,6 @@
 {
   "fmt": {
-    "exclude": ["themes/", "**/*.html"],
+    "exclude": ["themes/", "**/*.html", "assets/jsconfig.json"],
     "proseWrap": "preserve"
   }
 }
