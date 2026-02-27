@@ -3,9 +3,9 @@ apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: oidc-kubernetes-admin
 subjects:
-- kind: Group
-  name: oidc:/kubernetes-admin
-  apiGroup: rbac.authorization.k8s.io
+  - kind: Group
+    name: oidc:/kubernetes-admin
+    apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: ClusterRole
   name: cluster-admin
@@ -16,10 +16,10 @@ apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: oidc-kubernetes-view
 subjects:
-- kind: Group
-  name: oidc:/kubernetes-viewer
-  apiGroup: rbac.authorization.k8s.io
+  - kind: Group
+    name: oidc:/kubernetes-viewer
+    apiGroup: rbac.authorization.k8s.io
 roleRef:
   kind: ClusterRole
   name: system:public-info-viewer
-  apiGroup: rbac.authorization.k8s.io  
+  apiGroup: rbac.authorization.k8s.io

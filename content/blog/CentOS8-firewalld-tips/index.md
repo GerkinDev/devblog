@@ -9,23 +9,20 @@ enableTocContent: false
 tocPosition: outer
 tocLevels: ["h2", "h3", "h4"]
 tags:
-- Firewall
-- Security
-- Sysadmin
-- Troubleshooting
-series:
--
-categories:
--
-image:
+  - Firewall
+  - Security
+  - Sysadmin
+  - Troubleshooting
 ---
 
 When configuring firewall rules to be as strict as required, you may have some troubles understanding why something you thought was allowed is, actually, not. And to track down this kind of issues, some logs might help. Here is a small copy-pasta to enable `firewalld` logging.
 
-## Enable "*Access Denied*"
+## Enable "_Access Denied_"
 
 {{<expand "References">}}
- * [How to enable firewalld logging for denied packets on Linux](https://www.cyberciti.biz/faq/enable-firewalld-logging-for-denied-packets-on-linux/)
+
+- [How to enable firewalld logging for denied packets on Linux](https://www.cyberciti.biz/faq/enable-firewalld-logging-for-denied-packets-on-linux/)
+
 {{</expand>}}
 
 `firewalld` can log events to `rsyslog`, the events journal in most linux distribution. This can be enable either at runtime (that won't persist across service restarts) or by configuration to keep it enabled for longer periods.

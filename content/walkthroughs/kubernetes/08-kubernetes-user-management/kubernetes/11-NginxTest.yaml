@@ -50,9 +50,6 @@ spec:
     app: nginx-test
     component: nginx
 
-
-
-
 # Authentication proxy
 ---
 apiVersion: apps/v1
@@ -60,20 +57,20 @@ kind: Deployment
 metadata:
   name: gatekeeper
   namespace: nginx-test
-  labels: 
+  labels:
     app: nginx-test
     component: gatekeeper
 
 spec:
   replicas: 1
   selector:
-    matchLabels: 
+    matchLabels:
       app: nginx-test
       component: gatekeeper
 
   template:
     metadata:
-      labels: 
+      labels:
         app: nginx-test
         component: gatekeeper
 
@@ -81,8 +78,8 @@ spec:
       hostAliases:
         - ip: "10.1.2.3"
           hostnames:
-          - "foo.remote"
-          - "bar.remote"
+            - "foo.remote"
+            - "bar.remote"
       containers:
         - name: keycloak-gatekeeper
           image: "quay.io/gogatekeeper/gatekeeper:1.2.0"
@@ -113,8 +110,8 @@ metadata:
   name: gatekeeper
   namespace: nginx-test
   labels:
-      app: nginx-test
-      component: gatekeeper
+    app: nginx-test
+    component: gatekeeper
 
 spec:
   ports:
@@ -126,9 +123,6 @@ spec:
     app: nginx-test
     component: gatekeeper
 
-
-
-
 # ---
 # apiVersion: traefik.containo.us/v1alpha1
 # kind: Middleware
@@ -138,7 +132,7 @@ spec:
 # spec:
 #   forwardAuth:
 #     address: http://gatekeeper.nginx-test.svc.cluster.local:80
-#     authResponseHeaders: 
+#     authResponseHeaders:
 #         - "X-Forwarded-User"
 #     trustForwardHeader: true
 ---
@@ -151,15 +145,15 @@ spec:
   entryPoints:
     - websecure
   routes:
-  - match: Host(`test.{{cluster.baseHostName}}`)
-    kind: Rule
-    services:
-    - name: gatekeeper
-      namespace: nginx-test
-      kind: Service
-      port: 80
-    # middlewares:
-    #   - name: gatekeeper
-    #     namespace: nginx-test
+    - match: Host(`test.{{cluster.baseHostName}}`)
+      kind: Rule
+      services:
+        - name: gatekeeper
+          namespace: nginx-test
+          kind: Service
+          port: 80
+        # middlewares:
+        #   - name: gatekeeper
+        #     namespace: nginx-test
   tls:
     certResolver: myresolver

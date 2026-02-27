@@ -9,15 +9,14 @@ draft: false
 # tocPosition: inner
 # tocLevels: ["h2", "h3", "h4"]
 tags:
-- Kubernetes
+  - Kubernetes
 series:
--
-categories:
-- Kubernetes
-image:
+  - categories:
+      - Kubernetes
+    image:
 ---
 
-*Kubernetes* is.... Quite a thing, to say the least ! :sweat_smile: Even if their conceptors did a great job at making the *`kubectl` cli* as usable as possible, it can sometimes be a pain to be productive with it, read outputs, or do repetitive tasks. That's why I wrote this small *Quality of life* improvements post: to regroup some install steps you might have missed, give you some useful 3rd party tools or maybe even give you tips a step ahead.
+_Kubernetes_ is.... Quite a thing, to say the least ! :sweat_smile: Even if their conceptors did a great job at making the _`kubectl` cli_ as usable as possible, it can sometimes be a pain to be productive with it, read outputs, or do repetitive tasks. That's why I wrote this small _Quality of life_ improvements post: to regroup some install steps you might have missed, give you some useful 3rd party tools or maybe even give you tips a step ahead.
 
 {{<alert theme="info">}}
 Code samples are headed with the expected shell. Since I use ZSH, if there is no indication of the shell, you can assume it would work for pretty much any shell.
@@ -30,7 +29,9 @@ Fill out the {{<var "profileFile">}} with your profile file path. Usually, it's 
 ## `kubectl` auto-complete
 
 {{<expand "References">}}
-* [:books: kubectl installation manual](https://kubernetes.io/docs/tasks/tools/install-kubectl/#enable-kubectl-autocompletion)
+
+- [:books: kubectl installation manual](https://kubernetes.io/docs/tasks/tools/install-kubectl/#enable-kubectl-autocompletion)
+
 {{</expand>}}
 
 Autocomplete is nice, and a real time saver. It avoids typos, and it's quite satisfying to type a complete command in 4 keystrokes and a couple of `tab`s correctly placed. (even if I'm always unsure when relying on my browser's autocomplete for https://**anal**ytics.google.com :expressionless:).
@@ -43,6 +44,7 @@ So, short stories short, and depending on your shell, type in:
 
 {{<tabs "zsh" "bash">}}
 {{<tab>}}
+
 ```sh
 cat <<EOF | tee -a {{profileFile}}
 autoload -Uz compinit
@@ -51,6 +53,7 @@ source <(kubectl completion zsh)
 EOF
 source {{profileFile}}
 ```
+
 {{</tab>}}
 {{<tab>}}
 
@@ -69,14 +72,17 @@ fi
 echo 'source <(kubectl completion bash)' >> {{profileFile}}
 source {{profileFile}}
 ```
+
 {{</tab>}}
 {{</tabs>}}
 
 ## `kubecolor`: prettier `kubectl` commands outputs with colors
 
 {{<expand "References">}}
-* [Add ANSI colors to kubectl describe and other outputs](https://github.com/kubernetes/kubectl/issues/524)
-* [kubecolor](https://github.com/dty1er/kubecolor)
+
+- [Add ANSI colors to kubectl describe and other outputs](https://github.com/kubernetes/kubectl/issues/524)
+- [kubecolor](https://github.com/dty1er/kubecolor)
+
 {{</expand>}}
 
 ```sh
@@ -94,13 +100,14 @@ PATH="\$PATH:\$HOME/go/bin"
 EOF
 source ~/.zshrc
 ```
+
 {{</alert>}}
 
 Finally, you could either use `kubecolor` instead of `kubectl`, or alias `kubectl` as `kubecolor` with the following code sample:
 
-
 {{<tabs "zsh">}}
 {{<tab>}}
+
 ```sh
 cat <<EOF | tee -a {{profileFile}}
 # Backup original "kubectl" command path. Supports subsequent imports of the file.
@@ -115,20 +122,21 @@ compdef kubectll=kubectl
 EOF
 source {{profileFile}}
 ```
+
 {{</tab>}}
 {{</tabs>}}
 
 {{<alert theme="warning">}}
-I noticed some little things does not work well with `kubecolor`. That's why the script above let you use the original `kubectl` command through `kubectll`. For instance, I noticed that some commands prompting user input (so using *stdin*), such as `kubectl login`, don't work.
+I noticed some little things does not work well with `kubecolor`. That's why the script above let you use the original `kubectl` command through `kubectll`. For instance, I noticed that some commands prompting user input (so using _stdin_), such as `kubectl login`, don't work.
 
 So, if you try a command that seems to not work as expected, or stay stuck, fall back to `kubectll`.
 {{</alert>}}
 
 ## `helm`: a kubernetes stack template repository
 
-[*Helm*](https://helm.sh/) is a convinient way to use or share configurable kubernetes stacks. For example, it may allow to install easily a front-end, with its API and a database, in a single template, in which you can inject your specific configuration (PVC, ports, environment, etc...).
+[_Helm_](https://helm.sh/) is a convinient way to use or share configurable kubernetes stacks. For example, it may allow to install easily a front-end, with its API and a database, in a single template, in which you can inject your specific configuration (PVC, ports, environment, etc...).
 
-To install *helm*, run the following command:
+To install _helm_, run the following command:
 
 {{<alert theme="info">}}
 Make sure that OpenSSL is installed before proceeding.
@@ -142,14 +150,16 @@ curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bas
 ## `krew`: a `kubectl` plugins manager
 
 {{<expand "References">}}
-* [Installing krew](https://krew.sigs.k8s.io/docs/user-guide/setup/install/)
+
+- [Installing krew](https://krew.sigs.k8s.io/docs/user-guide/setup/install/)
+
 {{</expand>}}
 
-[*krew*](https://krew.sigs.k8s.io/) is a nice small plugin manager for your `kubectl` command. At the time of writing, it has [129 plugins available](https://krew.sigs.k8s.io/plugins/), including some pretty convinient to restart pods, login using OpenId, check the state of your cluster, and more.
+[_krew_](https://krew.sigs.k8s.io/) is a nice small plugin manager for your `kubectl` command. At the time of writing, it has [129 plugins available](https://krew.sigs.k8s.io/plugins/), including some pretty convinient to restart pods, login using OpenId, check the state of your cluster, and more.
 
-To install *krew*, run the following: (taken from [the docs](https://krew.sigs.k8s.io/docs/user-guide/setup/install/))
+To install _krew_, run the following: (taken from [the docs](https://krew.sigs.k8s.io/docs/user-guide/setup/install/))
 
-> Think about replacing {{<var "profileFile">}} with your actual *zsh* or *bash* profile
+> Think about replacing {{<var "profileFile">}} with your actual _zsh_ or _bash_ profile
 
 ```sh
 # Install krew
@@ -171,10 +181,10 @@ source {{profileFile}}
 kubectl krew
 ```
 
-## *One ring to rule them all*
+## _One ring to rule them all_
 
 For this one, I plead guilty of not using it enough, but it contains a lot of useful knowledge and possible solutions of most of your problems.
 
 You guessed it, I'm talking about documentation. (because it would be an insult to tell you that StackOverflow is a thing.)
 
-Read it carefully. Take time to understand it and its underlying concepts. Don't use tools you don't know how they work. Because when things breaks, your knowledge of what and how it broke will help you to solve the problem quickly and without damages. So, read the documentation of your __containers__, your __*helm* charts__, your __*kubernetes* network layer__, and, of course, __*kubernetes*__ and __*docker* themselves__.
+Read it carefully. Take time to understand it and its underlying concepts. Don't use tools you don't know how they work. Because when things breaks, your knowledge of what and how it broke will help you to solve the problem quickly and without damages. So, read the documentation of your **containers**, your **_helm_ charts**, your **_kubernetes_ network layer**, and, of course, **_kubernetes_** and **_docker_ themselves**.

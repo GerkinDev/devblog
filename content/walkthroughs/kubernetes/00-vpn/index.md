@@ -4,35 +4,38 @@ date: 2020-11-16T02:35:47+01:00
 draft: false
 weight: 10
 categories:
-- Kubernetes
+  - Kubernetes
 tags:
-- Kubernetes
-- Sysadmin
-- DevOps
-- Networking
+  - Kubernetes
+  - Sysadmin
+  - DevOps
+  - Networking
 ---
 
 {{<expand "References">}}
-* <https://www.digitalocean.com/community/tutorials/how-to-run-openvpn-in-a-docker-container-on-ubuntu-14-04>
-* <https://blog.container-solutions.com/running-docker-containers-with-systemd>
+
+- <https://www.digitalocean.com/community/tutorials/how-to-run-openvpn-in-a-docker-container-on-ubuntu-14-04>
+- <https://blog.container-solutions.com/running-docker-containers-with-systemd>
+
 {{</expand>}}
 
-Because we are installing our cluster bare metal on servers exposed on the Internet, we'll need a way to secure all of our network traffic around the critical parts of *kubernetes*. To do so, we'll use OpenVPN to create a virtual secured network where all of our nodes will work. Moreover, this network will also contains *MetalLB* services when {{<linkToPage "../02-cluster#initialize-metallb" "configuring our bare metal load balancer">}}.
+Because we are installing our cluster bare metal on servers exposed on the Internet, we'll need a way to secure all of our network traffic around the critical parts of _kubernetes_. To do so, we'll use OpenVPN to create a virtual secured network where all of our nodes will work. Moreover, this network will also contains _MetalLB_ services when {{<linkToPage "../02-cluster#initialize-metallb" "configuring our bare metal load balancer">}}.
 
 {{<alert theme="info">}}
-You **may** need to edit your `/etc/hosts` files to associate `vpn.{{cluster.baseHostName}}` to your future *OpenVPN* server on **each of the devices that will join the cluster** (if `vpn.{{cluster.baseHostName}}` is not a real *DNS* name).
+You **may** need to edit your `/etc/hosts` files to associate `vpn.{{cluster.baseHostName}}` to your future _OpenVPN_ server on **each of the devices that will join the cluster** (if `vpn.{{cluster.baseHostName}}` is not a real _DNS_ name).
 
 ```sh
 echo '{{vpn.publicServerIp}}	vpn.{{cluster.baseHostName}}' >> /etc/hosts
 ```
+
 {{</alert>}}
 
-See the [docs of kylemanna/openvpn](https://github.com/kylemanna/docker-openvpn$docs) (our *OpenVPN* server).
+See the [docs of kylemanna/openvpn](https://github.com/kylemanna/docker-openvpn$docs) (our _OpenVPN_ server).
 
-## *OpenVPN* server initial setup
-
+## _OpenVPN_ server initial setup
 
 On the **OpenVPN server**, create a volume for OpenVPN so that it can store files, and generate configuration.
+
 ```sh
 # Create the volume
 docker volume create --name {{vpn.volumeName}}
@@ -46,15 +49,15 @@ docker run -v {{vpn.volumeName}}:/etc/openvpn -it -p 1194:1194/udp --cap-add=NET
 
 > Note on the `-Nd` flags of the line 4: see [this RTFM page](https://github.com/kylemanna/docker-openvpn/blob/master/docs/faqs.md#how-do-i-set-up-a-split-tunnel) for split tunnel (partial traffic tunnel)
 
-Once the last command is executed, your *OpenVPN* server should start. If it started properly, just kill it. We will set it up as a systemd service for our host.
+Once the last command is executed, your _OpenVPN_ server should start. If it started properly, just kill it. We will set it up as a systemd service for our host.
 
-## Make a *systemd* service for *OpenVPN* through *docker*
+## Make a _systemd_ service for _OpenVPN_ through _docker_
 
 {{<alert theme="info">}}
 If you're not using systemd, see [how to use init.d](https://www.digitalocean.com/community/tutorials/how-to-run-openvpn-in-a-docker-container-on-ubuntu-14-04#step-3-%E2%80%94-launch-the-openvpn-server), and skip this section.
 {{</alert>}}
 
-Install the {{<linkToIncludedFile "./systemd/kubernetes-vpn.service">}} template into `/usr/lib/systemd/system`, then enable this service. It will run our *OpenVPN* server container.
+Install the {{<linkToIncludedFile "./systemd/kubernetes-vpn.service">}} template into `/usr/lib/systemd/system`, then enable this service. It will run our _OpenVPN_ server container.
 
 {{<includeCodeFile "./systemd/kubernetes-vpn.service">}}
 
@@ -66,7 +69,7 @@ systemctl daemon-reload
 systemctl enable --now kubernetes-vpn.service
 ```
 
-You can check our docker container with `docker container inspect kubernetes-vpn.service` & get our *OpenVPN* logs with `journalctl -u kubernetes-vpn.service`.
+You can check our docker container with `docker container inspect kubernetes-vpn.service` & get our _OpenVPN_ logs with `journalctl -u kubernetes-vpn.service`.
 
 Now, get the value of the variable {{<var "vpn.serverIp">}} with this command:
 
@@ -78,7 +81,7 @@ docker exec -it kubernetes-vpn.service ip -4 addr show tun0 `# Get the "tun0" in
   | grep -Po 'inet \K[0-9.]*'
 ```
 
-> See [**Static IP Addresses** documentation for *docker-openvpn*](https://github.com/kylemanna/docker-openvpn/blob/master/docs/static-ips.md)
+> See [**Static IP Addresses** documentation for _docker-openvpn_](https://github.com/kylemanna/docker-openvpn/blob/master/docs/static-ips.md)
 
 ## Setup clients
 
@@ -92,7 +95,7 @@ This section is meant to be repeated for each of your cluster's nodes. For every
 
 For each of our clients, we'll need to generate credentials so that they can connect to the vpn server. Those clients may use static IPs. The master(s) **must** have a static IP since it must be reachable via a constant address for `kubectl`.
 
-On your *OpenVPN*'server host:
+On your _OpenVPN_'server host:
 
 ```sh
 # Generate a client
@@ -107,10 +110,12 @@ Move this `{{node.name}}.ovpn` file to the {{<var "node.name">}} node **by a saf
 
 Next operations have to be run on clients.
 
-### Install *OpenVPN* client
+### Install _OpenVPN_ client
 
 {{<expand "References">}}
-* <https://www.vpsserver.com/community/tutorials/4035/install-openvpn-on-centos-8/>
+
+- <https://www.vpsserver.com/community/tutorials/4035/install-openvpn-on-centos-8/>
+
 {{</expand>}}
 
 Install required dependencies.
@@ -151,15 +156,19 @@ You should be good to go ! :fire:
 ## Troubleshoot
 
 {{<expand "References">}}
-* https://stackoverflow.com/a/63624477/4839162
+
+- https://stackoverflow.com/a/63624477/4839162
+
 {{</expand>}}
 
 ### No internet connection on nodes, or no connection between nodes
 
 {{<expand "References">}}
-* <https://github.com/kylemanna/docker-openvpn#openvpn-details>
-* <https://github.com/kylemanna/docker-openvpn/issues/381#issuecomment-386269991>
-* <https://github.com/kylemanna/docker-openvpn/issues/381#issuecomment-616009737>
+
+- <https://github.com/kylemanna/docker-openvpn#openvpn-details>
+- <https://github.com/kylemanna/docker-openvpn/issues/381#issuecomment-386269991>
+- <https://github.com/kylemanna/docker-openvpn/issues/381#issuecomment-616009737>
+
 {{</expand>}}
 
 {{<alert theme="warning">}}

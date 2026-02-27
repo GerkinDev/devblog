@@ -4,12 +4,12 @@ date: 2020-11-16T02:35:47+01:00
 draft: false
 weight: 70
 categories:
-- Kubernetes
+  - Kubernetes
 tags:
-- Kubernetes
-- Sysadmin
-- DevOps
-- Monitoring
+  - Kubernetes
+  - Sysadmin
+  - DevOps
+  - Monitoring
 ---
 
 Well, things are getting real and are on the point to become quite complex. So we'll setup (super unsafe) dashboards to see what is going on easily. After all, we have nothing critical for now, but we might get troubles soon. And, don't worry, we'll make it safe just after that.
@@ -17,8 +17,9 @@ Well, things are getting real and are on the point to become quite complex. So w
 ## 1. Traefik dashboard: monitoring routes
 
 The traefik dashboard will help us in the diagnostics of our ingress routes and traefik-related stuff. For this, we need to:
-* update our ingress controller previously deployed to enable the dashboard
-* and create routes to the dashboard.
+
+- update our ingress controller previously deployed to enable the dashboard
+- and create routes to the dashboard.
 
 Use the {{<linkToIncludedFile "./kubernetes/traefik/04-IngressController.yaml">}} and {{<linkToIncludedFile "./kubernetes/traefik/06-IngressRoutes.yaml">}} templates.
 
@@ -35,14 +36,16 @@ Now, you should be able to reach the dashboard via <https://traefik.{{cluster.ba
 ## 2. Kibana: harvest data from your cluster
 
 {{<expand "References">}}
-* <https://mherman.org/blog/logging-in-kubernetes-with-elasticsearch-Kibana-fluentd/#fluentd>
-* <https://www.elastic.co/kibana>
-* <https://www.elastic.co/elasticsearch/>
+
+- <https://mherman.org/blog/logging-in-kubernetes-with-elasticsearch-Kibana-fluentd/#fluentd>
+- <https://www.elastic.co/kibana>
+- <https://www.elastic.co/elasticsearch/>
+
 {{</expand>}}
 
-[*Kibana*](https://www.elastic.co/kibana) is a super versatile tool to visualize data stored in *Elasticsearch*.
+[_Kibana_](https://www.elastic.co/kibana) is a super versatile tool to visualize data stored in _Elasticsearch_.
 
-[*Elasticsearch*](https://www.elastic.co/elasticsearch/) is a database particularly adapted for search engines, with [fulltext search](<!-- TODO -->) and [scoring](<!-- TODO -->) capabilities.
+[_Elasticsearch_](https://www.elastic.co/elasticsearch/) is a database particularly adapted for search engines, with [fulltext search]((<!-- TODO -->)) and [scoring]((<!-- TODO -->)) capabilities.
 
 Together, they compose the perfect combo to ingest all our cluster's logs, and do searches, visualizations, tracking, and everything you'll need to understand what is going on in your cluster's apps.
 
@@ -62,7 +65,6 @@ We'll start by getting our pods (container) logs. Deploy the following configura
 {{<includeCodeFile "./kubernetes/kibana/13-Fluentd.yaml">}}
 {{<includeCodeFile "./kubernetes/kibana/21-Ingress.yaml">}}
 
-
 ```sh
 kubectl apply -f ./kubernetes/kibana/01-Namespace.yaml
 kubectl apply -f ./kubernetes/kibana/11-Elasticsearch.yaml
@@ -73,7 +75,7 @@ kubectl apply -f ./kubernetes/kibana/21-Ingress.yaml
 
 Once applied, you should be able to reach your kibana dashboard via <https://kibana.{{cluster.baseHostName}}/>. Be patient, it may take a bit of time to initialize ElasticSearch and Kibana itself. Once they started up, let's configure those !
 
-Go to the [*Kibana > Discover > Index patterns*](https://kibana.{{cluster.baseHostName}}/app/management/kibana/indexPatterns/create) page. Kibana should ask to create indices. Index logs with pattern `logstash*`.
+Go to the [_Kibana > Discover > Index patterns_](https://kibana.{{cluster.baseHostName}}/app/management/kibana/indexPatterns/create) page. Kibana should ask to create indices. Index logs with pattern `logstash*`.
 
 <!-- TODO: Update screenshots -->
 
@@ -83,7 +85,7 @@ Then, set up the time field as `@timestamp`.
 
 ![Index pattern 2nd screen](./_assets/kibana-2.png)
 
-Finally, go back to the *Discover* page. You should get at least your pods logs!
+Finally, go back to the _Discover_ page. You should get at least your pods logs!
 
 ![Logs](./_assets/kibana-3.png)
 
@@ -97,6 +99,7 @@ For a reason I can't explain, the default settings for audit log parsing from fl
 {{<includeCodeFile "./kubernetes/kibana/32-FluentdConfigMap.yaml">}}
 
 <!-- To update. See https://github.com/fluent/fluentd-kubernetes-daemonset/issues/519 . Expected log format is `legacy` -->
+
 ```sh
 kubectl apply -f ./kubernetes/kibana/31-Fluentd.yaml
 kubectl apply -f ./kubernetes/kibana/32-FluentdConfigMap.yaml
@@ -110,13 +113,16 @@ So, in this setup, your audit logs are at 2 places: directly bare on your server
 
 ### 2.3. Make things persistent
 
-<!-- TODO -->
+<(<!-- TODO -->)>
+
 Now that you have set up everything, you might have seen that everytime the ElasticSearch pod is restarted, the database is emptied. This is normal so far, because we don't actually write any data on a persistent storage. For now ! But let's solve that.
 
 ## 3. Kube dashboard: Web UI to administrate the cluster
 
 {{<expand "References">}}
-* <https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/>
+
+- <https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/>
+
 {{</expand>}}
 
 {{<includeCodeFile "./kubernetes/kube-dashboard/01-Dashboard.yaml">}}

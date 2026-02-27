@@ -8,13 +8,13 @@ defaultContentLanguageInSubdir: true
 hasCJKLanguage: true
 summaryLength: 70
 buildFuture: false
-copyright: '©{year}, All Rights Reserved'
+copyright: "©{year}, All Rights Reserved"
 timeout: 10000
 enableEmoji: true
 paginate: 13
 rssLimit: 100
 enableGitInfo: true
-googleAnalytics: ''
+googleAnalytics: ""
 markup:
   goldmark:
     extensions:
@@ -67,16 +67,12 @@ taxonomies:
   tag: tags
   series: series
 
-
-
 sectionPagesMenu: main
 enableRobotsTXT: true
 sitemap:
   changefreq: monthly
   priority: 0.5
   filename: sitemap.xml
-
-
 
 params:
   logoText: GerkinDev DevBlog
@@ -137,19 +133,19 @@ params:
   enableGoToTop: true
   enableWhoami: true
   summaryShape: classic
-  archiveGroupByDate: '2006'
+  archiveGroupByDate: "2006"
   archivePaginate: 13
   paginateWindow: 1
   talksPaginate: 8
-  talksGroupByDate: '2006'
+  talksGroupByDate: "2006"
   myname: GerkinDev
   # email: zzossig@gmail.com
   whoami: Fullstack developer, on its journey to DevOps.
   # bioImageUrl: 'https://lh3.googleusercontent.com/1cHCaMp2PxGFvJVPYwShMv9baTH253j0caCpEsVf-Nsm7UueLGxKweGTbI1W6fjGiDqD6bwP0nRjWCa2uymmKtjwJrRsK6gUUOZ7FhwBRETacil83NXLTrbVKwwFqgExY199BUqMoC1E74Besl_eoL7vFpVKK16IljCRZmqi54lQRfEJ65pfYvtl88rEVrPYhrBMceqzgA_kyBTQlAnqfQFbWK0D4GzTjlQIUWY9gbGgEcoavKUIDpxayZwckSDl2WzNlIMZqlBfD_qtny2rP3unYAU1X3LCobs1NdFOoBgEYtrOjsc4ENHVadvFgaPvG826WIqAmRdnFMSdDEEA7VTVv1rEJBmO0VioukyB-cweFFoxsv_XSEjUkIvxYDN5K0azgQCS20T1KUtYiN_J8jmsCauVfpCEwDSj0hRW5uUOtHE2Ui6ZwsmQUxH5eDjohyC49nVp3FxtUa5k1d5SPt-9bnhrUY1VHHB6A8giO40gBNWt_zuRA4NUMnrVRueGUdviWFU6EIJcw0hXhmno1J2-symGkEyVEbCewLDe_W2XAhDF_v3fskzPo1yWXZuODdCXT2Nfzbc_rFQdSFjEXuqn7Z53RN5kXqXvD0JuOqT0M9AVQUOvhetnyq31eVYVYR-ZBkYETFmkBaOKp1fTivn2i-Gw8SN6soxS-U3uowu1U6XdpvBP8LGiTP8mwA=w899-h967-no?authuser=0'
   useGravatar: false
-  location: 'In the cambrousse, France'
+  location: "In the cambrousse, France"
   # organization: Scitizen
-  link: 'https://github.com/GerkinDev/devblog'
+  link: "https://github.com/GerkinDev/devblog"
   enableBio: true
   enableBioImage: true
   enableSidebar: true
@@ -186,8 +182,8 @@ params:
   # disqus_shortname: ''
   # commento: false
   utterances:
-    owner: 'GerkinDev'
-    repo: 'devblog'
+    owner: "GerkinDev"
+    repo: "devblog"
     # link: ''
   # gitalk:
   #   owner: ''
@@ -216,23 +212,23 @@ params:
     # email: 'mailto:your@email.com'
     # phone: ''
     # facebook: 'https://www.facebook.com/alexandre.trujilogermain/'
-    twitter: 'https://twitter.com/gerkindev'
-    github: 'https://github.com/GerkinDev'
-    stack-overflow: 'https://stackoverflow.com/users/4839162/alexandre-germain'
+    twitter: "https://twitter.com/gerkindev"
+    github: "https://github.com/GerkinDev"
+    stack-overflow: "https://stackoverflow.com/users/4839162/alexandre-germain"
     # instagram: ''
     # google-plus: ''
     # youtube: ''
     # medium: ''
     # tumblr: ''
-    linkedin: 'https://www.linkedin.com/in/alexandrejpgermain/'
+    linkedin: "https://www.linkedin.com/in/alexandrejpgermain/"
     # pinterest: ''
-    stack-exchange: 'https://meta.stackexchange.com/users/1130036/alexandre-germain'
+    stack-exchange: "https://meta.stackexchange.com/users/1130036/alexandre-germain"
     # telegram: ''
     # steam: ''
     # weibo: ''
     # douban: ''
     # csdn: ''
-    gitlab: 'https://gitlab.com/GerkinDev'
+    gitlab: "https://gitlab.com/GerkinDev"
     # mastodon: ''
     # jianshu: ''
     # zhihu: ''
@@ -259,15 +255,13 @@ params:
   share:
     - name: facebook
     - name: twitter
-      username: 'GerkinDev'
+      username: "GerkinDev"
     - name: linkedin
   footerLinks:
-    # - name: ''
-    #   link: ''
-    # - name: ''
-    #   link: ''
-
-
+# - name: ''
+#   link: ''
+# - name: ''
+#   link: ''
 
 # Fix for incorrect sub-links. See https://github.com/gohugoio/hugo/issues/711
 canonifyUrls: true

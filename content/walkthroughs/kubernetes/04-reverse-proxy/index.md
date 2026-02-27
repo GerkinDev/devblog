@@ -4,20 +4,20 @@ date: 2020-11-16T02:35:47+01:00
 draft: false
 weight: 50
 categories:
-- Kubernetes
+  - Kubernetes
 tags:
-- Kubernetes
-- Sysadmin
-- DevOps
-- Networking
-- Web service
+  - Kubernetes
+  - Sysadmin
+  - DevOps
+  - Networking
+  - Web service
 ---
 
 Now that you have a router installed, you have to pass requests on your server to it. This setup use a single entry point directly binding some ports on the host server.
 
 ## 1. Make a static and previsible configuration
 
-As you may have noticed in the step {{<linkToPage "../02-cluster">}}, the *metallb* configuration use only dynamic adresses. But for the reverse proxy to work, we'll need to be sure that our *traefik* router has a constant IP in your VPN. For this, modify your *metallb* configuration using the new {{<linkToIncludedFile "./kubernetes/metallb-configmap.yaml">}} template. This new configuration declares a new address pool named `frontend` with a single IP in it.
+As you may have noticed in the step {{<linkToPage "../02-cluster">}}, the _metallb_ configuration use only dynamic adresses. But for the reverse proxy to work, we'll need to be sure that our _traefik_ router has a constant IP in your VPN. For this, modify your _metallb_ configuration using the new {{<linkToIncludedFile "./kubernetes/metallb-configmap.yaml">}} template. This new configuration declares a new address pool named `frontend` with a single IP in it.
 
 {{<includeCodeFile "./kubernetes/metallb-configmap.yaml">}}
 
@@ -29,10 +29,12 @@ kubectl apply -f ./kubernetes/metallb-configmap.yaml
 ## 2. Set the router's IP
 
 {{<expand "References">}}
-* <https://metallb.universe.tf/usage/#requesting-specific-ips>
+
+- <https://metallb.universe.tf/usage/#requesting-specific-ips>
+
 {{</expand>}}
 
-Once the configmap has been changed, force our *traefik* service to use this new address "*pool*". This is done using the *annotation* `metallb.universe.tf/address-pool`. Use the new {{<linkToIncludedFile "./kubernetes/traefik/05-Services.yaml">}} template, and check that its IP is correct.
+Once the configmap has been changed, force our _traefik_ service to use this new address "_pool_". This is done using the _annotation_ `metallb.universe.tf/address-pool`. Use the new {{<linkToIncludedFile "./kubernetes/traefik/05-Services.yaml">}} template, and check that its IP is correct.
 
 {{<includeCodeFile "./kubernetes/traefik/05-Services.yaml">}}
 
@@ -40,12 +42,12 @@ Once the configmap has been changed, force our *traefik* service to use this new
 # Update the configuration
 kubectl apply -f ./kubernetes/traefik/05-Services.yaml
 # Check the IP. It should be the single one in the pool defined by `frontend` in the metallb configuration
-kubectl --namespace traefik get svc 
+kubectl --namespace traefik get svc
 ```
 
 ## 3. Setup the bare metal proxy
 
-We'll use *nginx* as our bare reverse proxy. It will simply redirect every requests on the specified ports to traefik, that was {{<linkToPage "../03-router" "previously installed in kubernetes">}}. In the case of an SSL connection, it won't be unwrapped.
+We'll use _nginx_ as our bare reverse proxy. It will simply redirect every requests on the specified ports to traefik, that was {{<linkToPage "../03-router" "previously installed in kubernetes">}}. In the case of an SSL connection, it won't be unwrapped.
 
 ```sh
 # Install nginx
@@ -87,8 +89,9 @@ kubectl apply -f ./kubernetes/xx-WhoAmI.yaml
 ```
 
 Make sure that `whoami.{{cluster.baseHostName}}` correctly resolves to your entry-point server (either via real DNS records or editing `/etc/hosts`), then try to access to:
-* <https://whoami.{{cluster.baseHostName}}/tls>
-* <http://whoami.{{cluster.baseHostName}}/notls>
+
+- <https://whoami.{{cluster.baseHostName}}/tls>
+- <http://whoami.{{cluster.baseHostName}}/notls>
 
 If this works, you're good to go !
 

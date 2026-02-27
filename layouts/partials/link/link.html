@@ -5,7 +5,7 @@
 {{- $label := .Title }}
 {{- $canFetch := true }}
 
-{{- if or (eq $href "!-- TODO --") (eq $href "") -}}
+{{- if or (eq $href "TODO") (eq $href "(<!-- TODO -->)") (eq $href "") -}}
 	<a title="TODO">
 		{{- partial "link/prefix-icon" "todo" -}}&nbsp;
 		{{- .Text | safeHTML -}}

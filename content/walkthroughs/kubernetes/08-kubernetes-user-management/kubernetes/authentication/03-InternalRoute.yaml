@@ -18,15 +18,15 @@ spec:
   entryPoints:
     - websecure
   routes:
-  - match: HostSNI(`kube-keycloak.bar.com`)
-    # kind: Rule
-    services:
-    - name: keycloak-http
-      # kind: Service
-      namespace: keycloak
-      port: 443
-#   middlewares:
-#   - name: internal-whitelist
-#     namespace: keycloak
+    - match: HostSNI(`kube-keycloak.bar.com`)
+      # kind: Rule
+      services:
+        - name: keycloak-http
+          # kind: Service
+          namespace: keycloak
+          port: 443
+  #   middlewares:
+  #   - name: internal-whitelist
+  #     namespace: keycloak
   tls:
     passthrough: true

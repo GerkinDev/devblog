@@ -4,19 +4,21 @@ date: 2020-11-16T02:35:47+01:00
 draft: false
 weight: 90
 categories:
-- Kubernetes
+  - Kubernetes
 tags:
-- Kubernetes
-- Sysadmin
-- DevOps
-- Security
-- Authentication
+  - Kubernetes
+  - Sysadmin
+  - DevOps
+  - Security
+  - Authentication
 ---
 
 ## Create the realm and the client
 
 {{<expand "References">}}
-* <https://github.com/zufardhiyaulhaq/engineering-notes/blob/master/notes/kubernetes-keycloak-integration.md>
+
+- <https://github.com/zufardhiyaulhaq/engineering-notes/blob/master/notes/kubernetes-keycloak-integration.md>
+
 {{</expand>}}
 
 ```sh
@@ -41,14 +43,18 @@ curl \
 ## Set up certificates
 
 {{<expand "References">}}
-* <https://medium.com/@zufardhiyaulhaq/kubernetes-authentication-with-keycloak-openid-connect-part-1-14f4e778b5e9#5252>
+
+- <https://medium.com/@zufardhiyaulhaq/kubernetes-authentication-with-keycloak-openid-connect-part-1-14f4e778b5e9#5252>
+
 {{</expand>}}
 
 ### Generate the certificates
 
 {{<expand "References">}}
-* <https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes>
-* <https://security.stackexchange.com/a/159537>
+
+- <https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes>
+- <https://security.stackexchange.com/a/159537>
+
 {{</expand>}}
 
 ```sh
@@ -119,6 +125,7 @@ The important part is that your certificate contains the correct `X509v3 Subject
 
 Go deprecated use of Common Name by default since v1.15 via [this commit](https://github.com/golang/go/commit/d65e1b2e41deb810565c94555d791e7384618da0).
 {{</alert>}}
+
 <!-- # Finally, generate the public key for keycloak
 openssl pkcs12 -export -in keycloak.crt -inkey keycloak.key -out keycloak.p12 -name myserverkeystore -CAfile ca.crt
 -->
@@ -134,7 +141,7 @@ First, create the secret
 kubectl create secret generic certs -n keycloak --from-file keycloak.crt --from-file keycloak.key
 ```
 
-Then, update your *keycloak* chart values to mount this new secret.
+Then, update your _keycloak_ chart values to mount this new secret.
 
 {{<includeCodeFile "./kubernetes/authentication/01-KeycloakChartValues.yaml">}}
 
@@ -145,7 +152,7 @@ Finally, update your chart.
 helm upgrade -n keycloak -f ./kubernetes/authentication/01-KeycloakChartValues.yaml keycloak codecentric/keycloak
 ```
 
-## Enable alternative routing to *keycloak*
+## Enable alternative routing to _keycloak_
 
 {{<includeCodeFile "./kubernetes/authentication/03-InternalRoute.yaml">}}
 
@@ -158,7 +165,7 @@ Go to `https://kube-keycloak.{{cluster.baseHostName}}`. It should show you a sec
 
 ![Warning: Potential Security Risk Ahead](_assets/kube-keycloak-security-alert.png)
 
-Don't worry, this is normal since *keycloak*'s certificate was signed by our custom Certificate Authority (CA). For curiosity, click on `View Certificate`.
+Don't worry, this is normal since _keycloak_'s certificate was signed by our custom Certificate Authority (CA). For curiosity, click on `View Certificate`.
 
 ![Certificate](_assets/kube-keycloak-cert.png)
 
@@ -177,7 +184,9 @@ If the command above works, our certificates are valid !
 ## Enable OIDC in the API server
 
 {{<expand "References">}}
-* <https://stackoverflow.com/questions/50007654/how-does-kube-apiserver-restart-after-editing-etc-kubernetes-manifests-kube-api>
+
+- <https://stackoverflow.com/questions/50007654/how-does-kube-apiserver-restart-after-editing-etc-kubernetes-manifests-kube-api>
+
 {{</expand>}}
 
 Place CA files in a safe place where kubernetes will be able to get it to check keycloak's certificate.
@@ -193,7 +202,7 @@ chown -R root:root /etc/kubernetes/auth-cert
 # Remove the dir
 cd ../
 rm -r certs
-```>
+```
 
 Then
 
@@ -240,6 +249,7 @@ If it does not, (or you want to restart it anyway because you changed the certif
 ```sh
 kubectl -n kube-system delete pod kube-apiserver-{{cluster.masterNode.1}}
 ```
+
 {{</alert>}}
 
 Then, create the `ClusterRoleBinding`s for the test groups:
@@ -248,7 +258,7 @@ Then, create the `ClusterRoleBinding`s for the test groups:
 kubectl apply -f authentication/03-ClusterRoleBindings.yaml
 ```
 
-Use *kubelogin*: https://github.com/int128/kubelogin
+Use _kubelogin_: https://github.com/int128/kubelogin
 
 ```sh
 kubectl krew install oidc-login
@@ -266,7 +276,7 @@ kubectl oidc-login setup \
     # --grant-type=authcode-keyboard
 ```
 
-The command above will output you installation instruction. Don't pay attention to the `## 3.` *cluster role* setup part, we are getting to it, in a more generic way.
+The command above will output you installation instruction. Don't pay attention to the `## 3.` _cluster role_ setup part, we are getting to it, in a more generic way.
 And we already did the `## 4.` API server setup above. Just run the step `## 5.` to set credentials for our `oidc` user.
 
 Finally, create a new context for your user (and optionally switch to this context)
@@ -281,6 +291,7 @@ kubectl config use-context kubernetes-admin@{{cluster.name}}
 ```
 
 {{<notice "info" "Small tips about user management">}}
+
 ```sh
 # Get the current context
 kubectl config current-context
@@ -289,8 +300,8 @@ kubectl config get-contexts
 # Switch to other context
 kubectl config use-context {{contextName}}
 ```
-{{</notice>}}
 
+{{</notice>}}
 
 <!-- Create a test user, so that you can try your new contexts
 

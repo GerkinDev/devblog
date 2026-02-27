@@ -1,21 +1,20 @@
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: gatekeeper
   namespace: kubernetes-dashboard
-  labels: 
+  labels:
     app: kubernetes-dashboard
     component: gatekeeper
 spec:
   replicas: 1
   selector:
-    matchLabels: 
+    matchLabels:
       app: kubernetes-dashboard
       component: gatekeeper
   template:
     metadata:
-      labels: 
+      labels:
         app: kubernetes-dashboard
         component: gatekeeper
     spec:
@@ -61,8 +60,8 @@ metadata:
   name: gatekeeper
   namespace: kubernetes-dashboard
   labels:
-      app: kubernetes-dashboard
-      component: gatekeeper
+    app: kubernetes-dashboard
+    component: gatekeeper
 spec:
   ports:
     - port: 80

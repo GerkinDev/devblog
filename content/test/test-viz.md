@@ -5,14 +5,10 @@ description: "A hack to put Graphviz on the web."
 draft: true
 enableToc: false
 enableTocContent: false
-tags:
--
-series:
--
 categories:
-- diagram
+  - diagram
 libraries:
-- viz
+  - viz
 image: images/feature2/graph.png
 ---
 
@@ -44,5 +40,4 @@ image: images/feature2/graph.png
 	start [shape=Mdiamond];
 	end [shape=Msquare];
 }
-
 ```

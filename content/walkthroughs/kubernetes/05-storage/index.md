@@ -4,22 +4,24 @@ date: 2020-11-16T02:35:47+01:00
 draft: false
 weight: 60
 categories:
-- Kubernetes
+  - Kubernetes
 tags:
-- Kubernetes
-- Sysadmin
-- DevOps
-- Storage
+  - Kubernetes
+  - Sysadmin
+  - DevOps
+  - Storage
 ---
 
 {{<expand "References">}}
-* <https://kubernetes.io/docs/concepts/storage/persistent-volumes/>
-* <https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/>
-* <https://kubernetes.io/docs/concepts/storage/storage-classes/>
-* <https://www.youtube.com/watch?v=0swOh5C3OVM>
+
+- <https://kubernetes.io/docs/concepts/storage/persistent-volumes/>
+- <https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/>
+- <https://kubernetes.io/docs/concepts/storage/storage-classes/>
+- <https://www.youtube.com/watch?v=0swOh5C3OVM>
+
 {{</expand>}}
 
-As you may know, *docker* (and thus, *kubernetes*) does not persist anything by default. That means that everytime you restart a pod (container), it is in the exact same state as it was at its first execution, except for the mount points. Those mount points are real hard drive directories injected into your pod. Some apps we'll setup later will require to persist data, and, more generally, when you'll run real applications on your own, they will probably use a database or something.
+As you may know, _docker_ (and thus, _kubernetes_) does not persist anything by default. That means that everytime you restart a pod (container), it is in the exact same state as it was at its first execution, except for the mount points. Those mount points are real hard drive directories injected into your pod. Some apps we'll setup later will require to persist data, and, more generally, when you'll run real applications on your own, they will probably use a database or something.
 
 > Seeing how this part is highly tied with your specific setup, you **should really** do this part by yourself using the references above. But in case you want a basic thing working, I'll guide you through the setup of [CephFS]().
 >
@@ -32,9 +34,11 @@ Now that I've warned you enough (just look above, **again**), let's declare a [p
 ### Check prerequisites
 
 {{<expand "References">}}
- * [Ceph docs: General prerequisites](https://rook.io/docs/rook/v1.5/ceph-prerequisites.html)
- * [Ceph docs: Kubernetes prerequisites](https://rook.io/docs/rook/v1.5/k8s-pre-reqs.html)
- * [Ceph docs: Quickstart](https://rook.io/docs/rook/v1.5/ceph-quickstart.html)
+
+- [Ceph docs: General prerequisites](https://rook.io/docs/rook/v1.5/ceph-prerequisites.html)
+- [Ceph docs: Kubernetes prerequisites](https://rook.io/docs/rook/v1.5/k8s-pre-reqs.html)
+- [Ceph docs: Quickstart](https://rook.io/docs/rook/v1.5/ceph-quickstart.html)
+
 {{</expand>}}
 
 <!-- TODO: Mention in intro about free disk -->
@@ -80,7 +84,7 @@ metadata:
   name: rook-ceph
 spec:
   placement:
-    all: 
+    all:
       tolerations:
         - effect: NoSchedule
           key: node-role.kubernetes.io/controlplane
@@ -104,9 +108,9 @@ kubectl apply -f ./kubernetes/rook/storageclass/filesystem.yaml
 
 Open your `./kubernetes/rook/cluster.yaml` file for further customization.
 
-* The default settings save *rook* data in `/var/lib/rook`. This can be changed by setting `dataDirHostPath`.
-* If working with 1 or 2 workers, make sure that `spec.mon.count` is equal to `1` (**only for testing purposes**).
-* It is highly advised to explicitly set `spec.storage`
+- The default settings save _rook_ data in `/var/lib/rook`. This can be changed by setting `dataDirHostPath`.
+- If working with 1 or 2 workers, make sure that `spec.mon.count` is equal to `1` (**only for testing purposes**).
+- It is highly advised to explicitly set `spec.storage`
 
 ```sh
 kubectl apply -f ./kubernetes/rook/cluster.yaml
@@ -130,7 +134,7 @@ kubectl -n persistent-nginx exec -it deploy/nginx -- /bin/sh -c "kill 1"
 
 ### Dashboard
 
-If you're planning to expose the dashboard from outside of the cluster, you have to disable `spec.dashboard.ssl` to false, since *traefik* will do the SSL encription. Then, deploy the routing:
+If you're planning to expose the dashboard from outside of the cluster, you have to disable `spec.dashboard.ssl` to false, since _traefik_ will do the SSL encription. Then, deploy the routing:
 
 {{<includeCodeFile "./kubernetes/rook/dashboard-ingress.yaml">}}
 
@@ -142,8 +146,8 @@ After this, you should be able to access to ceph dashboard via <https://ceph.{{c
 
 ---
 
-* The default **username** is `admin`.
-* The default **password** is stored in a secret. To get it, run:
+- The default **username** is `admin`.
+- The default **password** is stored in a secret. To get it, run:
   ```sh
   kubectl -n rook-ceph get secret rook-ceph-dashboard-password -o jsonpath="{['data']['password']}" | base64 --decode && echo
   ```
@@ -155,8 +159,6 @@ kubectl apply -f https://raw.githubusercontent.com/prometheus-operator/kube-prom
 ``` -->
 
 Having problems ? [RTFM](https://rook.io/docs/rook/v1.5/ceph-toolbox.html)
-
-
 
 If you made errors and want to purge rook-ceph, remove following patterns **on each nodes** running cephfs (usually, all the worker nodes):
 

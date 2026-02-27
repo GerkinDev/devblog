@@ -7,12 +7,12 @@ spec:
   entryPoints:
     - websecure
   routes:
-  - match: Host(`kube-dashboard.bar.com`)
-    kind: Rule
-    services:
-    - name: kubernetes-dashboard
-      namespace: kubernetes-dashboard
-      kind: Service
-      port: 80
+    - match: Host(`kube-dashboard.bar.com`)
+      kind: Rule
+      services:
+        - name: kubernetes-dashboard
+          namespace: kubernetes-dashboard
+          kind: Service
+          port: 80
   tls:
     certResolver: myresolver
